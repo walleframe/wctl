@@ -1,0 +1,3044 @@
+Item sets:
+S0{
+	tok_const_int : _sign _integer {_integer} | • _integer {_integer}
+	tok_const_int : • _sign _integer {_integer} | _integer {_integer}
+	tok_option : • _letter {_identifier} '.' _letter {_identifier}
+	tok_identifier : • _letter {_identifier}
+	!whitespace : ' ' | '\t' | '\n' | • '\r'
+	!whitespace : ' ' | '\t' | • '\n' | '\r'
+	!whitespace : ' ' | • '\t' | '\n' | '\r'
+	!whitespace : • ' ' | '\t' | '\n' | '\r'
+	!unixcomment : • '#' {.} '\n'
+	tok_doc : _multidoc | • _comment
+	tok_doc : • _multidoc | _comment
+	tok_literal : _leteral1 | • _leteral12
+	tok_literal : • _leteral1 | _leteral12
+	package : • 'p' 'a' 'c' 'k' 'a' 'g' 'e'
+	; : • ';'
+	, : • ','
+	import : • 'i' 'm' 'p' 'o' 'r' 't'
+	= : • '='
+	enum : • 'e' 'n' 'u' 'm'
+	{ : • '{'
+	} : • '}'
+	message : • 'm' 'e' 's' 's' 'a' 'g' 'e'
+	[ : • '['
+	] : • ']'
+	map : • 'm' 'a' 'p'
+	int8 : • 'i' 'n' 't' '8'
+	uint8 : • 'u' 'i' 'n' 't' '8'
+	int16 : • 'i' 'n' 't' '1' '6'
+	uint16 : • 'u' 'i' 'n' 't' '1' '6'
+	int32 : • 'i' 'n' 't' '3' '2'
+	uint32 : • 'u' 'i' 'n' 't' '3' '2'
+	int64 : • 'i' 'n' 't' '6' '4'
+	uint64 : • 'u' 'i' 'n' 't' '6' '4'
+	string : • 's' 't' 'r' 'i' 'n' 'g'
+	bytes : • 'b' 'y' 't' 'e' 's'
+	bool : • 'b' 'o' 'o' 'l'
+	i8 : • 'i' '8'
+	u8 : • 'u' '8'
+	i16 : • 'i' '1' '6'
+	u16 : • 'u' '1' '6'
+	i32 : • 'i' '3' '2'
+	u32 : • 'u' '3' '2'
+	i64 : • 'i' '6' '4'
+	u64 : • 'u' '6' '4'
+	service : • 's' 'e' 'r' 'v' 'i' 'c' 'e'
+	oneway : • 'o' 'n' 'e' 'w' 'a' 'y'
+	: : • ':'
+	notify : • 'n' 'o' 't' 'i' 'f' 'y'
+	twoway : • 't' 'w' 'o' 'w' 'a' 'y'
+	( : • '('
+	) : • ')'
+	void : • 'v' 'o' 'i' 'd'
+	project : • 'p' 'r' 'o' 'j' 'e' 'c' 't'
+	_integer : •  '0'-'9'
+	_sign : ['+' | '-'] •
+	_sign : ['+' | • '-']
+	_sign : [• '+' | '-']
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+	_comment : • '/' '/' {.} '\n'
+	_multidoc : • '/' '*' {.} '*' '/'
+	_leteral12 : • '"' {.} '"'
+	_leteral1 : • '`' {.} '`'
+}
+Transitions:
+	['\t','\t'] -> S1
+	['\n','\n'] -> S1
+	['\r','\r'] -> S1
+	[' ',' '] -> S1
+	['"','"'] -> S2
+	['#','#'] -> S3
+	['(','('] -> S4
+	[')',')'] -> S5
+	['+','+'] -> S6
+	[',',','] -> S7
+	['-','-'] -> S6
+	['/','/'] -> S8
+	['0','9'] -> S9
+	[':',':'] -> S10
+	[';',';'] -> S11
+	['=','='] -> S12
+	['[','['] -> S13
+	[']',']'] -> S14
+	['_','_'] -> S15
+	['`','`'] -> S16
+	['a','a'] -> S15
+	['b','b'] -> S17
+	['c','d'] -> S15
+	['e','e'] -> S18
+	['f','h'] -> S15
+	['i','i'] -> S19
+	['j','l'] -> S15
+	['m','m'] -> S20
+	['n','n'] -> S21
+	['o','o'] -> S22
+	['p','p'] -> S23
+	['q','r'] -> S15
+	['s','s'] -> S24
+	['t','t'] -> S25
+	['u','u'] -> S26
+	['v','v'] -> S27
+	['w','z'] -> S15
+	['{','{'] -> S28
+	['}','}'] -> S29
+Action: nil
+Symbols classes: {['\t','\t'], ['\n','\n'], ['\r','\r'], [' ',' '], ['"','"'], ['#','#'], ['(','('], [')',')'], ['+','+'], [',',','], ['-','-'], ['/','/'], ['0','9'], [':',':'], [';',';'], ['=','='], ['[','['], [']',']'], ['_','_'], ['`','`'], ['a','a'], ['b','b'], ['c','d'], ['e','e'], ['f','h'], ['i','i'], ['j','l'], ['m','m'], ['n','n'], ['o','o'], ['p','p'], ['q','r'], ['s','s'], ['t','t'], ['u','u'], ['v','v'], ['w','z'], ['{','{'], ['}','}']}
+
+S1{
+	!whitespace : (' ' | '\t' | '\n' | '\r') •
+}
+Transitions:
+Action: Ignore("!whitespace")
+Symbols classes: {}
+
+S2{
+	_leteral12 : '"' {.} • '"'
+	_leteral12 : '"' {• .} '"'
+	tok_literal : _leteral1 | • _leteral12
+}
+Transitions:
+	['"','"'] -> S30
+. -> S2
+Action: nil
+Symbols classes: {['"','"']}
+
+S3{
+	!unixcomment : '#' {.} • '\n'
+	!unixcomment : '#' {• .} '\n'
+}
+Transitions:
+	['\n','\n'] -> S31
+. -> S3
+Action: nil
+Symbols classes: {['\n','\n']}
+
+S4{
+	( : '(' •
+}
+Transitions:
+Action: Accept("(")
+Symbols classes: {}
+
+S5{
+	) : ')' •
+}
+Transitions:
+Action: Accept(")")
+Symbols classes: {}
+
+S6{
+	_sign : ['+' | '-'] •
+	tok_const_int : _sign • _integer {_integer} | _integer {_integer}
+	_integer : •  '0'-'9'
+}
+Transitions:
+	['0','9'] -> S32
+Action: nil
+Symbols classes: {['0','9']}
+
+S7{
+	, : ',' •
+}
+Transitions:
+Action: Accept(",")
+Symbols classes: {}
+
+S8{
+	_comment : '/' • '/' {.} '\n'
+	_multidoc : '/' • '*' {.} '*' '/'
+	tok_doc : _multidoc | • _comment
+	tok_doc : • _multidoc | _comment
+}
+Transitions:
+	['*','*'] -> S33
+	['/','/'] -> S34
+Action: nil
+Symbols classes: {['*','*'], ['/','/']}
+
+S9{
+	_integer :  '0'-'9' •
+	tok_const_int : (_sign _integer {_integer} | _integer {_integer}) •
+	tok_const_int : _sign _integer {_integer} | _integer {• _integer}
+	_integer : •  '0'-'9'
+}
+Transitions:
+	['0','9'] -> S9
+Action: Accept("tok_const_int")
+Symbols classes: {['0','9']}
+
+S10{
+	: : ':' •
+}
+Transitions:
+Action: Accept(":")
+Symbols classes: {}
+
+S11{
+	; : ';' •
+}
+Transitions:
+Action: Accept(";")
+Symbols classes: {}
+
+S12{
+	= : '=' •
+}
+Transitions:
+Action: Accept("=")
+Symbols classes: {}
+
+S13{
+	[ : '[' •
+}
+Transitions:
+Action: Accept("[")
+Symbols classes: {}
+
+S14{
+	] : ']' •
+}
+Transitions:
+Action: Accept("]")
+Symbols classes: {}
+
+S15{
+	_letter : ( 'a'-'z' | '_') •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','z']}
+
+S16{
+	_leteral1 : '`' {.} • '`'
+	_leteral1 : '`' {• .} '`'
+	tok_literal : • _leteral1 | _leteral12
+}
+Transitions:
+	['`','`'] -> S38
+. -> S16
+Action: nil
+Symbols classes: {['`','`']}
+
+S17{
+	bytes : 'b' • 'y' 't' 'e' 's'
+	bool : 'b' • 'o' 'o' 'l'
+	_letter : ( 'a'-'z' | '_') •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','n'] -> S37
+	['o','o'] -> S39
+	['p','x'] -> S37
+	['y','y'] -> S40
+	['z','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','n'], ['o','o'], ['p','x'], ['y','y'], ['z','z']}
+
+S18{
+	enum : 'e' • 'n' 'u' 'm'
+	_letter : ( 'a'-'z' | '_') •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','m'] -> S37
+	['n','n'] -> S41
+	['o','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','m'], ['n','n'], ['o','z']}
+
+S19{
+	import : 'i' • 'm' 'p' 'o' 'r' 't'
+	int8 : 'i' • 'n' 't' '8'
+	int16 : 'i' • 'n' 't' '1' '6'
+	int32 : 'i' • 'n' 't' '3' '2'
+	int64 : 'i' • 'n' 't' '6' '4'
+	i8 : 'i' • '8'
+	i16 : 'i' • '1' '6'
+	i32 : 'i' • '3' '2'
+	i64 : 'i' • '6' '4'
+	_letter : ( 'a'-'z' | '_') •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','0'] -> S36
+	['1','1'] -> S42
+	['2','2'] -> S36
+	['3','3'] -> S43
+	['4','5'] -> S36
+	['6','6'] -> S44
+	['7','7'] -> S36
+	['8','8'] -> S45
+	['9','9'] -> S36
+	['_','_'] -> S37
+	['a','l'] -> S37
+	['m','m'] -> S46
+	['n','n'] -> S47
+	['o','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','0'], ['1','1'], ['2','2'], ['3','3'], ['4','5'], ['6','6'], ['7','7'], ['8','8'], ['9','9'], ['_','_'], ['a','l'], ['m','m'], ['n','n'], ['o','z']}
+
+S20{
+	message : 'm' • 'e' 's' 's' 'a' 'g' 'e'
+	map : 'm' • 'a' 'p'
+	_letter : ( 'a'-'z' | '_') •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','a'] -> S48
+	['b','d'] -> S37
+	['e','e'] -> S49
+	['f','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','a'], ['b','d'], ['e','e'], ['f','z']}
+
+S21{
+	notify : 'n' • 'o' 't' 'i' 'f' 'y'
+	_letter : ( 'a'-'z' | '_') •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','n'] -> S37
+	['o','o'] -> S50
+	['p','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','n'], ['o','o'], ['p','z']}
+
+S22{
+	oneway : 'o' • 'n' 'e' 'w' 'a' 'y'
+	_letter : ( 'a'-'z' | '_') •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','m'] -> S37
+	['n','n'] -> S51
+	['o','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','m'], ['n','n'], ['o','z']}
+
+S23{
+	package : 'p' • 'a' 'c' 'k' 'a' 'g' 'e'
+	project : 'p' • 'r' 'o' 'j' 'e' 'c' 't'
+	_letter : ( 'a'-'z' | '_') •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','a'] -> S52
+	['b','q'] -> S37
+	['r','r'] -> S53
+	['s','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','a'], ['b','q'], ['r','r'], ['s','z']}
+
+S24{
+	string : 's' • 't' 'r' 'i' 'n' 'g'
+	service : 's' • 'e' 'r' 'v' 'i' 'c' 'e'
+	_letter : ( 'a'-'z' | '_') •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','d'] -> S37
+	['e','e'] -> S54
+	['f','s'] -> S37
+	['t','t'] -> S55
+	['u','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','d'], ['e','e'], ['f','s'], ['t','t'], ['u','z']}
+
+S25{
+	twoway : 't' • 'w' 'o' 'w' 'a' 'y'
+	_letter : ( 'a'-'z' | '_') •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','v'] -> S37
+	['w','w'] -> S56
+	['x','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','v'], ['w','w'], ['x','z']}
+
+S26{
+	uint8 : 'u' • 'i' 'n' 't' '8'
+	uint16 : 'u' • 'i' 'n' 't' '1' '6'
+	uint32 : 'u' • 'i' 'n' 't' '3' '2'
+	uint64 : 'u' • 'i' 'n' 't' '6' '4'
+	u8 : 'u' • '8'
+	u16 : 'u' • '1' '6'
+	u32 : 'u' • '3' '2'
+	u64 : 'u' • '6' '4'
+	_letter : ( 'a'-'z' | '_') •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','0'] -> S36
+	['1','1'] -> S57
+	['2','2'] -> S36
+	['3','3'] -> S58
+	['4','5'] -> S36
+	['6','6'] -> S59
+	['7','7'] -> S36
+	['8','8'] -> S60
+	['9','9'] -> S36
+	['_','_'] -> S37
+	['a','h'] -> S37
+	['i','i'] -> S61
+	['j','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','0'], ['1','1'], ['2','2'], ['3','3'], ['4','5'], ['6','6'], ['7','7'], ['8','8'], ['9','9'], ['_','_'], ['a','h'], ['i','i'], ['j','z']}
+
+S27{
+	void : 'v' • 'o' 'i' 'd'
+	_letter : ( 'a'-'z' | '_') •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','n'] -> S37
+	['o','o'] -> S62
+	['p','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','n'], ['o','o'], ['p','z']}
+
+S28{
+	{ : '{' •
+}
+Transitions:
+Action: Accept("{")
+Symbols classes: {}
+
+S29{
+	} : '}' •
+}
+Transitions:
+Action: Accept("}")
+Symbols classes: {}
+
+S30{
+	_leteral12 : '"' {.} '"' •
+	tok_literal : (_leteral1 | _leteral12) •
+}
+Transitions:
+Action: Accept("tok_literal")
+Symbols classes: {}
+
+S31{
+	!unixcomment : '#' {.} '\n' •
+}
+Transitions:
+Action: Ignore("!unixcomment")
+Symbols classes: {}
+
+S32{
+	_integer :  '0'-'9' •
+	tok_const_int : (_sign _integer {_integer} | _integer {_integer}) •
+	tok_const_int : _sign _integer {• _integer} | _integer {_integer}
+	_integer : •  '0'-'9'
+}
+Transitions:
+	['0','9'] -> S32
+Action: Accept("tok_const_int")
+Symbols classes: {['0','9']}
+
+S33{
+	_multidoc : '/' '*' {.} • '*' '/'
+	_multidoc : '/' '*' {• .} '*' '/'
+	tok_doc : • _multidoc | _comment
+}
+Transitions:
+	['*','*'] -> S63
+. -> S33
+Action: nil
+Symbols classes: {['*','*']}
+
+S34{
+	_comment : '/' '/' {.} • '\n'
+	_comment : '/' '/' {• .} '\n'
+	tok_doc : _multidoc | • _comment
+}
+Transitions:
+	['\n','\n'] -> S64
+. -> S34
+Action: nil
+Symbols classes: {['\n','\n']}
+
+S35{
+	tok_option : _letter {_identifier} '.' • _letter {_identifier}
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['_','_'] -> S65
+	['a','z'] -> S65
+Action: nil
+Symbols classes: {['_','_'], ['a','z']}
+
+S36{
+	_integer :  '0'-'9' •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','z']}
+
+S37{
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','z']}
+
+S38{
+	_leteral1 : '`' {.} '`' •
+	tok_literal : (_leteral1 | _leteral12) •
+}
+Transitions:
+Action: Accept("tok_literal")
+Symbols classes: {}
+
+S39{
+	bool : 'b' 'o' • 'o' 'l'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','n'] -> S37
+	['o','o'] -> S66
+	['p','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','n'], ['o','o'], ['p','z']}
+
+S40{
+	bytes : 'b' 'y' • 't' 'e' 's'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','s'] -> S37
+	['t','t'] -> S67
+	['u','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','s'], ['t','t'], ['u','z']}
+
+S41{
+	enum : 'e' 'n' • 'u' 'm'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','t'] -> S37
+	['u','u'] -> S68
+	['v','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','t'], ['u','u'], ['v','z']}
+
+S42{
+	i16 : 'i' '1' • '6'
+	_integer :  '0'-'9' •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','5'] -> S36
+	['6','6'] -> S69
+	['7','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','5'], ['6','6'], ['7','9'], ['_','_'], ['a','z']}
+
+S43{
+	i32 : 'i' '3' • '2'
+	_integer :  '0'-'9' •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','1'] -> S36
+	['2','2'] -> S70
+	['3','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','1'], ['2','2'], ['3','9'], ['_','_'], ['a','z']}
+
+S44{
+	i64 : 'i' '6' • '4'
+	_integer :  '0'-'9' •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','3'] -> S36
+	['4','4'] -> S71
+	['5','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','3'], ['4','4'], ['5','9'], ['_','_'], ['a','z']}
+
+S45{
+	i8 : 'i' '8' •
+	_integer :  '0'-'9' •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("i8")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','z']}
+
+S46{
+	import : 'i' 'm' • 'p' 'o' 'r' 't'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','o'] -> S37
+	['p','p'] -> S72
+	['q','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','o'], ['p','p'], ['q','z']}
+
+S47{
+	int8 : 'i' 'n' • 't' '8'
+	int16 : 'i' 'n' • 't' '1' '6'
+	int32 : 'i' 'n' • 't' '3' '2'
+	int64 : 'i' 'n' • 't' '6' '4'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','s'] -> S37
+	['t','t'] -> S73
+	['u','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','s'], ['t','t'], ['u','z']}
+
+S48{
+	map : 'm' 'a' • 'p'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','o'] -> S37
+	['p','p'] -> S74
+	['q','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','o'], ['p','p'], ['q','z']}
+
+S49{
+	message : 'm' 'e' • 's' 's' 'a' 'g' 'e'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','r'] -> S37
+	['s','s'] -> S75
+	['t','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','r'], ['s','s'], ['t','z']}
+
+S50{
+	notify : 'n' 'o' • 't' 'i' 'f' 'y'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','s'] -> S37
+	['t','t'] -> S76
+	['u','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','s'], ['t','t'], ['u','z']}
+
+S51{
+	oneway : 'o' 'n' • 'e' 'w' 'a' 'y'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','d'] -> S37
+	['e','e'] -> S77
+	['f','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','d'], ['e','e'], ['f','z']}
+
+S52{
+	package : 'p' 'a' • 'c' 'k' 'a' 'g' 'e'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','b'] -> S37
+	['c','c'] -> S78
+	['d','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','b'], ['c','c'], ['d','z']}
+
+S53{
+	project : 'p' 'r' • 'o' 'j' 'e' 'c' 't'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','n'] -> S37
+	['o','o'] -> S79
+	['p','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','n'], ['o','o'], ['p','z']}
+
+S54{
+	service : 's' 'e' • 'r' 'v' 'i' 'c' 'e'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','q'] -> S37
+	['r','r'] -> S80
+	['s','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','q'], ['r','r'], ['s','z']}
+
+S55{
+	string : 's' 't' • 'r' 'i' 'n' 'g'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','q'] -> S37
+	['r','r'] -> S81
+	['s','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','q'], ['r','r'], ['s','z']}
+
+S56{
+	twoway : 't' 'w' • 'o' 'w' 'a' 'y'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','n'] -> S37
+	['o','o'] -> S82
+	['p','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','n'], ['o','o'], ['p','z']}
+
+S57{
+	u16 : 'u' '1' • '6'
+	_integer :  '0'-'9' •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','5'] -> S36
+	['6','6'] -> S83
+	['7','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','5'], ['6','6'], ['7','9'], ['_','_'], ['a','z']}
+
+S58{
+	u32 : 'u' '3' • '2'
+	_integer :  '0'-'9' •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','1'] -> S36
+	['2','2'] -> S84
+	['3','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','1'], ['2','2'], ['3','9'], ['_','_'], ['a','z']}
+
+S59{
+	u64 : 'u' '6' • '4'
+	_integer :  '0'-'9' •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','3'] -> S36
+	['4','4'] -> S85
+	['5','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','3'], ['4','4'], ['5','9'], ['_','_'], ['a','z']}
+
+S60{
+	u8 : 'u' '8' •
+	_integer :  '0'-'9' •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("u8")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','z']}
+
+S61{
+	uint8 : 'u' 'i' • 'n' 't' '8'
+	uint16 : 'u' 'i' • 'n' 't' '1' '6'
+	uint32 : 'u' 'i' • 'n' 't' '3' '2'
+	uint64 : 'u' 'i' • 'n' 't' '6' '4'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','m'] -> S37
+	['n','n'] -> S86
+	['o','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','m'], ['n','n'], ['o','z']}
+
+S62{
+	void : 'v' 'o' • 'i' 'd'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','h'] -> S37
+	['i','i'] -> S87
+	['j','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','h'], ['i','i'], ['j','z']}
+
+S63{
+	_multidoc : '/' '*' {.} '*' • '/'
+	tok_doc : • _multidoc | _comment
+}
+Transitions:
+	['/','/'] -> S88
+Action: nil
+Symbols classes: {['/','/']}
+
+S64{
+	_comment : '/' '/' {.} '\n' •
+	tok_doc : (_multidoc | _comment) •
+}
+Transitions:
+Action: Accept("tok_doc")
+Symbols classes: {}
+
+S65{
+	_letter : ( 'a'-'z' | '_') •
+	tok_option : _letter {_identifier} '.' _letter {_identifier} •
+	tok_option : _letter {_identifier} '.' _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['0','9'] -> S89
+	['_','_'] -> S90
+	['a','z'] -> S90
+Action: Accept("tok_option")
+Symbols classes: {['0','9'], ['_','_'], ['a','z']}
+
+S66{
+	bool : 'b' 'o' 'o' • 'l'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','k'] -> S37
+	['l','l'] -> S91
+	['m','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','k'], ['l','l'], ['m','z']}
+
+S67{
+	bytes : 'b' 'y' 't' • 'e' 's'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','d'] -> S37
+	['e','e'] -> S92
+	['f','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','d'], ['e','e'], ['f','z']}
+
+S68{
+	enum : 'e' 'n' 'u' • 'm'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','l'] -> S37
+	['m','m'] -> S93
+	['n','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','l'], ['m','m'], ['n','z']}
+
+S69{
+	i16 : 'i' '1' '6' •
+	_integer :  '0'-'9' •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("i16")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','z']}
+
+S70{
+	i32 : 'i' '3' '2' •
+	_integer :  '0'-'9' •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("i32")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','z']}
+
+S71{
+	i64 : 'i' '6' '4' •
+	_integer :  '0'-'9' •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("i64")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','z']}
+
+S72{
+	import : 'i' 'm' 'p' • 'o' 'r' 't'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','n'] -> S37
+	['o','o'] -> S94
+	['p','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','n'], ['o','o'], ['p','z']}
+
+S73{
+	int8 : 'i' 'n' 't' • '8'
+	int16 : 'i' 'n' 't' • '1' '6'
+	int32 : 'i' 'n' 't' • '3' '2'
+	int64 : 'i' 'n' 't' • '6' '4'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','0'] -> S36
+	['1','1'] -> S95
+	['2','2'] -> S36
+	['3','3'] -> S96
+	['4','5'] -> S36
+	['6','6'] -> S97
+	['7','7'] -> S36
+	['8','8'] -> S98
+	['9','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','0'], ['1','1'], ['2','2'], ['3','3'], ['4','5'], ['6','6'], ['7','7'], ['8','8'], ['9','9'], ['_','_'], ['a','z']}
+
+S74{
+	map : 'm' 'a' 'p' •
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("map")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','z']}
+
+S75{
+	message : 'm' 'e' 's' • 's' 'a' 'g' 'e'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','r'] -> S37
+	['s','s'] -> S99
+	['t','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','r'], ['s','s'], ['t','z']}
+
+S76{
+	notify : 'n' 'o' 't' • 'i' 'f' 'y'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','h'] -> S37
+	['i','i'] -> S100
+	['j','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','h'], ['i','i'], ['j','z']}
+
+S77{
+	oneway : 'o' 'n' 'e' • 'w' 'a' 'y'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','v'] -> S37
+	['w','w'] -> S101
+	['x','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','v'], ['w','w'], ['x','z']}
+
+S78{
+	package : 'p' 'a' 'c' • 'k' 'a' 'g' 'e'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','j'] -> S37
+	['k','k'] -> S102
+	['l','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','j'], ['k','k'], ['l','z']}
+
+S79{
+	project : 'p' 'r' 'o' • 'j' 'e' 'c' 't'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','i'] -> S37
+	['j','j'] -> S103
+	['k','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','i'], ['j','j'], ['k','z']}
+
+S80{
+	service : 's' 'e' 'r' • 'v' 'i' 'c' 'e'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','u'] -> S37
+	['v','v'] -> S104
+	['w','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','u'], ['v','v'], ['w','z']}
+
+S81{
+	string : 's' 't' 'r' • 'i' 'n' 'g'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','h'] -> S37
+	['i','i'] -> S105
+	['j','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','h'], ['i','i'], ['j','z']}
+
+S82{
+	twoway : 't' 'w' 'o' • 'w' 'a' 'y'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','v'] -> S37
+	['w','w'] -> S106
+	['x','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','v'], ['w','w'], ['x','z']}
+
+S83{
+	u16 : 'u' '1' '6' •
+	_integer :  '0'-'9' •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("u16")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','z']}
+
+S84{
+	u32 : 'u' '3' '2' •
+	_integer :  '0'-'9' •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("u32")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','z']}
+
+S85{
+	u64 : 'u' '6' '4' •
+	_integer :  '0'-'9' •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("u64")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','z']}
+
+S86{
+	uint8 : 'u' 'i' 'n' • 't' '8'
+	uint16 : 'u' 'i' 'n' • 't' '1' '6'
+	uint32 : 'u' 'i' 'n' • 't' '3' '2'
+	uint64 : 'u' 'i' 'n' • 't' '6' '4'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','s'] -> S37
+	['t','t'] -> S107
+	['u','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','s'], ['t','t'], ['u','z']}
+
+S87{
+	void : 'v' 'o' 'i' • 'd'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','c'] -> S37
+	['d','d'] -> S108
+	['e','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','c'], ['d','d'], ['e','z']}
+
+S88{
+	_multidoc : '/' '*' {.} '*' '/' •
+	tok_doc : (_multidoc | _comment) •
+}
+Transitions:
+Action: Accept("tok_doc")
+Symbols classes: {}
+
+S89{
+	_integer :  '0'-'9' •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} '.' _letter {_identifier} •
+	tok_option : _letter {_identifier} '.' _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['0','9'] -> S89
+	['_','_'] -> S90
+	['a','z'] -> S90
+Action: Accept("tok_option")
+Symbols classes: {['0','9'], ['_','_'], ['a','z']}
+
+S90{
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} '.' _letter {_identifier} •
+	tok_option : _letter {_identifier} '.' _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['0','9'] -> S89
+	['_','_'] -> S90
+	['a','z'] -> S90
+Action: Accept("tok_option")
+Symbols classes: {['0','9'], ['_','_'], ['a','z']}
+
+S91{
+	bool : 'b' 'o' 'o' 'l' •
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("bool")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','z']}
+
+S92{
+	bytes : 'b' 'y' 't' 'e' • 's'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','r'] -> S37
+	['s','s'] -> S109
+	['t','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','r'], ['s','s'], ['t','z']}
+
+S93{
+	enum : 'e' 'n' 'u' 'm' •
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("enum")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','z']}
+
+S94{
+	import : 'i' 'm' 'p' 'o' • 'r' 't'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','q'] -> S37
+	['r','r'] -> S110
+	['s','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','q'], ['r','r'], ['s','z']}
+
+S95{
+	int16 : 'i' 'n' 't' '1' • '6'
+	_integer :  '0'-'9' •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','5'] -> S36
+	['6','6'] -> S111
+	['7','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','5'], ['6','6'], ['7','9'], ['_','_'], ['a','z']}
+
+S96{
+	int32 : 'i' 'n' 't' '3' • '2'
+	_integer :  '0'-'9' •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','1'] -> S36
+	['2','2'] -> S112
+	['3','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','1'], ['2','2'], ['3','9'], ['_','_'], ['a','z']}
+
+S97{
+	int64 : 'i' 'n' 't' '6' • '4'
+	_integer :  '0'-'9' •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','3'] -> S36
+	['4','4'] -> S113
+	['5','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','3'], ['4','4'], ['5','9'], ['_','_'], ['a','z']}
+
+S98{
+	int8 : 'i' 'n' 't' '8' •
+	_integer :  '0'-'9' •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("int8")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','z']}
+
+S99{
+	message : 'm' 'e' 's' 's' • 'a' 'g' 'e'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','a'] -> S114
+	['b','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','a'], ['b','z']}
+
+S100{
+	notify : 'n' 'o' 't' 'i' • 'f' 'y'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','e'] -> S37
+	['f','f'] -> S115
+	['g','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','e'], ['f','f'], ['g','z']}
+
+S101{
+	oneway : 'o' 'n' 'e' 'w' • 'a' 'y'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','a'] -> S116
+	['b','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','a'], ['b','z']}
+
+S102{
+	package : 'p' 'a' 'c' 'k' • 'a' 'g' 'e'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','a'] -> S117
+	['b','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','a'], ['b','z']}
+
+S103{
+	project : 'p' 'r' 'o' 'j' • 'e' 'c' 't'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','d'] -> S37
+	['e','e'] -> S118
+	['f','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','d'], ['e','e'], ['f','z']}
+
+S104{
+	service : 's' 'e' 'r' 'v' • 'i' 'c' 'e'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','h'] -> S37
+	['i','i'] -> S119
+	['j','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','h'], ['i','i'], ['j','z']}
+
+S105{
+	string : 's' 't' 'r' 'i' • 'n' 'g'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','m'] -> S37
+	['n','n'] -> S120
+	['o','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','m'], ['n','n'], ['o','z']}
+
+S106{
+	twoway : 't' 'w' 'o' 'w' • 'a' 'y'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','a'] -> S121
+	['b','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','a'], ['b','z']}
+
+S107{
+	uint8 : 'u' 'i' 'n' 't' • '8'
+	uint16 : 'u' 'i' 'n' 't' • '1' '6'
+	uint32 : 'u' 'i' 'n' 't' • '3' '2'
+	uint64 : 'u' 'i' 'n' 't' • '6' '4'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','0'] -> S36
+	['1','1'] -> S122
+	['2','2'] -> S36
+	['3','3'] -> S123
+	['4','5'] -> S36
+	['6','6'] -> S124
+	['7','7'] -> S36
+	['8','8'] -> S125
+	['9','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','0'], ['1','1'], ['2','2'], ['3','3'], ['4','5'], ['6','6'], ['7','7'], ['8','8'], ['9','9'], ['_','_'], ['a','z']}
+
+S108{
+	void : 'v' 'o' 'i' 'd' •
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("void")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','z']}
+
+S109{
+	bytes : 'b' 'y' 't' 'e' 's' •
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("bytes")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','z']}
+
+S110{
+	import : 'i' 'm' 'p' 'o' 'r' • 't'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','s'] -> S37
+	['t','t'] -> S126
+	['u','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','s'], ['t','t'], ['u','z']}
+
+S111{
+	int16 : 'i' 'n' 't' '1' '6' •
+	_integer :  '0'-'9' •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("int16")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','z']}
+
+S112{
+	int32 : 'i' 'n' 't' '3' '2' •
+	_integer :  '0'-'9' •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("int32")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','z']}
+
+S113{
+	int64 : 'i' 'n' 't' '6' '4' •
+	_integer :  '0'-'9' •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("int64")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','z']}
+
+S114{
+	message : 'm' 'e' 's' 's' 'a' • 'g' 'e'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','f'] -> S37
+	['g','g'] -> S127
+	['h','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','f'], ['g','g'], ['h','z']}
+
+S115{
+	notify : 'n' 'o' 't' 'i' 'f' • 'y'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','x'] -> S37
+	['y','y'] -> S128
+	['z','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','x'], ['y','y'], ['z','z']}
+
+S116{
+	oneway : 'o' 'n' 'e' 'w' 'a' • 'y'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','x'] -> S37
+	['y','y'] -> S129
+	['z','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','x'], ['y','y'], ['z','z']}
+
+S117{
+	package : 'p' 'a' 'c' 'k' 'a' • 'g' 'e'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','f'] -> S37
+	['g','g'] -> S130
+	['h','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','f'], ['g','g'], ['h','z']}
+
+S118{
+	project : 'p' 'r' 'o' 'j' 'e' • 'c' 't'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','b'] -> S37
+	['c','c'] -> S131
+	['d','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','b'], ['c','c'], ['d','z']}
+
+S119{
+	service : 's' 'e' 'r' 'v' 'i' • 'c' 'e'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','b'] -> S37
+	['c','c'] -> S132
+	['d','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','b'], ['c','c'], ['d','z']}
+
+S120{
+	string : 's' 't' 'r' 'i' 'n' • 'g'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','f'] -> S37
+	['g','g'] -> S133
+	['h','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','f'], ['g','g'], ['h','z']}
+
+S121{
+	twoway : 't' 'w' 'o' 'w' 'a' • 'y'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','x'] -> S37
+	['y','y'] -> S134
+	['z','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','x'], ['y','y'], ['z','z']}
+
+S122{
+	uint16 : 'u' 'i' 'n' 't' '1' • '6'
+	_integer :  '0'-'9' •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','5'] -> S36
+	['6','6'] -> S135
+	['7','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','5'], ['6','6'], ['7','9'], ['_','_'], ['a','z']}
+
+S123{
+	uint32 : 'u' 'i' 'n' 't' '3' • '2'
+	_integer :  '0'-'9' •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','1'] -> S36
+	['2','2'] -> S136
+	['3','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','1'], ['2','2'], ['3','9'], ['_','_'], ['a','z']}
+
+S124{
+	uint64 : 'u' 'i' 'n' 't' '6' • '4'
+	_integer :  '0'-'9' •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','3'] -> S36
+	['4','4'] -> S137
+	['5','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','3'], ['4','4'], ['5','9'], ['_','_'], ['a','z']}
+
+S125{
+	uint8 : 'u' 'i' 'n' 't' '8' •
+	_integer :  '0'-'9' •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("uint8")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','z']}
+
+S126{
+	import : 'i' 'm' 'p' 'o' 'r' 't' •
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("import")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','z']}
+
+S127{
+	message : 'm' 'e' 's' 's' 'a' 'g' • 'e'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','d'] -> S37
+	['e','e'] -> S138
+	['f','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','d'], ['e','e'], ['f','z']}
+
+S128{
+	notify : 'n' 'o' 't' 'i' 'f' 'y' •
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("notify")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','z']}
+
+S129{
+	oneway : 'o' 'n' 'e' 'w' 'a' 'y' •
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("oneway")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','z']}
+
+S130{
+	package : 'p' 'a' 'c' 'k' 'a' 'g' • 'e'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','d'] -> S37
+	['e','e'] -> S139
+	['f','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','d'], ['e','e'], ['f','z']}
+
+S131{
+	project : 'p' 'r' 'o' 'j' 'e' 'c' • 't'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','s'] -> S37
+	['t','t'] -> S140
+	['u','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','s'], ['t','t'], ['u','z']}
+
+S132{
+	service : 's' 'e' 'r' 'v' 'i' 'c' • 'e'
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','d'] -> S37
+	['e','e'] -> S141
+	['f','z'] -> S37
+Action: Accept("tok_identifier")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','d'], ['e','e'], ['f','z']}
+
+S133{
+	string : 's' 't' 'r' 'i' 'n' 'g' •
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("string")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','z']}
+
+S134{
+	twoway : 't' 'w' 'o' 'w' 'a' 'y' •
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("twoway")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','z']}
+
+S135{
+	uint16 : 'u' 'i' 'n' 't' '1' '6' •
+	_integer :  '0'-'9' •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("uint16")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','z']}
+
+S136{
+	uint32 : 'u' 'i' 'n' 't' '3' '2' •
+	_integer :  '0'-'9' •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("uint32")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','z']}
+
+S137{
+	uint64 : 'u' 'i' 'n' 't' '6' '4' •
+	_integer :  '0'-'9' •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("uint64")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','z']}
+
+S138{
+	message : 'm' 'e' 's' 's' 'a' 'g' 'e' •
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("message")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','z']}
+
+S139{
+	package : 'p' 'a' 'c' 'k' 'a' 'g' 'e' •
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("package")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','z']}
+
+S140{
+	project : 'p' 'r' 'o' 'j' 'e' 'c' 't' •
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("project")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','z']}
+
+S141{
+	service : 's' 'e' 'r' 'v' 'i' 'c' 'e' •
+	_letter : ( 'a'-'z' | '_') •
+	_identifier : (_letter | _integer) •
+	tok_option : _letter {_identifier} • '.' _letter {_identifier}
+	tok_option : _letter {• _identifier} '.' _letter {_identifier}
+	tok_identifier : _letter {_identifier} •
+	tok_identifier : _letter {• _identifier}
+	_identifier : _letter | • _integer
+	_identifier : • _letter | _integer
+	_integer : •  '0'-'9'
+	_letter :  'a'-'z' | • '_'
+	_letter : •  'a'-'z' | '_'
+}
+Transitions:
+	['.','.'] -> S35
+	['0','9'] -> S36
+	['_','_'] -> S37
+	['a','z'] -> S37
+Action: Accept("service")
+Symbols classes: {['.','.'], ['0','9'], ['_','_'], ['a','z']}
+

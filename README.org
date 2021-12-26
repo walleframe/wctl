@@ -1,0 +1,282 @@
+#+title: wallectl
+
+walle 项目工具. 
+
+* wallectl 简介
+
+* wproto格式
+wproto是在protobuf部分基础语法之上，进行扩展。
+ - 支持自定义选项设置
+ - 扩展的类型支持（int8，int16,uint8,uint16...）,用于生成代码
+ - 更改service定义
+ - 支持project定义
+wproto不支持嵌套定义，继承。 
+#+begin_quote
+*定义消息名，字段名，选项时候，必须使用小写字母加下划线格式。*
+#+end_quote
+
+任何定义的结尾，“;” 都是可选的结束分隔符号。
+
+** 注释及文档
+因为wproto主要就是用于生成代码工具，所以编写时候，我希望将一些有用信息一起输出。
+ - 单行文档： ~//~ 开头到行尾，会输出到插件，用于最终生成。
+ - 多行文档： 以 ~/*~ 开头，以 ~*/~ 结尾，会输出到插件，用于最终生成。
+ - 注释： ~#~ 开头，到行尾的注释，不会输出到插件。
+** package name;
+文件必须以package定义开头。可以有package的注释
+#+begin_src protobuf
+package pkg_name;
+#+end_src
+
+#+begin_src protobuf
+// 包注释
+package pkg_name
+#+end_src
+** import 定义
+依赖其他文件的定义时，需要import。 必须包含文件名后缀。
+
+#+begin_src protobuf
+import "path/to/import.wproto"
+import alias "path/to/import_def.wproto"
+#+end_src
+
+** option 定义
+~option~ （自定义选项）必须是 aaa.bbb 格式。一般应以 “插件.选项” 定义。
+
+选项的值支持字符串和数字(int64)。选项也可以不设置值，在插件中一般以bool值方式使用（是否设置了选项）。
+
+~option~ 支持 文件级定义，消息级定义，字段级定义。
+
+在文件内任何一行，
+
+#+begin_src protobuf
+// 无值的选项
+example.opt1;
+example.opt_switch
+
+// 数字类型
+exmaple.opt2 = 2;
+
+// 字符串类型
+exmaple.opt3 = "string options value";
+example.opt4 = `string options value 2`;
+#+end_src
+
+** enum 定义
+枚举默认以0开始，可以手动设置数值。
+#+begin_src protobuf
+// enum comment
+enum enum_example
+{
+    // comment for val0, enum value default start by 0, ";"
+    exmaple_val0;
+    // custom set enum value
+    example_val3 = 3
+};
+#+end_src
+
+** message 定义
+消息定义基本上和 ~protobuf~ 相同，修改如下
+ - 添加了消息级和字段级的选项定义
+ - 数组,字典类型支持go语法格式
+字段类型：
+  - int8,int16,int32,int64,uint8,uint16,uint32,uint64
+  - string,bytes
+  - bool
+  - 数组： ~[]int32~ 等同于 ~repeated int32~
+  - map: ~map[int32]int32~ 等同于 ~map<int32,int32>~
+#+begin_src protobuf
+// message define
+message msg_name
+{
+    // 消息级选项定义
+    example.opt_int = 5;
+    // 选项注释
+    example.opt_string = "string option value"
+    // comment for msg_name.field_name 
+    int32 field_name = 1;
+    // protobuf 数组类型
+    repeated int32 array_1 = 2;
+    // go形式的数组
+    []int32 array_2 = 3;
+    // protobuf map
+    map<int32,int32> map_value_1 = 5;
+    // golang map
+    map[int32][int32] map_value_2 = 6;
+
+    // field with options
+    string str_value = 10 {
+        // 字段级选项
+        example.field_option
+        example.field_option_int = 10
+        exmaple.field_option_str = "string option value"
+    }
+}
+#+end_src
+
+** service
+服务是方法的集合。支持服务级选项定义，方法级选项定义。
+
+方法定义(其中，‘[’ 和 ‘]’ 的部分是可选的)
+#+begin_quote
+方法名（ [参数消息类型名] ）[返回值消息类型名] [ = 接口序号 ] [{方法级选项定义}]
+#+end_quote
+
+接口序号，是开启 ~--use-method-id~ 选项后才可以使用。
+
+#+begin_src protobuf
+message rq {
+    int32 a1 = 1;
+    int32 a2 = 2;
+}
+message rs {
+    int32 rv = 1;
+}
+service svr_name
+{
+    // 服务级选项配置
+    example.svr_opt;
+    example.svr_intopt = 1;
+    example.svr_stropt = "string option value";
+    // example 1: no args,no return value;
+    example_f1();
+    // example 2: args is rq meesage,no return value;
+    example_f2(rq);
+    // example 3: args is rq message,return rs message;
+    example_f3(rq) rs;
+    // 开启 --use-method-id 后，设置消息ID
+    example_f4(r1) rs = 10;
+    // 包含方法级选项
+    example_f5(rq) rs {
+        // 方法级选项定义
+        example.opt;
+        example.opt_int = 1;
+        example.opt_str = "string value"
+   }
+}
+#+end_src
+
+** project
+project 是options分组聚合配置。 ~map<string,[]option>~
+
+#+begin_src protobuf
+project proj_name
+{
+    // area 是自定义选项名称
+area:
+    example.opt1 = 1;
+    example.opt2 = "string";
+
+    // 可以有多个自定义区域 
+another:
+    example.v1;
+    example.v2 = 4;
+}
+#+end_src
+
+** 完整例子
+#+begin_src protobuf
+// package comment
+package package_name;
+
+
+import "path/to/import.wproto"
+import alias "path/to/import_def.wproto"
+
+// 包级option定义
+go.pkg = "xx/xxx/xx"
+
+// 无值的选项
+example.opt1;
+example.opt_switch
+
+// 数字类型
+exmaple.opt2 = 2;
+
+// 字符串类型
+exmaple.opt3 = "string options value";
+example.opt4 = `string options value 2`;
+
+// enum comment
+enum enum_example
+{
+    // comment for val0, enum value default start by 0, ";"
+    exmaple_val0;
+    // custom set enum value
+    example_val3 = 3
+};
+
+// message define
+message msg_name
+{
+    // 消息级选项定义
+    example.opt_int = 5;
+    // 选项注释
+    example.opt_string = "string option value"
+    // comment for msg_name.field_name 
+    int32 field_name = 1;
+    // protobuf 数组类型
+    repeated int32 array_1 = 2;
+    // go形式的数组
+    []int32 array_2 = 3;
+    // protobuf map
+    map<int32,int32> map_value_1 = 5;
+    // golang map
+    map[int32][int32] map_value_2 = 6;
+
+    // field with options
+    string str_value = 10 {
+        // 字段级选项
+        example.field_option
+        example.field_option_int = 10
+        exmaple.field_option_str = "string option value"
+    }
+}
+
+message rq {
+    int32 a1 = 1;
+    int32 a2 = 2;
+}
+message rs {
+    int32 rv = 1;
+}
+service svr_name
+{
+    // 服务级选项配置
+    example.svr_opt;
+    example.svr_intopt = 1;
+    example.svr_stropt = "string option value";
+    // example 1: no args,no return value;
+    example_f1();
+    // example 2: args is rq meesage,no return value;
+    example_f2(rq);
+    // example 3: args is rq message,return rs message;
+    example_f3(rq) rs;
+    // 开启 --use-method-id 后，设置消息ID
+    example_f4(r1) rs = 10;
+    // 包含方法级选项
+    example_f5(rq) rs {
+        // 方法级选项定义
+        example.opt;
+        example.opt_int = 1;
+        example.opt_str = "string value"
+   }
+}
+
+// project定义
+project proj_name
+{
+    // area 是自定义选项名称
+area:
+    example.opt1 = 1;
+    example.opt2 = "string";
+
+    // 可以有多个自定义区域 
+another:
+    example.v1;
+    example.v2 = 4;
+}
+#+end_src
+
+
+

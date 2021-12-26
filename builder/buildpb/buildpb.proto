@@ -1,0 +1,181 @@
+syntax = "proto3";
+
+package buildpb;
+
+option go_package = "github.com/aggronmagi/wallectl/builder/buildpb";
+
+message BuildRQ {
+  // 需要生成的原文件名
+  repeated string Files = 1;
+  // 文件详细信息
+  map<string, FileDesc> Programs = 2;
+}
+
+message BuildOutput {
+  string File = 1;
+  bytes Data = 2;
+}
+
+message BuildRS {
+  repeated BuildOutput Result = 1;
+}
+
+message FileDesc {
+  string File = 1;
+  // 包名
+  PackageDesc Pkg = 2;
+  // 依赖文件
+  repeated ImportDesc Imports = 3;
+  // 文件选项
+  OptionDesc Options = 4;
+  // 枚举
+  repeated EnumDesc Enums = 5;
+  // 消息
+  repeated MsgDesc Msgs = 6;
+  // 服务
+  repeated ServiceDesc Services = 7;
+  // 项目
+  repeated ProjectDesc Projects = 8;
+}
+
+message DocDesc {
+  repeated string Doc = 1;
+}
+
+message PackageDesc {
+  // 包名
+  string Package = 1;
+  // 包注释
+  DocDesc Doc = 2;
+}
+
+message ImportDesc {
+  // 注释
+  DocDesc Doc = 1;
+  // 别名
+  string Alias = 2;
+  // 文件名
+  string File = 3;
+}
+
+// 选项数值
+message OptionValue {
+  string Value = 1;
+  int64 IntValue = 2;
+  // 注释
+  DocDesc Doc = 3;
+}
+
+// 选项定义
+message OptionDesc {
+  // 文件选项
+  map<string, OptionValue> Options = 1;
+}
+// 枚举数值
+message EnumValue {
+  string Name = 1;
+  // 注释
+  DocDesc Doc = 2;
+  int64 Value = 3;
+}
+// 枚举定义
+message EnumDesc {
+  string Name = 1;
+  // 注释
+  DocDesc Doc = 2;
+  // 文件选项
+  OptionDesc Options = 3;
+  repeated EnumValue Values = 4;
+}
+
+enum FieldType {
+  Unkown = 0;
+  BaseType = 1;
+  ListType = 2;
+  MapType = 3;
+  CustomType = 4;
+}
+
+enum BaseTypeDesc {
+  Int8 = 0;
+  Uint8 = 1;
+  Int16 = 2;
+  Uint16 = 3;
+  Int32 = 4;
+  Uint32 = 5;
+  Int64 = 6;
+  Uint64 = 7;
+  String = 8;
+  Binary = 9;
+  Bool = 10;
+}
+
+message TypeDesc {
+  FieldType Type = 1;
+  // Type = BaseType,CustomType
+  // 使用 Key
+  // Type = ListType
+  // 使用 Key 根据ElemCustom判断 数组元素是自定义类型还是基础类型
+  // Type = MapType
+  // Key 是基础类型. Value 根据ElemCustom判断 数组元素是自定义类型还是基础类型
+  string Key = 2;
+  string Value = 3;
+  // 元素 是基础类型还是自定义类型
+  bool ElemCustom = 4;
+  // 基础类型 和Key/Value 同时填充
+  BaseTypeDesc KeyBase = 5;
+  BaseTypeDesc ValueBase = 6;
+  // 关联自定义类型
+  MsgDesc Msg = 7;
+}
+message Field {
+  string Name = 1;
+  // 注释
+  DocDesc Doc = 2;
+  // 文件选项
+  OptionDesc Options = 3;
+  // 字段序号
+  int32 No = 4;
+  // 字段类型
+  TypeDesc Type = 5;
+}
+message MsgDesc {
+  string Name = 1;
+  // 注释
+  DocDesc Doc = 2;
+  // 文件选项
+  OptionDesc Options = 3;
+  // 字段
+  repeated Field Fields = 4;
+}
+
+message MethodDesc {
+  string Name = 1;
+  // 注释
+  DocDesc Doc = 2;
+  // 文件选项
+  OptionDesc Options = 3;
+  //
+  MsgDesc Request = 4;
+  MsgDesc Reply = 5;
+  //
+  int64 MethodID = 6;
+}
+
+message ServiceDesc {
+  string Name = 1;
+  // 注释
+  DocDesc Doc = 2;
+  // 文件选项
+  OptionDesc Options = 3;
+  // 方法集合
+  repeated MethodDesc Methods = 4;
+}
+
+message ProjectDesc {
+  string Name = 1;
+  // 注释
+  DocDesc Doc = 2;
+  // 文件选项
+  map<string, OptionDesc> Conf = 3;
+}

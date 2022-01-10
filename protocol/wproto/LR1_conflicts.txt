@@ -1,5 +1,0 @@
-1 LR-1 conflicts: 
-	S63
-		symbol: tok_identifier
-			Reduce(47:CustomType : tok_option	<< ast.NewFieldTypeCustom(X[0]) >>)
-			Reduce(21:OptionValue : empty	<<  >>)

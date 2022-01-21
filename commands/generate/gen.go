@@ -174,6 +174,8 @@ func executeGenCmd() {
 	err = builder.Build(progList, config.output, config.mergeFile)
 	utils.PanicIf(err)
 	// 完成
-	fmt.Println("finish")
+	if utils.Debug() {
+		fmt.Println("finish")
+	}
 	return
 }

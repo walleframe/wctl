@@ -22,9 +22,9 @@ import (
 	"os"
 	"path/filepath"
 
-	"go.uber.org/multierr"
 	"github.com/aggronmagi/wctl/protocol/ast"
 	"github.com/aggronmagi/wctl/utils"
+	"go.uber.org/multierr"
 )
 
 // Build 生成代码

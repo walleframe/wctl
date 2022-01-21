@@ -524,6 +524,43 @@ xx:
 				},
 			},
 		},
+		{
+			name:"protobuf fields",
+			src:`package x1;message m1{repeated int32 v1 = 1; map<int32,string> v2 = 2;}`,
+			data: &ast.YTProgram{
+					Pkg: &ast.YTPackage{
+					Name: "x1",
+					},
+				Messages: []*ast.YTMessage{
+					{
+						Name:      "m1",
+						Fields:    []*ast.YTField{
+							{
+								Type: &ast.YTFieldType{
+									YTListType:   &ast.YTListType{
+										YTBaseType: ast.BaseTypeInt32,
+									},
+								},
+								No: 1,
+								Name: "v1",
+							},
+							{
+								Type: &ast.YTFieldType{
+									YTMapTypee:   &ast.YTMapTypee{
+										Key: ast.BaseTypeInt32,
+										Value: &ast.YTListType{
+											YTBaseType: ast.BaseTypeString,
+										},
+									},
+								},
+								No: 2,
+								Name: "v2",
+							},
+						},
+					},
+				},
+			},
+		},
 	}
 
 	for _, v := range data {

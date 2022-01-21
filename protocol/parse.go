@@ -77,19 +77,17 @@ func analyseOneFile(file string) (prog *ast.YTProgram, err error) {
 					tip = strings.Replace(tip, "$FILE", full, -1)
 				}
 			}
-			fmt.Fprintf(w, "Error in %s:%d \n\t%+v", full, pe.ErrorToken.Line-1, tip)
+			fmt.Fprintf(w, "Error in %s:%d \n\t[%+v]", full, pe.ErrorToken.Line, tip)
 			// if pe.Err != nil {
 			// 	fmt.Fprintf(w, ": %+v", pe.Err)
 			// }
-			if utils.ShowDetail() {
-				if len(pe.ExpectedTokens) > 0 {
-					fmt.Fprintf(w, ", expected one of: ")
-					for _, expected := range pe.ExpectedTokens {
-						fmt.Fprintf(w, "%s ", expected)
-					}
+			if len(pe.ExpectedTokens) > 0 {
+				fmt.Fprintf(w, ", expected one of: ")
+				for _, expected := range pe.ExpectedTokens {
+					fmt.Fprintf(w, "%s ", expected)
 				}
-				fmt.Fprintf(w, "S%d Current Token: %s", pe.StackTop, parser.TokenMap.TokenString(pe.ErrorToken))
 			}
+			fmt.Fprintf(w, "S%d Current Token: %s", pe.StackTop, parser.TokenMap.TokenString(pe.ErrorToken))
 
 			err = fmt.Errorf(w.String())
 		}

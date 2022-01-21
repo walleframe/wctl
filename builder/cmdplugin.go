@@ -172,7 +172,9 @@ func NewCmdPluginGenerater(cmd string) (err error) {
 	if err != nil {
 		return
 	}
-	fmt.Println("find command plugin [", cmd, "] in path[", path, "].")
+	if utils.Debug() {
+		fmt.Println("find command plugin [", cmd, "] in path[", path, "].")
+	}
 	gen := &cmdPluginGenerator{
 		cmd:  cmd,
 		name: "cmd-plugin-" + cmd,

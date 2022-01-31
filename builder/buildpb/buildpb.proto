@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package buildpb;
 
-option go_package = "github.com/aggronmagi/wallectl/builder/buildpb";
+option go_package = "github.com/aggronmagi/wctl/builder/buildpb";
 
 message BuildRQ {
   // 需要生成的原文件名

@@ -108,6 +108,8 @@ enum BaseTypeDesc {
   String = 8;
   Binary = 9;
   Bool = 10;
+  Float32 = 11;
+  Float64 = 12;
 }
 
 message TypeDesc {

@@ -650,10 +650,30 @@ var productionsTable = ProdTab{
 		},
 	},
 	ProdTabEntry{
+		String: `BaseType : "float"	<< ast.BaseTypeFloat32, nil >>`,
+		Id:         "BaseType",
+		NTType:     26,
+		Index:      63,
+		NumSymbols: 1,
+		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
+			return ast.BaseTypeFloat32, nil
+		},
+	},
+	ProdTabEntry{
+		String: `BaseType : "double"	<< ast.BaseTypeFloat64, nil >>`,
+		Id:         "BaseType",
+		NTType:     26,
+		Index:      64,
+		NumSymbols: 1,
+		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
+			return ast.BaseTypeFloat64, nil
+		},
+	},
+	ProdTabEntry{
 		String: `Service : "service" tok_identifier "{" ServiceElements "}" OptEnd	<< ast.NewService(X[1], X[3]) >>`,
 		Id:         "Service",
 		NTType:     27,
-		Index:      63,
+		Index:      65,
 		NumSymbols: 6,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return ast.NewService(X[1], X[3])
@@ -663,7 +683,7 @@ var productionsTable = ProdTab{
 		String: `ServiceElements : empty	<<  >>`,
 		Id:         "ServiceElements",
 		NTType:     28,
-		Index:      64,
+		Index:      66,
 		NumSymbols: 0,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return nil, nil
@@ -673,7 +693,7 @@ var productionsTable = ProdTab{
 		String: `ServiceElements : ServiceElements Doc Option	<< ast.AppendServiceOption(X[0], X[1], X[2]) >>`,
 		Id:         "ServiceElements",
 		NTType:     28,
-		Index:      65,
+		Index:      67,
 		NumSymbols: 3,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return ast.AppendServiceOption(X[0], X[1], X[2])
@@ -683,7 +703,7 @@ var productionsTable = ProdTab{
 		String: `ServiceElements : ServiceElements Doc MethodFlag	<< ast.ChangeServiceMethodFlag(X[0], X[1], X[2]) >>`,
 		Id:         "ServiceElements",
 		NTType:     28,
-		Index:      66,
+		Index:      68,
 		NumSymbols: 3,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return ast.ChangeServiceMethodFlag(X[0], X[1], X[2])
@@ -693,7 +713,7 @@ var productionsTable = ProdTab{
 		String: `ServiceElements : ServiceElements Doc Method	<< ast.AppendServiceMethod(X[0], X[1], X[2]) >>`,
 		Id:         "ServiceElements",
 		NTType:     28,
-		Index:      67,
+		Index:      69,
 		NumSymbols: 3,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return ast.AppendServiceMethod(X[0], X[1], X[2])
@@ -703,7 +723,7 @@ var productionsTable = ProdTab{
 		String: `MethodFlag : "oneway" ":"	<< ast.Oneway,nil >>`,
 		Id:         "MethodFlag",
 		NTType:     29,
-		Index:      68,
+		Index:      70,
 		NumSymbols: 2,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return ast.Oneway,nil
@@ -713,7 +733,7 @@ var productionsTable = ProdTab{
 		String: `MethodFlag : "notify" ":"	<< ast.Notify,nil >>`,
 		Id:         "MethodFlag",
 		NTType:     29,
-		Index:      69,
+		Index:      71,
 		NumSymbols: 2,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return ast.Notify,nil
@@ -723,7 +743,7 @@ var productionsTable = ProdTab{
 		String: `MethodFlag : "twoway" ":"	<< ast.Twoway,nil >>`,
 		Id:         "MethodFlag",
 		NTType:     29,
-		Index:      70,
+		Index:      72,
 		NumSymbols: 2,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return ast.Twoway,nil
@@ -733,7 +753,7 @@ var productionsTable = ProdTab{
 		String: `Method : tok_identifier "(" RqRs ")" RqRs MethodNo AddtionOption OptEnd	<< ast.NewMethod(X[0], X[2], X[4], X[5], X[6]) >>`,
 		Id:         "Method",
 		NTType:     30,
-		Index:      71,
+		Index:      73,
 		NumSymbols: 8,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return ast.NewMethod(X[0], X[2], X[4], X[5], X[6])
@@ -743,7 +763,7 @@ var productionsTable = ProdTab{
 		String: `RqRs : empty	<<  >>`,
 		Id:         "RqRs",
 		NTType:     31,
-		Index:      72,
+		Index:      74,
 		NumSymbols: 0,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return nil, nil
@@ -753,7 +773,7 @@ var productionsTable = ProdTab{
 		String: `RqRs : tok_identifier	<<  >>`,
 		Id:         "RqRs",
 		NTType:     31,
-		Index:      73,
+		Index:      75,
 		NumSymbols: 1,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return X[0], nil
@@ -763,7 +783,7 @@ var productionsTable = ProdTab{
 		String: `RqRs : tok_option	<<  >>`,
 		Id:         "RqRs",
 		NTType:     31,
-		Index:      74,
+		Index:      76,
 		NumSymbols: 1,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return X[0], nil
@@ -773,7 +793,7 @@ var productionsTable = ProdTab{
 		String: `MethodNo : empty	<< ast.NewMethodNo(nil,nil) >>`,
 		Id:         "MethodNo",
 		NTType:     32,
-		Index:      75,
+		Index:      77,
 		NumSymbols: 0,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return ast.NewMethodNo(nil,nil)
@@ -783,7 +803,7 @@ var productionsTable = ProdTab{
 		String: `MethodNo : "=" tok_const_int	<< ast.NewMethodNo(X[1],nil) >>`,
 		Id:         "MethodNo",
 		NTType:     32,
-		Index:      76,
+		Index:      78,
 		NumSymbols: 2,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return ast.NewMethodNo(X[1],nil)
@@ -793,7 +813,7 @@ var productionsTable = ProdTab{
 		String: `Project : "project" tok_identifier "{" ProjElements "}"	<< ast.NewProject(X[1], X[3]) >>`,
 		Id:         "Project",
 		NTType:     33,
-		Index:      77,
+		Index:      79,
 		NumSymbols: 5,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return ast.NewProject(X[1], X[3])
@@ -803,7 +823,7 @@ var productionsTable = ProdTab{
 		String: `ProjElements : empty	<< ast.NewProjectEmpty() >>`,
 		Id:         "ProjElements",
 		NTType:     34,
-		Index:      78,
+		Index:      80,
 		NumSymbols: 0,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return ast.NewProjectEmpty()
@@ -813,7 +833,7 @@ var productionsTable = ProdTab{
 		String: `ProjElements : ProjElements Doc ProjArea	<< ast.ChangeProjectArea(X[0], X[1], X[2]) >>`,
 		Id:         "ProjElements",
 		NTType:     34,
-		Index:      79,
+		Index:      81,
 		NumSymbols: 3,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return ast.ChangeProjectArea(X[0], X[1], X[2])
@@ -823,7 +843,7 @@ var productionsTable = ProdTab{
 		String: `ProjElements : ProjElements Doc Option	<< ast.AppendProjectOption(X[0], X[1], X[2]) >>`,
 		Id:         "ProjElements",
 		NTType:     34,
-		Index:      80,
+		Index:      82,
 		NumSymbols: 3,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return ast.AppendProjectOption(X[0], X[1], X[2])
@@ -833,7 +853,7 @@ var productionsTable = ProdTab{
 		String: `ProjArea : tok_identifier ":"	<< X[0],nil >>`,
 		Id:         "ProjArea",
 		NTType:     35,
-		Index:      81,
+		Index:      83,
 		NumSymbols: 2,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return X[0],nil

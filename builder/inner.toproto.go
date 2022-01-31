@@ -123,6 +123,10 @@ func baseTypeName(typ *ast.YTBaseType) string {
 		return "string"
 	case ast.BaseTypeBool:
 		return "bool"
+	case ast.BaseTypeFloat32:
+		return "float"
+	case ast.BaseTypeFloat64:
+		return "double"
 	default:
 		fmt.Println(typ)
 		panic("unkown type")

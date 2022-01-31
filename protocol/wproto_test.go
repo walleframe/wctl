@@ -25,7 +25,7 @@ import (
 	"github.com/aggronmagi/wctl/protocol/ast"
 	"github.com/aggronmagi/wctl/protocol/wproto/lexer"
 	"github.com/aggronmagi/wctl/protocol/wproto/parser"
-	
+
 	"github.com/aggronmagi/wctl/utils"
 	"github.com/stretchr/testify/assert"
 )
@@ -226,6 +226,8 @@ message m1 {
      fopt.v2 = "xx"
   }
   test.opt2 = 1
+  float f4 = 4;
+  double f5 = 5;
 }
 
 `,
@@ -271,6 +273,20 @@ message m1 {
 											YTDoc: doc("// comment fopt.v2"),
 										},
 									},
+								},
+							},
+							{
+								No:   4,
+								Name: "f4",
+								Type: &ast.YTFieldType{
+									YTBaseType: ast.BaseTypeFloat32,
+								},
+							},
+							{
+								No:   5,
+								Name: "f5",
+								Type: &ast.YTFieldType{
+									YTBaseType: ast.BaseTypeFloat64,
 								},
 							},
 						},
@@ -525,35 +541,35 @@ xx:
 			},
 		},
 		{
-			name:"protobuf fields",
-			src:`package x1;message m1{repeated int32 v1 = 1; map<int32,string> v2 = 2;}`,
+			name: "protobuf fields",
+			src:  `package x1;message m1{repeated int32 v1 = 1; map<int32,string> v2 = 2;}`,
 			data: &ast.YTProgram{
-					Pkg: &ast.YTPackage{
+				Pkg: &ast.YTPackage{
 					Name: "x1",
-					},
+				},
 				Messages: []*ast.YTMessage{
 					{
-						Name:      "m1",
-						Fields:    []*ast.YTField{
+						Name: "m1",
+						Fields: []*ast.YTField{
 							{
 								Type: &ast.YTFieldType{
-									YTListType:   &ast.YTListType{
+									YTListType: &ast.YTListType{
 										YTBaseType: ast.BaseTypeInt32,
 									},
 								},
-								No: 1,
+								No:   1,
 								Name: "v1",
 							},
 							{
 								Type: &ast.YTFieldType{
-									YTMapTypee:   &ast.YTMapTypee{
+									YTMapTypee: &ast.YTMapTypee{
 										Key: ast.BaseTypeInt32,
 										Value: &ast.YTListType{
 											YTBaseType: ast.BaseTypeString,
 										},
 									},
 								},
-								No: 2,
+								No:   2,
 								Name: "v2",
 							},
 						},

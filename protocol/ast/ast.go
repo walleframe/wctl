@@ -231,6 +231,10 @@ var (
 	BaseTypeBinary *YTBaseType
 	// BaseTypeBool Bool
 	BaseTypeBool *YTBaseType
+	// BaseTypeFloat32 float32 float
+	BaseTypeFloat32 *YTBaseType
+	// BaseTypeFloat64 float64 double
+	BaseTypeFloat64 *YTBaseType
 )
 
 func init() {
@@ -249,6 +253,8 @@ func init() {
 	BaseTypeString = set(8)
 	BaseTypeBinary = set(9)
 	BaseTypeBool = set(10)
+	BaseTypeFloat32 = set(11)
+	BaseTypeFloat64 = set(12)
 }
 
 func (typ *YTBaseType) String() string {
@@ -275,6 +281,10 @@ func (typ *YTBaseType) String() string {
 		return "binary"
 	case BaseTypeBool:
 		return "bool"
+	case BaseTypeFloat32:
+		return "float32"
+	case BaseTypeFloat64:
+		return "float64"
 	default:
 		return "unkown"
 	}

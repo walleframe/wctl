@@ -199,6 +199,8 @@ BaseType:
 |	"string"									<< ast.BaseTypeString, nil >>
 |	"bytes"										<< ast.BaseTypeBinary, nil >>
 |	"bool"										<< ast.BaseTypeBool, nil >>
+|	"float"										<< ast.BaseTypeFloat32, nil >>
+|	"double"									<< ast.BaseTypeFloat64, nil >>
 ;
 
 ////////////////////////////////////////////////////////////////////////////////

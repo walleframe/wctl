@@ -305,18 +305,15 @@ type MethodFlag int8
 
 // 方法标记
 const (
-	Twoway MethodFlag = iota
-	Oneway
+	Call MethodFlag = iota
 	Notify
 )
 
 //  String 文字描述
 func (flag MethodFlag) String() string {
 	switch flag {
-	case Oneway:
-		return "Oneway"
-	case Twoway:
-		return "Twoway"
+	case Call:
+		return "Call"
 	case Notify:
 		return "Notify"
 	default:

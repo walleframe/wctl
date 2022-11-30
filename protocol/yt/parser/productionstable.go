@@ -760,13 +760,13 @@ var productionsTable = ProdTab{
 		},
 	},
 	ProdTabEntry{
-		String: `MethodFlag : "oneway" ":"	<< ast.Oneway,nil >>`,
+		String: `MethodFlag : "oneway" ":"	<< ast.Notify,nil >>`,
 		Id:         "MethodFlag",
 		NTType:     29,
 		Index:      74,
 		NumSymbols: 2,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.Oneway,nil
+			return ast.Notify,nil
 		},
 	},
 	ProdTabEntry{
@@ -780,13 +780,13 @@ var productionsTable = ProdTab{
 		},
 	},
 	ProdTabEntry{
-		String: `MethodFlag : "twoway" ":"	<< ast.Twoway,nil >>`,
+		String: `MethodFlag : "twoway" ":"	<< ast.Call,nil >>`,
 		Id:         "MethodFlag",
 		NTType:     29,
 		Index:      76,
 		NumSymbols: 2,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.Twoway,nil
+			return ast.Call,nil
 		},
 	},
 	ProdTabEntry{

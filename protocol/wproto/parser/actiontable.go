@@ -51,10 +51,9 @@ var actionTab = actionTable{
 			nil,       // float
 			nil,       // double
 			reduce(2), // service, reduce: FileElements
-			nil,       // oneway
+			nil,       // call
 			nil,       // :
 			nil,       // notify
-			nil,       // twoway
 			nil,       // (
 			nil,       // )
 			reduce(2), // project, reduce: FileElements
@@ -100,10 +99,9 @@ var actionTab = actionTable{
 			nil,          // float
 			nil,          // double
 			nil,          // service
-			nil,          // oneway
+			nil,          // call
 			nil,          // :
 			nil,          // notify
-			nil,          // twoway
 			nil,          // (
 			nil,          // )
 			nil,          // project
@@ -149,10 +147,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			reduce(22), // service, reduce: Doc
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			reduce(22), // project, reduce: Doc
@@ -198,10 +195,9 @@ var actionTab = actionTable{
 			nil,       // float
 			nil,       // double
 			shift(18), // service
-			nil,       // oneway
+			nil,       // call
 			nil,       // :
 			nil,       // notify
-			nil,       // twoway
 			nil,       // (
 			nil,       // )
 			shift(19), // project
@@ -247,10 +243,9 @@ var actionTab = actionTable{
 			nil,       // float
 			nil,       // double
 			reduce(3), // service, reduce: FileElements
-			nil,       // oneway
+			nil,       // call
 			nil,       // :
 			nil,       // notify
-			nil,       // twoway
 			nil,       // (
 			nil,       // )
 			reduce(3), // project, reduce: FileElements
@@ -296,10 +291,9 @@ var actionTab = actionTable{
 			nil,       // float
 			nil,       // double
 			reduce(4), // service, reduce: Element
-			nil,       // oneway
+			nil,       // call
 			nil,       // :
 			nil,       // notify
-			nil,       // twoway
 			nil,       // (
 			nil,       // )
 			reduce(4), // project, reduce: Element
@@ -345,10 +339,9 @@ var actionTab = actionTable{
 			nil,       // float
 			nil,       // double
 			reduce(5), // service, reduce: Element
-			nil,       // oneway
+			nil,       // call
 			nil,       // :
 			nil,       // notify
-			nil,       // twoway
 			nil,       // (
 			nil,       // )
 			reduce(5), // project, reduce: Element
@@ -394,10 +387,9 @@ var actionTab = actionTable{
 			nil,       // float
 			nil,       // double
 			reduce(6), // service, reduce: Element
-			nil,       // oneway
+			nil,       // call
 			nil,       // :
 			nil,       // notify
-			nil,       // twoway
 			nil,       // (
 			nil,       // )
 			reduce(6), // project, reduce: Element
@@ -443,10 +435,9 @@ var actionTab = actionTable{
 			nil,       // float
 			nil,       // double
 			reduce(7), // service, reduce: Element
-			nil,       // oneway
+			nil,       // call
 			nil,       // :
 			nil,       // notify
-			nil,       // twoway
 			nil,       // (
 			nil,       // )
 			reduce(7), // project, reduce: Element
@@ -492,10 +483,9 @@ var actionTab = actionTable{
 			nil,       // float
 			nil,       // double
 			reduce(8), // service, reduce: Element
-			nil,       // oneway
+			nil,       // call
 			nil,       // :
 			nil,       // notify
-			nil,       // twoway
 			nil,       // (
 			nil,       // )
 			reduce(8), // project, reduce: Element
@@ -541,10 +531,9 @@ var actionTab = actionTable{
 			nil,       // float
 			nil,       // double
 			reduce(9), // service, reduce: Element
-			nil,       // oneway
+			nil,       // call
 			nil,       // :
 			nil,       // notify
-			nil,       // twoway
 			nil,       // (
 			nil,       // )
 			reduce(9), // project, reduce: Element
@@ -590,10 +579,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			reduce(10), // service, reduce: Element
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			reduce(10), // project, reduce: Element
@@ -639,10 +627,9 @@ var actionTab = actionTable{
 			nil,       // float
 			nil,       // double
 			nil,       // service
-			nil,       // oneway
+			nil,       // call
 			nil,       // :
 			nil,       // notify
-			nil,       // twoway
 			nil,       // (
 			nil,       // )
 			nil,       // project
@@ -688,10 +675,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -737,10 +723,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			reduce(19), // service, reduce: OptionValue
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			reduce(19), // project, reduce: OptionValue
@@ -786,10 +771,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			reduce(23), // service, reduce: Doc
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			reduce(23), // project, reduce: Doc
@@ -835,10 +819,9 @@ var actionTab = actionTable{
 			nil,       // float
 			nil,       // double
 			nil,       // service
-			nil,       // oneway
+			nil,       // call
 			nil,       // :
 			nil,       // notify
-			nil,       // twoway
 			nil,       // (
 			nil,       // )
 			nil,       // project
@@ -884,10 +867,9 @@ var actionTab = actionTable{
 			nil,       // float
 			nil,       // double
 			nil,       // service
-			nil,       // oneway
+			nil,       // call
 			nil,       // :
 			nil,       // notify
-			nil,       // twoway
 			nil,       // (
 			nil,       // )
 			nil,       // project
@@ -933,10 +915,9 @@ var actionTab = actionTable{
 			nil,       // float
 			nil,       // double
 			nil,       // service
-			nil,       // oneway
+			nil,       // call
 			nil,       // :
 			nil,       // notify
-			nil,       // twoway
 			nil,       // (
 			nil,       // )
 			nil,       // project
@@ -982,10 +963,9 @@ var actionTab = actionTable{
 			nil,       // float
 			nil,       // double
 			nil,       // service
-			nil,       // oneway
+			nil,       // call
 			nil,       // :
 			nil,       // notify
-			nil,       // twoway
 			nil,       // (
 			nil,       // )
 			nil,       // project
@@ -1031,10 +1011,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			reduce(12), // service, reduce: OptEnd
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			reduce(12), // project, reduce: OptEnd
@@ -1080,10 +1059,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -1129,10 +1107,9 @@ var actionTab = actionTable{
 			nil,       // float
 			nil,       // double
 			nil,       // service
-			nil,       // oneway
+			nil,       // call
 			nil,       // :
 			nil,       // notify
-			nil,       // twoway
 			nil,       // (
 			nil,       // )
 			nil,       // project
@@ -1178,10 +1155,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			reduce(18), // service, reduce: Option
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			reduce(18), // project, reduce: Option
@@ -1227,10 +1203,9 @@ var actionTab = actionTable{
 			nil,       // float
 			nil,       // double
 			nil,       // service
-			nil,       // oneway
+			nil,       // call
 			nil,       // :
 			nil,       // notify
-			nil,       // twoway
 			nil,       // (
 			nil,       // )
 			nil,       // project
@@ -1276,10 +1251,9 @@ var actionTab = actionTable{
 			nil,       // float
 			nil,       // double
 			nil,       // service
-			nil,       // oneway
+			nil,       // call
 			nil,       // :
 			nil,       // notify
-			nil,       // twoway
 			nil,       // (
 			nil,       // )
 			nil,       // project
@@ -1325,10 +1299,9 @@ var actionTab = actionTable{
 			nil,       // float
 			nil,       // double
 			nil,       // service
-			nil,       // oneway
+			nil,       // call
 			nil,       // :
 			nil,       // notify
-			nil,       // twoway
 			nil,       // (
 			nil,       // )
 			nil,       // project
@@ -1374,10 +1347,9 @@ var actionTab = actionTable{
 			nil,       // float
 			nil,       // double
 			nil,       // service
-			nil,       // oneway
+			nil,       // call
 			nil,       // :
 			nil,       // notify
-			nil,       // twoway
 			nil,       // (
 			nil,       // )
 			nil,       // project
@@ -1423,10 +1395,9 @@ var actionTab = actionTable{
 			nil,       // float
 			nil,       // double
 			nil,       // service
-			nil,       // oneway
+			nil,       // call
 			nil,       // :
 			nil,       // notify
-			nil,       // twoway
 			nil,       // (
 			nil,       // )
 			nil,       // project
@@ -1472,10 +1443,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			reduce(11), // service, reduce: Package
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			reduce(11), // project, reduce: Package
@@ -1521,10 +1491,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			reduce(13), // service, reduce: OptEnd
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			reduce(13), // project, reduce: OptEnd
@@ -1570,10 +1539,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			reduce(14), // service, reduce: OptEnd
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			reduce(14), // project, reduce: OptEnd
@@ -1619,10 +1587,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			reduce(12), // service, reduce: OptEnd
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			reduce(12), // project, reduce: OptEnd
@@ -1668,10 +1635,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			reduce(20), // service, reduce: OptionValue
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			reduce(20), // project, reduce: OptionValue
@@ -1717,10 +1683,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			reduce(21), // service, reduce: OptionValue
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			reduce(21), // project, reduce: OptionValue
@@ -1766,10 +1731,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -1815,10 +1779,9 @@ var actionTab = actionTable{
 			reduce(32), // float, reduce: MessageElements
 			reduce(32), // double, reduce: MessageElements
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -1864,10 +1827,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			reduce(66), // oneway, reduce: ServiceElements
+			reduce(66), // call, reduce: ServiceElements
 			nil,        // :
 			reduce(66), // notify, reduce: ServiceElements
-			reduce(66), // twoway, reduce: ServiceElements
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -1880,18 +1842,18 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(80), // tok_identifier, reduce: ProjElements
+			reduce(79), // tok_identifier, reduce: ProjElements
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			reduce(80), // tok_option, reduce: ProjElements
+			reduce(79), // tok_option, reduce: ProjElements
 			nil,        // =
 			nil,        // tok_const_int
-			reduce(80), // tok_doc, reduce: ProjElements
+			reduce(79), // tok_doc, reduce: ProjElements
 			nil,        // enum
 			nil,        // {
-			reduce(80), // }, reduce: ProjElements
+			reduce(79), // }, reduce: ProjElements
 			nil,        // message
 			nil,        // [
 			nil,        // ]
@@ -1913,10 +1875,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -1962,10 +1923,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			reduce(15), // service, reduce: Import
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			reduce(15), // project, reduce: Import
@@ -2011,10 +1971,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -2060,10 +2019,9 @@ var actionTab = actionTable{
 			reduce(22), // float, reduce: Doc
 			reduce(22), // double, reduce: Doc
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -2109,10 +2067,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			reduce(22), // oneway, reduce: Doc
+			reduce(22), // call, reduce: Doc
 			nil,        // :
 			reduce(22), // notify, reduce: Doc
-			reduce(22), // twoway, reduce: Doc
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -2158,10 +2115,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -2207,10 +2163,9 @@ var actionTab = actionTable{
 			nil,       // float
 			nil,       // double
 			nil,       // service
-			nil,       // oneway
+			nil,       // call
 			nil,       // :
 			nil,       // notify
-			nil,       // twoway
 			nil,       // (
 			nil,       // )
 			nil,       // project
@@ -2256,10 +2211,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			reduce(12), // service, reduce: OptEnd
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			reduce(12), // project, reduce: OptEnd
@@ -2305,10 +2259,9 @@ var actionTab = actionTable{
 			shift(84), // float
 			shift(85), // double
 			nil,       // service
-			nil,       // oneway
+			nil,       // call
 			nil,       // :
 			nil,       // notify
-			nil,       // twoway
 			nil,       // (
 			nil,       // )
 			nil,       // project
@@ -2354,10 +2307,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			reduce(12), // service, reduce: OptEnd
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			reduce(12), // project, reduce: OptEnd
@@ -2403,10 +2355,9 @@ var actionTab = actionTable{
 			nil,       // float
 			nil,       // double
 			nil,       // service
-			shift(93), // oneway
+			shift(93), // call
 			nil,       // :
 			shift(94), // notify
-			shift(95), // twoway
 			nil,       // (
 			nil,       // )
 			nil,       // project
@@ -2452,10 +2403,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			reduce(12), // service, reduce: OptEnd
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			reduce(12), // project, reduce: OptEnd
@@ -2468,7 +2418,7 @@ var actionTab = actionTable{
 			nil,       // $
 			nil,       // empty
 			nil,       // package
-			shift(98), // tok_identifier
+			shift(97), // tok_identifier
 			nil,       // ;
 			nil,       // ,
 			nil,       // import
@@ -2501,10 +2451,9 @@ var actionTab = actionTable{
 			nil,       // float
 			nil,       // double
 			nil,       // service
-			nil,       // oneway
+			nil,       // call
 			nil,       // :
 			nil,       // notify
-			nil,       // twoway
 			nil,       // (
 			nil,       // )
 			nil,       // project
@@ -2514,22 +2463,22 @@ var actionTab = actionTable{
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
-			reduce(79), // $, reduce: Project
+			reduce(78), // $, reduce: Project
 			nil,        // empty
-			reduce(79), // package, reduce: Project
+			reduce(78), // package, reduce: Project
 			nil,        // tok_identifier
 			nil,        // ;
 			nil,        // ,
-			reduce(79), // import, reduce: Project
+			reduce(78), // import, reduce: Project
 			nil,        // tok_literal
-			reduce(79), // tok_option, reduce: Project
+			reduce(78), // tok_option, reduce: Project
 			nil,        // =
 			nil,        // tok_const_int
-			reduce(79), // tok_doc, reduce: Project
-			reduce(79), // enum, reduce: Project
+			reduce(78), // tok_doc, reduce: Project
+			reduce(78), // enum, reduce: Project
 			nil,        // {
 			nil,        // }
-			reduce(79), // message, reduce: Project
+			reduce(78), // message, reduce: Project
 			nil,        // [
 			nil,        // ]
 			nil,        // repeated
@@ -2549,14 +2498,13 @@ var actionTab = actionTable{
 			nil,        // bool
 			nil,        // float
 			nil,        // double
-			reduce(79), // service, reduce: Project
-			nil,        // oneway
+			reduce(78), // service, reduce: Project
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
-			reduce(79), // project, reduce: Project
+			reduce(78), // project, reduce: Project
 		},
 	},
 	actionRow{ // S52
@@ -2599,10 +2547,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -2621,7 +2568,7 @@ var actionTab = actionTable{
 			nil,        // import
 			nil,        // tok_literal
 			reduce(29), // tok_option, reduce: EnumItemValue
-			shift(100), // =
+			shift(99),  // =
 			nil,        // tok_const_int
 			reduce(29), // tok_doc, reduce: EnumItemValue
 			nil,        // enum
@@ -2648,10 +2595,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -2670,7 +2616,7 @@ var actionTab = actionTable{
 			nil,        // import
 			nil,        // tok_literal
 			reduce(19), // tok_option, reduce: OptionValue
-			shift(103), // =
+			shift(102), // =
 			nil,        // tok_const_int
 			reduce(19), // tok_doc, reduce: OptionValue
 			nil,        // enum
@@ -2697,10 +2643,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -2746,10 +2691,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -2795,10 +2739,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -2844,10 +2787,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			reduce(24), // service, reduce: Enum
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			reduce(24), // project, reduce: Enum
@@ -2893,10 +2835,9 @@ var actionTab = actionTable{
 			reduce(34), // float, reduce: MessageElements
 			reduce(34), // double, reduce: MessageElements
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -2942,10 +2883,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -2964,7 +2904,7 @@ var actionTab = actionTable{
 			nil,        // import
 			nil,        // tok_literal
 			reduce(19), // tok_option, reduce: OptionValue
-			shift(105), // =
+			shift(104), // =
 			nil,        // tok_const_int
 			reduce(19), // tok_doc, reduce: OptionValue
 			nil,        // enum
@@ -2991,10 +2931,9 @@ var actionTab = actionTable{
 			reduce(19), // float, reduce: OptionValue
 			reduce(19), // double, reduce: OptionValue
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -3040,10 +2979,9 @@ var actionTab = actionTable{
 			reduce(23), // float, reduce: Doc
 			reduce(23), // double, reduce: Doc
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -3089,10 +3027,9 @@ var actionTab = actionTable{
 			reduce(33), // float, reduce: MessageElements
 			reduce(33), // double, reduce: MessageElements
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -3105,7 +3042,7 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			shift(106), // tok_identifier
+			shift(105), // tok_identifier
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
@@ -3138,10 +3075,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -3187,10 +3123,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -3236,10 +3171,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -3285,10 +3219,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -3334,10 +3267,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -3383,10 +3315,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -3432,10 +3363,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -3462,7 +3392,7 @@ var actionTab = actionTable{
 			nil,        // }
 			nil,        // message
 			nil,        // [
-			shift(107), // ]
+			shift(106), // ]
 			nil,        // repeated
 			nil,        // map
 			nil,        // <
@@ -3481,10 +3411,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -3502,7 +3431,7 @@ var actionTab = actionTable{
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			shift(108), // tok_option
+			shift(107), // tok_option
 			nil,        // =
 			nil,        // tok_const_int
 			nil,        // tok_doc
@@ -3530,10 +3459,9 @@ var actionTab = actionTable{
 			shift(84),  // float
 			shift(85),  // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -3559,11 +3487,11 @@ var actionTab = actionTable{
 			nil,        // {
 			nil,        // }
 			nil,        // message
-			shift(110), // [
+			shift(109), // [
 			nil,        // ]
 			nil,        // repeated
 			nil,        // map
-			shift(111), // <
+			shift(110), // <
 			nil,        // >
 			nil,        // int8
 			nil,        // uint8
@@ -3579,10 +3507,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -3628,10 +3555,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -3677,10 +3603,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -3726,10 +3651,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -3775,10 +3699,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -3824,10 +3747,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -3873,10 +3795,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -3922,10 +3843,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -3971,10 +3891,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -4020,10 +3939,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -4069,10 +3987,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -4118,10 +4035,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -4167,10 +4083,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -4216,10 +4131,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -4265,10 +4179,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			reduce(31), // service, reduce: Message
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			reduce(31), // project, reduce: Message
@@ -4314,10 +4227,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			reduce(67), // oneway, reduce: ServiceElements
+			reduce(67), // call, reduce: ServiceElements
 			nil,        // :
 			reduce(67), // notify, reduce: ServiceElements
-			reduce(67), // twoway, reduce: ServiceElements
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -4363,11 +4275,10 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
-			shift(112), // (
+			shift(111), // (
 			nil,        // )
 			nil,        // project
 		},
@@ -4385,7 +4296,7 @@ var actionTab = actionTable{
 			nil,        // import
 			nil,        // tok_literal
 			reduce(19), // tok_option, reduce: OptionValue
-			shift(114), // =
+			shift(113), // =
 			nil,        // tok_const_int
 			reduce(19), // tok_doc, reduce: OptionValue
 			nil,        // enum
@@ -4412,10 +4323,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			reduce(19), // oneway, reduce: OptionValue
+			reduce(19), // call, reduce: OptionValue
 			nil,        // :
 			reduce(19), // notify, reduce: OptionValue
-			reduce(19), // twoway, reduce: OptionValue
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -4461,10 +4371,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			reduce(23), // oneway, reduce: Doc
+			reduce(23), // call, reduce: Doc
 			nil,        // :
 			reduce(23), // notify, reduce: Doc
-			reduce(23), // twoway, reduce: Doc
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -4510,10 +4419,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			reduce(68), // oneway, reduce: ServiceElements
+			reduce(68), // call, reduce: ServiceElements
 			nil,        // :
 			reduce(68), // notify, reduce: ServiceElements
-			reduce(68), // twoway, reduce: ServiceElements
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -4559,10 +4467,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			reduce(69), // oneway, reduce: ServiceElements
+			reduce(69), // call, reduce: ServiceElements
 			nil,        // :
 			reduce(69), // notify, reduce: ServiceElements
-			reduce(69), // twoway, reduce: ServiceElements
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -4608,10 +4515,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
-			shift(115), // :
+			nil,        // call
+			shift(114), // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -4657,65 +4563,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
-			shift(116), // :
+			nil,        // call
+			shift(115), // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
 	actionRow{ // S95
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			nil,        // tok_option
-			nil,        // =
-			nil,        // tok_const_int
-			nil,        // tok_doc
-			nil,        // enum
-			nil,        // {
-			nil,        // }
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			nil,        // oneway
-			shift(117), // :
-			nil,        // notify
-			nil,        // twoway
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S96
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -4755,114 +4611,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			reduce(65), // service, reduce: Service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			reduce(65), // project, reduce: Service
 		},
 	},
-	actionRow{ // S97
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			reduce(82), // tok_identifier, reduce: ProjElements
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			reduce(82), // tok_option, reduce: ProjElements
-			nil,        // =
-			nil,        // tok_const_int
-			reduce(82), // tok_doc, reduce: ProjElements
-			nil,        // enum
-			nil,        // {
-			reduce(82), // }, reduce: ProjElements
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			nil,        // oneway
-			nil,        // :
-			nil,        // notify
-			nil,        // twoway
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S98
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			nil,        // tok_option
-			nil,        // =
-			nil,        // tok_const_int
-			nil,        // tok_doc
-			nil,        // enum
-			nil,        // {
-			nil,        // }
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			nil,        // oneway
-			shift(118), // :
-			nil,        // notify
-			nil,        // twoway
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S99
+	actionRow{ // S96
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -4902,16 +4659,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S100
+	actionRow{ // S97
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -4925,7 +4681,7 @@ var actionTab = actionTable{
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
-			shift(119), // tok_const_int
+			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
 			nil,        // {
@@ -4951,16 +4707,111 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
-			nil,        // :
+			nil,        // call
+			shift(116), // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S101
+	actionRow{ // S98
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			reduce(80), // tok_identifier, reduce: ProjElements
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			reduce(80), // tok_option, reduce: ProjElements
+			nil,        // =
+			nil,        // tok_const_int
+			reduce(80), // tok_doc, reduce: ProjElements
+			nil,        // enum
+			nil,        // {
+			reduce(80), // }, reduce: ProjElements
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S99
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			nil,        // tok_identifier
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			nil,        // tok_option
+			nil,        // =
+			shift(117), // tok_const_int
+			nil,        // tok_doc
+			nil,        // enum
+			nil,        // {
+			nil,        // }
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S100
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -4968,8 +4819,8 @@ var actionTab = actionTable{
 			nil,        // empty
 			nil,        // package
 			reduce(12), // tok_identifier, reduce: OptEnd
-			shift(121), // ;
-			shift(122), // ,
+			shift(119), // ;
+			shift(120), // ,
 			nil,        // import
 			nil,        // tok_literal
 			reduce(12), // tok_option, reduce: OptEnd
@@ -5000,16 +4851,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S102
+	actionRow{ // S101
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -5049,16 +4899,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S103
+	actionRow{ // S102
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -5069,10 +4918,10 @@ var actionTab = actionTable{
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
-			shift(123), // tok_literal
+			shift(121), // tok_literal
 			nil,        // tok_option
 			nil,        // =
-			shift(124), // tok_const_int
+			shift(122), // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
 			nil,        // {
@@ -5098,16 +4947,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S104
+	actionRow{ // S103
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -5147,16 +4995,15 @@ var actionTab = actionTable{
 			reduce(18), // float, reduce: Option
 			reduce(18), // double, reduce: Option
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S105
+	actionRow{ // S104
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -5167,10 +5014,10 @@ var actionTab = actionTable{
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
-			shift(125), // tok_literal
+			shift(123), // tok_literal
 			nil,        // tok_option
 			nil,        // =
-			shift(126), // tok_const_int
+			shift(124), // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
 			nil,        // {
@@ -5196,16 +5043,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S106
+	actionRow{ // S105
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -5218,7 +5064,7 @@ var actionTab = actionTable{
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
-			shift(127), // =
+			shift(125), // =
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -5245,16 +5091,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S107
+	actionRow{ // S106
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -5266,7 +5111,7 @@ var actionTab = actionTable{
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			shift(108), // tok_option
+			shift(107), // tok_option
 			nil,        // =
 			nil,        // tok_const_int
 			nil,        // tok_doc
@@ -5294,16 +5139,15 @@ var actionTab = actionTable{
 			shift(84),  // float
 			shift(85),  // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S108
+	actionRow{ // S107
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -5343,16 +5187,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S109
+	actionRow{ // S108
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -5392,10 +5235,57 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S109
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			nil,        // tok_identifier
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			nil,        // tok_option
+			nil,        // =
+			nil,        // tok_const_int
+			nil,        // tok_doc
+			nil,        // enum
+			nil,        // {
+			nil,        // }
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			shift(128), // int8
+			shift(129), // uint8
+			shift(130), // int16
+			shift(131), // uint16
+			shift(132), // int32
+			shift(133), // uint32
+			shift(134), // int64
+			shift(135), // uint64
+			shift(136), // string
+			shift(137), // bytes
+			shift(138), // bool
+			shift(139), // float
+			shift(140), // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -5427,24 +5317,23 @@ var actionTab = actionTable{
 			nil,        // map
 			nil,        // <
 			nil,        // >
-			shift(130), // int8
-			shift(131), // uint8
-			shift(132), // int16
-			shift(133), // uint16
-			shift(134), // int32
-			shift(135), // uint32
-			shift(136), // int64
-			shift(137), // uint64
-			shift(138), // string
-			shift(139), // bytes
-			shift(140), // bool
-			shift(141), // float
-			shift(142), // double
+			shift(142), // int8
+			shift(143), // uint8
+			shift(144), // int16
+			shift(145), // uint16
+			shift(146), // int32
+			shift(147), // uint32
+			shift(148), // int64
+			shift(149), // uint64
+			shift(150), // string
+			shift(151), // bytes
+			shift(152), // bool
+			shift(153), // float
+			shift(154), // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -5457,61 +5346,12 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			nil,        // tok_identifier
+			shift(155), // tok_identifier
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			nil,        // tok_option
-			nil,        // =
-			nil,        // tok_const_int
-			nil,        // tok_doc
-			nil,        // enum
-			nil,        // {
-			nil,        // }
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			shift(144), // int8
-			shift(145), // uint8
-			shift(146), // int16
-			shift(147), // uint16
-			shift(148), // int32
-			shift(149), // uint32
-			shift(150), // int64
-			shift(151), // uint64
-			shift(152), // string
-			shift(153), // bytes
-			shift(154), // bool
-			shift(155), // float
-			shift(156), // double
-			nil,        // service
-			nil,        // oneway
-			nil,        // :
-			nil,        // notify
-			nil,        // twoway
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S112
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			shift(157), // tok_identifier
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			shift(158), // tok_option
+			shift(156), // tok_option
 			nil,        // =
 			nil,        // tok_const_int
 			nil,        // tok_doc
@@ -5539,16 +5379,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
-			reduce(74), // ), reduce: RqRs
+			reduce(73), // ), reduce: RqRs
 			nil,        // project
 		},
 	},
-	actionRow{ // S113
+	actionRow{ // S112
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -5588,16 +5427,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			reduce(18), // oneway, reduce: Option
+			reduce(18), // call, reduce: Option
 			nil,        // :
 			reduce(18), // notify, reduce: Option
-			reduce(18), // twoway, reduce: Option
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S114
+	actionRow{ // S113
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -5608,10 +5446,10 @@ var actionTab = actionTable{
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
-			shift(160), // tok_literal
+			shift(158), // tok_literal
 			nil,        // tok_option
 			nil,        // =
-			shift(161), // tok_const_int
+			shift(159), // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
 			nil,        // {
@@ -5637,16 +5475,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S115
+	actionRow{ // S114
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -5686,16 +5523,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			reduce(70), // oneway, reduce: MethodFlag
+			reduce(70), // call, reduce: MethodFlag
 			nil,        // :
 			reduce(70), // notify, reduce: MethodFlag
-			reduce(70), // twoway, reduce: MethodFlag
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S116
+	actionRow{ // S115
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -5735,114 +5571,63 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			reduce(71), // oneway, reduce: MethodFlag
+			reduce(71), // call, reduce: MethodFlag
 			nil,        // :
 			reduce(71), // notify, reduce: MethodFlag
-			reduce(71), // twoway, reduce: MethodFlag
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S116
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			reduce(82), // tok_identifier, reduce: ProjArea
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			reduce(82), // tok_option, reduce: ProjArea
+			nil,        // =
+			nil,        // tok_const_int
+			reduce(82), // tok_doc, reduce: ProjArea
+			nil,        // enum
+			nil,        // {
+			reduce(82), // }, reduce: ProjArea
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
 	actionRow{ // S117
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			reduce(72), // tok_identifier, reduce: MethodFlag
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			reduce(72), // tok_option, reduce: MethodFlag
-			nil,        // =
-			nil,        // tok_const_int
-			reduce(72), // tok_doc, reduce: MethodFlag
-			nil,        // enum
-			nil,        // {
-			reduce(72), // }, reduce: MethodFlag
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			reduce(72), // oneway, reduce: MethodFlag
-			nil,        // :
-			reduce(72), // notify, reduce: MethodFlag
-			reduce(72), // twoway, reduce: MethodFlag
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S118
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			reduce(83), // tok_identifier, reduce: ProjArea
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			reduce(83), // tok_option, reduce: ProjArea
-			nil,        // =
-			nil,        // tok_const_int
-			reduce(83), // tok_doc, reduce: ProjArea
-			nil,        // enum
-			nil,        // {
-			reduce(83), // }, reduce: ProjArea
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			nil,        // oneway
-			nil,        // :
-			nil,        // notify
-			nil,        // twoway
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S119
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -5882,16 +5667,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S120
+	actionRow{ // S118
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -5931,16 +5715,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S121
+	actionRow{ // S119
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -5980,16 +5763,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S122
+	actionRow{ // S120
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -6029,16 +5811,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S123
+	actionRow{ // S121
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -6078,16 +5859,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S124
+	actionRow{ // S122
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -6127,16 +5907,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S125
+	actionRow{ // S123
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -6176,16 +5955,15 @@ var actionTab = actionTable{
 			reduce(20), // float, reduce: OptionValue
 			reduce(20), // double, reduce: OptionValue
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S126
+	actionRow{ // S124
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -6225,16 +6003,15 @@ var actionTab = actionTable{
 			reduce(21), // float, reduce: OptionValue
 			reduce(21), // double, reduce: OptionValue
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S127
+	actionRow{ // S125
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -6248,7 +6025,7 @@ var actionTab = actionTable{
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
-			shift(162), // tok_const_int
+			shift(160), // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
 			nil,        // {
@@ -6274,16 +6051,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S128
+	actionRow{ // S126
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -6323,16 +6099,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S129
+	actionRow{ // S127
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -6353,7 +6128,7 @@ var actionTab = actionTable{
 			nil,        // }
 			nil,        // message
 			nil,        // [
-			shift(163), // ]
+			shift(161), // ]
 			nil,        // repeated
 			nil,        // map
 			nil,        // <
@@ -6372,16 +6147,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S130
+	actionRow{ // S128
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -6421,16 +6195,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S131
+	actionRow{ // S129
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -6470,16 +6243,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S132
+	actionRow{ // S130
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -6519,16 +6291,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S133
+	actionRow{ // S131
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -6568,16 +6339,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S134
+	actionRow{ // S132
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -6617,16 +6387,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S135
+	actionRow{ // S133
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -6666,16 +6435,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S136
+	actionRow{ // S134
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -6715,16 +6483,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S137
+	actionRow{ // S135
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -6764,16 +6531,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S138
+	actionRow{ // S136
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -6813,16 +6579,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S139
+	actionRow{ // S137
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -6862,16 +6627,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S140
+	actionRow{ // S138
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -6911,16 +6675,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S141
+	actionRow{ // S139
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -6960,16 +6723,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S142
+	actionRow{ // S140
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -7009,16 +6771,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S143
+	actionRow{ // S141
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -7027,7 +6788,7 @@ var actionTab = actionTable{
 			nil,        // package
 			nil,        // tok_identifier
 			nil,        // ;
-			shift(164), // ,
+			shift(162), // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
@@ -7058,16 +6819,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S144
+	actionRow{ // S142
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -7107,16 +6867,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S145
+	actionRow{ // S143
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -7156,16 +6915,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S146
+	actionRow{ // S144
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -7205,16 +6963,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S147
+	actionRow{ // S145
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -7254,16 +7011,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S148
+	actionRow{ // S146
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -7303,16 +7059,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S149
+	actionRow{ // S147
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -7352,16 +7107,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S150
+	actionRow{ // S148
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -7401,16 +7155,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S151
+	actionRow{ // S149
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -7450,16 +7203,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S152
+	actionRow{ // S150
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -7499,16 +7251,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S153
+	actionRow{ // S151
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -7548,16 +7299,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S154
+	actionRow{ // S152
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -7597,16 +7347,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S155
+	actionRow{ // S153
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -7646,16 +7395,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S156
+	actionRow{ // S154
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -7695,12 +7443,107 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S155
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			nil,        // tok_identifier
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			nil,        // tok_option
+			nil,        // =
+			nil,        // tok_const_int
+			nil,        // tok_doc
+			nil,        // enum
+			nil,        // {
+			nil,        // }
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			reduce(74), // ), reduce: RqRs
+			nil,        // project
+		},
+	},
+	actionRow{ // S156
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			nil,        // tok_identifier
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			nil,        // tok_option
+			nil,        // =
+			nil,        // tok_const_int
+			nil,        // tok_doc
+			nil,        // enum
+			nil,        // {
+			nil,        // }
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			reduce(75), // ), reduce: RqRs
 			nil,        // project
 		},
 	},
@@ -7744,114 +7587,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
-			reduce(75), // ), reduce: RqRs
+			shift(163), // )
 			nil,        // project
 		},
 	},
 	actionRow{ // S158
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			nil,        // tok_option
-			nil,        // =
-			nil,        // tok_const_int
-			nil,        // tok_doc
-			nil,        // enum
-			nil,        // {
-			nil,        // }
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			nil,        // oneway
-			nil,        // :
-			nil,        // notify
-			nil,        // twoway
-			nil,        // (
-			reduce(76), // ), reduce: RqRs
-			nil,        // project
-		},
-	},
-	actionRow{ // S159
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			nil,        // tok_option
-			nil,        // =
-			nil,        // tok_const_int
-			nil,        // tok_doc
-			nil,        // enum
-			nil,        // {
-			nil,        // }
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			nil,        // oneway
-			nil,        // :
-			nil,        // notify
-			nil,        // twoway
-			nil,        // (
-			shift(165), // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S160
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -7891,16 +7635,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			reduce(20), // oneway, reduce: OptionValue
+			reduce(20), // call, reduce: OptionValue
 			nil,        // :
 			reduce(20), // notify, reduce: OptionValue
-			reduce(20), // twoway, reduce: OptionValue
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S161
+	actionRow{ // S159
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -7940,16 +7683,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			reduce(21), // oneway, reduce: OptionValue
+			reduce(21), // call, reduce: OptionValue
 			nil,        // :
 			reduce(21), // notify, reduce: OptionValue
-			reduce(21), // twoway, reduce: OptionValue
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S162
+	actionRow{ // S160
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -7966,7 +7708,7 @@ var actionTab = actionTable{
 			nil,        // tok_const_int
 			reduce(36), // tok_doc, reduce: AddtionOption
 			nil,        // enum
-			shift(166), // {
+			shift(164), // {
 			reduce(36), // }, reduce: AddtionOption
 			nil,        // message
 			reduce(36), // [, reduce: AddtionOption
@@ -7989,16 +7731,15 @@ var actionTab = actionTable{
 			reduce(36), // float, reduce: AddtionOption
 			reduce(36), // double, reduce: AddtionOption
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S163
+	actionRow{ // S161
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -8010,7 +7751,7 @@ var actionTab = actionTable{
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			shift(108), // tok_option
+			shift(107), // tok_option
 			nil,        // =
 			nil,        // tok_const_int
 			nil,        // tok_doc
@@ -8038,28 +7779,27 @@ var actionTab = actionTable{
 			shift(84),  // float
 			shift(85),  // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S164
+	actionRow{ // S162
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			shift(169), // tok_identifier
+			shift(167), // tok_identifier
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			shift(170), // tok_option
+			shift(168), // tok_option
 			nil,        // =
 			nil,        // tok_const_int
 			nil,        // tok_doc
@@ -8073,48 +7813,47 @@ var actionTab = actionTable{
 			nil,        // map
 			nil,        // <
 			nil,        // >
-			shift(174), // int8
-			shift(175), // uint8
-			shift(176), // int16
-			shift(177), // uint16
-			shift(178), // int32
-			shift(179), // uint32
-			shift(180), // int64
-			shift(181), // uint64
-			shift(182), // string
-			shift(183), // bytes
-			shift(184), // bool
-			shift(185), // float
-			shift(186), // double
+			shift(172), // int8
+			shift(173), // uint8
+			shift(174), // int16
+			shift(175), // uint16
+			shift(176), // int32
+			shift(177), // uint32
+			shift(178), // int64
+			shift(179), // uint64
+			shift(180), // string
+			shift(181), // bytes
+			shift(182), // bool
+			shift(183), // float
+			shift(184), // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S165
+	actionRow{ // S163
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			shift(187), // tok_identifier
-			reduce(74), // ;, reduce: RqRs
-			reduce(74), // ,, reduce: RqRs
+			shift(185), // tok_identifier
+			reduce(73), // ;, reduce: RqRs
+			reduce(73), // ,, reduce: RqRs
 			nil,        // import
 			nil,        // tok_literal
-			shift(188), // tok_option
-			reduce(74), // =, reduce: RqRs
+			shift(186), // tok_option
+			reduce(73), // =, reduce: RqRs
 			nil,        // tok_const_int
-			reduce(74), // tok_doc, reduce: RqRs
+			reduce(73), // tok_doc, reduce: RqRs
 			nil,        // enum
-			reduce(74), // {, reduce: RqRs
-			reduce(74), // }, reduce: RqRs
+			reduce(73), // {, reduce: RqRs
+			reduce(73), // }, reduce: RqRs
 			nil,        // message
 			nil,        // [
 			nil,        // ]
@@ -8136,16 +7875,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			reduce(74), // oneway, reduce: RqRs
+			reduce(73), // call, reduce: RqRs
 			nil,        // :
-			reduce(74), // notify, reduce: RqRs
-			reduce(74), // twoway, reduce: RqRs
+			reduce(73), // notify, reduce: RqRs
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S166
+	actionRow{ // S164
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -8185,16 +7923,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S167
+	actionRow{ // S165
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -8202,8 +7939,8 @@ var actionTab = actionTable{
 			nil,        // empty
 			nil,        // package
 			reduce(12), // tok_identifier, reduce: OptEnd
-			shift(192), // ;
-			shift(193), // ,
+			shift(190), // ;
+			shift(191), // ,
 			nil,        // import
 			nil,        // tok_literal
 			reduce(12), // tok_option, reduce: OptEnd
@@ -8234,16 +7971,15 @@ var actionTab = actionTable{
 			reduce(12), // float, reduce: OptEnd
 			reduce(12), // double, reduce: OptEnd
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S168
+	actionRow{ // S166
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -8283,16 +8019,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S169
+	actionRow{ // S167
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -8332,16 +8067,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S170
+	actionRow{ // S168
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -8381,16 +8115,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S171
+	actionRow{ // S169
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -8415,7 +8148,7 @@ var actionTab = actionTable{
 			nil,        // repeated
 			nil,        // map
 			nil,        // <
-			shift(194), // >
+			shift(192), // >
 			nil,        // int8
 			nil,        // uint8
 			nil,        // int16
@@ -8430,16 +8163,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S172
+	actionRow{ // S170
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -8479,16 +8211,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S173
+	actionRow{ // S171
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -8528,16 +8259,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S174
+	actionRow{ // S172
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -8577,16 +8307,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S175
+	actionRow{ // S173
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -8626,16 +8355,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S176
+	actionRow{ // S174
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -8675,16 +8403,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S177
+	actionRow{ // S175
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -8724,16 +8451,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S178
+	actionRow{ // S176
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -8773,16 +8499,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S179
+	actionRow{ // S177
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -8822,16 +8547,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S180
+	actionRow{ // S178
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -8871,16 +8595,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S181
+	actionRow{ // S179
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -8920,16 +8643,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S182
+	actionRow{ // S180
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -8969,16 +8691,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S183
+	actionRow{ // S181
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -9018,16 +8739,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S184
+	actionRow{ // S182
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -9067,16 +8787,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S185
+	actionRow{ // S183
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -9116,16 +8835,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S186
+	actionRow{ // S184
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -9165,16 +8883,63 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S187
+	actionRow{ // S185
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			reduce(74), // tok_identifier, reduce: RqRs
+			reduce(74), // ;, reduce: RqRs
+			reduce(74), // ,, reduce: RqRs
+			nil,        // import
+			nil,        // tok_literal
+			reduce(74), // tok_option, reduce: RqRs
+			reduce(74), // =, reduce: RqRs
+			nil,        // tok_const_int
+			reduce(74), // tok_doc, reduce: RqRs
+			nil,        // enum
+			reduce(74), // {, reduce: RqRs
+			reduce(74), // }, reduce: RqRs
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			reduce(74), // call, reduce: RqRs
+			nil,        // :
+			reduce(74), // notify, reduce: RqRs
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S186
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -9214,114 +8979,63 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			reduce(75), // oneway, reduce: RqRs
+			reduce(75), // call, reduce: RqRs
 			nil,        // :
 			reduce(75), // notify, reduce: RqRs
-			reduce(75), // twoway, reduce: RqRs
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S187
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			reduce(76), // tok_identifier, reduce: MethodNo
+			reduce(76), // ;, reduce: MethodNo
+			reduce(76), // ,, reduce: MethodNo
+			nil,        // import
+			nil,        // tok_literal
+			reduce(76), // tok_option, reduce: MethodNo
+			shift(193), // =
+			nil,        // tok_const_int
+			reduce(76), // tok_doc, reduce: MethodNo
+			nil,        // enum
+			reduce(76), // {, reduce: MethodNo
+			reduce(76), // }, reduce: MethodNo
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			reduce(76), // call, reduce: MethodNo
+			nil,        // :
+			reduce(76), // notify, reduce: MethodNo
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
 	actionRow{ // S188
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			reduce(76), // tok_identifier, reduce: RqRs
-			reduce(76), // ;, reduce: RqRs
-			reduce(76), // ,, reduce: RqRs
-			nil,        // import
-			nil,        // tok_literal
-			reduce(76), // tok_option, reduce: RqRs
-			reduce(76), // =, reduce: RqRs
-			nil,        // tok_const_int
-			reduce(76), // tok_doc, reduce: RqRs
-			nil,        // enum
-			reduce(76), // {, reduce: RqRs
-			reduce(76), // }, reduce: RqRs
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			reduce(76), // oneway, reduce: RqRs
-			nil,        // :
-			reduce(76), // notify, reduce: RqRs
-			reduce(76), // twoway, reduce: RqRs
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S189
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			reduce(77), // tok_identifier, reduce: MethodNo
-			reduce(77), // ;, reduce: MethodNo
-			reduce(77), // ,, reduce: MethodNo
-			nil,        // import
-			nil,        // tok_literal
-			reduce(77), // tok_option, reduce: MethodNo
-			shift(195), // =
-			nil,        // tok_const_int
-			reduce(77), // tok_doc, reduce: MethodNo
-			nil,        // enum
-			reduce(77), // {, reduce: MethodNo
-			reduce(77), // }, reduce: MethodNo
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			reduce(77), // oneway, reduce: MethodNo
-			nil,        // :
-			reduce(77), // notify, reduce: MethodNo
-			reduce(77), // twoway, reduce: MethodNo
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S190
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -9339,7 +9053,7 @@ var actionTab = actionTable{
 			reduce(22), // tok_doc, reduce: Doc
 			nil,        // enum
 			nil,        // {
-			shift(198), // }
+			shift(196), // }
 			nil,        // message
 			nil,        // [
 			nil,        // ]
@@ -9361,16 +9075,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S191
+	actionRow{ // S189
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -9410,16 +9123,15 @@ var actionTab = actionTable{
 			reduce(35), // float, reduce: Field
 			reduce(35), // double, reduce: Field
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S192
+	actionRow{ // S190
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -9459,16 +9171,15 @@ var actionTab = actionTable{
 			reduce(13), // float, reduce: OptEnd
 			reduce(13), // double, reduce: OptEnd
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S193
+	actionRow{ // S191
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -9508,16 +9219,15 @@ var actionTab = actionTable{
 			reduce(14), // float, reduce: OptEnd
 			reduce(14), // double, reduce: OptEnd
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S194
+	actionRow{ // S192
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -9557,16 +9267,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S195
+	actionRow{ // S193
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -9580,7 +9289,7 @@ var actionTab = actionTable{
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
-			shift(199), // tok_const_int
+			shift(197), // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
 			nil,        // {
@@ -9606,16 +9315,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S196
+	actionRow{ // S194
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -9632,7 +9340,7 @@ var actionTab = actionTable{
 			nil,        // tok_const_int
 			reduce(36), // tok_doc, reduce: AddtionOption
 			nil,        // enum
-			shift(200), // {
+			shift(198), // {
 			reduce(36), // }, reduce: AddtionOption
 			nil,        // message
 			nil,        // [
@@ -9655,16 +9363,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			reduce(36), // oneway, reduce: AddtionOption
+			reduce(36), // call, reduce: AddtionOption
 			nil,        // :
 			reduce(36), // notify, reduce: AddtionOption
-			reduce(36), // twoway, reduce: AddtionOption
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S197
+	actionRow{ // S195
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -9676,10 +9383,10 @@ var actionTab = actionTable{
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			shift(203), // tok_option
+			shift(201), // tok_option
 			nil,        // =
 			nil,        // tok_const_int
-			shift(204), // tok_doc
+			shift(202), // tok_doc
 			nil,        // enum
 			nil,        // {
 			nil,        // }
@@ -9704,16 +9411,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S198
+	actionRow{ // S196
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -9753,34 +9459,33 @@ var actionTab = actionTable{
 			reduce(37), // float, reduce: AddtionOption
 			reduce(37), // double, reduce: AddtionOption
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S199
+	actionRow{ // S197
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(78), // tok_identifier, reduce: MethodNo
-			reduce(78), // ;, reduce: MethodNo
-			reduce(78), // ,, reduce: MethodNo
+			reduce(77), // tok_identifier, reduce: MethodNo
+			reduce(77), // ;, reduce: MethodNo
+			reduce(77), // ,, reduce: MethodNo
 			nil,        // import
 			nil,        // tok_literal
-			reduce(78), // tok_option, reduce: MethodNo
+			reduce(77), // tok_option, reduce: MethodNo
 			nil,        // =
 			nil,        // tok_const_int
-			reduce(78), // tok_doc, reduce: MethodNo
+			reduce(77), // tok_doc, reduce: MethodNo
 			nil,        // enum
-			reduce(78), // {, reduce: MethodNo
-			reduce(78), // }, reduce: MethodNo
+			reduce(77), // {, reduce: MethodNo
+			reduce(77), // }, reduce: MethodNo
 			nil,        // message
 			nil,        // [
 			nil,        // ]
@@ -9802,16 +9507,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			reduce(78), // oneway, reduce: MethodNo
+			reduce(77), // call, reduce: MethodNo
 			nil,        // :
-			reduce(78), // notify, reduce: MethodNo
-			reduce(78), // twoway, reduce: MethodNo
+			reduce(77), // notify, reduce: MethodNo
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S200
+	actionRow{ // S198
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -9851,16 +9555,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S201
+	actionRow{ // S199
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -9868,8 +9571,8 @@ var actionTab = actionTable{
 			nil,        // empty
 			nil,        // package
 			reduce(12), // tok_identifier, reduce: OptEnd
-			shift(207), // ;
-			shift(208), // ,
+			shift(205), // ;
+			shift(206), // ,
 			nil,        // import
 			nil,        // tok_literal
 			reduce(12), // tok_option, reduce: OptEnd
@@ -9900,16 +9603,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			reduce(12), // oneway, reduce: OptEnd
+			reduce(12), // call, reduce: OptEnd
 			nil,        // :
 			reduce(12), // notify, reduce: OptEnd
-			reduce(12), // twoway, reduce: OptEnd
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S202
+	actionRow{ // S200
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -9949,16 +9651,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S203
+	actionRow{ // S201
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -9971,7 +9672,7 @@ var actionTab = actionTable{
 			nil,        // import
 			nil,        // tok_literal
 			reduce(19), // tok_option, reduce: OptionValue
-			shift(210), // =
+			shift(208), // =
 			nil,        // tok_const_int
 			reduce(19), // tok_doc, reduce: OptionValue
 			nil,        // enum
@@ -9998,16 +9699,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S204
+	actionRow{ // S202
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -10047,16 +9747,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S205
+	actionRow{ // S203
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -10074,7 +9773,7 @@ var actionTab = actionTable{
 			reduce(22), // tok_doc, reduce: Doc
 			nil,        // enum
 			nil,        // {
-			shift(211), // }
+			shift(209), // }
 			nil,        // message
 			nil,        // [
 			nil,        // ]
@@ -10096,34 +9795,33 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S206
+	actionRow{ // S204
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(73), // tok_identifier, reduce: Method
+			reduce(72), // tok_identifier, reduce: Method
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			reduce(73), // tok_option, reduce: Method
+			reduce(72), // tok_option, reduce: Method
 			nil,        // =
 			nil,        // tok_const_int
-			reduce(73), // tok_doc, reduce: Method
+			reduce(72), // tok_doc, reduce: Method
 			nil,        // enum
 			nil,        // {
-			reduce(73), // }, reduce: Method
+			reduce(72), // }, reduce: Method
 			nil,        // message
 			nil,        // [
 			nil,        // ]
@@ -10145,16 +9843,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			reduce(73), // oneway, reduce: Method
+			reduce(72), // call, reduce: Method
 			nil,        // :
-			reduce(73), // notify, reduce: Method
-			reduce(73), // twoway, reduce: Method
+			reduce(72), // notify, reduce: Method
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S207
+	actionRow{ // S205
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -10194,16 +9891,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			reduce(13), // oneway, reduce: OptEnd
+			reduce(13), // call, reduce: OptEnd
 			nil,        // :
 			reduce(13), // notify, reduce: OptEnd
-			reduce(13), // twoway, reduce: OptEnd
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S208
+	actionRow{ // S206
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -10243,16 +9939,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			reduce(14), // oneway, reduce: OptEnd
+			reduce(14), // call, reduce: OptEnd
 			nil,        // :
 			reduce(14), // notify, reduce: OptEnd
-			reduce(14), // twoway, reduce: OptEnd
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S209
+	actionRow{ // S207
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -10292,16 +9987,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S210
+	actionRow{ // S208
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -10312,10 +10006,10 @@ var actionTab = actionTable{
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
-			shift(212), // tok_literal
+			shift(210), // tok_literal
 			nil,        // tok_option
 			nil,        // =
-			shift(213), // tok_const_int
+			shift(211), // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
 			nil,        // {
@@ -10341,16 +10035,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S211
+	actionRow{ // S209
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -10390,16 +10083,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			reduce(37), // oneway, reduce: AddtionOption
+			reduce(37), // call, reduce: AddtionOption
 			nil,        // :
 			reduce(37), // notify, reduce: AddtionOption
-			reduce(37), // twoway, reduce: AddtionOption
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S212
+	actionRow{ // S210
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -10439,16 +10131,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S213
+	actionRow{ // S211
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -10488,10 +10179,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // oneway
+			nil,        // call
 			nil,        // :
 			nil,        // notify
-			nil,        // twoway
 			nil,        // (
 			nil,        // )
 			nil,        // project

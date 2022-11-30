@@ -96,6 +96,11 @@ enum FieldType {
   CustomType = 4;
 }
 
+enum MethodType {
+  Call = 0;
+  Notify = 1;
+}
+
 enum BaseTypeDesc {
   Int8 = 0;
   Uint8 = 1;
@@ -162,6 +167,8 @@ message MethodDesc {
   MsgDesc Reply = 5;
   //
   int64 MethodID = 6;
+  // flag
+  int32 MethodFlag = 7;
 }
 
 message ServiceDesc {

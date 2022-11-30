@@ -218,9 +218,8 @@ ServiceElements:
 ;
 
 MethodFlag:
-	"oneway" ":"								<< ast.Oneway,nil >> 
+	"call" ":"									<< ast.Call,nil >> 
 |	"notify" ":"								<< ast.Notify,nil >> 
-|	"twoway" ":"								<< ast.Twoway,nil >> 
 ;
 
 

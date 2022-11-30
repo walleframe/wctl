@@ -75,6 +75,7 @@ func (method *YTMethod) toDesc() (desc *buildpb.MethodDesc) {
 	desc.Options = method.YTOptions.toDesc()
 	desc.Request = method.Request.toDesc()
 	desc.Reply = method.Reply.toDesc()
+	desc.MethodFlag = int32(method.Flag)
 	return
 }
 

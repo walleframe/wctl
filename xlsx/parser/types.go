@@ -199,7 +199,7 @@ func NewArray(def string) Type {
 	if !strings.HasPrefix(def, "array<") || !strings.HasSuffix(def, ">") {
 		return nil
 	}
-	elt := strings.TrimSuffix(strings.TrimPrefix("map<", def), ">")
+	elt := strings.TrimSuffix(strings.TrimPrefix("array<", def), ">")
 	t, ok := typeCache.basic[elt]
 	if !ok {
 		return nil

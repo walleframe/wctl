@@ -35,7 +35,7 @@ func (t *Float) PBTypeName() (string, error) {
 	if t.typ == "float32" {
 		return "float", nil
 	}
-	return "float64", nil
+	return "double", nil
 }
 
 func (t *Array) PBTypeName() (string, error) {
@@ -67,9 +67,4 @@ func (t *Map) PBTypeName() (string, error) {
 	}
 
 	return fmt.Sprintf("map<%s,%s>", key, value), nil
-}
-
-//  暂不解析此字段
-func (*Vector3) PBTypeName() string {
-	return "string"
 }

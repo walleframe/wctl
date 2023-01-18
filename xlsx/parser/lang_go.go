@@ -64,8 +64,3 @@ func (t *Map) GoTypeName() (string, error) {
 
 	return fmt.Sprintf("map[%s]%s", key, value), nil
 }
-
-// 暂不解析此字段 
-func (*Vector3) GoTypeName() string {
-	return "string"
-}

@@ -102,6 +102,9 @@ type XlsxSheet struct {
 	allData [][]*XlsxCell
 	// 单结构体标记
 	KVFlag bool
+
+	// 缓存lua脚本错误
+	errs []error
 }
 
 // func (sheet *XlsxSheet) Rows() int {

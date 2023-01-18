@@ -2,6 +2,7 @@ package parser
 
 import (
 	"fmt"
+	"log"
 	"math"
 	"strconv"
 	"strings"
@@ -196,10 +197,12 @@ var _ Type = (*Array)(nil)
 
 func NewArray(def string) Type {
 	// 类型匹配
-	if !strings.HasPrefix(def, "array<") || !strings.HasSuffix(def, ">") {
+	if !strings.HasPrefix(def, "array") || !strings.HasSuffix(def, ">") {
 		return nil
 	}
-	elt := strings.TrimSuffix(strings.TrimPrefix("array<", def), ">")
+	elt := strings.TrimSpace(strings.TrimSuffix(strings.TrimSpace(strings.TrimPrefix(
+		strings.TrimSpace(strings.TrimPrefix(def, "array")), "<")), ">"))
+	log.Println("check array item", elt, "source", def)
 	t, ok := typeCache.basic[elt]
 	if !ok {
 		return nil
@@ -208,7 +211,10 @@ func NewArray(def string) Type {
 }
 
 func (t *Array) Parse(src string) (_ string, _ interface{}, errs error) {
-	splits := strings.Split(src, ",")
+	if src == "" {
+		return src, []interface{}{}, nil
+	}
+	splits := strings.Split(src, ";")
 	vals := make([]interface{}, 0, len(splits))
 	reps := make([]string, 0, len(splits))
 	for _, item := range splits {
@@ -221,7 +227,7 @@ func (t *Array) Parse(src string) (_ string, _ interface{}, errs error) {
 		vals = append(vals, v)
 		reps = append(reps, rep)
 	}
-	return strings.Join(reps, ","), vals, errs
+	return strings.Join(reps, ";"), vals, errs
 }
 
 // 类型自带的检测
@@ -255,6 +261,10 @@ func NewMap(def string) Type {
 	if !ok {
 		return nil
 	}
+	if strings.Contains(t.Name(), "float") {
+		log.Println("map 不支持 float类型做key")
+		return nil
+	}
 	v, ok := typeCache.basic[list[1]]
 	if !ok {
 		return nil
@@ -263,6 +273,9 @@ func NewMap(def string) Type {
 }
 
 func (t *Map) Parse(src string) (_ string, _ interface{}, errs error) {
+	if src == "" {
+		return "", map[interface{}]interface{}{}, nil
+	}
 	splits := strings.Split(src, ";")
 	vals := make(map[interface{}]interface{})
 	buf := strings.Builder{}
@@ -319,46 +332,6 @@ func (t *Map) Name() string {
 	return fmt.Sprintf("map<%s,%s>", t.key.Name(), t.value.Name())
 }
 
-// Vector3 自定义类型
-type Vector3 struct{}
-
-// 实际数据格式
-type Vec3 []float64
-
-var _ Type = (*Vector3)(nil)
-
-func (*Vector3) Parse(src string) (replace string, val interface{}, err error) {
-	// 可选的{}包装
-	src = strings.TrimSuffix(strings.TrimPrefix(src, "{"), "}")
-	if src == "" {
-		return "0,0,0", Vec3{0, 0, 0}, nil
-	}
-	lists := strings.Split(src, ",")
-	if len(lists) != 3 {
-		err = fmt.Errorf("vec3 must have 3 values,%s", src)
-		return
-	}
-	var vec3 Vec3
-	for i := 0; i < 3; i++ {
-		n, err := strconv.ParseFloat(lists[i], 64)
-		if err != nil {
-			return "", nil, fmt.Errorf("vec3 %d value %s parse failed,%w", i, lists[i], err)
-		}
-		vec3[0] = n
-	}
-	return src, replace, nil
-}
-
-// 类型自带的检测
-func (*Vector3) Checkers() []ValueCheck {
-	return nil
-}
-
-// 内置类型名
-func (*Vector3) Name() string {
-	return "vec3"
-}
-
 var typeCache = &struct {
 	basic map[string]Type
 	autos []func(def string) Type
@@ -390,13 +363,13 @@ func RegisterDefaultType() {
 	RegisterType(NewUint("uint16", innerUintCheck(math.MaxUint16)))
 	RegisterType(NewUint("uint32", innerUintCheck(math.MaxUint32)))
 	RegisterType(NewUint("uint64"))
+	RegisterType(NewFloat("float", innerFload32Check()))
 	RegisterType(NewFloat("float32", innerFload32Check()))
 	RegisterType(NewFloat("float64"))
 	// container type
 	RegisterAutoType(NewArray)
 	RegisterAutoType(NewMap)
 	// 自定义类型
-	RegisterType(&Vector3{})
 }
 
 // ParseType 解析类型定义

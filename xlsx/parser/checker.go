@@ -4,11 +4,15 @@ import (
 	"errors"
 	"fmt"
 	"math"
+	"sync"
 
 	lua "github.com/yuin/gopher-lua"
 )
 
-var checkLState = lua.NewState()
+var (
+	checkLState = lua.NewState()
+	checkLock   sync.Mutex
+)
 
 const (
 	checkListName = "__check_list"
@@ -39,41 +43,54 @@ func LuaHelperGetCheckList(L *lua.LState) *[]ValueCheck {
 	return nil
 }
 
-// CheckOptionInteger 有指定数据的检测
-func CheckOptionIntege(L *lua.LState) int {
+func checkNumber(in interface{}, f func(val float64) error) (err error) {
+	switch val := in.(type) {
+	case int64:
+		return f(float64(val))
+	case uint64:
+		return f(float64(val))
+	case float64:
+		return f(float64(val))
+	case []interface{}:
+		for _, av := range val {
+			err = checkNumber(av, f)
+			if err != nil {
+				return err
+			}
+		}
+	case map[interface{}]interface{}:
+		for _, av := range val {
+			err = checkNumber(av, f)
+			if err != nil {
+				return err
+			}
+		}
+	default:
+		return fmt.Errorf("%w %#v", ErrCheckTypeInvalid, in)
+	}
+	return nil
+}
+
+// LuaCheckFuncOption 有指定数据的检测
+func LuaCheckFuncOption(L *lua.LState) int {
 	if L.GetTop() < 1 {
 		return 0
 	}
 
-	var vals []int64
+	var vals []float64
 	for i := 1; i <= L.GetTop(); i++ {
-		vals = append(vals, L.CheckInt64(i))
+		vals = append(vals, float64(L.CheckNumber(i)))
 	}
-	// TODO: L.CheckNumber(1) float支持
-	checker := func(in interface{}) (err error) {
-		switch n := in.(type) {
-		case int64:
-			for _, v := range vals {
-				if v == n {
-					return nil
-				}
-			}
-		case uint64:
-			// 此处转换成int64,应该可以满足需求,不考虑溢出情况
-			for _, v := range vals {
-				if v == int64(n) {
-					return nil
-				}
-			}
-		case float64:
-			// TODO: float 支持
-		case []interface{}: // slice 支持
-		case map[interface{}]interface{}: // map - value 检测支持
-		default:
-			return ErrCheckTypeInvalid
-		}
 
-		return fmt.Errorf("value %v not in option list %v", in, vals)
+	checker := func(in interface{}) (err error) {
+		return checkNumber(in, func(val float64) error {
+			for _, v := range vals {
+				if v == val {
+					return nil
+				}
+			}
+			return fmt.Errorf("value %v not in option list %v", in, vals)
+		})
 	}
 
 	list := LuaHelperGetCheckList(L)
@@ -81,56 +98,73 @@ func CheckOptionIntege(L *lua.LState) int {
 	return 0
 }
 
-// CheckMaxInteger 检测最大值上限
-func CheckMaxInteger(L *lua.LState) int {
+// LuaCheckFuncMax 检测最大值上限
+func LuaCheckFuncMax(L *lua.LState) int {
 	if L.GetTop() < 1 {
 		L.RaiseError("need 1 args")
 		return 0
 	}
-	max := L.CheckInt64(1)
+	max := float64(L.CheckNumber(1))
 
-	checker := func(val interface{}) (err error) {
-		n, ok := val.(int64)
-		if !ok {
-			return ErrCheckTypeInvalid
-		}
-		if n > max {
-			return fmt.Errorf("max value limit %d,got %d", max, n)
-		}
-		return nil
+	checker := func(in interface{}) (err error) {
+		return checkNumber(in, func(val float64) error {
+			if val > max {
+				return fmt.Errorf("max value limit %f,got %f", max, val)
+			}
+			return nil
+		})
 	}
+
 	list := LuaHelperGetCheckList(L)
 	*list = append(*list, checker)
 	return 0
 }
 
-// CheckIntegerRange 检测数值有效范围
-func CheckIntegerRange(L *lua.LState) int {
+// LuaCheckFuncMin 检测最小值下限
+func LuaCheckFuncMin(L *lua.LState) int {
+	if L.GetTop() < 1 {
+		L.RaiseError("need 1 args")
+		return 0
+	}
+	min := float64(L.CheckNumber(1))
 
+	checker := func(in interface{}) (err error) {
+		return checkNumber(in, func(val float64) error {
+			if val < min {
+				return fmt.Errorf("min value limit %f,got %f", min, val)
+			}
+			return nil
+		})
+	}
+
+	list := LuaHelperGetCheckList(L)
+	*list = append(*list, checker)
+	return 0
+}
+
+// LuaCheckFuncRange 检测数值有效范围
+func LuaCheckFuncRange(L *lua.LState) int {
 	if L.GetTop() != 2 {
 		L.RaiseError("need 2 args")
 		return 0
 	}
-	min := L.CheckInt64(1)
-	max := L.CheckInt64(2)
+	min := float64(L.CheckNumber(1))
+	max := float64(L.CheckNumber(2))
 
 	if min > max {
 		min, max = max, min
 	}
 
-	list := LuaHelperGetCheckList(L)
-
-	checker := func(val interface{}) (err error) {
-		n, ok := val.(int64)
-		if !ok {
-			return ErrCheckTypeInvalid
-		}
-
-		if n < min || n > max {
-			return fmt.Errorf("value range(%d,%d),got %d", min, max, n)
-		}
-		return nil
+	checker := func(in interface{}) (err error) {
+		return checkNumber(in, func(val float64) error {
+			if val < min || val > max {
+				return fmt.Errorf("value range(%f,%f),got %f", min, max, val)
+			}
+			return nil
+		})
 	}
+
+	list := LuaHelperGetCheckList(L)
 	*list = append(*list, checker)
 	return 0
 }
@@ -140,55 +174,46 @@ func innerIntCheck(min, max int64) ValueCheck {
 		min, max = max, min
 	}
 	return func(val interface{}) (err error) {
-		n, ok := val.(int64)
-		if !ok {
-			return ErrCheckTypeInvalid
-		}
-
-		if n < min || n > max {
-			return fmt.Errorf("value range(%d,%d),got %d", min, max, n)
-		}
-		return nil
+		return checkNumber(val, func(val float64) error {
+			if int64(val) < min || int64(val) > max {
+				return fmt.Errorf("value range(%d,%d),got %f", min, max, val)
+			}
+			return nil
+		})
 	}
 }
 
 func innerUintCheck(max uint64) ValueCheck {
 	return func(val interface{}) (err error) {
-		n, ok := val.(uint64)
-		if !ok {
-			return ErrCheckTypeInvalid
-		}
-
-		if n > max {
-			return fmt.Errorf("value range(0,%d),got %d", max, n)
-		}
-		return nil
+		return checkNumber(val, func(val float64) error {
+			if uint64(val) > max {
+				return fmt.Errorf("value range(0,%d),got %d", max, uint64(val))
+			}
+			return nil
+		})
 	}
 }
 
 func innerFload32Check() ValueCheck {
 	return func(val interface{}) (err error) {
-		n, ok := val.(float64)
-		if !ok {
-			return ErrCheckTypeInvalid
-		}
-
-		if n < math.SmallestNonzeroFloat32 || n > math.MaxFloat32 {
-			return fmt.Errorf("value out of range float32,got %f", n)
-		}
-		return nil
+		return checkNumber(val, func(val float64) error {
+			if val > math.MaxFloat32 {
+				return fmt.Errorf("value out of range float32,got %f", val)
+			}
+			return nil
+		})
 	}
 }
-
 
 func RegisterCheck(name string, f lua.LGFunction) {
 	checkLState.SetGlobal(name, checkLState.NewFunction(f))
 }
 
 func RegisterDefaultChecker() {
-	RegisterCheck("range", CheckIntegerRange)
-	RegisterCheck("option", CheckOptionIntege)
-	RegisterCheck("max", CheckMaxInteger)
+	RegisterCheck("range", LuaCheckFuncRange)
+	RegisterCheck("option", LuaCheckFuncOption)
+	RegisterCheck("max", LuaCheckFuncMax)
+	RegisterCheck("min", LuaCheckFuncMin)
 	//min
 	// size(5,1) // 最大5个 最少1个
 	// atleast(5)
@@ -198,10 +223,13 @@ func ParseCheker(check string) (chekers []ValueCheck, err error) {
 	if len(check) < 1 {
 		return
 	}
+	// 并发保护
+	checkLock.Lock()
 	list := checkLState.NewUserData()
 	list.Value = &chekers
 	checkLState.SetGlobal(checkListName, list)
 	err = checkLState.DoString(check)
+	checkLock.Unlock()
 	if err != nil {
 		return nil, err
 	}

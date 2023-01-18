@@ -2,6 +2,7 @@ package parser
 
 import (
 	"fmt"
+	"log"
 	"strings"
 
 	"github.com/tealeg/xlsx"
@@ -19,7 +20,13 @@ func LoadXlsx(fname string) (datas []*XlsxSheet, check []*XlsxCheckSheet, errs e
 		if strings.HasSuffix(sheet.Name, "_config") {
 			value, err := ParseDataXlsx(fname, sheet)
 			if err != nil {
-				errs = multierr.Append(errs, err)
+				if errs == nil {
+					errs = err
+				}
+				log.Println("parse ", fname, "sheet", sheet.Name, "failed")
+				for _, v := range multierr.Errors(err) {
+					log.Println("\t", v)
+				}
 				continue
 			}
 			datas = append(datas, value)
@@ -28,7 +35,13 @@ func LoadXlsx(fname string) (datas []*XlsxSheet, check []*XlsxCheckSheet, errs e
 		if strings.HasSuffix(sheet.Name, "_vert") {
 			value, err := ParseKVXlsx(fname, sheet)
 			if err != nil {
-				errs = multierr.Append(errs, err)
+				if errs == nil {
+					errs = err
+				}
+				log.Println("parse ", fname, "sheet", sheet.Name, "failed")
+				for _, v := range multierr.Errors(err) {
+					log.Println("\t", v)
+				}
 				continue
 			}
 			datas = append(datas, value)
@@ -37,7 +50,13 @@ func LoadXlsx(fname string) (datas []*XlsxSheet, check []*XlsxCheckSheet, errs e
 		if strings.HasSuffix(sheet.Name, "_check") {
 			value, err := ParseCheckXlsx(fname, sheet)
 			if err != nil {
-				errs = multierr.Append(errs, err)
+				if errs == nil {
+					errs = err
+				}
+				log.Println("parse ", fname, "sheet", sheet.Name, "failed")
+				for _, v := range multierr.Errors(err) {
+					log.Println("\t", v)
+				}
 				continue
 			}
 			check = append(check, value)
@@ -48,9 +67,17 @@ func LoadXlsx(fname string) (datas []*XlsxSheet, check []*XlsxCheckSheet, errs e
 
 // getCellValue 获取xlsx单元格数据
 func getCellValue(sheet *xlsx.Sheet, row, col int, typ Type) (ret string) {
+	// 兼容空行,空单元格
+	if row >= len(sheet.Rows) {
+		return ret
+	}
+	// 兼容空行,空单元格
+	if col >= len(sheet.Rows[row].Cells) {
+		return ret
+	}
 	c := sheet.Rows[row].Cells[col]
 	// 浮点数单元格按原样输出
-	if strings.Contains(typ.Name(), "float") {
+	if typ != nil && strings.Contains(typ.Name(), "float") {
 		ret, _ = c.GeneralNumeric()
 		ret = strings.TrimSpace(ret)
 	} else {
@@ -60,32 +87,52 @@ func getCellValue(sheet *xlsx.Sheet, row, col int, typ Type) (ret string) {
 	return
 }
 
+func emptyRow(row *xlsx.Row) bool {
+	for _, cell := range row.Cells {
+		if cell == nil {
+			continue
+		}
+		if len(cell.Value) == 0 {
+			continue
+		}
+		if strings.TrimSpace(cell.Value) == "" {
+			continue
+		}
+		return false
+	}
+	return true
+}
+
 // ParseDataXlsx 解析数据表格 数组或者map
 func ParseDataXlsx(fromFile string, sheet *xlsx.Sheet) (data *XlsxSheet, errs error) {
 	data = &XlsxSheet{
 		SheetName:  sheet.Name,
-		StructName: "",
+		StructName: strings.TrimSuffix(sheet.Name, "_config"),
 		FromFile:   fromFile,
-		allType:       []*ColumnType{},
-		allData:       [][]*XlsxCell{},
+		allType:    []*ColumnType{},
+		allData:    [][]*XlsxCell{},
 		KVFlag:     false,
 	}
 	if sheet.MaxRow < 4 {
-		return nil, fmt.Errorf("sheet format invliad. from %s sheet %s, row less then 4(fieldName,type,options,comment)", fromFile, sheet.Name)
+		return nil, fmt.Errorf("sheet format invliad. row less then 4(fieldName,type,options,comment)")
 	}
+
 	// 解析文件头,分析类型
 	columns := make([]int, 0, sheet.MaxCol)
 	for col := 0; col < sheet.MaxCol; col++ {
-		fieldName := strings.TrimSpace(sheet.Rows[0].Cells[col].Value)
-		fieldType := strings.TrimSpace(sheet.Rows[1].Cells[col].Value)
-		filedOptions := strings.TrimSpace(sheet.Rows[2].Cells[col].Value)
-		fieldComment := strings.TrimSpace(sheet.Rows[3].Cells[col].Value)
+		fieldComment := getCellValue(sheet, 0, col, nil)
+		fieldName := getCellValue(sheet, 1, col, nil)
+		fieldType := getCellValue(sheet, 2, col, nil)
+		filedOptions := getCellValue(sheet, 3, col, nil)
+		// 忽略空列
+		if fieldComment == "" && fieldName == "" && fieldType == "" && filedOptions == "" {
+			continue
+		}
 		typ, err := NewField(fieldType, fieldName, fieldComment, filedOptions)
 		if err != nil {
 			// 合并错误,一次性检测
-			errs = multierr.Append(errs, fmt.Errorf("%w. from %s sheet %s column %s",
-				err, fromFile, sheet.Name,
-				fieldName,
+			errs = multierr.Append(errs, fmt.Errorf("%w. column %s",
+				err, fieldName,
 			))
 			continue
 		}
@@ -97,14 +144,17 @@ func ParseDataXlsx(fromFile string, sheet *xlsx.Sheet) (data *XlsxSheet, errs er
 	}
 	// 解析文件数据
 	for row := 4; row < sheet.MaxRow; row++ {
+		if emptyRow(sheet.Rows[row]) {
+			continue
+		}
 		data.allData = append(data.allData, make([]*XlsxCell, 0, len(columns)))
+
 		for _, col := range columns {
 			typ := data.allType[col]
 			cell, err := typ.Parse(getCellValue(sheet, row, col, typ.Type))
 			if err != nil { // 合并错误,一次性检测
-				errs = multierr.Append(errs, fmt.Errorf("%w. from %s sheet %s column %s, row %d [%s]",
+				errs = multierr.Append(errs, fmt.Errorf("%w. column %s, row %d [%s]",
 					err,
-					fromFile, sheet.Name,
 					typ.Name, row+1, sheet.Rows[row].Cells[col].Value,
 				))
 				data.allData[row-4] = append(data.allData[row-4], nil)
@@ -120,14 +170,14 @@ func ParseDataXlsx(fromFile string, sheet *xlsx.Sheet) (data *XlsxSheet, errs er
 func ParseKVXlsx(fromFile string, sheet *xlsx.Sheet) (data *XlsxSheet, errs error) {
 	data = &XlsxSheet{
 		SheetName:  sheet.Name,
-		StructName: "",
+		StructName: strings.TrimSuffix(sheet.Name, "_vert"),
 		FromFile:   fromFile,
-		allType:       []*ColumnType{},
-		allData:       [][]*XlsxCell{},
+		allType:    []*ColumnType{},
+		allData:    [][]*XlsxCell{},
 		KVFlag:     true,
 	}
 	if sheet.MaxCol < 5 {
-		return nil, fmt.Errorf("sheet format invliad. from %s sheet %s, columns count less then 5(fieldName,type,options,comment,value)", fromFile, sheet.Name)
+		return nil, fmt.Errorf("sheet format invliad.  columns count less then 5(fieldName,type,options,comment,value)")
 	}
 	// 解析文件头,分析类型
 	rows := make([]int, 0, sheet.MaxRow)
@@ -139,9 +189,8 @@ func ParseKVXlsx(fromFile string, sheet *xlsx.Sheet) (data *XlsxSheet, errs erro
 		typ, err := NewField(fieldType, fieldName, fieldComment, filedOptions)
 		if err != nil {
 			// 合并错误,一次性检测
-			errs = multierr.Append(errs, fmt.Errorf("%w. from %s sheet %s row %s",
+			errs = multierr.Append(errs, fmt.Errorf("%w. row %s",
 				err,
-				fromFile, sheet.Name,
 				fieldName,
 			))
 			continue
@@ -175,18 +224,25 @@ func ParseKVXlsx(fromFile string, sheet *xlsx.Sheet) (data *XlsxSheet, errs erro
 func ParseCheckXlsx(fromFile string, sheet *xlsx.Sheet) (data *XlsxCheckSheet, errs error) {
 	data = &XlsxCheckSheet{
 		FromFile:   fromFile,
-		Sheet:      data.Sheet,
+		Sheet:      sheet.Name,
 		LuaScripts: map[string]string{},
 	}
-	if sheet.MaxRow < 2 {
-		return nil, fmt.Errorf("sheet format invliad. from %s sheet %s, columns count less then 2(flag,lua_script)", fromFile, sheet.Name)
+	if sheet.MaxRow < 2 || sheet.MaxCol < 2 {
+		return nil, fmt.Errorf("sheet format invliad. columns count less then 2(flag,lua_script)")
 	}
 	// 解析数据
 	for row := 0; row < sheet.MaxRow; row++ {
-		luaFlag := strings.TrimSpace(sheet.Rows[row].Cells[0].Value)
-		luaScript := strings.TrimSpace(sheet.Rows[row].Cells[1].Value)
+		luaFlag := getCellValue(sheet, row, 0, nil)
+		luaScript := getCellValue(sheet, row, 1, nil)
+		if luaFlag == "" && luaScript == "" {
+			continue
+		}
+		if luaFlag == "" || luaScript == "" {
+			errs = multierr.Append(errs, fmt.Errorf("row %d invalid, tag:[%s] script:[%s]", row, luaFlag, luaScript))
+		}
 		if _, ok := data.LuaScripts[luaFlag]; ok {
-			errs = multierr.Append(errs, fmt.Errorf("lua flag repeated. from %s sheet %s flag [%s] row %d repeated", fromFile, sheet.Name, luaFlag, row))
+			errs = multierr.Append(errs, fmt.Errorf("lua tag repeated. tag [%s] row %d repeated", luaFlag, row))
+			return
 		}
 		data.LuaScripts[luaFlag] = luaScript
 	}

@@ -6,7 +6,7 @@ import (
 )
 
 func TestCheck(t *testing.T) {
-	RegisterCheck("range", CheckIntegerRange)
+	RegisterCheck("range", LuaCheckFuncRange)
 	list, err := ParseCheker("range(1,2)")
 	if err != nil {
 		t.Fatal(err)

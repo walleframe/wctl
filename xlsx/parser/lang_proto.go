@@ -32,10 +32,10 @@ func (t *Uint) PBTypeName() (string, error) {
 }
 
 func (t *Float) PBTypeName() (string, error) {
-	if t.typ == "float32" {
-		return "float", nil
+	if t.typ == "float64" {
+		return "double", nil
 	}
-	return "double", nil
+	return "float", nil
 }
 
 func (t *Array) PBTypeName() (string, error) {

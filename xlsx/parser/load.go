@@ -16,9 +16,22 @@ func LoadXlsx(fname string) (datas []*XlsxSheet, check []*XlsxCheckSheet, errs e
 		return nil, nil, fmt.Errorf("open %s failed %w", fname, err)
 	}
 	for _, sheet := range file.Sheets {
+		sheetName, flags, err := SplitFlags(sheet.Name)
+		if err != nil {
+			if errs != nil {
+				err = nil
+			}
+			log.Println("parse ", fname, "sheet", sheet.Name, " flag failed")
+			log.Println("\t", err)
+			continue
+		}
+		if flags.ID {
+			log.Println("parse ", fname, "sheet", sheet.Name, " flag failed")
+			log.Println("\tSheet Name Flag Not Support @id")
+		}
 		// 数据配置
-		if strings.HasSuffix(sheet.Name, "_config") {
-			value, err := ParseDataXlsx(fname, sheet)
+		if strings.HasSuffix(sheetName, "_cfgs") {
+			value, err := ParseDataXlsx(fname, sheet, sheetName, flags)
 			if err != nil {
 				if errs == nil {
 					errs = err
@@ -32,8 +45,8 @@ func LoadXlsx(fname string) (datas []*XlsxSheet, check []*XlsxCheckSheet, errs e
 			datas = append(datas, value)
 		}
 		// key/value 单结构体
-		if strings.HasSuffix(sheet.Name, "_vert") {
-			value, err := ParseKVXlsx(fname, sheet)
+		if strings.HasSuffix(sheetName, "_st") {
+			value, err := ParseKVXlsx(fname, sheet, sheetName, flags)
 			if err != nil {
 				if errs == nil {
 					errs = err
@@ -47,7 +60,7 @@ func LoadXlsx(fname string) (datas []*XlsxSheet, check []*XlsxCheckSheet, errs e
 			datas = append(datas, value)
 		}
 		// lua check
-		if strings.HasSuffix(sheet.Name, "_check") {
+		if strings.HasSuffix(sheetName, "_lua") {
 			value, err := ParseCheckXlsx(fname, sheet)
 			if err != nil {
 				if errs == nil {
@@ -104,14 +117,15 @@ func emptyRow(row *xlsx.Row) bool {
 }
 
 // ParseDataXlsx 解析数据表格 数组或者map
-func ParseDataXlsx(fromFile string, sheet *xlsx.Sheet) (data *XlsxSheet, errs error) {
+func ParseDataXlsx(fromFile string, sheet *xlsx.Sheet, sheetName string, flags Flag) (data *XlsxSheet, errs error) {
 	data = &XlsxSheet{
-		SheetName:  sheet.Name,
-		StructName: strings.TrimSuffix(sheet.Name, "_config"),
+		SheetName:  sheetName,
+		StructName: strings.TrimSuffix(sheetName, "_config"),
 		FromFile:   fromFile,
-		allType:    []*ColumnType{},
-		allData:    [][]*XlsxCell{},
+		AllType:    []*ColumnType{},
+		AllData:    [][]*XlsxCell{},
 		KVFlag:     false,
+		Flag:       flags,
 	}
 	if sheet.MaxRow < 4 {
 		return nil, fmt.Errorf("sheet format invliad. row less then 4(fieldName,type,options,comment)")
@@ -136,7 +150,7 @@ func ParseDataXlsx(fromFile string, sheet *xlsx.Sheet) (data *XlsxSheet, errs er
 			))
 			continue
 		}
-		data.allType = append(data.allType, typ)
+		data.AllType = append(data.AllType, typ)
 		columns = append(columns, col)
 	}
 	if errs != nil {
@@ -147,34 +161,35 @@ func ParseDataXlsx(fromFile string, sheet *xlsx.Sheet) (data *XlsxSheet, errs er
 		if emptyRow(sheet.Rows[row]) {
 			continue
 		}
-		data.allData = append(data.allData, make([]*XlsxCell, 0, len(columns)))
+		data.AllData = append(data.AllData, make([]*XlsxCell, 0, len(columns)))
 
 		for _, col := range columns {
-			typ := data.allType[col]
+			typ := data.AllType[col]
 			cell, err := typ.Parse(getCellValue(sheet, row, col, typ.Type))
 			if err != nil { // 合并错误,一次性检测
 				errs = multierr.Append(errs, fmt.Errorf("%w. column %s, row %d [%s]",
 					err,
 					typ.Name, row+1, sheet.Rows[row].Cells[col].Value,
 				))
-				data.allData[row-4] = append(data.allData[row-4], nil)
+				data.AllData[row-4] = append(data.AllData[row-4], nil)
 				continue
 			}
-			data.allData[row-4] = append(data.allData[row-4], cell)
+			data.AllData[row-4] = append(data.AllData[row-4], cell)
 		}
 	}
 	return
 }
 
 // ParseKVXlsx 解析结构体表格
-func ParseKVXlsx(fromFile string, sheet *xlsx.Sheet) (data *XlsxSheet, errs error) {
+func ParseKVXlsx(fromFile string, sheet *xlsx.Sheet, sheetName string, flags Flag) (data *XlsxSheet, errs error) {
 	data = &XlsxSheet{
-		SheetName:  sheet.Name,
-		StructName: strings.TrimSuffix(sheet.Name, "_vert"),
+		SheetName:  sheetName,
+		StructName: strings.TrimSuffix(sheetName, "_vert"),
 		FromFile:   fromFile,
-		allType:    []*ColumnType{},
-		allData:    [][]*XlsxCell{},
+		AllType:    []*ColumnType{},
+		AllData:    [][]*XlsxCell{},
 		KVFlag:     true,
+		Flag:       flags,
 	}
 	if sheet.MaxCol < 5 {
 		return nil, fmt.Errorf("sheet format invliad.  columns count less then 5(fieldName,type,options,comment,value)")
@@ -182,10 +197,10 @@ func ParseKVXlsx(fromFile string, sheet *xlsx.Sheet) (data *XlsxSheet, errs erro
 	// 解析文件头,分析类型
 	rows := make([]int, 0, sheet.MaxRow)
 	for row := 0; row < sheet.MaxRow; row++ {
-		fieldName := strings.TrimSpace(sheet.Rows[row].Cells[0].Value)
-		fieldType := strings.TrimSpace(sheet.Rows[row].Cells[1].Value)
-		filedOptions := strings.TrimSpace(sheet.Rows[row].Cells[2].Value)
-		fieldComment := strings.TrimSpace(sheet.Rows[row].Cells[3].Value)
+		fieldName := getCellValue(sheet, row, 0, nil)
+		fieldType := getCellValue(sheet, row, 1, nil)
+		filedOptions := getCellValue(sheet, row, 2, nil)
+		fieldComment := getCellValue(sheet, row, 2, nil)
 		typ, err := NewField(fieldType, fieldName, fieldComment, filedOptions)
 		if err != nil {
 			// 合并错误,一次性检测
@@ -195,16 +210,16 @@ func ParseKVXlsx(fromFile string, sheet *xlsx.Sheet) (data *XlsxSheet, errs erro
 			))
 			continue
 		}
-		data.allType = append(data.allType, typ)
+		data.AllType = append(data.AllType, typ)
 		rows = append(rows, row)
 	}
 	if errs != nil {
 		return
 	}
 	// 解析文件数据
-	data.allData = append(data.allData, make([]*XlsxCell, 0, len(rows)))
+	data.AllData = append(data.AllData, make([]*XlsxCell, 0, len(rows)))
 	for _, row := range rows {
-		typ := data.allType[row]
+		typ := data.AllType[row]
 		cell, err := typ.Parse(getCellValue(sheet, row, 4, typ.Type))
 		if err != nil { // 合并错误,一次性检测
 			errs = multierr.Append(errs, fmt.Errorf("%w. from %s sheet %s row %s, value [%s]",
@@ -212,10 +227,10 @@ func ParseKVXlsx(fromFile string, sheet *xlsx.Sheet) (data *XlsxSheet, errs erro
 				fromFile, sheet.Name,
 				typ.Name, sheet.Rows[row].Cells[4].Value,
 			))
-			data.allData[0] = append(data.allData[0], nil)
+			data.AllData[0] = append(data.AllData[0], nil)
 			continue
 		}
-		data.allData[0] = append(data.allData[0], cell)
+		data.AllData[0] = append(data.AllData[0], cell)
 	}
 	return
 }

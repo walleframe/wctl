@@ -15,6 +15,7 @@ import (
 	"github.com/aggronmagi/wctl/xlsx/parser"
 
 	"github.com/aggronmagi/wctl/xlsx/gen/jsondata"
+	"github.com/aggronmagi/wctl/xlsx/gen/pb"
 )
 
 var cfg = struct {
@@ -31,7 +32,7 @@ const (
 	Help = `excel 配置导出工具 
 `
 	Example = `
-retool xlsx x1.xlsx x2.xlsx ./xxx/ --lua-data=./lua-data ...
+retool xlsx x1.xlsx x2.xlsx ./xxx/ --json-data=./json-data ...
 `
 )
 
@@ -46,12 +47,13 @@ func Flags(genCmd *pflag.FlagSet) {
 	langCaches = append(langCaches,
 		// json-data
 		jsondata.Language(),
+		// golang pb
+		pb.Language(),
 	)
 	// 注册标记
 	for _, cfg := range langCaches {
 		cfg.SetFlagSet(genCmd)
 	}
-
 }
 
 var langCaches []*gen.ExportSupportConfig

@@ -211,7 +211,7 @@ func RegisterCheck(name string, f lua.LGFunction) {
 
 func RegisterDefaultChecker() {
 	RegisterCheck("range", LuaCheckFuncRange)
-	RegisterCheck("option", LuaCheckFuncOption)
+	RegisterCheck("values", LuaCheckFuncOption)
 	RegisterCheck("max", LuaCheckFuncMax)
 	RegisterCheck("min", LuaCheckFuncMin)
 	//min

@@ -45,11 +45,14 @@ func checkOptionConfig() error {
 	return nil
 }
 
-func exportPBDefine(sheet *parser.XlsxSheet, outpath string) (err error) {
+func exportPBDefine(sheet *parser.XlsxSheet, opts *gen.ExportOption) (err error) {
 	var (
 		temp = template.New("pb")
 	)
 	temp.Funcs(UseFuncMap)
+	temp.Funcs(template.FuncMap{"EnableExport": func(typ *parser.ColumnType) bool {
+		return typ.EnableExport(opts.ExportFlag)
+	}})
 	t, err := temp.Parse(textTemplate)
 	if err != nil {
 		log.Println("pb template parse err", err)
@@ -68,7 +71,7 @@ func exportPBDefine(sheet *parser.XlsxSheet, outpath string) (err error) {
 		log.Println("pb template execute err", err)
 		return
 	}
-	err = gen.WriteFile(path.Join(outpath, fmt.Sprintf("%s.proto", strings.ToLower(sheet.StructName))), bf.Bytes())
+	err = gen.WriteFile(path.Join(opts.Outpath, fmt.Sprintf("%s.proto", strings.ToLower(sheet.StructName))), bf.Bytes())
 	if err != nil {
 		log.Println("pb write file err", err)
 		return
@@ -78,7 +81,7 @@ func exportPBDefine(sheet *parser.XlsxSheet, outpath string) (err error) {
 }
 
 // 生成go代码
-func exportPB2GO(sheets []*parser.XlsxSheet, outpath string) (err error) {
+func exportPB2GO(sheets []*parser.XlsxSheet, opts *gen.ExportOption) (err error) {
 	if cfg.ExportGoPath == "" {
 		return
 	}
@@ -87,7 +90,7 @@ func exportPB2GO(sheets []*parser.XlsxSheet, outpath string) (err error) {
 	if err != nil {
 		return err
 	}
-	err = os.Chdir(outpath)
+	err = os.Chdir(opts.Outpath)
 	if err != nil {
 		log.Println("chdir failed,", err)
 		return err

@@ -8,9 +8,9 @@ option go_package = "{{.PackageName}}";
 
 // {{.StructName}} generate from {{.SheetName}} in {{.FromFile}}
 message {{.StructName}}
-{ {{range $fi,$typ := $.ServerType }}
+{ {{range $fi,$typ := $.AllType }}{{if EnableExport $typ }}
     {{Comment $typ}}
-	{{TypeName $typ}} {{$typ.Name}} {{PBTag $fi}};  {{end}}
+	{{TypeName $typ}} {{$typ.Name}} {{PBTag $fi}}; {{end}}{{end}}
 }
 
 {{- if not .KVFlag }}

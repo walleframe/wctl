@@ -15,23 +15,25 @@ type ColumnType struct {
 	Name    string       // 字段名
 	Comment string       // 注释信息
 	chekers []ValueCheck // 格式及有效校验
-	// flags   map[string]struct{} // 字段标记
+	Flags   Flag         // 字段标记
 }
 
 func NewField(typ, name, commonts, filter string) (*ColumnType, error) {
 	// #开头的类型,直接忽略本列
-	if strings.HasPrefix(typ, "#") {
-		return nil, ErrIgnoreColumn
+	if strings.HasPrefix(typ, "#") ||
+		strings.HasPrefix(name, "#") ||
+		(typ == "" && name == "" && filter == "") { // 除注释之外都是空的,也忽略
+		return nil, nil
 	}
-	// // 拆分可能的标记
-	// typ, flags, err := SplitFlags(typ)
-	// if err != nil {
-	// 	return nil, err
-	// }
-	// // pm 忽略
-	// if _, ok := flags["pm"]; ok {
-	// 	return nil, ErrIgnoreColumn
-	// }
+	// 拆分可能的标记
+	name, flags, err := SplitFlags(name)
+	if err != nil {
+		return nil, err
+	}
+	// pm 忽略
+	if flags.Pm {
+		return nil, nil
+	}
 	// 解析类型
 	typDef, err := ParseType(typ)
 	if err != nil {
@@ -50,17 +52,9 @@ func NewField(typ, name, commonts, filter string) (*ColumnType, error) {
 		Name:    name,
 		Comment: commonts,
 		chekers: checkers,
-		//flags:   flags,
+		Flags:   flags,
 	}, nil
 }
-
-// func (field *ColumnType) HasFlag(flag string) bool {
-// 	switch flag {
-
-// 	}
-// 	_, ok := field.flags[flag]
-// 	return ok
-// }
 
 // Parse 解析单元格
 func (field *ColumnType) Parse(cell string) (*XlsxCell, error) {
@@ -82,6 +76,17 @@ func (field *ColumnType) Parse(cell string) (*XlsxCell, error) {
 	}, nil
 }
 
+// EnableExport 是否允许导出
+func (filed *ColumnType) EnableExport(flag ExportFlag) bool {
+	if filed.Flags.Client && flag == ExportServer {
+		return false
+	}
+	if filed.Flags.Server && flag == ExportClient {
+		return false
+	}
+	return true
+}
+
 type XlsxCell struct {
 	// 原始数据
 	Raw string
@@ -97,55 +102,14 @@ type XlsxSheet struct {
 	// 来源文件
 	FromFile string
 	// 字段及类型
-	allType []*ColumnType
+	AllType []*ColumnType
 	// 数据 索引分别是 行,列
-	allData [][]*XlsxCell
+	AllData [][]*XlsxCell
 	// 单结构体标记
 	KVFlag bool
-
-	// 缓存lua脚本错误
-	errs []error
+	// sheet级标记
+	Flag Flag
 }
-
-// func (sheet *XlsxSheet) Rows() int {
-// 	return len(sheet.Data)
-// }
-
-// func (sheet *XlsxSheet) Columns() int {
-// 	return len(sheet.Type)
-// }
-
-// ServerType 服务器导出类型
-func (sheet *XlsxSheet) ServerType() []*ColumnType {
-	return sheet.allType
-}
-
-// ServerData 服务器导出数据
-func (sheet *XlsxSheet) ServerData() [][]*XlsxCell {
-	return sheet.allData
-}
-
-// ClientType 客户端导出类型
-func (sheet *XlsxSheet) ClientType() []*ColumnType {
-	return sheet.allType
-}
-
-// ClientData 客户端导出数据
-func (sheet *XlsxSheet) ClientData() [][]*XlsxCell {
-	return sheet.allData
-}
-
-// // Language 导出语言支持
-// type Language interface {
-// 	// ExportType 是否支持导出类型声明文件 (lua这种动态语言,不需要类型生成)
-// 	ExportType() bool
-// 	// FieldType 对应语言的字段类型
-// 	FieldType(Type) string
-// 	// StructName 生成结构体名字
-// 	StructName(sheet string) string
-// 	// ValueDesc 值描述格式
-// 	ValueDesc(cell *XlsxCell) string
-// }
 
 // XlsxCheckSheet lua数据检测
 type XlsxCheckSheet struct {

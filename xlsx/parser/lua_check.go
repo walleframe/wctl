@@ -34,7 +34,7 @@ func SetLuaCheckTable(L *lua.LState, table *XlsxSheet) (err error) {
 	ud.Value = table
 	ltb := L.NewTable()
 	L.SetGlobal(table.SheetName, ltb)
-	for k, field := range table.allType {
+	for k, field := range table.AllType {
 		col := k
 		mt := L.NewTable()
 		L.SetField(mt, "range", L.NewClosure(luaFuncClosureRange, ud, lua.LNumber(col)))
@@ -80,10 +80,10 @@ func luaFuncClosureRange(l *lua.LState) int {
 	sheet := ud.Value.(*XlsxSheet)
 	l.SetTop(0)
 	// 遍历数据
-	for i := 0; i < len(sheet.allData); i++ {
+	for i := 0; i < len(sheet.AllData); i++ {
 		// call rf(cell-raw-data, sheet-user-data, row, col)
 		l.Push(rf)
-		l.Push(lua.LString(sheet.allData[i][col].Raw))
+		l.Push(lua.LString(sheet.AllData[i][col].Raw))
 		//l.Push(ud)
 		//l.Push(lua.LNumber(i))
 		//l.Push(lua.LNumber(col))
@@ -106,8 +106,8 @@ func luaFuncClosureFind(l *lua.LState) int {
 		// 对比原始数据
 		value := l.ToString(1)
 		find := false
-		for i := 0; i < len(sheet.allData); i++ {
-			if value == sheet.allData[i][col].Raw {
+		for i := 0; i < len(sheet.AllData); i++ {
+			if value == sheet.AllData[i][col].Raw {
 				find = true
 				break
 			}
@@ -125,8 +125,8 @@ func luaFuncClosureGet(l *lua.LState) int {
 
 	row := l.CheckInt(1)
 
-	if row >= len(sheet.allData) {
-		l.Push(lua.LString(sheet.allData[row][col].Raw))
+	if row >= len(sheet.AllData) {
+		l.Push(lua.LString(sheet.AllData[row][col].Raw))
 	} else {
 		l.Push(lua.LNil)
 	}

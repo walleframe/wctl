@@ -3,6 +3,7 @@ package parser
 import (
 	"fmt"
 	"log"
+	"path/filepath"
 	"strings"
 
 	"github.com/tealeg/xlsx"
@@ -11,6 +12,7 @@ import (
 
 // LoadXlsx 加载数据
 func LoadXlsx(fname string) (datas []*XlsxSheet, check []*XlsxCheckSheet, errs error) {
+	fname = strings.Replace(filepath.Clean(fname), "\\", "/", -1)
 	file, err := xlsx.OpenFile(fname)
 	if err != nil {
 		return nil, nil, fmt.Errorf("open %s failed %w", fname, err)

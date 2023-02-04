@@ -109,7 +109,7 @@ func (cfg *ExportSupportConfig) OutpathData() string {
 }
 
 // 类型导出目录
-func (cfg *ExportSupportConfig) OutpathDef() string {
+func (cfg *ExportSupportConfig) OutpathType() string {
 	if cfg.Opts.ExportDefine == nil && cfg.Opts.ExportMergeDefine == nil {
 		return "not support type define export"
 	}
@@ -119,6 +119,10 @@ func (cfg *ExportSupportConfig) OutpathDef() string {
 		}
 	}
 	return cfg.outType
+}
+
+func (cfg *ExportSupportConfig) ExportFlag() parser.ExportFlag {
+	return parser.ExportFlag(cfg.exportFlag)
 }
 
 func (cfg *ExportSupportConfig) HasSetFlag() bool {

@@ -23,6 +23,7 @@ var cfg = struct {
 	FileExtern string
 }{
 	FileExtern: ".xlsx",
+	Recursion:  true,
 }
 
 const (
@@ -144,10 +145,16 @@ func RunCommand(cmd *cobra.Command, args []string) {
 		if !lang.HasSetFlag() {
 			continue
 		}
+		cc := &gen.ExportOption{
+			Outpath:    lang.OutpathType(),
+			TypePath:   lang.OutpathType(),
+			DataPath:   lang.OutpathData(),
+			ExportFlag: lang.ExportFlag(),
+		}
 		// 单项类型导出
 		if lang.Opts.ExportDefine != nil {
 			for _, data := range GlobalCache.AllTables {
-				err = lang.Opts.ExportDefine(data, lang.OutpathDef())
+				err = lang.Opts.ExportDefine(data, cc)
 				if err != nil {
 					log.Println("sheet", data.SheetName, " export language ", lang.Language, " define failed")
 					for _, v := range multierr.Errors(err) {
@@ -160,7 +167,7 @@ func RunCommand(cmd *cobra.Command, args []string) {
 		}
 		// 合并类型导出
 		if lang.Opts.ExportMergeDefine != nil {
-			err = lang.Opts.ExportMergeDefine(GlobalCache.AllTables, lang.OutpathDef())
+			err = lang.Opts.ExportMergeDefine(GlobalCache.AllTables, cc)
 			if err != nil {
 				log.Println("language ", lang.Language, " export merge type failed")
 				for _, v := range multierr.Errors(err) {
@@ -175,10 +182,16 @@ func RunCommand(cmd *cobra.Command, args []string) {
 		if !lang.HasSetFlag() {
 			continue
 		}
+		cc := &gen.ExportOption{
+			Outpath:    lang.OutpathData(),
+			TypePath:   lang.OutpathType(),
+			DataPath:   lang.OutpathData(),
+			ExportFlag: lang.ExportFlag(),
+		}
 		// 单项类型导出
 		if lang.Opts.ExportData != nil {
 			for _, data := range GlobalCache.AllTables {
-				err = lang.Opts.ExportData(data, lang.OutpathData())
+				err = lang.Opts.ExportData(data, cc)
 				if err != nil {
 					log.Println("sheet", data.SheetName, " export language ", lang.Language, " define failed")
 					for _, v := range multierr.Errors(err) {
@@ -191,7 +204,7 @@ func RunCommand(cmd *cobra.Command, args []string) {
 		}
 		// 合并类型导出
 		if lang.Opts.ExportMergeData != nil {
-			err = lang.Opts.ExportMergeData(GlobalCache.AllTables, lang.OutpathData())
+			err = lang.Opts.ExportMergeData(GlobalCache.AllTables, cc)
 			if err != nil {
 				log.Println("language ", lang.Language, " export merge type failed")
 				for _, v := range multierr.Errors(err) {
@@ -210,20 +223,24 @@ func RunCommand(cmd *cobra.Command, args []string) {
 
 // 解析目录中的xlsx文件
 func parseDir(dir string) (errs error) {
+	dir = filepath.Clean(dir)
 	filepath.Walk(dir, func(path string, info fs.FileInfo, err error) error {
 		if err != nil {
 			log.Println("read path failed", err)
 			return nil
 		}
-		fname := filepath.Join(dir, info.Name())
-		// 遍历多层目录
-		if cfg.Recursion && info.IsDir() {
-			parseDir(fname)
+		if info.IsDir() {
 			return nil
+		}
+		// 遍历多层目录
+		if !cfg.Recursion {
+			if filepath.Join(dir, info.Name()) != path {
+				return nil
+			}
 		}
 
 		// 解析文件
-		err = parseFile(fname)
+		err = parseFile(path)
 		if err != nil {
 			errs = multierr.Append(errs, err)
 			return nil

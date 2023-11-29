@@ -25,6 +25,8 @@ var actionTab = actionTable{
 			nil,       // tok_literal
 			reduce(2), // tok_option, reduce: FileElements
 			nil,       // =
+			nil,       // true
+			nil,       // false
 			nil,       // tok_const_int
 			reduce(2), // tok_doc, reduce: FileElements
 			reduce(2), // enum, reduce: FileElements
@@ -73,6 +75,8 @@ var actionTab = actionTable{
 			nil,          // tok_literal
 			nil,          // tok_option
 			nil,          // =
+			nil,          // true
+			nil,          // false
 			nil,          // tok_const_int
 			nil,          // tok_doc
 			nil,          // enum
@@ -113,20 +117,22 @@ var actionTab = actionTable{
 			nil,        // INVALID
 			reduce(1),  // $, reduce: Start
 			nil,        // empty
-			reduce(22), // package, reduce: Doc
+			reduce(24), // package, reduce: Doc
 			nil,        // tok_identifier
 			nil,        // ;
 			nil,        // ,
-			reduce(22), // import, reduce: Doc
+			reduce(24), // import, reduce: Doc
 			nil,        // tok_literal
-			reduce(22), // tok_option, reduce: Doc
+			reduce(24), // tok_option, reduce: Doc
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(22), // tok_doc, reduce: Doc
-			reduce(22), // enum, reduce: Doc
+			reduce(24), // tok_doc, reduce: Doc
+			reduce(24), // enum, reduce: Doc
 			nil,        // {
 			nil,        // }
-			reduce(22), // message, reduce: Doc
+			reduce(24), // message, reduce: Doc
 			nil,        // [
 			nil,        // ]
 			nil,        // repeated
@@ -146,13 +152,13 @@ var actionTab = actionTable{
 			nil,        // bool
 			nil,        // float
 			nil,        // double
-			reduce(22), // service, reduce: Doc
+			reduce(24), // service, reduce: Doc
 			nil,        // call
 			nil,        // :
 			nil,        // notify
 			nil,        // (
 			nil,        // )
-			reduce(22), // project, reduce: Doc
+			reduce(24), // project, reduce: Doc
 		},
 	},
 	actionRow{ // S3
@@ -169,6 +175,8 @@ var actionTab = actionTable{
 			nil,       // tok_literal
 			shift(14), // tok_option
 			nil,       // =
+			nil,       // true
+			nil,       // false
 			nil,       // tok_const_int
 			shift(15), // tok_doc
 			shift(16), // enum
@@ -217,6 +225,8 @@ var actionTab = actionTable{
 			nil,       // tok_literal
 			reduce(3), // tok_option, reduce: FileElements
 			nil,       // =
+			nil,       // true
+			nil,       // false
 			nil,       // tok_const_int
 			reduce(3), // tok_doc, reduce: FileElements
 			reduce(3), // enum, reduce: FileElements
@@ -265,6 +275,8 @@ var actionTab = actionTable{
 			nil,       // tok_literal
 			reduce(4), // tok_option, reduce: Element
 			nil,       // =
+			nil,       // true
+			nil,       // false
 			nil,       // tok_const_int
 			reduce(4), // tok_doc, reduce: Element
 			reduce(4), // enum, reduce: Element
@@ -313,6 +325,8 @@ var actionTab = actionTable{
 			nil,       // tok_literal
 			reduce(5), // tok_option, reduce: Element
 			nil,       // =
+			nil,       // true
+			nil,       // false
 			nil,       // tok_const_int
 			reduce(5), // tok_doc, reduce: Element
 			reduce(5), // enum, reduce: Element
@@ -361,6 +375,8 @@ var actionTab = actionTable{
 			nil,       // tok_literal
 			reduce(6), // tok_option, reduce: Element
 			nil,       // =
+			nil,       // true
+			nil,       // false
 			nil,       // tok_const_int
 			reduce(6), // tok_doc, reduce: Element
 			reduce(6), // enum, reduce: Element
@@ -409,6 +425,8 @@ var actionTab = actionTable{
 			nil,       // tok_literal
 			reduce(7), // tok_option, reduce: Element
 			nil,       // =
+			nil,       // true
+			nil,       // false
 			nil,       // tok_const_int
 			reduce(7), // tok_doc, reduce: Element
 			reduce(7), // enum, reduce: Element
@@ -457,6 +475,8 @@ var actionTab = actionTable{
 			nil,       // tok_literal
 			reduce(8), // tok_option, reduce: Element
 			nil,       // =
+			nil,       // true
+			nil,       // false
 			nil,       // tok_const_int
 			reduce(8), // tok_doc, reduce: Element
 			reduce(8), // enum, reduce: Element
@@ -505,6 +525,8 @@ var actionTab = actionTable{
 			nil,       // tok_literal
 			reduce(9), // tok_option, reduce: Element
 			nil,       // =
+			nil,       // true
+			nil,       // false
 			nil,       // tok_const_int
 			reduce(9), // tok_doc, reduce: Element
 			reduce(9), // enum, reduce: Element
@@ -553,6 +575,8 @@ var actionTab = actionTable{
 			nil,        // tok_literal
 			reduce(10), // tok_option, reduce: Element
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			reduce(10), // tok_doc, reduce: Element
 			reduce(10), // enum, reduce: Element
@@ -601,6 +625,8 @@ var actionTab = actionTable{
 			nil,       // tok_literal
 			nil,       // tok_option
 			nil,       // =
+			nil,       // true
+			nil,       // false
 			nil,       // tok_const_int
 			nil,       // tok_doc
 			nil,       // enum
@@ -649,6 +675,8 @@ var actionTab = actionTable{
 			reduce(16), // tok_literal, reduce: AliasName
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -691,12 +719,14 @@ var actionTab = actionTable{
 			nil,        // empty
 			reduce(19), // package, reduce: OptionValue
 			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
+			reduce(19), // ;, reduce: OptionValue
+			reduce(19), // ,, reduce: OptionValue
 			reduce(19), // import, reduce: OptionValue
 			nil,        // tok_literal
 			reduce(19), // tok_option, reduce: OptionValue
 			shift(24),  // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			reduce(19), // tok_doc, reduce: OptionValue
 			reduce(19), // enum, reduce: OptionValue
@@ -737,20 +767,22 @@ var actionTab = actionTable{
 			nil,        // INVALID
 			nil,        // $
 			nil,        // empty
-			reduce(23), // package, reduce: Doc
+			reduce(25), // package, reduce: Doc
 			nil,        // tok_identifier
 			nil,        // ;
 			nil,        // ,
-			reduce(23), // import, reduce: Doc
+			reduce(25), // import, reduce: Doc
 			nil,        // tok_literal
-			reduce(23), // tok_option, reduce: Doc
+			reduce(25), // tok_option, reduce: Doc
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(23), // tok_doc, reduce: Doc
-			reduce(23), // enum, reduce: Doc
+			reduce(25), // tok_doc, reduce: Doc
+			reduce(25), // enum, reduce: Doc
 			nil,        // {
 			nil,        // }
-			reduce(23), // message, reduce: Doc
+			reduce(25), // message, reduce: Doc
 			nil,        // [
 			nil,        // ]
 			nil,        // repeated
@@ -770,13 +802,13 @@ var actionTab = actionTable{
 			nil,        // bool
 			nil,        // float
 			nil,        // double
-			reduce(23), // service, reduce: Doc
+			reduce(25), // service, reduce: Doc
 			nil,        // call
 			nil,        // :
 			nil,        // notify
 			nil,        // (
 			nil,        // )
-			reduce(23), // project, reduce: Doc
+			reduce(25), // project, reduce: Doc
 		},
 	},
 	actionRow{ // S16
@@ -793,6 +825,8 @@ var actionTab = actionTable{
 			nil,       // tok_literal
 			nil,       // tok_option
 			nil,       // =
+			nil,       // true
+			nil,       // false
 			nil,       // tok_const_int
 			nil,       // tok_doc
 			nil,       // enum
@@ -841,6 +875,8 @@ var actionTab = actionTable{
 			nil,       // tok_literal
 			nil,       // tok_option
 			nil,       // =
+			nil,       // true
+			nil,       // false
 			nil,       // tok_const_int
 			nil,       // tok_doc
 			nil,       // enum
@@ -889,6 +925,8 @@ var actionTab = actionTable{
 			nil,       // tok_literal
 			nil,       // tok_option
 			nil,       // =
+			nil,       // true
+			nil,       // false
 			nil,       // tok_const_int
 			nil,       // tok_doc
 			nil,       // enum
@@ -937,6 +975,8 @@ var actionTab = actionTable{
 			nil,       // tok_literal
 			nil,       // tok_option
 			nil,       // =
+			nil,       // true
+			nil,       // false
 			nil,       // tok_const_int
 			nil,       // tok_doc
 			nil,       // enum
@@ -985,6 +1025,8 @@ var actionTab = actionTable{
 			nil,        // tok_literal
 			reduce(12), // tok_option, reduce: OptEnd
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			reduce(12), // tok_doc, reduce: OptEnd
 			reduce(12), // enum, reduce: OptEnd
@@ -1033,6 +1075,8 @@ var actionTab = actionTable{
 			reduce(17), // tok_literal, reduce: AliasName
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -1081,6 +1125,8 @@ var actionTab = actionTable{
 			shift(32), // tok_literal
 			nil,       // tok_option
 			nil,       // =
+			nil,       // true
+			nil,       // false
 			nil,       // tok_const_int
 			nil,       // tok_doc
 			nil,       // enum
@@ -1119,22 +1165,24 @@ var actionTab = actionTable{
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
-			reduce(18), // $, reduce: Option
+			reduce(12), // $, reduce: OptEnd
 			nil,        // empty
-			reduce(18), // package, reduce: Option
+			reduce(12), // package, reduce: OptEnd
 			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
-			reduce(18), // import, reduce: Option
+			shift(30),  // ;
+			shift(31),  // ,
+			reduce(12), // import, reduce: OptEnd
 			nil,        // tok_literal
-			reduce(18), // tok_option, reduce: Option
+			reduce(12), // tok_option, reduce: OptEnd
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(18), // tok_doc, reduce: Option
-			reduce(18), // enum, reduce: Option
+			reduce(12), // tok_doc, reduce: OptEnd
+			reduce(12), // enum, reduce: OptEnd
 			nil,        // {
 			nil,        // }
-			reduce(18), // message, reduce: Option
+			reduce(12), // message, reduce: OptEnd
 			nil,        // [
 			nil,        // ]
 			nil,        // repeated
@@ -1154,13 +1202,13 @@ var actionTab = actionTable{
 			nil,        // bool
 			nil,        // float
 			nil,        // double
-			reduce(18), // service, reduce: Option
+			reduce(12), // service, reduce: OptEnd
 			nil,        // call
 			nil,        // :
 			nil,        // notify
 			nil,        // (
 			nil,        // )
-			reduce(18), // project, reduce: Option
+			reduce(12), // project, reduce: OptEnd
 		},
 	},
 	actionRow{ // S24
@@ -1174,10 +1222,12 @@ var actionTab = actionTable{
 			nil,       // ;
 			nil,       // ,
 			nil,       // import
-			shift(33), // tok_literal
+			shift(34), // tok_literal
 			nil,       // tok_option
 			nil,       // =
-			shift(34), // tok_const_int
+			shift(35), // true
+			shift(36), // false
+			shift(37), // tok_const_int
 			nil,       // tok_doc
 			nil,       // enum
 			nil,       // {
@@ -1225,10 +1275,12 @@ var actionTab = actionTable{
 			nil,       // tok_literal
 			nil,       // tok_option
 			nil,       // =
+			nil,       // true
+			nil,       // false
 			nil,       // tok_const_int
 			nil,       // tok_doc
 			nil,       // enum
-			shift(35), // {
+			shift(38), // {
 			nil,       // }
 			nil,       // message
 			nil,       // [
@@ -1273,10 +1325,12 @@ var actionTab = actionTable{
 			nil,       // tok_literal
 			nil,       // tok_option
 			nil,       // =
+			nil,       // true
+			nil,       // false
 			nil,       // tok_const_int
 			nil,       // tok_doc
 			nil,       // enum
-			shift(36), // {
+			shift(39), // {
 			nil,       // }
 			nil,       // message
 			nil,       // [
@@ -1321,10 +1375,12 @@ var actionTab = actionTable{
 			nil,       // tok_literal
 			nil,       // tok_option
 			nil,       // =
+			nil,       // true
+			nil,       // false
 			nil,       // tok_const_int
 			nil,       // tok_doc
 			nil,       // enum
-			shift(37), // {
+			shift(40), // {
 			nil,       // }
 			nil,       // message
 			nil,       // [
@@ -1369,10 +1425,12 @@ var actionTab = actionTable{
 			nil,       // tok_literal
 			nil,       // tok_option
 			nil,       // =
+			nil,       // true
+			nil,       // false
 			nil,       // tok_const_int
 			nil,       // tok_doc
 			nil,       // enum
-			shift(38), // {
+			shift(41), // {
 			nil,       // }
 			nil,       // message
 			nil,       // [
@@ -1417,6 +1475,8 @@ var actionTab = actionTable{
 			nil,        // tok_literal
 			reduce(11), // tok_option, reduce: Package
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			reduce(11), // tok_doc, reduce: Package
 			reduce(11), // enum, reduce: Package
@@ -1465,6 +1525,8 @@ var actionTab = actionTable{
 			nil,        // tok_literal
 			reduce(13), // tok_option, reduce: OptEnd
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			reduce(13), // tok_doc, reduce: OptEnd
 			reduce(13), // enum, reduce: OptEnd
@@ -1513,6 +1575,8 @@ var actionTab = actionTable{
 			nil,        // tok_literal
 			reduce(14), // tok_option, reduce: OptEnd
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			reduce(14), // tok_doc, reduce: OptEnd
 			reduce(14), // enum, reduce: OptEnd
@@ -1561,6 +1625,8 @@ var actionTab = actionTable{
 			nil,        // tok_literal
 			reduce(12), // tok_option, reduce: OptEnd
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			reduce(12), // tok_doc, reduce: OptEnd
 			reduce(12), // enum, reduce: OptEnd
@@ -1599,16 +1665,118 @@ var actionTab = actionTable{
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
+			reduce(18), // $, reduce: Option
+			nil,        // empty
+			reduce(18), // package, reduce: Option
+			nil,        // tok_identifier
+			nil,        // ;
+			nil,        // ,
+			reduce(18), // import, reduce: Option
+			nil,        // tok_literal
+			reduce(18), // tok_option, reduce: Option
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(18), // tok_doc, reduce: Option
+			reduce(18), // enum, reduce: Option
+			nil,        // {
+			nil,        // }
+			reduce(18), // message, reduce: Option
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			reduce(18), // service, reduce: Option
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			reduce(18), // project, reduce: Option
+		},
+	},
+	actionRow{ // S34
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			reduce(22), // $, reduce: OptionValue
+			nil,        // empty
+			reduce(22), // package, reduce: OptionValue
+			nil,        // tok_identifier
+			reduce(22), // ;, reduce: OptionValue
+			reduce(22), // ,, reduce: OptionValue
+			reduce(22), // import, reduce: OptionValue
+			nil,        // tok_literal
+			reduce(22), // tok_option, reduce: OptionValue
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(22), // tok_doc, reduce: OptionValue
+			reduce(22), // enum, reduce: OptionValue
+			nil,        // {
+			nil,        // }
+			reduce(22), // message, reduce: OptionValue
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			reduce(22), // service, reduce: OptionValue
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			reduce(22), // project, reduce: OptionValue
+		},
+	},
+	actionRow{ // S35
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
 			reduce(20), // $, reduce: OptionValue
 			nil,        // empty
 			reduce(20), // package, reduce: OptionValue
 			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
+			reduce(20), // ;, reduce: OptionValue
+			reduce(20), // ,, reduce: OptionValue
 			reduce(20), // import, reduce: OptionValue
 			nil,        // tok_literal
 			reduce(20), // tok_option, reduce: OptionValue
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			reduce(20), // tok_doc, reduce: OptionValue
 			reduce(20), // enum, reduce: OptionValue
@@ -1643,7 +1811,7 @@ var actionTab = actionTable{
 			reduce(20), // project, reduce: OptionValue
 		},
 	},
-	actionRow{ // S34
+	actionRow{ // S36
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -1651,12 +1819,14 @@ var actionTab = actionTable{
 			nil,        // empty
 			reduce(21), // package, reduce: OptionValue
 			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
+			reduce(21), // ;, reduce: OptionValue
+			reduce(21), // ,, reduce: OptionValue
 			reduce(21), // import, reduce: OptionValue
 			nil,        // tok_literal
 			reduce(21), // tok_option, reduce: OptionValue
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			reduce(21), // tok_doc, reduce: OptionValue
 			reduce(21), // enum, reduce: OptionValue
@@ -1691,122 +1861,28 @@ var actionTab = actionTable{
 			reduce(21), // project, reduce: OptionValue
 		},
 	},
-	actionRow{ // S35
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			reduce(25), // tok_identifier, reduce: EnumItems
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			reduce(25), // tok_option, reduce: EnumItems
-			nil,        // =
-			nil,        // tok_const_int
-			reduce(25), // tok_doc, reduce: EnumItems
-			nil,        // enum
-			nil,        // {
-			reduce(25), // }, reduce: EnumItems
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S36
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			reduce(32), // tok_identifier, reduce: MessageElements
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			reduce(32), // tok_option, reduce: MessageElements
-			nil,        // =
-			nil,        // tok_const_int
-			reduce(32), // tok_doc, reduce: MessageElements
-			nil,        // enum
-			nil,        // {
-			reduce(32), // }, reduce: MessageElements
-			nil,        // message
-			reduce(32), // [, reduce: MessageElements
-			nil,        // ]
-			reduce(32), // repeated, reduce: MessageElements
-			reduce(32), // map, reduce: MessageElements
-			nil,        // <
-			nil,        // >
-			reduce(32), // int8, reduce: MessageElements
-			reduce(32), // uint8, reduce: MessageElements
-			reduce(32), // int16, reduce: MessageElements
-			reduce(32), // uint16, reduce: MessageElements
-			reduce(32), // int32, reduce: MessageElements
-			reduce(32), // uint32, reduce: MessageElements
-			reduce(32), // int64, reduce: MessageElements
-			reduce(32), // uint64, reduce: MessageElements
-			reduce(32), // string, reduce: MessageElements
-			reduce(32), // bytes, reduce: MessageElements
-			reduce(32), // bool, reduce: MessageElements
-			reduce(32), // float, reduce: MessageElements
-			reduce(32), // double, reduce: MessageElements
-			nil,        // service
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
 	actionRow{ // S37
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
-			nil,        // $
+			reduce(23), // $, reduce: OptionValue
 			nil,        // empty
-			nil,        // package
-			reduce(66), // tok_identifier, reduce: ServiceElements
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
+			reduce(23), // package, reduce: OptionValue
+			nil,        // tok_identifier
+			reduce(23), // ;, reduce: OptionValue
+			reduce(23), // ,, reduce: OptionValue
+			reduce(23), // import, reduce: OptionValue
 			nil,        // tok_literal
-			reduce(66), // tok_option, reduce: ServiceElements
+			reduce(23), // tok_option, reduce: OptionValue
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(66), // tok_doc, reduce: ServiceElements
-			nil,        // enum
+			reduce(23), // tok_doc, reduce: OptionValue
+			reduce(23), // enum, reduce: OptionValue
 			nil,        // {
-			reduce(66), // }, reduce: ServiceElements
-			nil,        // message
+			nil,        // }
+			reduce(23), // message, reduce: OptionValue
 			nil,        // [
 			nil,        // ]
 			nil,        // repeated
@@ -1826,688 +1902,16 @@ var actionTab = actionTable{
 			nil,        // bool
 			nil,        // float
 			nil,        // double
-			nil,        // service
-			reduce(66), // call, reduce: ServiceElements
+			reduce(23), // service, reduce: OptionValue
+			nil,        // call
 			nil,        // :
-			reduce(66), // notify, reduce: ServiceElements
+			nil,        // notify
 			nil,        // (
 			nil,        // )
-			nil,        // project
+			reduce(23), // project, reduce: OptionValue
 		},
 	},
 	actionRow{ // S38
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			reduce(79), // tok_identifier, reduce: ProjElements
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			reduce(79), // tok_option, reduce: ProjElements
-			nil,        // =
-			nil,        // tok_const_int
-			reduce(79), // tok_doc, reduce: ProjElements
-			nil,        // enum
-			nil,        // {
-			reduce(79), // }, reduce: ProjElements
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S39
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			reduce(15), // $, reduce: Import
-			nil,        // empty
-			reduce(15), // package, reduce: Import
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
-			reduce(15), // import, reduce: Import
-			nil,        // tok_literal
-			reduce(15), // tok_option, reduce: Import
-			nil,        // =
-			nil,        // tok_const_int
-			reduce(15), // tok_doc, reduce: Import
-			reduce(15), // enum, reduce: Import
-			nil,        // {
-			nil,        // }
-			reduce(15), // message, reduce: Import
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			reduce(15), // service, reduce: Import
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			reduce(15), // project, reduce: Import
-		},
-	},
-	actionRow{ // S40
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			reduce(22), // tok_identifier, reduce: Doc
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			reduce(22), // tok_option, reduce: Doc
-			nil,        // =
-			nil,        // tok_const_int
-			reduce(22), // tok_doc, reduce: Doc
-			nil,        // enum
-			nil,        // {
-			shift(45),  // }
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S41
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			reduce(22), // tok_identifier, reduce: Doc
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			reduce(22), // tok_option, reduce: Doc
-			nil,        // =
-			nil,        // tok_const_int
-			reduce(22), // tok_doc, reduce: Doc
-			nil,        // enum
-			nil,        // {
-			shift(47),  // }
-			nil,        // message
-			reduce(22), // [, reduce: Doc
-			nil,        // ]
-			reduce(22), // repeated, reduce: Doc
-			reduce(22), // map, reduce: Doc
-			nil,        // <
-			nil,        // >
-			reduce(22), // int8, reduce: Doc
-			reduce(22), // uint8, reduce: Doc
-			reduce(22), // int16, reduce: Doc
-			reduce(22), // uint16, reduce: Doc
-			reduce(22), // int32, reduce: Doc
-			reduce(22), // uint32, reduce: Doc
-			reduce(22), // int64, reduce: Doc
-			reduce(22), // uint64, reduce: Doc
-			reduce(22), // string, reduce: Doc
-			reduce(22), // bytes, reduce: Doc
-			reduce(22), // bool, reduce: Doc
-			reduce(22), // float, reduce: Doc
-			reduce(22), // double, reduce: Doc
-			nil,        // service
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S42
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			reduce(22), // tok_identifier, reduce: Doc
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			reduce(22), // tok_option, reduce: Doc
-			nil,        // =
-			nil,        // tok_const_int
-			reduce(22), // tok_doc, reduce: Doc
-			nil,        // enum
-			nil,        // {
-			shift(49),  // }
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			reduce(22), // call, reduce: Doc
-			nil,        // :
-			reduce(22), // notify, reduce: Doc
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S43
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			reduce(22), // tok_identifier, reduce: Doc
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			reduce(22), // tok_option, reduce: Doc
-			nil,        // =
-			nil,        // tok_const_int
-			reduce(22), // tok_doc, reduce: Doc
-			nil,        // enum
-			nil,        // {
-			shift(51),  // }
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S44
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,       // INVALID
-			nil,       // $
-			nil,       // empty
-			nil,       // package
-			shift(53), // tok_identifier
-			nil,       // ;
-			nil,       // ,
-			nil,       // import
-			nil,       // tok_literal
-			shift(54), // tok_option
-			nil,       // =
-			nil,       // tok_const_int
-			shift(55), // tok_doc
-			nil,       // enum
-			nil,       // {
-			nil,       // }
-			nil,       // message
-			nil,       // [
-			nil,       // ]
-			nil,       // repeated
-			nil,       // map
-			nil,       // <
-			nil,       // >
-			nil,       // int8
-			nil,       // uint8
-			nil,       // int16
-			nil,       // uint16
-			nil,       // int32
-			nil,       // uint32
-			nil,       // int64
-			nil,       // uint64
-			nil,       // string
-			nil,       // bytes
-			nil,       // bool
-			nil,       // float
-			nil,       // double
-			nil,       // service
-			nil,       // call
-			nil,       // :
-			nil,       // notify
-			nil,       // (
-			nil,       // )
-			nil,       // project
-		},
-	},
-	actionRow{ // S45
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			reduce(12), // $, reduce: OptEnd
-			nil,        // empty
-			reduce(12), // package, reduce: OptEnd
-			nil,        // tok_identifier
-			shift(30),  // ;
-			shift(31),  // ,
-			reduce(12), // import, reduce: OptEnd
-			nil,        // tok_literal
-			reduce(12), // tok_option, reduce: OptEnd
-			nil,        // =
-			nil,        // tok_const_int
-			reduce(12), // tok_doc, reduce: OptEnd
-			reduce(12), // enum, reduce: OptEnd
-			nil,        // {
-			nil,        // }
-			reduce(12), // message, reduce: OptEnd
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			reduce(12), // service, reduce: OptEnd
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			reduce(12), // project, reduce: OptEnd
-		},
-	},
-	actionRow{ // S46
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,       // INVALID
-			nil,       // $
-			nil,       // empty
-			nil,       // package
-			shift(59), // tok_identifier
-			nil,       // ;
-			nil,       // ,
-			nil,       // import
-			nil,       // tok_literal
-			shift(60), // tok_option
-			nil,       // =
-			nil,       // tok_const_int
-			shift(61), // tok_doc
-			nil,       // enum
-			nil,       // {
-			nil,       // }
-			nil,       // message
-			shift(70), // [
-			nil,       // ]
-			shift(71), // repeated
-			shift(72), // map
-			nil,       // <
-			nil,       // >
-			shift(73), // int8
-			shift(74), // uint8
-			shift(75), // int16
-			shift(76), // uint16
-			shift(77), // int32
-			shift(78), // uint32
-			shift(79), // int64
-			shift(80), // uint64
-			shift(81), // string
-			shift(82), // bytes
-			shift(83), // bool
-			shift(84), // float
-			shift(85), // double
-			nil,       // service
-			nil,       // call
-			nil,       // :
-			nil,       // notify
-			nil,       // (
-			nil,       // )
-			nil,       // project
-		},
-	},
-	actionRow{ // S47
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			reduce(12), // $, reduce: OptEnd
-			nil,        // empty
-			reduce(12), // package, reduce: OptEnd
-			nil,        // tok_identifier
-			shift(30),  // ;
-			shift(31),  // ,
-			reduce(12), // import, reduce: OptEnd
-			nil,        // tok_literal
-			reduce(12), // tok_option, reduce: OptEnd
-			nil,        // =
-			nil,        // tok_const_int
-			reduce(12), // tok_doc, reduce: OptEnd
-			reduce(12), // enum, reduce: OptEnd
-			nil,        // {
-			nil,        // }
-			reduce(12), // message, reduce: OptEnd
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			reduce(12), // service, reduce: OptEnd
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			reduce(12), // project, reduce: OptEnd
-		},
-	},
-	actionRow{ // S48
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,       // INVALID
-			nil,       // $
-			nil,       // empty
-			nil,       // package
-			shift(88), // tok_identifier
-			nil,       // ;
-			nil,       // ,
-			nil,       // import
-			nil,       // tok_literal
-			shift(89), // tok_option
-			nil,       // =
-			nil,       // tok_const_int
-			shift(90), // tok_doc
-			nil,       // enum
-			nil,       // {
-			nil,       // }
-			nil,       // message
-			nil,       // [
-			nil,       // ]
-			nil,       // repeated
-			nil,       // map
-			nil,       // <
-			nil,       // >
-			nil,       // int8
-			nil,       // uint8
-			nil,       // int16
-			nil,       // uint16
-			nil,       // int32
-			nil,       // uint32
-			nil,       // int64
-			nil,       // uint64
-			nil,       // string
-			nil,       // bytes
-			nil,       // bool
-			nil,       // float
-			nil,       // double
-			nil,       // service
-			shift(93), // call
-			nil,       // :
-			shift(94), // notify
-			nil,       // (
-			nil,       // )
-			nil,       // project
-		},
-	},
-	actionRow{ // S49
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			reduce(12), // $, reduce: OptEnd
-			nil,        // empty
-			reduce(12), // package, reduce: OptEnd
-			nil,        // tok_identifier
-			shift(30),  // ;
-			shift(31),  // ,
-			reduce(12), // import, reduce: OptEnd
-			nil,        // tok_literal
-			reduce(12), // tok_option, reduce: OptEnd
-			nil,        // =
-			nil,        // tok_const_int
-			reduce(12), // tok_doc, reduce: OptEnd
-			reduce(12), // enum, reduce: OptEnd
-			nil,        // {
-			nil,        // }
-			reduce(12), // message, reduce: OptEnd
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			reduce(12), // service, reduce: OptEnd
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			reduce(12), // project, reduce: OptEnd
-		},
-	},
-	actionRow{ // S50
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,       // INVALID
-			nil,       // $
-			nil,       // empty
-			nil,       // package
-			shift(97), // tok_identifier
-			nil,       // ;
-			nil,       // ,
-			nil,       // import
-			nil,       // tok_literal
-			shift(54), // tok_option
-			nil,       // =
-			nil,       // tok_const_int
-			shift(55), // tok_doc
-			nil,       // enum
-			nil,       // {
-			nil,       // }
-			nil,       // message
-			nil,       // [
-			nil,       // ]
-			nil,       // repeated
-			nil,       // map
-			nil,       // <
-			nil,       // >
-			nil,       // int8
-			nil,       // uint8
-			nil,       // int16
-			nil,       // uint16
-			nil,       // int32
-			nil,       // uint32
-			nil,       // int64
-			nil,       // uint64
-			nil,       // string
-			nil,       // bytes
-			nil,       // bool
-			nil,       // float
-			nil,       // double
-			nil,       // service
-			nil,       // call
-			nil,       // :
-			nil,       // notify
-			nil,       // (
-			nil,       // )
-			nil,       // project
-		},
-	},
-	actionRow{ // S51
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			reduce(78), // $, reduce: Project
-			nil,        // empty
-			reduce(78), // package, reduce: Project
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
-			reduce(78), // import, reduce: Project
-			nil,        // tok_literal
-			reduce(78), // tok_option, reduce: Project
-			nil,        // =
-			nil,        // tok_const_int
-			reduce(78), // tok_doc, reduce: Project
-			reduce(78), // enum, reduce: Project
-			nil,        // {
-			nil,        // }
-			reduce(78), // message, reduce: Project
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			reduce(78), // service, reduce: Project
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			reduce(78), // project, reduce: Project
-		},
-	},
-	actionRow{ // S52
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -2521,6 +1925,8 @@ var actionTab = actionTable{
 			nil,        // tok_literal
 			reduce(27), // tok_option, reduce: EnumItems
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			reduce(27), // tok_doc, reduce: EnumItems
 			nil,        // enum
@@ -2555,6 +1961,706 @@ var actionTab = actionTable{
 			nil,        // project
 		},
 	},
+	actionRow{ // S39
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			reduce(34), // tok_identifier, reduce: MessageElements
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			reduce(34), // tok_option, reduce: MessageElements
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(34), // tok_doc, reduce: MessageElements
+			nil,        // enum
+			nil,        // {
+			reduce(34), // }, reduce: MessageElements
+			nil,        // message
+			reduce(34), // [, reduce: MessageElements
+			nil,        // ]
+			reduce(34), // repeated, reduce: MessageElements
+			reduce(34), // map, reduce: MessageElements
+			nil,        // <
+			nil,        // >
+			reduce(34), // int8, reduce: MessageElements
+			reduce(34), // uint8, reduce: MessageElements
+			reduce(34), // int16, reduce: MessageElements
+			reduce(34), // uint16, reduce: MessageElements
+			reduce(34), // int32, reduce: MessageElements
+			reduce(34), // uint32, reduce: MessageElements
+			reduce(34), // int64, reduce: MessageElements
+			reduce(34), // uint64, reduce: MessageElements
+			reduce(34), // string, reduce: MessageElements
+			reduce(34), // bytes, reduce: MessageElements
+			reduce(34), // bool, reduce: MessageElements
+			reduce(34), // float, reduce: MessageElements
+			reduce(34), // double, reduce: MessageElements
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S40
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			reduce(68), // tok_identifier, reduce: ServiceElements
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			reduce(68), // tok_option, reduce: ServiceElements
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(68), // tok_doc, reduce: ServiceElements
+			nil,        // enum
+			nil,        // {
+			reduce(68), // }, reduce: ServiceElements
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			reduce(68), // call, reduce: ServiceElements
+			nil,        // :
+			reduce(68), // notify, reduce: ServiceElements
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S41
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			reduce(81), // tok_identifier, reduce: ProjElements
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			reduce(81), // tok_option, reduce: ProjElements
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(81), // tok_doc, reduce: ProjElements
+			nil,        // enum
+			nil,        // {
+			reduce(81), // }, reduce: ProjElements
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S42
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			reduce(15), // $, reduce: Import
+			nil,        // empty
+			reduce(15), // package, reduce: Import
+			nil,        // tok_identifier
+			nil,        // ;
+			nil,        // ,
+			reduce(15), // import, reduce: Import
+			nil,        // tok_literal
+			reduce(15), // tok_option, reduce: Import
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(15), // tok_doc, reduce: Import
+			reduce(15), // enum, reduce: Import
+			nil,        // {
+			nil,        // }
+			reduce(15), // message, reduce: Import
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			reduce(15), // service, reduce: Import
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			reduce(15), // project, reduce: Import
+		},
+	},
+	actionRow{ // S43
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			reduce(24), // tok_identifier, reduce: Doc
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			reduce(24), // tok_option, reduce: Doc
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(24), // tok_doc, reduce: Doc
+			nil,        // enum
+			nil,        // {
+			shift(48),  // }
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S44
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			reduce(24), // tok_identifier, reduce: Doc
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			reduce(24), // tok_option, reduce: Doc
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(24), // tok_doc, reduce: Doc
+			nil,        // enum
+			nil,        // {
+			shift(50),  // }
+			nil,        // message
+			reduce(24), // [, reduce: Doc
+			nil,        // ]
+			reduce(24), // repeated, reduce: Doc
+			reduce(24), // map, reduce: Doc
+			nil,        // <
+			nil,        // >
+			reduce(24), // int8, reduce: Doc
+			reduce(24), // uint8, reduce: Doc
+			reduce(24), // int16, reduce: Doc
+			reduce(24), // uint16, reduce: Doc
+			reduce(24), // int32, reduce: Doc
+			reduce(24), // uint32, reduce: Doc
+			reduce(24), // int64, reduce: Doc
+			reduce(24), // uint64, reduce: Doc
+			reduce(24), // string, reduce: Doc
+			reduce(24), // bytes, reduce: Doc
+			reduce(24), // bool, reduce: Doc
+			reduce(24), // float, reduce: Doc
+			reduce(24), // double, reduce: Doc
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S45
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			reduce(24), // tok_identifier, reduce: Doc
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			reduce(24), // tok_option, reduce: Doc
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(24), // tok_doc, reduce: Doc
+			nil,        // enum
+			nil,        // {
+			shift(52),  // }
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			reduce(24), // call, reduce: Doc
+			nil,        // :
+			reduce(24), // notify, reduce: Doc
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S46
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			reduce(24), // tok_identifier, reduce: Doc
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			reduce(24), // tok_option, reduce: Doc
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(24), // tok_doc, reduce: Doc
+			nil,        // enum
+			nil,        // {
+			shift(54),  // }
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S47
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,       // INVALID
+			nil,       // $
+			nil,       // empty
+			nil,       // package
+			shift(56), // tok_identifier
+			nil,       // ;
+			nil,       // ,
+			nil,       // import
+			nil,       // tok_literal
+			shift(57), // tok_option
+			nil,       // =
+			nil,       // true
+			nil,       // false
+			nil,       // tok_const_int
+			shift(58), // tok_doc
+			nil,       // enum
+			nil,       // {
+			nil,       // }
+			nil,       // message
+			nil,       // [
+			nil,       // ]
+			nil,       // repeated
+			nil,       // map
+			nil,       // <
+			nil,       // >
+			nil,       // int8
+			nil,       // uint8
+			nil,       // int16
+			nil,       // uint16
+			nil,       // int32
+			nil,       // uint32
+			nil,       // int64
+			nil,       // uint64
+			nil,       // string
+			nil,       // bytes
+			nil,       // bool
+			nil,       // float
+			nil,       // double
+			nil,       // service
+			nil,       // call
+			nil,       // :
+			nil,       // notify
+			nil,       // (
+			nil,       // )
+			nil,       // project
+		},
+	},
+	actionRow{ // S48
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			reduce(12), // $, reduce: OptEnd
+			nil,        // empty
+			reduce(12), // package, reduce: OptEnd
+			nil,        // tok_identifier
+			shift(30),  // ;
+			shift(31),  // ,
+			reduce(12), // import, reduce: OptEnd
+			nil,        // tok_literal
+			reduce(12), // tok_option, reduce: OptEnd
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(12), // tok_doc, reduce: OptEnd
+			reduce(12), // enum, reduce: OptEnd
+			nil,        // {
+			nil,        // }
+			reduce(12), // message, reduce: OptEnd
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			reduce(12), // service, reduce: OptEnd
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			reduce(12), // project, reduce: OptEnd
+		},
+	},
+	actionRow{ // S49
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,       // INVALID
+			nil,       // $
+			nil,       // empty
+			nil,       // package
+			shift(62), // tok_identifier
+			nil,       // ;
+			nil,       // ,
+			nil,       // import
+			nil,       // tok_literal
+			shift(63), // tok_option
+			nil,       // =
+			nil,       // true
+			nil,       // false
+			nil,       // tok_const_int
+			shift(64), // tok_doc
+			nil,       // enum
+			nil,       // {
+			nil,       // }
+			nil,       // message
+			shift(73), // [
+			nil,       // ]
+			shift(74), // repeated
+			shift(75), // map
+			nil,       // <
+			nil,       // >
+			shift(76), // int8
+			shift(77), // uint8
+			shift(78), // int16
+			shift(79), // uint16
+			shift(80), // int32
+			shift(81), // uint32
+			shift(82), // int64
+			shift(83), // uint64
+			shift(84), // string
+			shift(85), // bytes
+			shift(86), // bool
+			shift(87), // float
+			shift(88), // double
+			nil,       // service
+			nil,       // call
+			nil,       // :
+			nil,       // notify
+			nil,       // (
+			nil,       // )
+			nil,       // project
+		},
+	},
+	actionRow{ // S50
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			reduce(12), // $, reduce: OptEnd
+			nil,        // empty
+			reduce(12), // package, reduce: OptEnd
+			nil,        // tok_identifier
+			shift(30),  // ;
+			shift(31),  // ,
+			reduce(12), // import, reduce: OptEnd
+			nil,        // tok_literal
+			reduce(12), // tok_option, reduce: OptEnd
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(12), // tok_doc, reduce: OptEnd
+			reduce(12), // enum, reduce: OptEnd
+			nil,        // {
+			nil,        // }
+			reduce(12), // message, reduce: OptEnd
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			reduce(12), // service, reduce: OptEnd
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			reduce(12), // project, reduce: OptEnd
+		},
+	},
+	actionRow{ // S51
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,       // INVALID
+			nil,       // $
+			nil,       // empty
+			nil,       // package
+			shift(91), // tok_identifier
+			nil,       // ;
+			nil,       // ,
+			nil,       // import
+			nil,       // tok_literal
+			shift(92), // tok_option
+			nil,       // =
+			nil,       // true
+			nil,       // false
+			nil,       // tok_const_int
+			shift(93), // tok_doc
+			nil,       // enum
+			nil,       // {
+			nil,       // }
+			nil,       // message
+			nil,       // [
+			nil,       // ]
+			nil,       // repeated
+			nil,       // map
+			nil,       // <
+			nil,       // >
+			nil,       // int8
+			nil,       // uint8
+			nil,       // int16
+			nil,       // uint16
+			nil,       // int32
+			nil,       // uint32
+			nil,       // int64
+			nil,       // uint64
+			nil,       // string
+			nil,       // bytes
+			nil,       // bool
+			nil,       // float
+			nil,       // double
+			nil,       // service
+			shift(96), // call
+			nil,       // :
+			shift(97), // notify
+			nil,       // (
+			nil,       // )
+			nil,       // project
+		},
+	},
+	actionRow{ // S52
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			reduce(12), // $, reduce: OptEnd
+			nil,        // empty
+			reduce(12), // package, reduce: OptEnd
+			nil,        // tok_identifier
+			shift(30),  // ;
+			shift(31),  // ,
+			reduce(12), // import, reduce: OptEnd
+			nil,        // tok_literal
+			reduce(12), // tok_option, reduce: OptEnd
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(12), // tok_doc, reduce: OptEnd
+			reduce(12), // enum, reduce: OptEnd
+			nil,        // {
+			nil,        // }
+			reduce(12), // message, reduce: OptEnd
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			reduce(12), // service, reduce: OptEnd
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			reduce(12), // project, reduce: OptEnd
+		},
+	},
 	actionRow{ // S53
 		canRecover: false,
 		actions: [numSymbols]action{
@@ -2562,18 +2668,20 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(29), // tok_identifier, reduce: EnumItemValue
-			reduce(29), // ;, reduce: EnumItemValue
-			reduce(29), // ,, reduce: EnumItemValue
+			shift(100), // tok_identifier
+			nil,        // ;
+			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			reduce(29), // tok_option, reduce: EnumItemValue
-			shift(99),  // =
+			shift(57),  // tok_option
+			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(29), // tok_doc, reduce: EnumItemValue
+			shift(58),  // tok_doc
 			nil,        // enum
 			nil,        // {
-			reduce(29), // }, reduce: EnumItemValue
+			nil,        // }
 			nil,        // message
 			nil,        // [
 			nil,        // ]
@@ -2607,22 +2715,24 @@ var actionTab = actionTable{
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
-			nil,        // $
+			reduce(80), // $, reduce: Project
 			nil,        // empty
-			nil,        // package
-			reduce(19), // tok_identifier, reduce: OptionValue
+			reduce(80), // package, reduce: Project
+			nil,        // tok_identifier
 			nil,        // ;
 			nil,        // ,
-			nil,        // import
+			reduce(80), // import, reduce: Project
 			nil,        // tok_literal
-			reduce(19), // tok_option, reduce: OptionValue
-			shift(102), // =
+			reduce(80), // tok_option, reduce: Project
+			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(19), // tok_doc, reduce: OptionValue
-			nil,        // enum
+			reduce(80), // tok_doc, reduce: Project
+			reduce(80), // enum, reduce: Project
 			nil,        // {
-			reduce(19), // }, reduce: OptionValue
-			nil,        // message
+			nil,        // }
+			reduce(80), // message, reduce: Project
 			nil,        // [
 			nil,        // ]
 			nil,        // repeated
@@ -2642,13 +2752,13 @@ var actionTab = actionTable{
 			nil,        // bool
 			nil,        // float
 			nil,        // double
-			nil,        // service
+			reduce(80), // service, reduce: Project
 			nil,        // call
 			nil,        // :
 			nil,        // notify
 			nil,        // (
 			nil,        // )
-			nil,        // project
+			reduce(80), // project, reduce: Project
 		},
 	},
 	actionRow{ // S55
@@ -2658,18 +2768,20 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(23), // tok_identifier, reduce: Doc
+			reduce(29), // tok_identifier, reduce: EnumItems
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			reduce(23), // tok_option, reduce: Doc
+			reduce(29), // tok_option, reduce: EnumItems
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(23), // tok_doc, reduce: Doc
+			reduce(29), // tok_doc, reduce: EnumItems
 			nil,        // enum
 			nil,        // {
-			nil,        // }
+			reduce(29), // }, reduce: EnumItems
 			nil,        // message
 			nil,        // [
 			nil,        // ]
@@ -2706,18 +2818,20 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(26), // tok_identifier, reduce: EnumItems
-			nil,        // ;
-			nil,        // ,
+			reduce(31), // tok_identifier, reduce: EnumItemValue
+			reduce(31), // ;, reduce: EnumItemValue
+			reduce(31), // ,, reduce: EnumItemValue
 			nil,        // import
 			nil,        // tok_literal
-			reduce(26), // tok_option, reduce: EnumItems
-			nil,        // =
+			reduce(31), // tok_option, reduce: EnumItemValue
+			shift(102), // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(26), // tok_doc, reduce: EnumItems
+			reduce(31), // tok_doc, reduce: EnumItemValue
 			nil,        // enum
 			nil,        // {
-			reduce(26), // }, reduce: EnumItems
+			reduce(31), // }, reduce: EnumItemValue
 			nil,        // message
 			nil,        // [
 			nil,        // ]
@@ -2751,22 +2865,24 @@ var actionTab = actionTable{
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
-			reduce(24), // $, reduce: Enum
+			nil,        // $
 			nil,        // empty
-			reduce(24), // package, reduce: Enum
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
-			reduce(24), // import, reduce: Enum
+			nil,        // package
+			reduce(19), // tok_identifier, reduce: OptionValue
+			reduce(19), // ;, reduce: OptionValue
+			reduce(19), // ,, reduce: OptionValue
+			nil,        // import
 			nil,        // tok_literal
-			reduce(24), // tok_option, reduce: Enum
-			nil,        // =
+			reduce(19), // tok_option, reduce: OptionValue
+			shift(105), // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(24), // tok_doc, reduce: Enum
-			reduce(24), // enum, reduce: Enum
+			reduce(19), // tok_doc, reduce: OptionValue
+			nil,        // enum
 			nil,        // {
-			nil,        // }
-			reduce(24), // message, reduce: Enum
+			reduce(19), // }, reduce: OptionValue
+			nil,        // message
 			nil,        // [
 			nil,        // ]
 			nil,        // repeated
@@ -2786,13 +2902,13 @@ var actionTab = actionTable{
 			nil,        // bool
 			nil,        // float
 			nil,        // double
-			reduce(24), // service, reduce: Enum
+			nil,        // service
 			nil,        // call
 			nil,        // :
 			nil,        // notify
 			nil,        // (
 			nil,        // )
-			reduce(24), // project, reduce: Enum
+			nil,        // project
 		},
 	},
 	actionRow{ // S58
@@ -2802,38 +2918,40 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(34), // tok_identifier, reduce: MessageElements
+			reduce(25), // tok_identifier, reduce: Doc
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			reduce(34), // tok_option, reduce: MessageElements
+			reduce(25), // tok_option, reduce: Doc
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(34), // tok_doc, reduce: MessageElements
+			reduce(25), // tok_doc, reduce: Doc
 			nil,        // enum
 			nil,        // {
-			reduce(34), // }, reduce: MessageElements
+			nil,        // }
 			nil,        // message
-			reduce(34), // [, reduce: MessageElements
+			nil,        // [
 			nil,        // ]
-			reduce(34), // repeated, reduce: MessageElements
-			reduce(34), // map, reduce: MessageElements
+			nil,        // repeated
+			nil,        // map
 			nil,        // <
 			nil,        // >
-			reduce(34), // int8, reduce: MessageElements
-			reduce(34), // uint8, reduce: MessageElements
-			reduce(34), // int16, reduce: MessageElements
-			reduce(34), // uint16, reduce: MessageElements
-			reduce(34), // int32, reduce: MessageElements
-			reduce(34), // uint32, reduce: MessageElements
-			reduce(34), // int64, reduce: MessageElements
-			reduce(34), // uint64, reduce: MessageElements
-			reduce(34), // string, reduce: MessageElements
-			reduce(34), // bytes, reduce: MessageElements
-			reduce(34), // bool, reduce: MessageElements
-			reduce(34), // float, reduce: MessageElements
-			reduce(34), // double, reduce: MessageElements
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
 			nil,        // service
 			nil,        // call
 			nil,        // :
@@ -2850,13 +2968,165 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(46), // tok_identifier, reduce: CustomType
+			reduce(28), // tok_identifier, reduce: EnumItems
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			reduce(28), // tok_option, reduce: EnumItems
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(28), // tok_doc, reduce: EnumItems
+			nil,        // enum
+			nil,        // {
+			reduce(28), // }, reduce: EnumItems
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S60
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			reduce(26), // $, reduce: Enum
+			nil,        // empty
+			reduce(26), // package, reduce: Enum
+			nil,        // tok_identifier
+			nil,        // ;
+			nil,        // ,
+			reduce(26), // import, reduce: Enum
+			nil,        // tok_literal
+			reduce(26), // tok_option, reduce: Enum
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(26), // tok_doc, reduce: Enum
+			reduce(26), // enum, reduce: Enum
+			nil,        // {
+			nil,        // }
+			reduce(26), // message, reduce: Enum
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			reduce(26), // service, reduce: Enum
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			reduce(26), // project, reduce: Enum
+		},
+	},
+	actionRow{ // S61
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			reduce(36), // tok_identifier, reduce: MessageElements
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			reduce(36), // tok_option, reduce: MessageElements
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(36), // tok_doc, reduce: MessageElements
+			nil,        // enum
+			nil,        // {
+			reduce(36), // }, reduce: MessageElements
+			nil,        // message
+			reduce(36), // [, reduce: MessageElements
+			nil,        // ]
+			reduce(36), // repeated, reduce: MessageElements
+			reduce(36), // map, reduce: MessageElements
+			nil,        // <
+			nil,        // >
+			reduce(36), // int8, reduce: MessageElements
+			reduce(36), // uint8, reduce: MessageElements
+			reduce(36), // int16, reduce: MessageElements
+			reduce(36), // uint16, reduce: MessageElements
+			reduce(36), // int32, reduce: MessageElements
+			reduce(36), // uint32, reduce: MessageElements
+			reduce(36), // int64, reduce: MessageElements
+			reduce(36), // uint64, reduce: MessageElements
+			reduce(36), // string, reduce: MessageElements
+			reduce(36), // bytes, reduce: MessageElements
+			reduce(36), // bool, reduce: MessageElements
+			reduce(36), // float, reduce: MessageElements
+			reduce(36), // double, reduce: MessageElements
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S62
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			reduce(48), // tok_identifier, reduce: CustomType
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -2891,7 +3161,7 @@ var actionTab = actionTable{
 			nil,        // project
 		},
 	},
-	actionRow{ // S60
+	actionRow{ // S63
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -2899,12 +3169,14 @@ var actionTab = actionTable{
 			nil,        // empty
 			nil,        // package
 			reduce(19), // tok_identifier, reduce: OptionValue
-			nil,        // ;
-			nil,        // ,
+			reduce(19), // ;, reduce: OptionValue
+			reduce(19), // ,, reduce: OptionValue
 			nil,        // import
 			nil,        // tok_literal
 			reduce(19), // tok_option, reduce: OptionValue
-			shift(104), // =
+			shift(107), // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			reduce(19), // tok_doc, reduce: OptionValue
 			nil,        // enum
@@ -2939,150 +3211,6 @@ var actionTab = actionTable{
 			nil,        // project
 		},
 	},
-	actionRow{ // S61
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			reduce(23), // tok_identifier, reduce: Doc
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			reduce(23), // tok_option, reduce: Doc
-			nil,        // =
-			nil,        // tok_const_int
-			reduce(23), // tok_doc, reduce: Doc
-			nil,        // enum
-			nil,        // {
-			nil,        // }
-			nil,        // message
-			reduce(23), // [, reduce: Doc
-			nil,        // ]
-			reduce(23), // repeated, reduce: Doc
-			reduce(23), // map, reduce: Doc
-			nil,        // <
-			nil,        // >
-			reduce(23), // int8, reduce: Doc
-			reduce(23), // uint8, reduce: Doc
-			reduce(23), // int16, reduce: Doc
-			reduce(23), // uint16, reduce: Doc
-			reduce(23), // int32, reduce: Doc
-			reduce(23), // uint32, reduce: Doc
-			reduce(23), // int64, reduce: Doc
-			reduce(23), // uint64, reduce: Doc
-			reduce(23), // string, reduce: Doc
-			reduce(23), // bytes, reduce: Doc
-			reduce(23), // bool, reduce: Doc
-			reduce(23), // float, reduce: Doc
-			reduce(23), // double, reduce: Doc
-			nil,        // service
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S62
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			reduce(33), // tok_identifier, reduce: MessageElements
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			reduce(33), // tok_option, reduce: MessageElements
-			nil,        // =
-			nil,        // tok_const_int
-			reduce(33), // tok_doc, reduce: MessageElements
-			nil,        // enum
-			nil,        // {
-			reduce(33), // }, reduce: MessageElements
-			nil,        // message
-			reduce(33), // [, reduce: MessageElements
-			nil,        // ]
-			reduce(33), // repeated, reduce: MessageElements
-			reduce(33), // map, reduce: MessageElements
-			nil,        // <
-			nil,        // >
-			reduce(33), // int8, reduce: MessageElements
-			reduce(33), // uint8, reduce: MessageElements
-			reduce(33), // int16, reduce: MessageElements
-			reduce(33), // uint16, reduce: MessageElements
-			reduce(33), // int32, reduce: MessageElements
-			reduce(33), // uint32, reduce: MessageElements
-			reduce(33), // int64, reduce: MessageElements
-			reduce(33), // uint64, reduce: MessageElements
-			reduce(33), // string, reduce: MessageElements
-			reduce(33), // bytes, reduce: MessageElements
-			reduce(33), // bool, reduce: MessageElements
-			reduce(33), // float, reduce: MessageElements
-			reduce(33), // double, reduce: MessageElements
-			nil,        // service
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S63
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			shift(105), // tok_identifier
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			nil,        // tok_option
-			nil,        // =
-			nil,        // tok_const_int
-			nil,        // tok_doc
-			nil,        // enum
-			nil,        // {
-			nil,        // }
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
 	actionRow{ // S64
 		canRecover: false,
 		actions: [numSymbols]action{
@@ -3090,38 +3218,40 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(40), // tok_identifier, reduce: FiledType
+			reduce(25), // tok_identifier, reduce: Doc
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			nil,        // tok_option
+			reduce(25), // tok_option, reduce: Doc
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			nil,        // tok_doc
+			reduce(25), // tok_doc, reduce: Doc
 			nil,        // enum
 			nil,        // {
 			nil,        // }
 			nil,        // message
-			nil,        // [
+			reduce(25), // [, reduce: Doc
 			nil,        // ]
-			nil,        // repeated
-			nil,        // map
+			reduce(25), // repeated, reduce: Doc
+			reduce(25), // map, reduce: Doc
 			nil,        // <
 			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
+			reduce(25), // int8, reduce: Doc
+			reduce(25), // uint8, reduce: Doc
+			reduce(25), // int16, reduce: Doc
+			reduce(25), // uint16, reduce: Doc
+			reduce(25), // int32, reduce: Doc
+			reduce(25), // uint32, reduce: Doc
+			reduce(25), // int64, reduce: Doc
+			reduce(25), // uint64, reduce: Doc
+			reduce(25), // string, reduce: Doc
+			reduce(25), // bytes, reduce: Doc
+			reduce(25), // bool, reduce: Doc
+			reduce(25), // float, reduce: Doc
+			reduce(25), // double, reduce: Doc
 			nil,        // service
 			nil,        // call
 			nil,        // :
@@ -3138,38 +3268,40 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(41), // tok_identifier, reduce: FiledType
+			reduce(35), // tok_identifier, reduce: MessageElements
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			nil,        // tok_option
+			reduce(35), // tok_option, reduce: MessageElements
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			nil,        // tok_doc
+			reduce(35), // tok_doc, reduce: MessageElements
 			nil,        // enum
 			nil,        // {
-			nil,        // }
+			reduce(35), // }, reduce: MessageElements
 			nil,        // message
-			nil,        // [
+			reduce(35), // [, reduce: MessageElements
 			nil,        // ]
-			nil,        // repeated
-			nil,        // map
+			reduce(35), // repeated, reduce: MessageElements
+			reduce(35), // map, reduce: MessageElements
 			nil,        // <
 			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
+			reduce(35), // int8, reduce: MessageElements
+			reduce(35), // uint8, reduce: MessageElements
+			reduce(35), // int16, reduce: MessageElements
+			reduce(35), // uint16, reduce: MessageElements
+			reduce(35), // int32, reduce: MessageElements
+			reduce(35), // uint32, reduce: MessageElements
+			reduce(35), // int64, reduce: MessageElements
+			reduce(35), // uint64, reduce: MessageElements
+			reduce(35), // string, reduce: MessageElements
+			reduce(35), // bytes, reduce: MessageElements
+			reduce(35), // bool, reduce: MessageElements
+			reduce(35), // float, reduce: MessageElements
+			reduce(35), // double, reduce: MessageElements
 			nil,        // service
 			nil,        // call
 			nil,        // :
@@ -3186,13 +3318,15 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(42), // tok_identifier, reduce: ContainerType
+			shift(108), // tok_identifier
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -3234,13 +3368,15 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(43), // tok_identifier, reduce: ContainerType
+			reduce(42), // tok_identifier, reduce: FiledType
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -3282,13 +3418,15 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(44), // tok_identifier, reduce: ContainerElemType
+			reduce(43), // tok_identifier, reduce: FiledType
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -3330,13 +3468,15 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(45), // tok_identifier, reduce: ContainerElemType
+			reduce(44), // tok_identifier, reduce: ContainerType
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -3378,13 +3518,15 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			nil,        // tok_identifier
+			reduce(45), // tok_identifier, reduce: ContainerType
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -3392,7 +3534,7 @@ var actionTab = actionTable{
 			nil,        // }
 			nil,        // message
 			nil,        // [
-			shift(106), // ]
+			nil,        // ]
 			nil,        // repeated
 			nil,        // map
 			nil,        // <
@@ -3426,13 +3568,15 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			shift(59),  // tok_identifier
+			reduce(46), // tok_identifier, reduce: ContainerElemType
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			shift(107), // tok_option
+			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -3445,19 +3589,19 @@ var actionTab = actionTable{
 			nil,        // map
 			nil,        // <
 			nil,        // >
-			shift(73),  // int8
-			shift(74),  // uint8
-			shift(75),  // int16
-			shift(76),  // uint16
-			shift(77),  // int32
-			shift(78),  // uint32
-			shift(79),  // int64
-			shift(80),  // uint64
-			shift(81),  // string
-			shift(82),  // bytes
-			shift(83),  // bool
-			shift(84),  // float
-			shift(85),  // double
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
 			nil,        // service
 			nil,        // call
 			nil,        // :
@@ -3474,24 +3618,26 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			nil,        // tok_identifier
+			reduce(47), // tok_identifier, reduce: ContainerElemType
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
 			nil,        // {
 			nil,        // }
 			nil,        // message
-			shift(109), // [
+			nil,        // [
 			nil,        // ]
 			nil,        // repeated
 			nil,        // map
-			shift(110), // <
+			nil,        // <
 			nil,        // >
 			nil,        // int8
 			nil,        // uint8
@@ -3522,13 +3668,15 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(52), // tok_identifier, reduce: BaseType
+			nil,        // tok_identifier
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -3536,7 +3684,7 @@ var actionTab = actionTable{
 			nil,        // }
 			nil,        // message
 			nil,        // [
-			nil,        // ]
+			shift(109), // ]
 			nil,        // repeated
 			nil,        // map
 			nil,        // <
@@ -3570,13 +3718,15 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(53), // tok_identifier, reduce: BaseType
+			shift(62),  // tok_identifier
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			nil,        // tok_option
+			shift(110), // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -3589,19 +3739,19 @@ var actionTab = actionTable{
 			nil,        // map
 			nil,        // <
 			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
+			shift(76),  // int8
+			shift(77),  // uint8
+			shift(78),  // int16
+			shift(79),  // uint16
+			shift(80),  // int32
+			shift(81),  // uint32
+			shift(82),  // int64
+			shift(83),  // uint64
+			shift(84),  // string
+			shift(85),  // bytes
+			shift(86),  // bool
+			shift(87),  // float
+			shift(88),  // double
 			nil,        // service
 			nil,        // call
 			nil,        // :
@@ -3618,24 +3768,26 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(54), // tok_identifier, reduce: BaseType
+			nil,        // tok_identifier
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
 			nil,        // {
 			nil,        // }
 			nil,        // message
-			nil,        // [
+			shift(112), // [
 			nil,        // ]
 			nil,        // repeated
 			nil,        // map
-			nil,        // <
+			shift(113), // <
 			nil,        // >
 			nil,        // int8
 			nil,        // uint8
@@ -3666,13 +3818,15 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(55), // tok_identifier, reduce: BaseType
+			reduce(54), // tok_identifier, reduce: BaseType
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -3714,13 +3868,15 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(56), // tok_identifier, reduce: BaseType
+			reduce(55), // tok_identifier, reduce: BaseType
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -3762,13 +3918,15 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(57), // tok_identifier, reduce: BaseType
+			reduce(56), // tok_identifier, reduce: BaseType
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -3810,13 +3968,15 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(58), // tok_identifier, reduce: BaseType
+			reduce(57), // tok_identifier, reduce: BaseType
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -3858,13 +4018,15 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(59), // tok_identifier, reduce: BaseType
+			reduce(58), // tok_identifier, reduce: BaseType
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -3906,13 +4068,15 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(60), // tok_identifier, reduce: BaseType
+			reduce(59), // tok_identifier, reduce: BaseType
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -3954,13 +4118,15 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(61), // tok_identifier, reduce: BaseType
+			reduce(60), // tok_identifier, reduce: BaseType
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -4002,13 +4168,15 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(62), // tok_identifier, reduce: BaseType
+			reduce(61), // tok_identifier, reduce: BaseType
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -4050,13 +4218,15 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(63), // tok_identifier, reduce: BaseType
+			reduce(62), // tok_identifier, reduce: BaseType
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -4098,13 +4268,15 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(64), // tok_identifier, reduce: BaseType
+			reduce(63), // tok_identifier, reduce: BaseType
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -4143,112 +4315,18 @@ var actionTab = actionTable{
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
-			reduce(31), // $, reduce: Message
-			nil,        // empty
-			reduce(31), // package, reduce: Message
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
-			reduce(31), // import, reduce: Message
-			nil,        // tok_literal
-			reduce(31), // tok_option, reduce: Message
-			nil,        // =
-			nil,        // tok_const_int
-			reduce(31), // tok_doc, reduce: Message
-			reduce(31), // enum, reduce: Message
-			nil,        // {
-			nil,        // }
-			reduce(31), // message, reduce: Message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			reduce(31), // service, reduce: Message
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			reduce(31), // project, reduce: Message
-		},
-	},
-	actionRow{ // S87
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(67), // tok_identifier, reduce: ServiceElements
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			reduce(67), // tok_option, reduce: ServiceElements
-			nil,        // =
-			nil,        // tok_const_int
-			reduce(67), // tok_doc, reduce: ServiceElements
-			nil,        // enum
-			nil,        // {
-			reduce(67), // }, reduce: ServiceElements
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			reduce(67), // call, reduce: ServiceElements
-			nil,        // :
-			reduce(67), // notify, reduce: ServiceElements
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S88
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			nil,        // tok_identifier
+			reduce(64), // tok_identifier, reduce: BaseType
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -4278,75 +4356,29 @@ var actionTab = actionTable{
 			nil,        // call
 			nil,        // :
 			nil,        // notify
-			shift(111), // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S89
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			reduce(19), // tok_identifier, reduce: OptionValue
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			reduce(19), // tok_option, reduce: OptionValue
-			shift(113), // =
-			nil,        // tok_const_int
-			reduce(19), // tok_doc, reduce: OptionValue
-			nil,        // enum
-			nil,        // {
-			reduce(19), // }, reduce: OptionValue
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			reduce(19), // call, reduce: OptionValue
-			nil,        // :
-			reduce(19), // notify, reduce: OptionValue
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S90
+	actionRow{ // S87
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(23), // tok_identifier, reduce: Doc
+			reduce(65), // tok_identifier, reduce: BaseType
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			reduce(23), // tok_option, reduce: Doc
+			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(23), // tok_doc, reduce: Doc
+			nil,        // tok_doc
 			nil,        // enum
 			nil,        // {
 			nil,        // }
@@ -4371,33 +4403,35 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			reduce(23), // call, reduce: Doc
+			nil,        // call
 			nil,        // :
-			reduce(23), // notify, reduce: Doc
+			nil,        // notify
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S91
+	actionRow{ // S88
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(68), // tok_identifier, reduce: ServiceElements
+			reduce(66), // tok_identifier, reduce: BaseType
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			reduce(68), // tok_option, reduce: ServiceElements
+			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(68), // tok_doc, reduce: ServiceElements
+			nil,        // tok_doc
 			nil,        // enum
 			nil,        // {
-			reduce(68), // }, reduce: ServiceElements
+			nil,        // }
 			nil,        // message
 			nil,        // [
 			nil,        // ]
@@ -4419,15 +4453,65 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			reduce(68), // call, reduce: ServiceElements
+			nil,        // call
 			nil,        // :
-			reduce(68), // notify, reduce: ServiceElements
+			nil,        // notify
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S92
+	actionRow{ // S89
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			reduce(33), // $, reduce: Message
+			nil,        // empty
+			reduce(33), // package, reduce: Message
+			nil,        // tok_identifier
+			nil,        // ;
+			nil,        // ,
+			reduce(33), // import, reduce: Message
+			nil,        // tok_literal
+			reduce(33), // tok_option, reduce: Message
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(33), // tok_doc, reduce: Message
+			reduce(33), // enum, reduce: Message
+			nil,        // {
+			nil,        // }
+			reduce(33), // message, reduce: Message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			reduce(33), // service, reduce: Message
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			reduce(33), // project, reduce: Message
+		},
+	},
+	actionRow{ // S90
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -4441,6 +4525,8 @@ var actionTab = actionTable{
 			nil,        // tok_literal
 			reduce(69), // tok_option, reduce: ServiceElements
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			reduce(69), // tok_doc, reduce: ServiceElements
 			nil,        // enum
@@ -4475,7 +4561,7 @@ var actionTab = actionTable{
 			nil,        // project
 		},
 	},
-	actionRow{ // S93
+	actionRow{ // S91
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -4489,6 +4575,8 @@ var actionTab = actionTable{
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -4516,8 +4604,108 @@ var actionTab = actionTable{
 			nil,        // double
 			nil,        // service
 			nil,        // call
-			shift(114), // :
+			nil,        // :
 			nil,        // notify
+			shift(114), // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S92
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			reduce(19), // tok_identifier, reduce: OptionValue
+			reduce(19), // ;, reduce: OptionValue
+			reduce(19), // ,, reduce: OptionValue
+			nil,        // import
+			nil,        // tok_literal
+			reduce(19), // tok_option, reduce: OptionValue
+			shift(116), // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(19), // tok_doc, reduce: OptionValue
+			nil,        // enum
+			nil,        // {
+			reduce(19), // }, reduce: OptionValue
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			reduce(19), // call, reduce: OptionValue
+			nil,        // :
+			reduce(19), // notify, reduce: OptionValue
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S93
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			reduce(25), // tok_identifier, reduce: Doc
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			reduce(25), // tok_option, reduce: Doc
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(25), // tok_doc, reduce: Doc
+			nil,        // enum
+			nil,        // {
+			nil,        // }
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			reduce(25), // call, reduce: Doc
+			nil,        // :
+			reduce(25), // notify, reduce: Doc
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -4530,6 +4718,106 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
+			reduce(70), // tok_identifier, reduce: ServiceElements
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			reduce(70), // tok_option, reduce: ServiceElements
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(70), // tok_doc, reduce: ServiceElements
+			nil,        // enum
+			nil,        // {
+			reduce(70), // }, reduce: ServiceElements
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			reduce(70), // call, reduce: ServiceElements
+			nil,        // :
+			reduce(70), // notify, reduce: ServiceElements
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S95
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			reduce(71), // tok_identifier, reduce: ServiceElements
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			reduce(71), // tok_option, reduce: ServiceElements
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(71), // tok_doc, reduce: ServiceElements
+			nil,        // enum
+			nil,        // {
+			reduce(71), // }, reduce: ServiceElements
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			reduce(71), // call, reduce: ServiceElements
+			nil,        // :
+			reduce(71), // notify, reduce: ServiceElements
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S96
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
 			nil,        // tok_identifier
 			nil,        // ;
 			nil,        // ,
@@ -4537,6 +4825,8 @@ var actionTab = actionTable{
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -4564,103 +4854,7 @@ var actionTab = actionTable{
 			nil,        // double
 			nil,        // service
 			nil,        // call
-			shift(115), // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S95
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			reduce(65), // $, reduce: Service
-			nil,        // empty
-			reduce(65), // package, reduce: Service
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
-			reduce(65), // import, reduce: Service
-			nil,        // tok_literal
-			reduce(65), // tok_option, reduce: Service
-			nil,        // =
-			nil,        // tok_const_int
-			reduce(65), // tok_doc, reduce: Service
-			reduce(65), // enum, reduce: Service
-			nil,        // {
-			nil,        // }
-			reduce(65), // message, reduce: Service
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			reduce(65), // service, reduce: Service
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			reduce(65), // project, reduce: Service
-		},
-	},
-	actionRow{ // S96
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			reduce(81), // tok_identifier, reduce: ProjElements
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			reduce(81), // tok_option, reduce: ProjElements
-			nil,        // =
-			nil,        // tok_const_int
-			reduce(81), // tok_doc, reduce: ProjElements
-			nil,        // enum
-			nil,        // {
-			reduce(81), // }, reduce: ProjElements
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			nil,        // call
-			nil,        // :
+			shift(117), // :
 			nil,        // notify
 			nil,        // (
 			nil,        // )
@@ -4681,6 +4875,8 @@ var actionTab = actionTable{
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -4708,7 +4904,7 @@ var actionTab = actionTable{
 			nil,        // double
 			nil,        // service
 			nil,        // call
-			shift(116), // :
+			shift(118), // :
 			nil,        // notify
 			nil,        // (
 			nil,        // )
@@ -4719,22 +4915,24 @@ var actionTab = actionTable{
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
-			nil,        // $
+			reduce(67), // $, reduce: Service
 			nil,        // empty
-			nil,        // package
-			reduce(80), // tok_identifier, reduce: ProjElements
+			reduce(67), // package, reduce: Service
+			nil,        // tok_identifier
 			nil,        // ;
 			nil,        // ,
-			nil,        // import
+			reduce(67), // import, reduce: Service
 			nil,        // tok_literal
-			reduce(80), // tok_option, reduce: ProjElements
+			reduce(67), // tok_option, reduce: Service
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(80), // tok_doc, reduce: ProjElements
-			nil,        // enum
+			reduce(67), // tok_doc, reduce: Service
+			reduce(67), // enum, reduce: Service
 			nil,        // {
-			reduce(80), // }, reduce: ProjElements
-			nil,        // message
+			nil,        // }
+			reduce(67), // message, reduce: Service
 			nil,        // [
 			nil,        // ]
 			nil,        // repeated
@@ -4754,13 +4952,13 @@ var actionTab = actionTable{
 			nil,        // bool
 			nil,        // float
 			nil,        // double
-			nil,        // service
+			reduce(67), // service, reduce: Service
 			nil,        // call
 			nil,        // :
 			nil,        // notify
 			nil,        // (
 			nil,        // )
-			nil,        // project
+			reduce(67), // project, reduce: Service
 		},
 	},
 	actionRow{ // S99
@@ -4770,18 +4968,20 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			nil,        // tok_identifier
+			reduce(83), // tok_identifier, reduce: ProjElements
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			nil,        // tok_option
+			reduce(83), // tok_option, reduce: ProjElements
 			nil,        // =
-			shift(117), // tok_const_int
-			nil,        // tok_doc
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(83), // tok_doc, reduce: ProjElements
 			nil,        // enum
 			nil,        // {
-			nil,        // }
+			reduce(83), // }, reduce: ProjElements
 			nil,        // message
 			nil,        // [
 			nil,        // ]
@@ -4818,18 +5018,20 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(12), // tok_identifier, reduce: OptEnd
-			shift(119), // ;
-			shift(120), // ,
+			nil,        // tok_identifier
+			nil,        // ;
+			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			reduce(12), // tok_option, reduce: OptEnd
+			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(12), // tok_doc, reduce: OptEnd
+			nil,        // tok_doc
 			nil,        // enum
 			nil,        // {
-			reduce(12), // }, reduce: OptEnd
+			nil,        // }
 			nil,        // message
 			nil,        // [
 			nil,        // ]
@@ -4852,7 +5054,7 @@ var actionTab = actionTable{
 			nil,        // double
 			nil,        // service
 			nil,        // call
-			nil,        // :
+			shift(119), // :
 			nil,        // notify
 			nil,        // (
 			nil,        // )
@@ -4866,18 +5068,20 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(18), // tok_identifier, reduce: Option
+			reduce(82), // tok_identifier, reduce: ProjElements
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			reduce(18), // tok_option, reduce: Option
+			reduce(82), // tok_option, reduce: ProjElements
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(18), // tok_doc, reduce: Option
+			reduce(82), // tok_doc, reduce: ProjElements
 			nil,        // enum
 			nil,        // {
-			reduce(18), // }, reduce: Option
+			reduce(82), // }, reduce: ProjElements
 			nil,        // message
 			nil,        // [
 			nil,        // ]
@@ -4918,10 +5122,12 @@ var actionTab = actionTable{
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
-			shift(121), // tok_literal
+			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
-			shift(122), // tok_const_int
+			nil,        // true
+			nil,        // false
+			shift(120), // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
 			nil,        // {
@@ -4962,38 +5168,40 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(18), // tok_identifier, reduce: Option
-			nil,        // ;
-			nil,        // ,
+			reduce(12), // tok_identifier, reduce: OptEnd
+			shift(122), // ;
+			shift(123), // ,
 			nil,        // import
 			nil,        // tok_literal
-			reduce(18), // tok_option, reduce: Option
+			reduce(12), // tok_option, reduce: OptEnd
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(18), // tok_doc, reduce: Option
+			reduce(12), // tok_doc, reduce: OptEnd
 			nil,        // enum
 			nil,        // {
-			reduce(18), // }, reduce: Option
+			reduce(12), // }, reduce: OptEnd
 			nil,        // message
-			reduce(18), // [, reduce: Option
+			nil,        // [
 			nil,        // ]
-			reduce(18), // repeated, reduce: Option
-			reduce(18), // map, reduce: Option
+			nil,        // repeated
+			nil,        // map
 			nil,        // <
 			nil,        // >
-			reduce(18), // int8, reduce: Option
-			reduce(18), // uint8, reduce: Option
-			reduce(18), // int16, reduce: Option
-			reduce(18), // uint16, reduce: Option
-			reduce(18), // int32, reduce: Option
-			reduce(18), // uint32, reduce: Option
-			reduce(18), // int64, reduce: Option
-			reduce(18), // uint64, reduce: Option
-			reduce(18), // string, reduce: Option
-			reduce(18), // bytes, reduce: Option
-			reduce(18), // bool, reduce: Option
-			reduce(18), // float, reduce: Option
-			reduce(18), // double, reduce: Option
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
 			nil,        // service
 			nil,        // call
 			nil,        // :
@@ -5010,18 +5218,20 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
+			reduce(12), // tok_identifier, reduce: OptEnd
+			shift(122), // ;
+			shift(123), // ,
 			nil,        // import
-			shift(123), // tok_literal
-			nil,        // tok_option
+			nil,        // tok_literal
+			reduce(12), // tok_option, reduce: OptEnd
 			nil,        // =
-			shift(124), // tok_const_int
-			nil,        // tok_doc
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(12), // tok_doc, reduce: OptEnd
 			nil,        // enum
 			nil,        // {
-			nil,        // }
+			reduce(12), // }, reduce: OptEnd
 			nil,        // message
 			nil,        // [
 			nil,        // ]
@@ -5062,10 +5272,12 @@ var actionTab = actionTable{
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
-			nil,        // tok_literal
+			shift(125), // tok_literal
 			nil,        // tok_option
-			shift(125), // =
-			nil,        // tok_const_int
+			nil,        // =
+			shift(126), // true
+			shift(127), // false
+			shift(128), // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
 			nil,        // {
@@ -5106,38 +5318,40 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			shift(59),  // tok_identifier
-			nil,        // ;
-			nil,        // ,
+			reduce(12), // tok_identifier, reduce: OptEnd
+			shift(130), // ;
+			shift(131), // ,
 			nil,        // import
 			nil,        // tok_literal
-			shift(107), // tok_option
+			reduce(12), // tok_option, reduce: OptEnd
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			nil,        // tok_doc
+			reduce(12), // tok_doc, reduce: OptEnd
 			nil,        // enum
 			nil,        // {
-			nil,        // }
+			reduce(12), // }, reduce: OptEnd
 			nil,        // message
-			nil,        // [
+			reduce(12), // [, reduce: OptEnd
 			nil,        // ]
-			nil,        // repeated
-			nil,        // map
+			reduce(12), // repeated, reduce: OptEnd
+			reduce(12), // map, reduce: OptEnd
 			nil,        // <
 			nil,        // >
-			shift(73),  // int8
-			shift(74),  // uint8
-			shift(75),  // int16
-			shift(76),  // uint16
-			shift(77),  // int32
-			shift(78),  // uint32
-			shift(79),  // int64
-			shift(80),  // uint64
-			shift(81),  // string
-			shift(82),  // bytes
-			shift(83),  // bool
-			shift(84),  // float
-			shift(85),  // double
+			reduce(12), // int8, reduce: OptEnd
+			reduce(12), // uint8, reduce: OptEnd
+			reduce(12), // int16, reduce: OptEnd
+			reduce(12), // uint16, reduce: OptEnd
+			reduce(12), // int32, reduce: OptEnd
+			reduce(12), // uint32, reduce: OptEnd
+			reduce(12), // int64, reduce: OptEnd
+			reduce(12), // uint64, reduce: OptEnd
+			reduce(12), // string, reduce: OptEnd
+			reduce(12), // bytes, reduce: OptEnd
+			reduce(12), // bool, reduce: OptEnd
+			reduce(12), // float, reduce: OptEnd
+			reduce(12), // double, reduce: OptEnd
 			nil,        // service
 			nil,        // call
 			nil,        // :
@@ -5154,14 +5368,16 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(47), // tok_identifier, reduce: CustomType
+			nil,        // tok_identifier
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
-			nil,        // tok_literal
+			shift(132), // tok_literal
 			nil,        // tok_option
 			nil,        // =
-			nil,        // tok_const_int
+			shift(133), // true
+			shift(134), // false
+			shift(135), // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
 			nil,        // {
@@ -5202,13 +5418,15 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(49), // tok_identifier, reduce: ListType
+			nil,        // tok_identifier
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
-			nil,        // =
+			shift(136), // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -5250,13 +5468,15 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			nil,        // tok_identifier
+			shift(62),  // tok_identifier
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			nil,        // tok_option
+			shift(110), // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -5269,19 +5489,19 @@ var actionTab = actionTable{
 			nil,        // map
 			nil,        // <
 			nil,        // >
-			shift(128), // int8
-			shift(129), // uint8
-			shift(130), // int16
-			shift(131), // uint16
-			shift(132), // int32
-			shift(133), // uint32
-			shift(134), // int64
-			shift(135), // uint64
-			shift(136), // string
-			shift(137), // bytes
-			shift(138), // bool
-			shift(139), // float
-			shift(140), // double
+			shift(76),  // int8
+			shift(77),  // uint8
+			shift(78),  // int16
+			shift(79),  // uint16
+			shift(80),  // int32
+			shift(81),  // uint32
+			shift(82),  // int64
+			shift(83),  // uint64
+			shift(84),  // string
+			shift(85),  // bytes
+			shift(86),  // bool
+			shift(87),  // float
+			shift(88),  // double
 			nil,        // service
 			nil,        // call
 			nil,        // :
@@ -5298,13 +5518,15 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			nil,        // tok_identifier
+			reduce(49), // tok_identifier, reduce: CustomType
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -5317,19 +5539,19 @@ var actionTab = actionTable{
 			nil,        // map
 			nil,        // <
 			nil,        // >
-			shift(142), // int8
-			shift(143), // uint8
-			shift(144), // int16
-			shift(145), // uint16
-			shift(146), // int32
-			shift(147), // uint32
-			shift(148), // int64
-			shift(149), // uint64
-			shift(150), // string
-			shift(151), // bytes
-			shift(152), // bool
-			shift(153), // float
-			shift(154), // double
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
 			nil,        // service
 			nil,        // call
 			nil,        // :
@@ -5346,13 +5568,15 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			shift(155), // tok_identifier
+			reduce(51), // tok_identifier, reduce: ListType
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			shift(156), // tok_option
+			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -5383,7 +5607,7 @@ var actionTab = actionTable{
 			nil,        // :
 			nil,        // notify
 			nil,        // (
-			reduce(73), // ), reduce: RqRs
+			nil,        // )
 			nil,        // project
 		},
 	},
@@ -5394,18 +5618,20 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(18), // tok_identifier, reduce: Option
+			nil,        // tok_identifier
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			reduce(18), // tok_option, reduce: Option
+			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(18), // tok_doc, reduce: Option
+			nil,        // tok_doc
 			nil,        // enum
 			nil,        // {
-			reduce(18), // }, reduce: Option
+			nil,        // }
 			nil,        // message
 			nil,        // [
 			nil,        // ]
@@ -5413,23 +5639,23 @@ var actionTab = actionTable{
 			nil,        // map
 			nil,        // <
 			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
+			shift(139), // int8
+			shift(140), // uint8
+			shift(141), // int16
+			shift(142), // uint16
+			shift(143), // int32
+			shift(144), // uint32
+			shift(145), // int64
+			shift(146), // uint64
+			shift(147), // string
+			shift(148), // bytes
+			shift(149), // bool
+			shift(150), // float
+			shift(151), // double
 			nil,        // service
-			reduce(18), // call, reduce: Option
+			nil,        // call
 			nil,        // :
-			reduce(18), // notify, reduce: Option
+			nil,        // notify
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -5446,10 +5672,62 @@ var actionTab = actionTable{
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
-			shift(158), // tok_literal
+			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
-			shift(159), // tok_const_int
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			nil,        // tok_doc
+			nil,        // enum
+			nil,        // {
+			nil,        // }
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			shift(153), // int8
+			shift(154), // uint8
+			shift(155), // int16
+			shift(156), // uint16
+			shift(157), // int32
+			shift(158), // uint32
+			shift(159), // int64
+			shift(160), // uint64
+			shift(161), // string
+			shift(162), // bytes
+			shift(163), // bool
+			shift(164), // float
+			shift(165), // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S114
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			shift(166), // tok_identifier
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			shift(167), // tok_option
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
 			nil,        // {
@@ -5479,55 +5757,7 @@ var actionTab = actionTable{
 			nil,        // :
 			nil,        // notify
 			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S114
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			reduce(70), // tok_identifier, reduce: MethodFlag
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			reduce(70), // tok_option, reduce: MethodFlag
-			nil,        // =
-			nil,        // tok_const_int
-			reduce(70), // tok_doc, reduce: MethodFlag
-			nil,        // enum
-			nil,        // {
-			reduce(70), // }, reduce: MethodFlag
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			reduce(70), // call, reduce: MethodFlag
-			nil,        // :
-			reduce(70), // notify, reduce: MethodFlag
-			nil,        // (
-			nil,        // )
+			reduce(75), // ), reduce: RqRs
 			nil,        // project
 		},
 	},
@@ -5538,18 +5768,20 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(71), // tok_identifier, reduce: MethodFlag
-			nil,        // ;
-			nil,        // ,
+			reduce(12), // tok_identifier, reduce: OptEnd
+			shift(170), // ;
+			shift(171), // ,
 			nil,        // import
 			nil,        // tok_literal
-			reduce(71), // tok_option, reduce: MethodFlag
+			reduce(12), // tok_option, reduce: OptEnd
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(71), // tok_doc, reduce: MethodFlag
+			reduce(12), // tok_doc, reduce: OptEnd
 			nil,        // enum
 			nil,        // {
-			reduce(71), // }, reduce: MethodFlag
+			reduce(12), // }, reduce: OptEnd
 			nil,        // message
 			nil,        // [
 			nil,        // ]
@@ -5571,9 +5803,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			reduce(71), // call, reduce: MethodFlag
+			reduce(12), // call, reduce: OptEnd
 			nil,        // :
-			reduce(71), // notify, reduce: MethodFlag
+			reduce(12), // notify, reduce: OptEnd
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -5586,18 +5818,20 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(82), // tok_identifier, reduce: ProjArea
+			nil,        // tok_identifier
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
-			nil,        // tok_literal
-			reduce(82), // tok_option, reduce: ProjArea
+			shift(172), // tok_literal
+			nil,        // tok_option
 			nil,        // =
-			nil,        // tok_const_int
-			reduce(82), // tok_doc, reduce: ProjArea
+			shift(173), // true
+			shift(174), // false
+			shift(175), // tok_const_int
+			nil,        // tok_doc
 			nil,        // enum
 			nil,        // {
-			reduce(82), // }, reduce: ProjArea
+			nil,        // }
 			nil,        // message
 			nil,        // [
 			nil,        // ]
@@ -5634,18 +5868,20 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(30), // tok_identifier, reduce: EnumItemValue
-			reduce(30), // ;, reduce: EnumItemValue
-			reduce(30), // ,, reduce: EnumItemValue
+			reduce(72), // tok_identifier, reduce: MethodFlag
+			nil,        // ;
+			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			reduce(30), // tok_option, reduce: EnumItemValue
+			reduce(72), // tok_option, reduce: MethodFlag
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(30), // tok_doc, reduce: EnumItemValue
+			reduce(72), // tok_doc, reduce: MethodFlag
 			nil,        // enum
 			nil,        // {
-			reduce(30), // }, reduce: EnumItemValue
+			reduce(72), // }, reduce: MethodFlag
 			nil,        // message
 			nil,        // [
 			nil,        // ]
@@ -5667,9 +5903,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // call
+			reduce(72), // call, reduce: MethodFlag
 			nil,        // :
-			nil,        // notify
+			reduce(72), // notify, reduce: MethodFlag
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -5682,18 +5918,20 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(28), // tok_identifier, reduce: EnumItem
+			reduce(73), // tok_identifier, reduce: MethodFlag
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			reduce(28), // tok_option, reduce: EnumItem
+			reduce(73), // tok_option, reduce: MethodFlag
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(28), // tok_doc, reduce: EnumItem
+			reduce(73), // tok_doc, reduce: MethodFlag
 			nil,        // enum
 			nil,        // {
-			reduce(28), // }, reduce: EnumItem
+			reduce(73), // }, reduce: MethodFlag
 			nil,        // message
 			nil,        // [
 			nil,        // ]
@@ -5715,9 +5953,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			nil,        // call
+			reduce(73), // call, reduce: MethodFlag
 			nil,        // :
-			nil,        // notify
+			reduce(73), // notify, reduce: MethodFlag
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -5730,18 +5968,20 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(13), // tok_identifier, reduce: OptEnd
+			reduce(84), // tok_identifier, reduce: ProjArea
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			reduce(13), // tok_option, reduce: OptEnd
+			reduce(84), // tok_option, reduce: ProjArea
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(13), // tok_doc, reduce: OptEnd
+			reduce(84), // tok_doc, reduce: ProjArea
 			nil,        // enum
 			nil,        // {
-			reduce(13), // }, reduce: OptEnd
+			reduce(84), // }, reduce: ProjArea
 			nil,        // message
 			nil,        // [
 			nil,        // ]
@@ -5778,18 +6018,20 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(14), // tok_identifier, reduce: OptEnd
-			nil,        // ;
-			nil,        // ,
+			reduce(32), // tok_identifier, reduce: EnumItemValue
+			reduce(32), // ;, reduce: EnumItemValue
+			reduce(32), // ,, reduce: EnumItemValue
 			nil,        // import
 			nil,        // tok_literal
-			reduce(14), // tok_option, reduce: OptEnd
+			reduce(32), // tok_option, reduce: EnumItemValue
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(14), // tok_doc, reduce: OptEnd
+			reduce(32), // tok_doc, reduce: EnumItemValue
 			nil,        // enum
 			nil,        // {
-			reduce(14), // }, reduce: OptEnd
+			reduce(32), // }, reduce: EnumItemValue
 			nil,        // message
 			nil,        // [
 			nil,        // ]
@@ -5826,18 +6068,20 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(20), // tok_identifier, reduce: OptionValue
+			reduce(30), // tok_identifier, reduce: EnumItem
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			reduce(20), // tok_option, reduce: OptionValue
+			reduce(30), // tok_option, reduce: EnumItem
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(20), // tok_doc, reduce: OptionValue
+			reduce(30), // tok_doc, reduce: EnumItem
 			nil,        // enum
 			nil,        // {
-			reduce(20), // }, reduce: OptionValue
+			reduce(30), // }, reduce: EnumItem
 			nil,        // message
 			nil,        // [
 			nil,        // ]
@@ -5874,18 +6118,20 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(21), // tok_identifier, reduce: OptionValue
+			reduce(13), // tok_identifier, reduce: OptEnd
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			reduce(21), // tok_option, reduce: OptionValue
+			reduce(13), // tok_option, reduce: OptEnd
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(21), // tok_doc, reduce: OptionValue
+			reduce(13), // tok_doc, reduce: OptEnd
 			nil,        // enum
 			nil,        // {
-			reduce(21), // }, reduce: OptionValue
+			reduce(13), // }, reduce: OptEnd
 			nil,        // message
 			nil,        // [
 			nil,        // ]
@@ -5922,38 +6168,40 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(20), // tok_identifier, reduce: OptionValue
+			reduce(14), // tok_identifier, reduce: OptEnd
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			reduce(20), // tok_option, reduce: OptionValue
+			reduce(14), // tok_option, reduce: OptEnd
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(20), // tok_doc, reduce: OptionValue
+			reduce(14), // tok_doc, reduce: OptEnd
 			nil,        // enum
 			nil,        // {
-			reduce(20), // }, reduce: OptionValue
+			reduce(14), // }, reduce: OptEnd
 			nil,        // message
-			reduce(20), // [, reduce: OptionValue
+			nil,        // [
 			nil,        // ]
-			reduce(20), // repeated, reduce: OptionValue
-			reduce(20), // map, reduce: OptionValue
+			nil,        // repeated
+			nil,        // map
 			nil,        // <
 			nil,        // >
-			reduce(20), // int8, reduce: OptionValue
-			reduce(20), // uint8, reduce: OptionValue
-			reduce(20), // int16, reduce: OptionValue
-			reduce(20), // uint16, reduce: OptionValue
-			reduce(20), // int32, reduce: OptionValue
-			reduce(20), // uint32, reduce: OptionValue
-			reduce(20), // int64, reduce: OptionValue
-			reduce(20), // uint64, reduce: OptionValue
-			reduce(20), // string, reduce: OptionValue
-			reduce(20), // bytes, reduce: OptionValue
-			reduce(20), // bool, reduce: OptionValue
-			reduce(20), // float, reduce: OptionValue
-			reduce(20), // double, reduce: OptionValue
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
 			nil,        // service
 			nil,        // call
 			nil,        // :
@@ -5970,38 +6218,40 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(21), // tok_identifier, reduce: OptionValue
+			reduce(18), // tok_identifier, reduce: Option
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			reduce(21), // tok_option, reduce: OptionValue
+			reduce(18), // tok_option, reduce: Option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(21), // tok_doc, reduce: OptionValue
+			reduce(18), // tok_doc, reduce: Option
 			nil,        // enum
 			nil,        // {
-			reduce(21), // }, reduce: OptionValue
+			reduce(18), // }, reduce: Option
 			nil,        // message
-			reduce(21), // [, reduce: OptionValue
+			nil,        // [
 			nil,        // ]
-			reduce(21), // repeated, reduce: OptionValue
-			reduce(21), // map, reduce: OptionValue
+			nil,        // repeated
+			nil,        // map
 			nil,        // <
 			nil,        // >
-			reduce(21), // int8, reduce: OptionValue
-			reduce(21), // uint8, reduce: OptionValue
-			reduce(21), // int16, reduce: OptionValue
-			reduce(21), // uint16, reduce: OptionValue
-			reduce(21), // int32, reduce: OptionValue
-			reduce(21), // uint32, reduce: OptionValue
-			reduce(21), // int64, reduce: OptionValue
-			reduce(21), // uint64, reduce: OptionValue
-			reduce(21), // string, reduce: OptionValue
-			reduce(21), // bytes, reduce: OptionValue
-			reduce(21), // bool, reduce: OptionValue
-			reduce(21), // float, reduce: OptionValue
-			reduce(21), // double, reduce: OptionValue
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
 			nil,        // service
 			nil,        // call
 			nil,        // :
@@ -6018,18 +6268,20 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
+			reduce(22), // tok_identifier, reduce: OptionValue
+			reduce(22), // ;, reduce: OptionValue
+			reduce(22), // ,, reduce: OptionValue
 			nil,        // import
 			nil,        // tok_literal
-			nil,        // tok_option
+			reduce(22), // tok_option, reduce: OptionValue
 			nil,        // =
-			shift(160), // tok_const_int
-			nil,        // tok_doc
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(22), // tok_doc, reduce: OptionValue
 			nil,        // enum
 			nil,        // {
-			nil,        // }
+			reduce(22), // }, reduce: OptionValue
 			nil,        // message
 			nil,        // [
 			nil,        // ]
@@ -6066,18 +6318,20 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(48), // tok_identifier, reduce: ListType
-			nil,        // ;
-			nil,        // ,
+			reduce(20), // tok_identifier, reduce: OptionValue
+			reduce(20), // ;, reduce: OptionValue
+			reduce(20), // ,, reduce: OptionValue
 			nil,        // import
 			nil,        // tok_literal
-			nil,        // tok_option
+			reduce(20), // tok_option, reduce: OptionValue
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			nil,        // tok_doc
+			reduce(20), // tok_doc, reduce: OptionValue
 			nil,        // enum
 			nil,        // {
-			nil,        // }
+			reduce(20), // }, reduce: OptionValue
 			nil,        // message
 			nil,        // [
 			nil,        // ]
@@ -6114,21 +6368,23 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
+			reduce(21), // tok_identifier, reduce: OptionValue
+			reduce(21), // ;, reduce: OptionValue
+			reduce(21), // ,, reduce: OptionValue
 			nil,        // import
 			nil,        // tok_literal
-			nil,        // tok_option
+			reduce(21), // tok_option, reduce: OptionValue
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			nil,        // tok_doc
+			reduce(21), // tok_doc, reduce: OptionValue
 			nil,        // enum
 			nil,        // {
-			nil,        // }
+			reduce(21), // }, reduce: OptionValue
 			nil,        // message
 			nil,        // [
-			shift(161), // ]
+			nil,        // ]
 			nil,        // repeated
 			nil,        // map
 			nil,        // <
@@ -6162,21 +6418,23 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
+			reduce(23), // tok_identifier, reduce: OptionValue
+			reduce(23), // ;, reduce: OptionValue
+			reduce(23), // ,, reduce: OptionValue
 			nil,        // import
 			nil,        // tok_literal
-			nil,        // tok_option
+			reduce(23), // tok_option, reduce: OptionValue
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			nil,        // tok_doc
+			reduce(23), // tok_doc, reduce: OptionValue
 			nil,        // enum
 			nil,        // {
-			nil,        // }
+			reduce(23), // }, reduce: OptionValue
 			nil,        // message
 			nil,        // [
-			reduce(52), // ], reduce: BaseType
+			nil,        // ]
 			nil,        // repeated
 			nil,        // map
 			nil,        // <
@@ -6210,38 +6468,40 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			nil,        // tok_identifier
+			reduce(18), // tok_identifier, reduce: Option
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			nil,        // tok_option
+			reduce(18), // tok_option, reduce: Option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			nil,        // tok_doc
+			reduce(18), // tok_doc, reduce: Option
 			nil,        // enum
 			nil,        // {
-			nil,        // }
+			reduce(18), // }, reduce: Option
 			nil,        // message
-			nil,        // [
-			reduce(53), // ], reduce: BaseType
-			nil,        // repeated
-			nil,        // map
+			reduce(18), // [, reduce: Option
+			nil,        // ]
+			reduce(18), // repeated, reduce: Option
+			reduce(18), // map, reduce: Option
 			nil,        // <
 			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
+			reduce(18), // int8, reduce: Option
+			reduce(18), // uint8, reduce: Option
+			reduce(18), // int16, reduce: Option
+			reduce(18), // uint16, reduce: Option
+			reduce(18), // int32, reduce: Option
+			reduce(18), // uint32, reduce: Option
+			reduce(18), // int64, reduce: Option
+			reduce(18), // uint64, reduce: Option
+			reduce(18), // string, reduce: Option
+			reduce(18), // bytes, reduce: Option
+			reduce(18), // bool, reduce: Option
+			reduce(18), // float, reduce: Option
+			reduce(18), // double, reduce: Option
 			nil,        // service
 			nil,        // call
 			nil,        // :
@@ -6258,38 +6518,40 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			nil,        // tok_identifier
+			reduce(13), // tok_identifier, reduce: OptEnd
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			nil,        // tok_option
+			reduce(13), // tok_option, reduce: OptEnd
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			nil,        // tok_doc
+			reduce(13), // tok_doc, reduce: OptEnd
 			nil,        // enum
 			nil,        // {
-			nil,        // }
+			reduce(13), // }, reduce: OptEnd
 			nil,        // message
-			nil,        // [
-			reduce(54), // ], reduce: BaseType
-			nil,        // repeated
-			nil,        // map
+			reduce(13), // [, reduce: OptEnd
+			nil,        // ]
+			reduce(13), // repeated, reduce: OptEnd
+			reduce(13), // map, reduce: OptEnd
 			nil,        // <
 			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
+			reduce(13), // int8, reduce: OptEnd
+			reduce(13), // uint8, reduce: OptEnd
+			reduce(13), // int16, reduce: OptEnd
+			reduce(13), // uint16, reduce: OptEnd
+			reduce(13), // int32, reduce: OptEnd
+			reduce(13), // uint32, reduce: OptEnd
+			reduce(13), // int64, reduce: OptEnd
+			reduce(13), // uint64, reduce: OptEnd
+			reduce(13), // string, reduce: OptEnd
+			reduce(13), // bytes, reduce: OptEnd
+			reduce(13), // bool, reduce: OptEnd
+			reduce(13), // float, reduce: OptEnd
+			reduce(13), // double, reduce: OptEnd
 			nil,        // service
 			nil,        // call
 			nil,        // :
@@ -6306,38 +6568,40 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			nil,        // tok_identifier
+			reduce(14), // tok_identifier, reduce: OptEnd
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			nil,        // tok_option
+			reduce(14), // tok_option, reduce: OptEnd
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			nil,        // tok_doc
+			reduce(14), // tok_doc, reduce: OptEnd
 			nil,        // enum
 			nil,        // {
-			nil,        // }
+			reduce(14), // }, reduce: OptEnd
 			nil,        // message
-			nil,        // [
-			reduce(55), // ], reduce: BaseType
-			nil,        // repeated
-			nil,        // map
+			reduce(14), // [, reduce: OptEnd
+			nil,        // ]
+			reduce(14), // repeated, reduce: OptEnd
+			reduce(14), // map, reduce: OptEnd
 			nil,        // <
 			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
+			reduce(14), // int8, reduce: OptEnd
+			reduce(14), // uint8, reduce: OptEnd
+			reduce(14), // int16, reduce: OptEnd
+			reduce(14), // uint16, reduce: OptEnd
+			reduce(14), // int32, reduce: OptEnd
+			reduce(14), // uint32, reduce: OptEnd
+			reduce(14), // int64, reduce: OptEnd
+			reduce(14), // uint64, reduce: OptEnd
+			reduce(14), // string, reduce: OptEnd
+			reduce(14), // bytes, reduce: OptEnd
+			reduce(14), // bool, reduce: OptEnd
+			reduce(14), // float, reduce: OptEnd
+			reduce(14), // double, reduce: OptEnd
 			nil,        // service
 			nil,        // call
 			nil,        // :
@@ -6354,38 +6618,40 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
+			reduce(22), // tok_identifier, reduce: OptionValue
+			reduce(22), // ;, reduce: OptionValue
+			reduce(22), // ,, reduce: OptionValue
 			nil,        // import
 			nil,        // tok_literal
-			nil,        // tok_option
+			reduce(22), // tok_option, reduce: OptionValue
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			nil,        // tok_doc
+			reduce(22), // tok_doc, reduce: OptionValue
 			nil,        // enum
 			nil,        // {
-			nil,        // }
+			reduce(22), // }, reduce: OptionValue
 			nil,        // message
-			nil,        // [
-			reduce(56), // ], reduce: BaseType
-			nil,        // repeated
-			nil,        // map
+			reduce(22), // [, reduce: OptionValue
+			nil,        // ]
+			reduce(22), // repeated, reduce: OptionValue
+			reduce(22), // map, reduce: OptionValue
 			nil,        // <
 			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
+			reduce(22), // int8, reduce: OptionValue
+			reduce(22), // uint8, reduce: OptionValue
+			reduce(22), // int16, reduce: OptionValue
+			reduce(22), // uint16, reduce: OptionValue
+			reduce(22), // int32, reduce: OptionValue
+			reduce(22), // uint32, reduce: OptionValue
+			reduce(22), // int64, reduce: OptionValue
+			reduce(22), // uint64, reduce: OptionValue
+			reduce(22), // string, reduce: OptionValue
+			reduce(22), // bytes, reduce: OptionValue
+			reduce(22), // bool, reduce: OptionValue
+			reduce(22), // float, reduce: OptionValue
+			reduce(22), // double, reduce: OptionValue
 			nil,        // service
 			nil,        // call
 			nil,        // :
@@ -6402,38 +6668,40 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
+			reduce(20), // tok_identifier, reduce: OptionValue
+			reduce(20), // ;, reduce: OptionValue
+			reduce(20), // ,, reduce: OptionValue
 			nil,        // import
 			nil,        // tok_literal
-			nil,        // tok_option
+			reduce(20), // tok_option, reduce: OptionValue
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			nil,        // tok_doc
+			reduce(20), // tok_doc, reduce: OptionValue
 			nil,        // enum
 			nil,        // {
-			nil,        // }
+			reduce(20), // }, reduce: OptionValue
 			nil,        // message
-			nil,        // [
-			reduce(57), // ], reduce: BaseType
-			nil,        // repeated
-			nil,        // map
+			reduce(20), // [, reduce: OptionValue
+			nil,        // ]
+			reduce(20), // repeated, reduce: OptionValue
+			reduce(20), // map, reduce: OptionValue
 			nil,        // <
 			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
+			reduce(20), // int8, reduce: OptionValue
+			reduce(20), // uint8, reduce: OptionValue
+			reduce(20), // int16, reduce: OptionValue
+			reduce(20), // uint16, reduce: OptionValue
+			reduce(20), // int32, reduce: OptionValue
+			reduce(20), // uint32, reduce: OptionValue
+			reduce(20), // int64, reduce: OptionValue
+			reduce(20), // uint64, reduce: OptionValue
+			reduce(20), // string, reduce: OptionValue
+			reduce(20), // bytes, reduce: OptionValue
+			reduce(20), // bool, reduce: OptionValue
+			reduce(20), // float, reduce: OptionValue
+			reduce(20), // double, reduce: OptionValue
 			nil,        // service
 			nil,        // call
 			nil,        // :
@@ -6450,38 +6718,40 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
+			reduce(21), // tok_identifier, reduce: OptionValue
+			reduce(21), // ;, reduce: OptionValue
+			reduce(21), // ,, reduce: OptionValue
 			nil,        // import
 			nil,        // tok_literal
-			nil,        // tok_option
+			reduce(21), // tok_option, reduce: OptionValue
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			nil,        // tok_doc
+			reduce(21), // tok_doc, reduce: OptionValue
 			nil,        // enum
 			nil,        // {
-			nil,        // }
+			reduce(21), // }, reduce: OptionValue
 			nil,        // message
-			nil,        // [
-			reduce(58), // ], reduce: BaseType
-			nil,        // repeated
-			nil,        // map
+			reduce(21), // [, reduce: OptionValue
+			nil,        // ]
+			reduce(21), // repeated, reduce: OptionValue
+			reduce(21), // map, reduce: OptionValue
 			nil,        // <
 			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
+			reduce(21), // int8, reduce: OptionValue
+			reduce(21), // uint8, reduce: OptionValue
+			reduce(21), // int16, reduce: OptionValue
+			reduce(21), // uint16, reduce: OptionValue
+			reduce(21), // int32, reduce: OptionValue
+			reduce(21), // uint32, reduce: OptionValue
+			reduce(21), // int64, reduce: OptionValue
+			reduce(21), // uint64, reduce: OptionValue
+			reduce(21), // string, reduce: OptionValue
+			reduce(21), // bytes, reduce: OptionValue
+			reduce(21), // bool, reduce: OptionValue
+			reduce(21), // float, reduce: OptionValue
+			reduce(21), // double, reduce: OptionValue
 			nil,        // service
 			nil,        // call
 			nil,        // :
@@ -6498,38 +6768,40 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
+			reduce(23), // tok_identifier, reduce: OptionValue
+			reduce(23), // ;, reduce: OptionValue
+			reduce(23), // ,, reduce: OptionValue
 			nil,        // import
 			nil,        // tok_literal
-			nil,        // tok_option
+			reduce(23), // tok_option, reduce: OptionValue
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			nil,        // tok_doc
+			reduce(23), // tok_doc, reduce: OptionValue
 			nil,        // enum
 			nil,        // {
-			nil,        // }
+			reduce(23), // }, reduce: OptionValue
 			nil,        // message
-			nil,        // [
-			reduce(59), // ], reduce: BaseType
-			nil,        // repeated
-			nil,        // map
+			reduce(23), // [, reduce: OptionValue
+			nil,        // ]
+			reduce(23), // repeated, reduce: OptionValue
+			reduce(23), // map, reduce: OptionValue
 			nil,        // <
 			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
+			reduce(23), // int8, reduce: OptionValue
+			reduce(23), // uint8, reduce: OptionValue
+			reduce(23), // int16, reduce: OptionValue
+			reduce(23), // uint16, reduce: OptionValue
+			reduce(23), // int32, reduce: OptionValue
+			reduce(23), // uint32, reduce: OptionValue
+			reduce(23), // int64, reduce: OptionValue
+			reduce(23), // uint64, reduce: OptionValue
+			reduce(23), // string, reduce: OptionValue
+			reduce(23), // bytes, reduce: OptionValue
+			reduce(23), // bool, reduce: OptionValue
+			reduce(23), // float, reduce: OptionValue
+			reduce(23), // double, reduce: OptionValue
 			nil,        // service
 			nil,        // call
 			nil,        // :
@@ -6553,14 +6825,16 @@ var actionTab = actionTable{
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
-			nil,        // tok_const_int
+			nil,        // true
+			nil,        // false
+			shift(176), // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
 			nil,        // {
 			nil,        // }
 			nil,        // message
 			nil,        // [
-			reduce(60), // ], reduce: BaseType
+			nil,        // ]
 			nil,        // repeated
 			nil,        // map
 			nil,        // <
@@ -6594,13 +6868,15 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			nil,        // tok_identifier
+			reduce(50), // tok_identifier, reduce: ListType
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -6608,7 +6884,7 @@ var actionTab = actionTable{
 			nil,        // }
 			nil,        // message
 			nil,        // [
-			reduce(61), // ], reduce: BaseType
+			nil,        // ]
 			nil,        // repeated
 			nil,        // map
 			nil,        // <
@@ -6649,6 +6925,8 @@ var actionTab = actionTable{
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -6656,7 +6934,7 @@ var actionTab = actionTable{
 			nil,        // }
 			nil,        // message
 			nil,        // [
-			reduce(62), // ], reduce: BaseType
+			shift(177), // ]
 			nil,        // repeated
 			nil,        // map
 			nil,        // <
@@ -6697,6 +6975,8 @@ var actionTab = actionTable{
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -6704,7 +6984,7 @@ var actionTab = actionTable{
 			nil,        // }
 			nil,        // message
 			nil,        // [
-			reduce(63), // ], reduce: BaseType
+			reduce(54), // ], reduce: BaseType
 			nil,        // repeated
 			nil,        // map
 			nil,        // <
@@ -6745,6 +7025,8 @@ var actionTab = actionTable{
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -6752,7 +7034,7 @@ var actionTab = actionTable{
 			nil,        // }
 			nil,        // message
 			nil,        // [
-			reduce(64), // ], reduce: BaseType
+			reduce(55), // ], reduce: BaseType
 			nil,        // repeated
 			nil,        // map
 			nil,        // <
@@ -6788,11 +7070,13 @@ var actionTab = actionTable{
 			nil,        // package
 			nil,        // tok_identifier
 			nil,        // ;
-			shift(162), // ,
+			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -6800,7 +7084,7 @@ var actionTab = actionTable{
 			nil,        // }
 			nil,        // message
 			nil,        // [
-			nil,        // ]
+			reduce(56), // ], reduce: BaseType
 			nil,        // repeated
 			nil,        // map
 			nil,        // <
@@ -6836,11 +7120,13 @@ var actionTab = actionTable{
 			nil,        // package
 			nil,        // tok_identifier
 			nil,        // ;
-			reduce(52), // ,, reduce: BaseType
+			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -6848,7 +7134,7 @@ var actionTab = actionTable{
 			nil,        // }
 			nil,        // message
 			nil,        // [
-			nil,        // ]
+			reduce(57), // ], reduce: BaseType
 			nil,        // repeated
 			nil,        // map
 			nil,        // <
@@ -6884,11 +7170,13 @@ var actionTab = actionTable{
 			nil,        // package
 			nil,        // tok_identifier
 			nil,        // ;
-			reduce(53), // ,, reduce: BaseType
+			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -6896,7 +7184,7 @@ var actionTab = actionTable{
 			nil,        // }
 			nil,        // message
 			nil,        // [
-			nil,        // ]
+			reduce(58), // ], reduce: BaseType
 			nil,        // repeated
 			nil,        // map
 			nil,        // <
@@ -6932,11 +7220,13 @@ var actionTab = actionTable{
 			nil,        // package
 			nil,        // tok_identifier
 			nil,        // ;
-			reduce(54), // ,, reduce: BaseType
+			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -6944,7 +7234,7 @@ var actionTab = actionTable{
 			nil,        // }
 			nil,        // message
 			nil,        // [
-			nil,        // ]
+			reduce(59), // ], reduce: BaseType
 			nil,        // repeated
 			nil,        // map
 			nil,        // <
@@ -6980,11 +7270,13 @@ var actionTab = actionTable{
 			nil,        // package
 			nil,        // tok_identifier
 			nil,        // ;
-			reduce(55), // ,, reduce: BaseType
+			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -6992,7 +7284,7 @@ var actionTab = actionTable{
 			nil,        // }
 			nil,        // message
 			nil,        // [
-			nil,        // ]
+			reduce(60), // ], reduce: BaseType
 			nil,        // repeated
 			nil,        // map
 			nil,        // <
@@ -7028,11 +7320,13 @@ var actionTab = actionTable{
 			nil,        // package
 			nil,        // tok_identifier
 			nil,        // ;
-			reduce(56), // ,, reduce: BaseType
+			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -7040,7 +7334,7 @@ var actionTab = actionTable{
 			nil,        // }
 			nil,        // message
 			nil,        // [
-			nil,        // ]
+			reduce(61), // ], reduce: BaseType
 			nil,        // repeated
 			nil,        // map
 			nil,        // <
@@ -7076,11 +7370,13 @@ var actionTab = actionTable{
 			nil,        // package
 			nil,        // tok_identifier
 			nil,        // ;
-			reduce(57), // ,, reduce: BaseType
+			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -7088,7 +7384,7 @@ var actionTab = actionTable{
 			nil,        // }
 			nil,        // message
 			nil,        // [
-			nil,        // ]
+			reduce(62), // ], reduce: BaseType
 			nil,        // repeated
 			nil,        // map
 			nil,        // <
@@ -7124,11 +7420,13 @@ var actionTab = actionTable{
 			nil,        // package
 			nil,        // tok_identifier
 			nil,        // ;
-			reduce(58), // ,, reduce: BaseType
+			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -7136,7 +7434,7 @@ var actionTab = actionTable{
 			nil,        // }
 			nil,        // message
 			nil,        // [
-			nil,        // ]
+			reduce(63), // ], reduce: BaseType
 			nil,        // repeated
 			nil,        // map
 			nil,        // <
@@ -7172,11 +7470,13 @@ var actionTab = actionTable{
 			nil,        // package
 			nil,        // tok_identifier
 			nil,        // ;
-			reduce(59), // ,, reduce: BaseType
+			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -7184,7 +7484,7 @@ var actionTab = actionTable{
 			nil,        // }
 			nil,        // message
 			nil,        // [
-			nil,        // ]
+			reduce(64), // ], reduce: BaseType
 			nil,        // repeated
 			nil,        // map
 			nil,        // <
@@ -7220,11 +7520,13 @@ var actionTab = actionTable{
 			nil,        // package
 			nil,        // tok_identifier
 			nil,        // ;
-			reduce(60), // ,, reduce: BaseType
+			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -7232,7 +7534,7 @@ var actionTab = actionTable{
 			nil,        // }
 			nil,        // message
 			nil,        // [
-			nil,        // ]
+			reduce(65), // ], reduce: BaseType
 			nil,        // repeated
 			nil,        // map
 			nil,        // <
@@ -7268,11 +7570,13 @@ var actionTab = actionTable{
 			nil,        // package
 			nil,        // tok_identifier
 			nil,        // ;
-			reduce(61), // ,, reduce: BaseType
+			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -7280,7 +7584,7 @@ var actionTab = actionTable{
 			nil,        // }
 			nil,        // message
 			nil,        // [
-			nil,        // ]
+			reduce(66), // ], reduce: BaseType
 			nil,        // repeated
 			nil,        // map
 			nil,        // <
@@ -7316,11 +7620,13 @@ var actionTab = actionTable{
 			nil,        // package
 			nil,        // tok_identifier
 			nil,        // ;
-			reduce(62), // ,, reduce: BaseType
+			shift(178), // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -7364,11 +7670,13 @@ var actionTab = actionTable{
 			nil,        // package
 			nil,        // tok_identifier
 			nil,        // ;
-			reduce(63), // ,, reduce: BaseType
+			reduce(54), // ,, reduce: BaseType
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -7412,11 +7720,13 @@ var actionTab = actionTable{
 			nil,        // package
 			nil,        // tok_identifier
 			nil,        // ;
-			reduce(64), // ,, reduce: BaseType
+			reduce(55), // ,, reduce: BaseType
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -7460,11 +7770,13 @@ var actionTab = actionTable{
 			nil,        // package
 			nil,        // tok_identifier
 			nil,        // ;
-			nil,        // ,
+			reduce(56), // ,, reduce: BaseType
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -7495,7 +7807,7 @@ var actionTab = actionTable{
 			nil,        // :
 			nil,        // notify
 			nil,        // (
-			reduce(74), // ), reduce: RqRs
+			nil,        // )
 			nil,        // project
 		},
 	},
@@ -7508,11 +7820,13 @@ var actionTab = actionTable{
 			nil,        // package
 			nil,        // tok_identifier
 			nil,        // ;
-			nil,        // ,
+			reduce(57), // ,, reduce: BaseType
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -7543,7 +7857,7 @@ var actionTab = actionTable{
 			nil,        // :
 			nil,        // notify
 			nil,        // (
-			reduce(75), // ), reduce: RqRs
+			nil,        // )
 			nil,        // project
 		},
 	},
@@ -7556,11 +7870,13 @@ var actionTab = actionTable{
 			nil,        // package
 			nil,        // tok_identifier
 			nil,        // ;
-			nil,        // ,
+			reduce(58), // ,, reduce: BaseType
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -7591,7 +7907,7 @@ var actionTab = actionTable{
 			nil,        // :
 			nil,        // notify
 			nil,        // (
-			shift(163), // )
+			nil,        // )
 			nil,        // project
 		},
 	},
@@ -7602,18 +7918,20 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(20), // tok_identifier, reduce: OptionValue
+			nil,        // tok_identifier
 			nil,        // ;
-			nil,        // ,
+			reduce(59), // ,, reduce: BaseType
 			nil,        // import
 			nil,        // tok_literal
-			reduce(20), // tok_option, reduce: OptionValue
+			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(20), // tok_doc, reduce: OptionValue
+			nil,        // tok_doc
 			nil,        // enum
 			nil,        // {
-			reduce(20), // }, reduce: OptionValue
+			nil,        // }
 			nil,        // message
 			nil,        // [
 			nil,        // ]
@@ -7635,9 +7953,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			reduce(20), // call, reduce: OptionValue
+			nil,        // call
 			nil,        // :
-			reduce(20), // notify, reduce: OptionValue
+			nil,        // notify
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -7650,18 +7968,20 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(21), // tok_identifier, reduce: OptionValue
+			nil,        // tok_identifier
 			nil,        // ;
-			nil,        // ,
+			reduce(60), // ,, reduce: BaseType
 			nil,        // import
 			nil,        // tok_literal
-			reduce(21), // tok_option, reduce: OptionValue
+			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(21), // tok_doc, reduce: OptionValue
+			nil,        // tok_doc
 			nil,        // enum
 			nil,        // {
-			reduce(21), // }, reduce: OptionValue
+			nil,        // }
 			nil,        // message
 			nil,        // [
 			nil,        // ]
@@ -7683,9 +8003,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			reduce(21), // call, reduce: OptionValue
+			nil,        // call
 			nil,        // :
-			reduce(21), // notify, reduce: OptionValue
+			nil,        // notify
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -7698,38 +8018,40 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(36), // tok_identifier, reduce: AddtionOption
-			reduce(36), // ;, reduce: AddtionOption
-			reduce(36), // ,, reduce: AddtionOption
+			nil,        // tok_identifier
+			nil,        // ;
+			reduce(61), // ,, reduce: BaseType
 			nil,        // import
 			nil,        // tok_literal
-			reduce(36), // tok_option, reduce: AddtionOption
+			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(36), // tok_doc, reduce: AddtionOption
+			nil,        // tok_doc
 			nil,        // enum
-			shift(164), // {
-			reduce(36), // }, reduce: AddtionOption
+			nil,        // {
+			nil,        // }
 			nil,        // message
-			reduce(36), // [, reduce: AddtionOption
+			nil,        // [
 			nil,        // ]
-			reduce(36), // repeated, reduce: AddtionOption
-			reduce(36), // map, reduce: AddtionOption
+			nil,        // repeated
+			nil,        // map
 			nil,        // <
 			nil,        // >
-			reduce(36), // int8, reduce: AddtionOption
-			reduce(36), // uint8, reduce: AddtionOption
-			reduce(36), // int16, reduce: AddtionOption
-			reduce(36), // uint16, reduce: AddtionOption
-			reduce(36), // int32, reduce: AddtionOption
-			reduce(36), // uint32, reduce: AddtionOption
-			reduce(36), // int64, reduce: AddtionOption
-			reduce(36), // uint64, reduce: AddtionOption
-			reduce(36), // string, reduce: AddtionOption
-			reduce(36), // bytes, reduce: AddtionOption
-			reduce(36), // bool, reduce: AddtionOption
-			reduce(36), // float, reduce: AddtionOption
-			reduce(36), // double, reduce: AddtionOption
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
 			nil,        // service
 			nil,        // call
 			nil,        // :
@@ -7746,114 +8068,20 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			shift(59),  // tok_identifier
+			nil,        // tok_identifier
 			nil,        // ;
-			nil,        // ,
+			reduce(62), // ,, reduce: BaseType
 			nil,        // import
 			nil,        // tok_literal
-			shift(107), // tok_option
+			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
 			nil,        // {
 			nil,        // }
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			shift(73),  // int8
-			shift(74),  // uint8
-			shift(75),  // int16
-			shift(76),  // uint16
-			shift(77),  // int32
-			shift(78),  // uint32
-			shift(79),  // int64
-			shift(80),  // uint64
-			shift(81),  // string
-			shift(82),  // bytes
-			shift(83),  // bool
-			shift(84),  // float
-			shift(85),  // double
-			nil,        // service
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S162
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			shift(167), // tok_identifier
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			shift(168), // tok_option
-			nil,        // =
-			nil,        // tok_const_int
-			nil,        // tok_doc
-			nil,        // enum
-			nil,        // {
-			nil,        // }
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			shift(172), // int8
-			shift(173), // uint8
-			shift(174), // int16
-			shift(175), // uint16
-			shift(176), // int32
-			shift(177), // uint32
-			shift(178), // int64
-			shift(179), // uint64
-			shift(180), // string
-			shift(181), // bytes
-			shift(182), // bool
-			shift(183), // float
-			shift(184), // double
-			nil,        // service
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S163
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			shift(185), // tok_identifier
-			reduce(73), // ;, reduce: RqRs
-			reduce(73), // ,, reduce: RqRs
-			nil,        // import
-			nil,        // tok_literal
-			shift(186), // tok_option
-			reduce(73), // =, reduce: RqRs
-			nil,        // tok_const_int
-			reduce(73), // tok_doc, reduce: RqRs
-			nil,        // enum
-			reduce(73), // {, reduce: RqRs
-			reduce(73), // }, reduce: RqRs
 			nil,        // message
 			nil,        // [
 			nil,        // ]
@@ -7875,9 +8103,109 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			reduce(73), // call, reduce: RqRs
+			nil,        // call
 			nil,        // :
-			reduce(73), // notify, reduce: RqRs
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S162
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			nil,        // tok_identifier
+			nil,        // ;
+			reduce(63), // ,, reduce: BaseType
+			nil,        // import
+			nil,        // tok_literal
+			nil,        // tok_option
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			nil,        // tok_doc
+			nil,        // enum
+			nil,        // {
+			nil,        // }
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S163
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			nil,        // tok_identifier
+			nil,        // ;
+			reduce(64), // ,, reduce: BaseType
+			nil,        // import
+			nil,        // tok_literal
+			nil,        // tok_option
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			nil,        // tok_doc
+			nil,        // enum
+			nil,        // {
+			nil,        // }
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -7892,16 +8220,18 @@ var actionTab = actionTable{
 			nil,        // package
 			nil,        // tok_identifier
 			nil,        // ;
-			nil,        // ,
+			reduce(65), // ,, reduce: BaseType
 			nil,        // import
 			nil,        // tok_literal
-			reduce(38), // tok_option, reduce: FieldOption
+			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(38), // tok_doc, reduce: FieldOption
+			nil,        // tok_doc
 			nil,        // enum
 			nil,        // {
-			reduce(38), // }, reduce: FieldOption
+			nil,        // }
 			nil,        // message
 			nil,        // [
 			nil,        // ]
@@ -7938,13 +8268,815 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
+			nil,        // tok_identifier
+			nil,        // ;
+			reduce(66), // ,, reduce: BaseType
+			nil,        // import
+			nil,        // tok_literal
+			nil,        // tok_option
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			nil,        // tok_doc
+			nil,        // enum
+			nil,        // {
+			nil,        // }
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S166
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			nil,        // tok_identifier
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			nil,        // tok_option
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			nil,        // tok_doc
+			nil,        // enum
+			nil,        // {
+			nil,        // }
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			reduce(76), // ), reduce: RqRs
+			nil,        // project
+		},
+	},
+	actionRow{ // S167
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			nil,        // tok_identifier
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			nil,        // tok_option
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			nil,        // tok_doc
+			nil,        // enum
+			nil,        // {
+			nil,        // }
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			reduce(77), // ), reduce: RqRs
+			nil,        // project
+		},
+	},
+	actionRow{ // S168
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			nil,        // tok_identifier
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			nil,        // tok_option
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			nil,        // tok_doc
+			nil,        // enum
+			nil,        // {
+			nil,        // }
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			shift(179), // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S169
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			reduce(18), // tok_identifier, reduce: Option
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			reduce(18), // tok_option, reduce: Option
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(18), // tok_doc, reduce: Option
+			nil,        // enum
+			nil,        // {
+			reduce(18), // }, reduce: Option
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			reduce(18), // call, reduce: Option
+			nil,        // :
+			reduce(18), // notify, reduce: Option
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S170
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			reduce(13), // tok_identifier, reduce: OptEnd
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			reduce(13), // tok_option, reduce: OptEnd
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(13), // tok_doc, reduce: OptEnd
+			nil,        // enum
+			nil,        // {
+			reduce(13), // }, reduce: OptEnd
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			reduce(13), // call, reduce: OptEnd
+			nil,        // :
+			reduce(13), // notify, reduce: OptEnd
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S171
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			reduce(14), // tok_identifier, reduce: OptEnd
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			reduce(14), // tok_option, reduce: OptEnd
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(14), // tok_doc, reduce: OptEnd
+			nil,        // enum
+			nil,        // {
+			reduce(14), // }, reduce: OptEnd
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			reduce(14), // call, reduce: OptEnd
+			nil,        // :
+			reduce(14), // notify, reduce: OptEnd
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S172
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			reduce(22), // tok_identifier, reduce: OptionValue
+			reduce(22), // ;, reduce: OptionValue
+			reduce(22), // ,, reduce: OptionValue
+			nil,        // import
+			nil,        // tok_literal
+			reduce(22), // tok_option, reduce: OptionValue
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(22), // tok_doc, reduce: OptionValue
+			nil,        // enum
+			nil,        // {
+			reduce(22), // }, reduce: OptionValue
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			reduce(22), // call, reduce: OptionValue
+			nil,        // :
+			reduce(22), // notify, reduce: OptionValue
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S173
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			reduce(20), // tok_identifier, reduce: OptionValue
+			reduce(20), // ;, reduce: OptionValue
+			reduce(20), // ,, reduce: OptionValue
+			nil,        // import
+			nil,        // tok_literal
+			reduce(20), // tok_option, reduce: OptionValue
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(20), // tok_doc, reduce: OptionValue
+			nil,        // enum
+			nil,        // {
+			reduce(20), // }, reduce: OptionValue
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			reduce(20), // call, reduce: OptionValue
+			nil,        // :
+			reduce(20), // notify, reduce: OptionValue
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S174
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			reduce(21), // tok_identifier, reduce: OptionValue
+			reduce(21), // ;, reduce: OptionValue
+			reduce(21), // ,, reduce: OptionValue
+			nil,        // import
+			nil,        // tok_literal
+			reduce(21), // tok_option, reduce: OptionValue
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(21), // tok_doc, reduce: OptionValue
+			nil,        // enum
+			nil,        // {
+			reduce(21), // }, reduce: OptionValue
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			reduce(21), // call, reduce: OptionValue
+			nil,        // :
+			reduce(21), // notify, reduce: OptionValue
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S175
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			reduce(23), // tok_identifier, reduce: OptionValue
+			reduce(23), // ;, reduce: OptionValue
+			reduce(23), // ,, reduce: OptionValue
+			nil,        // import
+			nil,        // tok_literal
+			reduce(23), // tok_option, reduce: OptionValue
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(23), // tok_doc, reduce: OptionValue
+			nil,        // enum
+			nil,        // {
+			reduce(23), // }, reduce: OptionValue
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			reduce(23), // call, reduce: OptionValue
+			nil,        // :
+			reduce(23), // notify, reduce: OptionValue
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S176
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			reduce(38), // tok_identifier, reduce: AddtionOption
+			reduce(38), // ;, reduce: AddtionOption
+			reduce(38), // ,, reduce: AddtionOption
+			nil,        // import
+			nil,        // tok_literal
+			reduce(38), // tok_option, reduce: AddtionOption
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(38), // tok_doc, reduce: AddtionOption
+			nil,        // enum
+			shift(180), // {
+			reduce(38), // }, reduce: AddtionOption
+			nil,        // message
+			reduce(38), // [, reduce: AddtionOption
+			nil,        // ]
+			reduce(38), // repeated, reduce: AddtionOption
+			reduce(38), // map, reduce: AddtionOption
+			nil,        // <
+			nil,        // >
+			reduce(38), // int8, reduce: AddtionOption
+			reduce(38), // uint8, reduce: AddtionOption
+			reduce(38), // int16, reduce: AddtionOption
+			reduce(38), // uint16, reduce: AddtionOption
+			reduce(38), // int32, reduce: AddtionOption
+			reduce(38), // uint32, reduce: AddtionOption
+			reduce(38), // int64, reduce: AddtionOption
+			reduce(38), // uint64, reduce: AddtionOption
+			reduce(38), // string, reduce: AddtionOption
+			reduce(38), // bytes, reduce: AddtionOption
+			reduce(38), // bool, reduce: AddtionOption
+			reduce(38), // float, reduce: AddtionOption
+			reduce(38), // double, reduce: AddtionOption
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S177
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			shift(62),  // tok_identifier
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			shift(110), // tok_option
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			nil,        // tok_doc
+			nil,        // enum
+			nil,        // {
+			nil,        // }
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			shift(76),  // int8
+			shift(77),  // uint8
+			shift(78),  // int16
+			shift(79),  // uint16
+			shift(80),  // int32
+			shift(81),  // uint32
+			shift(82),  // int64
+			shift(83),  // uint64
+			shift(84),  // string
+			shift(85),  // bytes
+			shift(86),  // bool
+			shift(87),  // float
+			shift(88),  // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S178
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			shift(183), // tok_identifier
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			shift(184), // tok_option
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			nil,        // tok_doc
+			nil,        // enum
+			nil,        // {
+			nil,        // }
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			shift(188), // int8
+			shift(189), // uint8
+			shift(190), // int16
+			shift(191), // uint16
+			shift(192), // int32
+			shift(193), // uint32
+			shift(194), // int64
+			shift(195), // uint64
+			shift(196), // string
+			shift(197), // bytes
+			shift(198), // bool
+			shift(199), // float
+			shift(200), // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S179
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			shift(201), // tok_identifier
+			reduce(75), // ;, reduce: RqRs
+			reduce(75), // ,, reduce: RqRs
+			nil,        // import
+			nil,        // tok_literal
+			shift(202), // tok_option
+			reduce(75), // =, reduce: RqRs
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(75), // tok_doc, reduce: RqRs
+			nil,        // enum
+			reduce(75), // {, reduce: RqRs
+			reduce(75), // }, reduce: RqRs
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			reduce(75), // call, reduce: RqRs
+			nil,        // :
+			reduce(75), // notify, reduce: RqRs
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S180
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			nil,        // tok_identifier
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			reduce(40), // tok_option, reduce: FieldOption
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(40), // tok_doc, reduce: FieldOption
+			nil,        // enum
+			nil,        // {
+			reduce(40), // }, reduce: FieldOption
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S181
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
 			reduce(12), // tok_identifier, reduce: OptEnd
-			shift(190), // ;
-			shift(191), // ,
+			shift(130), // ;
+			shift(131), // ,
 			nil,        // import
 			nil,        // tok_literal
 			reduce(12), // tok_option, reduce: OptEnd
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			reduce(12), // tok_doc, reduce: OptEnd
 			nil,        // enum
@@ -7979,20 +9111,22 @@ var actionTab = actionTable{
 			nil,        // project
 		},
 	},
-	actionRow{ // S166
+	actionRow{ // S182
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(50), // tok_identifier, reduce: MapType
+			reduce(52), // tok_identifier, reduce: MapType
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -8005,774 +9139,6 @@ var actionTab = actionTable{
 			nil,        // map
 			nil,        // <
 			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S167
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			nil,        // tok_option
-			nil,        // =
-			nil,        // tok_const_int
-			nil,        // tok_doc
-			nil,        // enum
-			nil,        // {
-			nil,        // }
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			reduce(46), // >, reduce: CustomType
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S168
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			nil,        // tok_option
-			nil,        // =
-			nil,        // tok_const_int
-			nil,        // tok_doc
-			nil,        // enum
-			nil,        // {
-			nil,        // }
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			reduce(47), // >, reduce: CustomType
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S169
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			nil,        // tok_option
-			nil,        // =
-			nil,        // tok_const_int
-			nil,        // tok_doc
-			nil,        // enum
-			nil,        // {
-			nil,        // }
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			shift(192), // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S170
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			nil,        // tok_option
-			nil,        // =
-			nil,        // tok_const_int
-			nil,        // tok_doc
-			nil,        // enum
-			nil,        // {
-			nil,        // }
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			reduce(44), // >, reduce: ContainerElemType
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S171
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			nil,        // tok_option
-			nil,        // =
-			nil,        // tok_const_int
-			nil,        // tok_doc
-			nil,        // enum
-			nil,        // {
-			nil,        // }
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			reduce(45), // >, reduce: ContainerElemType
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S172
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			nil,        // tok_option
-			nil,        // =
-			nil,        // tok_const_int
-			nil,        // tok_doc
-			nil,        // enum
-			nil,        // {
-			nil,        // }
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			reduce(52), // >, reduce: BaseType
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S173
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			nil,        // tok_option
-			nil,        // =
-			nil,        // tok_const_int
-			nil,        // tok_doc
-			nil,        // enum
-			nil,        // {
-			nil,        // }
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			reduce(53), // >, reduce: BaseType
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S174
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			nil,        // tok_option
-			nil,        // =
-			nil,        // tok_const_int
-			nil,        // tok_doc
-			nil,        // enum
-			nil,        // {
-			nil,        // }
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			reduce(54), // >, reduce: BaseType
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S175
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			nil,        // tok_option
-			nil,        // =
-			nil,        // tok_const_int
-			nil,        // tok_doc
-			nil,        // enum
-			nil,        // {
-			nil,        // }
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			reduce(55), // >, reduce: BaseType
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S176
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			nil,        // tok_option
-			nil,        // =
-			nil,        // tok_const_int
-			nil,        // tok_doc
-			nil,        // enum
-			nil,        // {
-			nil,        // }
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			reduce(56), // >, reduce: BaseType
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S177
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			nil,        // tok_option
-			nil,        // =
-			nil,        // tok_const_int
-			nil,        // tok_doc
-			nil,        // enum
-			nil,        // {
-			nil,        // }
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			reduce(57), // >, reduce: BaseType
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S178
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			nil,        // tok_option
-			nil,        // =
-			nil,        // tok_const_int
-			nil,        // tok_doc
-			nil,        // enum
-			nil,        // {
-			nil,        // }
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			reduce(58), // >, reduce: BaseType
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S179
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			nil,        // tok_option
-			nil,        // =
-			nil,        // tok_const_int
-			nil,        // tok_doc
-			nil,        // enum
-			nil,        // {
-			nil,        // }
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			reduce(59), // >, reduce: BaseType
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S180
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			nil,        // tok_option
-			nil,        // =
-			nil,        // tok_const_int
-			nil,        // tok_doc
-			nil,        // enum
-			nil,        // {
-			nil,        // }
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			reduce(60), // >, reduce: BaseType
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S181
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			nil,        // tok_option
-			nil,        // =
-			nil,        // tok_const_int
-			nil,        // tok_doc
-			nil,        // enum
-			nil,        // {
-			nil,        // }
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			reduce(61), // >, reduce: BaseType
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S182
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			nil,        // tok_option
-			nil,        // =
-			nil,        // tok_const_int
-			nil,        // tok_doc
-			nil,        // enum
-			nil,        // {
-			nil,        // }
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			reduce(62), // >, reduce: BaseType
 			nil,        // int8
 			nil,        // uint8
 			nil,        // int16
@@ -8809,6 +9175,8 @@ var actionTab = actionTable{
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -8820,7 +9188,7 @@ var actionTab = actionTable{
 			nil,        // repeated
 			nil,        // map
 			nil,        // <
-			reduce(63), // >, reduce: BaseType
+			reduce(48), // >, reduce: CustomType
 			nil,        // int8
 			nil,        // uint8
 			nil,        // int16
@@ -8857,6 +9225,8 @@ var actionTab = actionTable{
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -8868,7 +9238,7 @@ var actionTab = actionTable{
 			nil,        // repeated
 			nil,        // map
 			nil,        // <
-			reduce(64), // >, reduce: BaseType
+			reduce(49), // >, reduce: CustomType
 			nil,        // int8
 			nil,        // uint8
 			nil,        // int16
@@ -8898,25 +9268,27 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(74), // tok_identifier, reduce: RqRs
-			reduce(74), // ;, reduce: RqRs
-			reduce(74), // ,, reduce: RqRs
+			nil,        // tok_identifier
+			nil,        // ;
+			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			reduce(74), // tok_option, reduce: RqRs
-			reduce(74), // =, reduce: RqRs
+			nil,        // tok_option
+			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(74), // tok_doc, reduce: RqRs
+			nil,        // tok_doc
 			nil,        // enum
-			reduce(74), // {, reduce: RqRs
-			reduce(74), // }, reduce: RqRs
+			nil,        // {
+			nil,        // }
 			nil,        // message
 			nil,        // [
 			nil,        // ]
 			nil,        // repeated
 			nil,        // map
 			nil,        // <
-			nil,        // >
+			shift(206), // >
 			nil,        // int8
 			nil,        // uint8
 			nil,        // int16
@@ -8931,9 +9303,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			reduce(74), // call, reduce: RqRs
+			nil,        // call
 			nil,        // :
-			reduce(74), // notify, reduce: RqRs
+			nil,        // notify
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -8946,25 +9318,27 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(75), // tok_identifier, reduce: RqRs
-			reduce(75), // ;, reduce: RqRs
-			reduce(75), // ,, reduce: RqRs
+			nil,        // tok_identifier
+			nil,        // ;
+			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			reduce(75), // tok_option, reduce: RqRs
-			reduce(75), // =, reduce: RqRs
+			nil,        // tok_option
+			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(75), // tok_doc, reduce: RqRs
+			nil,        // tok_doc
 			nil,        // enum
-			reduce(75), // {, reduce: RqRs
-			reduce(75), // }, reduce: RqRs
+			nil,        // {
+			nil,        // }
 			nil,        // message
 			nil,        // [
 			nil,        // ]
 			nil,        // repeated
 			nil,        // map
 			nil,        // <
-			nil,        // >
+			reduce(46), // >, reduce: ContainerElemType
 			nil,        // int8
 			nil,        // uint8
 			nil,        // int16
@@ -8979,9 +9353,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			reduce(75), // call, reduce: RqRs
+			nil,        // call
 			nil,        // :
-			reduce(75), // notify, reduce: RqRs
+			nil,        // notify
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -8994,25 +9368,27 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(76), // tok_identifier, reduce: MethodNo
-			reduce(76), // ;, reduce: MethodNo
-			reduce(76), // ,, reduce: MethodNo
+			nil,        // tok_identifier
+			nil,        // ;
+			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			reduce(76), // tok_option, reduce: MethodNo
-			shift(193), // =
+			nil,        // tok_option
+			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(76), // tok_doc, reduce: MethodNo
+			nil,        // tok_doc
 			nil,        // enum
-			reduce(76), // {, reduce: MethodNo
-			reduce(76), // }, reduce: MethodNo
+			nil,        // {
+			nil,        // }
 			nil,        // message
 			nil,        // [
 			nil,        // ]
 			nil,        // repeated
 			nil,        // map
 			nil,        // <
-			nil,        // >
+			reduce(47), // >, reduce: ContainerElemType
 			nil,        // int8
 			nil,        // uint8
 			nil,        // int16
@@ -9027,9 +9403,9 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			reduce(76), // call, reduce: MethodNo
+			nil,        // call
 			nil,        // :
-			reduce(76), // notify, reduce: MethodNo
+			nil,        // notify
 			nil,        // (
 			nil,        // )
 			nil,        // project
@@ -9047,20 +9423,22 @@ var actionTab = actionTable{
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			reduce(22), // tok_option, reduce: Doc
+			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(22), // tok_doc, reduce: Doc
+			nil,        // tok_doc
 			nil,        // enum
 			nil,        // {
-			shift(196), // }
+			nil,        // }
 			nil,        // message
 			nil,        // [
 			nil,        // ]
 			nil,        // repeated
 			nil,        // map
 			nil,        // <
-			nil,        // >
+			reduce(54), // >, reduce: BaseType
 			nil,        // int8
 			nil,        // uint8
 			nil,        // int16
@@ -9090,38 +9468,40 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(35), // tok_identifier, reduce: Field
+			nil,        // tok_identifier
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			reduce(35), // tok_option, reduce: Field
+			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(35), // tok_doc, reduce: Field
+			nil,        // tok_doc
 			nil,        // enum
 			nil,        // {
-			reduce(35), // }, reduce: Field
+			nil,        // }
 			nil,        // message
-			reduce(35), // [, reduce: Field
+			nil,        // [
 			nil,        // ]
-			reduce(35), // repeated, reduce: Field
-			reduce(35), // map, reduce: Field
+			nil,        // repeated
+			nil,        // map
 			nil,        // <
-			nil,        // >
-			reduce(35), // int8, reduce: Field
-			reduce(35), // uint8, reduce: Field
-			reduce(35), // int16, reduce: Field
-			reduce(35), // uint16, reduce: Field
-			reduce(35), // int32, reduce: Field
-			reduce(35), // uint32, reduce: Field
-			reduce(35), // int64, reduce: Field
-			reduce(35), // uint64, reduce: Field
-			reduce(35), // string, reduce: Field
-			reduce(35), // bytes, reduce: Field
-			reduce(35), // bool, reduce: Field
-			reduce(35), // float, reduce: Field
-			reduce(35), // double, reduce: Field
+			reduce(55), // >, reduce: BaseType
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
 			nil,        // service
 			nil,        // call
 			nil,        // :
@@ -9138,38 +9518,40 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(13), // tok_identifier, reduce: OptEnd
+			nil,        // tok_identifier
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			reduce(13), // tok_option, reduce: OptEnd
+			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(13), // tok_doc, reduce: OptEnd
+			nil,        // tok_doc
 			nil,        // enum
 			nil,        // {
-			reduce(13), // }, reduce: OptEnd
+			nil,        // }
 			nil,        // message
-			reduce(13), // [, reduce: OptEnd
+			nil,        // [
 			nil,        // ]
-			reduce(13), // repeated, reduce: OptEnd
-			reduce(13), // map, reduce: OptEnd
+			nil,        // repeated
+			nil,        // map
 			nil,        // <
-			nil,        // >
-			reduce(13), // int8, reduce: OptEnd
-			reduce(13), // uint8, reduce: OptEnd
-			reduce(13), // int16, reduce: OptEnd
-			reduce(13), // uint16, reduce: OptEnd
-			reduce(13), // int32, reduce: OptEnd
-			reduce(13), // uint32, reduce: OptEnd
-			reduce(13), // int64, reduce: OptEnd
-			reduce(13), // uint64, reduce: OptEnd
-			reduce(13), // string, reduce: OptEnd
-			reduce(13), // bytes, reduce: OptEnd
-			reduce(13), // bool, reduce: OptEnd
-			reduce(13), // float, reduce: OptEnd
-			reduce(13), // double, reduce: OptEnd
+			reduce(56), // >, reduce: BaseType
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
 			nil,        // service
 			nil,        // call
 			nil,        // :
@@ -9186,38 +9568,40 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(14), // tok_identifier, reduce: OptEnd
+			nil,        // tok_identifier
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			reduce(14), // tok_option, reduce: OptEnd
+			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(14), // tok_doc, reduce: OptEnd
+			nil,        // tok_doc
 			nil,        // enum
 			nil,        // {
-			reduce(14), // }, reduce: OptEnd
+			nil,        // }
 			nil,        // message
-			reduce(14), // [, reduce: OptEnd
+			nil,        // [
 			nil,        // ]
-			reduce(14), // repeated, reduce: OptEnd
-			reduce(14), // map, reduce: OptEnd
+			nil,        // repeated
+			nil,        // map
 			nil,        // <
-			nil,        // >
-			reduce(14), // int8, reduce: OptEnd
-			reduce(14), // uint8, reduce: OptEnd
-			reduce(14), // int16, reduce: OptEnd
-			reduce(14), // uint16, reduce: OptEnd
-			reduce(14), // int32, reduce: OptEnd
-			reduce(14), // uint32, reduce: OptEnd
-			reduce(14), // int64, reduce: OptEnd
-			reduce(14), // uint64, reduce: OptEnd
-			reduce(14), // string, reduce: OptEnd
-			reduce(14), // bytes, reduce: OptEnd
-			reduce(14), // bool, reduce: OptEnd
-			reduce(14), // float, reduce: OptEnd
-			reduce(14), // double, reduce: OptEnd
+			reduce(57), // >, reduce: BaseType
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
 			nil,        // service
 			nil,        // call
 			nil,        // :
@@ -9234,13 +9618,15 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(51), // tok_identifier, reduce: MapType
+			nil,        // tok_identifier
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
@@ -9252,7 +9638,7 @@ var actionTab = actionTable{
 			nil,        // repeated
 			nil,        // map
 			nil,        // <
-			nil,        // >
+			reduce(58), // >, reduce: BaseType
 			nil,        // int8
 			nil,        // uint8
 			nil,        // int16
@@ -9289,7 +9675,659 @@ var actionTab = actionTable{
 			nil,        // tok_literal
 			nil,        // tok_option
 			nil,        // =
-			shift(197), // tok_const_int
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			nil,        // tok_doc
+			nil,        // enum
+			nil,        // {
+			nil,        // }
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			reduce(59), // >, reduce: BaseType
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S194
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			nil,        // tok_identifier
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			nil,        // tok_option
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			nil,        // tok_doc
+			nil,        // enum
+			nil,        // {
+			nil,        // }
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			reduce(60), // >, reduce: BaseType
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S195
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			nil,        // tok_identifier
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			nil,        // tok_option
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			nil,        // tok_doc
+			nil,        // enum
+			nil,        // {
+			nil,        // }
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			reduce(61), // >, reduce: BaseType
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S196
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			nil,        // tok_identifier
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			nil,        // tok_option
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			nil,        // tok_doc
+			nil,        // enum
+			nil,        // {
+			nil,        // }
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			reduce(62), // >, reduce: BaseType
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S197
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			nil,        // tok_identifier
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			nil,        // tok_option
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			nil,        // tok_doc
+			nil,        // enum
+			nil,        // {
+			nil,        // }
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			reduce(63), // >, reduce: BaseType
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S198
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			nil,        // tok_identifier
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			nil,        // tok_option
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			nil,        // tok_doc
+			nil,        // enum
+			nil,        // {
+			nil,        // }
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			reduce(64), // >, reduce: BaseType
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S199
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			nil,        // tok_identifier
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			nil,        // tok_option
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			nil,        // tok_doc
+			nil,        // enum
+			nil,        // {
+			nil,        // }
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			reduce(65), // >, reduce: BaseType
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S200
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			nil,        // tok_identifier
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			nil,        // tok_option
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			nil,        // tok_doc
+			nil,        // enum
+			nil,        // {
+			nil,        // }
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			reduce(66), // >, reduce: BaseType
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S201
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			reduce(76), // tok_identifier, reduce: RqRs
+			reduce(76), // ;, reduce: RqRs
+			reduce(76), // ,, reduce: RqRs
+			nil,        // import
+			nil,        // tok_literal
+			reduce(76), // tok_option, reduce: RqRs
+			reduce(76), // =, reduce: RqRs
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(76), // tok_doc, reduce: RqRs
+			nil,        // enum
+			reduce(76), // {, reduce: RqRs
+			reduce(76), // }, reduce: RqRs
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			reduce(76), // call, reduce: RqRs
+			nil,        // :
+			reduce(76), // notify, reduce: RqRs
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S202
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			reduce(77), // tok_identifier, reduce: RqRs
+			reduce(77), // ;, reduce: RqRs
+			reduce(77), // ,, reduce: RqRs
+			nil,        // import
+			nil,        // tok_literal
+			reduce(77), // tok_option, reduce: RqRs
+			reduce(77), // =, reduce: RqRs
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(77), // tok_doc, reduce: RqRs
+			nil,        // enum
+			reduce(77), // {, reduce: RqRs
+			reduce(77), // }, reduce: RqRs
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			reduce(77), // call, reduce: RqRs
+			nil,        // :
+			reduce(77), // notify, reduce: RqRs
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S203
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			reduce(78), // tok_identifier, reduce: MethodNo
+			reduce(78), // ;, reduce: MethodNo
+			reduce(78), // ,, reduce: MethodNo
+			nil,        // import
+			nil,        // tok_literal
+			reduce(78), // tok_option, reduce: MethodNo
+			shift(207), // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(78), // tok_doc, reduce: MethodNo
+			nil,        // enum
+			reduce(78), // {, reduce: MethodNo
+			reduce(78), // }, reduce: MethodNo
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			reduce(78), // call, reduce: MethodNo
+			nil,        // :
+			reduce(78), // notify, reduce: MethodNo
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S204
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			nil,        // tok_identifier
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			reduce(24), // tok_option, reduce: Doc
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(24), // tok_doc, reduce: Doc
+			nil,        // enum
+			nil,        // {
+			shift(210), // }
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S205
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			reduce(37), // tok_identifier, reduce: Field
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			reduce(37), // tok_option, reduce: Field
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(37), // tok_doc, reduce: Field
+			nil,        // enum
+			nil,        // {
+			reduce(37), // }, reduce: Field
+			nil,        // message
+			reduce(37), // [, reduce: Field
+			nil,        // ]
+			reduce(37), // repeated, reduce: Field
+			reduce(37), // map, reduce: Field
+			nil,        // <
+			nil,        // >
+			reduce(37), // int8, reduce: Field
+			reduce(37), // uint8, reduce: Field
+			reduce(37), // int16, reduce: Field
+			reduce(37), // uint16, reduce: Field
+			reduce(37), // int32, reduce: Field
+			reduce(37), // uint32, reduce: Field
+			reduce(37), // int64, reduce: Field
+			reduce(37), // uint64, reduce: Field
+			reduce(37), // string, reduce: Field
+			reduce(37), // bytes, reduce: Field
+			reduce(37), // bool, reduce: Field
+			reduce(37), // float, reduce: Field
+			reduce(37), // double, reduce: Field
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S206
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			reduce(53), // tok_identifier, reduce: MapType
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			nil,        // tok_option
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
 			nil,        // {
@@ -9323,630 +10361,6 @@ var actionTab = actionTable{
 			nil,        // project
 		},
 	},
-	actionRow{ // S194
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			reduce(36), // tok_identifier, reduce: AddtionOption
-			reduce(36), // ;, reduce: AddtionOption
-			reduce(36), // ,, reduce: AddtionOption
-			nil,        // import
-			nil,        // tok_literal
-			reduce(36), // tok_option, reduce: AddtionOption
-			nil,        // =
-			nil,        // tok_const_int
-			reduce(36), // tok_doc, reduce: AddtionOption
-			nil,        // enum
-			shift(198), // {
-			reduce(36), // }, reduce: AddtionOption
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			reduce(36), // call, reduce: AddtionOption
-			nil,        // :
-			reduce(36), // notify, reduce: AddtionOption
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S195
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			shift(201), // tok_option
-			nil,        // =
-			nil,        // tok_const_int
-			shift(202), // tok_doc
-			nil,        // enum
-			nil,        // {
-			nil,        // }
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S196
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			reduce(37), // tok_identifier, reduce: AddtionOption
-			reduce(37), // ;, reduce: AddtionOption
-			reduce(37), // ,, reduce: AddtionOption
-			nil,        // import
-			nil,        // tok_literal
-			reduce(37), // tok_option, reduce: AddtionOption
-			nil,        // =
-			nil,        // tok_const_int
-			reduce(37), // tok_doc, reduce: AddtionOption
-			nil,        // enum
-			nil,        // {
-			reduce(37), // }, reduce: AddtionOption
-			nil,        // message
-			reduce(37), // [, reduce: AddtionOption
-			nil,        // ]
-			reduce(37), // repeated, reduce: AddtionOption
-			reduce(37), // map, reduce: AddtionOption
-			nil,        // <
-			nil,        // >
-			reduce(37), // int8, reduce: AddtionOption
-			reduce(37), // uint8, reduce: AddtionOption
-			reduce(37), // int16, reduce: AddtionOption
-			reduce(37), // uint16, reduce: AddtionOption
-			reduce(37), // int32, reduce: AddtionOption
-			reduce(37), // uint32, reduce: AddtionOption
-			reduce(37), // int64, reduce: AddtionOption
-			reduce(37), // uint64, reduce: AddtionOption
-			reduce(37), // string, reduce: AddtionOption
-			reduce(37), // bytes, reduce: AddtionOption
-			reduce(37), // bool, reduce: AddtionOption
-			reduce(37), // float, reduce: AddtionOption
-			reduce(37), // double, reduce: AddtionOption
-			nil,        // service
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S197
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			reduce(77), // tok_identifier, reduce: MethodNo
-			reduce(77), // ;, reduce: MethodNo
-			reduce(77), // ,, reduce: MethodNo
-			nil,        // import
-			nil,        // tok_literal
-			reduce(77), // tok_option, reduce: MethodNo
-			nil,        // =
-			nil,        // tok_const_int
-			reduce(77), // tok_doc, reduce: MethodNo
-			nil,        // enum
-			reduce(77), // {, reduce: MethodNo
-			reduce(77), // }, reduce: MethodNo
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			reduce(77), // call, reduce: MethodNo
-			nil,        // :
-			reduce(77), // notify, reduce: MethodNo
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S198
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			reduce(38), // tok_option, reduce: FieldOption
-			nil,        // =
-			nil,        // tok_const_int
-			reduce(38), // tok_doc, reduce: FieldOption
-			nil,        // enum
-			nil,        // {
-			reduce(38), // }, reduce: FieldOption
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S199
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			reduce(12), // tok_identifier, reduce: OptEnd
-			shift(205), // ;
-			shift(206), // ,
-			nil,        // import
-			nil,        // tok_literal
-			reduce(12), // tok_option, reduce: OptEnd
-			nil,        // =
-			nil,        // tok_const_int
-			reduce(12), // tok_doc, reduce: OptEnd
-			nil,        // enum
-			nil,        // {
-			reduce(12), // }, reduce: OptEnd
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			reduce(12), // call, reduce: OptEnd
-			nil,        // :
-			reduce(12), // notify, reduce: OptEnd
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S200
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			reduce(39), // tok_option, reduce: FieldOption
-			nil,        // =
-			nil,        // tok_const_int
-			reduce(39), // tok_doc, reduce: FieldOption
-			nil,        // enum
-			nil,        // {
-			reduce(39), // }, reduce: FieldOption
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S201
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			reduce(19), // tok_option, reduce: OptionValue
-			shift(208), // =
-			nil,        // tok_const_int
-			reduce(19), // tok_doc, reduce: OptionValue
-			nil,        // enum
-			nil,        // {
-			reduce(19), // }, reduce: OptionValue
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S202
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			reduce(23), // tok_option, reduce: Doc
-			nil,        // =
-			nil,        // tok_const_int
-			reduce(23), // tok_doc, reduce: Doc
-			nil,        // enum
-			nil,        // {
-			nil,        // }
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S203
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			reduce(22), // tok_option, reduce: Doc
-			nil,        // =
-			nil,        // tok_const_int
-			reduce(22), // tok_doc, reduce: Doc
-			nil,        // enum
-			nil,        // {
-			shift(209), // }
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			nil,        // call
-			nil,        // :
-			nil,        // notify
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S204
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			reduce(72), // tok_identifier, reduce: Method
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			reduce(72), // tok_option, reduce: Method
-			nil,        // =
-			nil,        // tok_const_int
-			reduce(72), // tok_doc, reduce: Method
-			nil,        // enum
-			nil,        // {
-			reduce(72), // }, reduce: Method
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			reduce(72), // call, reduce: Method
-			nil,        // :
-			reduce(72), // notify, reduce: Method
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S205
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			reduce(13), // tok_identifier, reduce: OptEnd
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			reduce(13), // tok_option, reduce: OptEnd
-			nil,        // =
-			nil,        // tok_const_int
-			reduce(13), // tok_doc, reduce: OptEnd
-			nil,        // enum
-			nil,        // {
-			reduce(13), // }, reduce: OptEnd
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			reduce(13), // call, reduce: OptEnd
-			nil,        // :
-			reduce(13), // notify, reduce: OptEnd
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
-	actionRow{ // S206
-		canRecover: false,
-		actions: [numSymbols]action{
-			nil,        // INVALID
-			nil,        // $
-			nil,        // empty
-			nil,        // package
-			reduce(14), // tok_identifier, reduce: OptEnd
-			nil,        // ;
-			nil,        // ,
-			nil,        // import
-			nil,        // tok_literal
-			reduce(14), // tok_option, reduce: OptEnd
-			nil,        // =
-			nil,        // tok_const_int
-			reduce(14), // tok_doc, reduce: OptEnd
-			nil,        // enum
-			nil,        // {
-			reduce(14), // }, reduce: OptEnd
-			nil,        // message
-			nil,        // [
-			nil,        // ]
-			nil,        // repeated
-			nil,        // map
-			nil,        // <
-			nil,        // >
-			nil,        // int8
-			nil,        // uint8
-			nil,        // int16
-			nil,        // uint16
-			nil,        // int32
-			nil,        // uint32
-			nil,        // int64
-			nil,        // uint64
-			nil,        // string
-			nil,        // bytes
-			nil,        // bool
-			nil,        // float
-			nil,        // double
-			nil,        // service
-			reduce(14), // call, reduce: OptEnd
-			nil,        // :
-			reduce(14), // notify, reduce: OptEnd
-			nil,        // (
-			nil,        // )
-			nil,        // project
-		},
-	},
 	actionRow{ // S207
 		canRecover: false,
 		actions: [numSymbols]action{
@@ -9959,13 +10373,15 @@ var actionTab = actionTable{
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
-			reduce(18), // tok_option, reduce: Option
+			nil,        // tok_option
 			nil,        // =
-			nil,        // tok_const_int
-			reduce(18), // tok_doc, reduce: Option
+			nil,        // true
+			nil,        // false
+			shift(211), // tok_const_int
+			nil,        // tok_doc
 			nil,        // enum
 			nil,        // {
-			reduce(18), // }, reduce: Option
+			nil,        // }
 			nil,        // message
 			nil,        // [
 			nil,        // ]
@@ -10002,14 +10418,616 @@ var actionTab = actionTable{
 			nil,        // $
 			nil,        // empty
 			nil,        // package
+			reduce(38), // tok_identifier, reduce: AddtionOption
+			reduce(38), // ;, reduce: AddtionOption
+			reduce(38), // ,, reduce: AddtionOption
+			nil,        // import
+			nil,        // tok_literal
+			reduce(38), // tok_option, reduce: AddtionOption
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(38), // tok_doc, reduce: AddtionOption
+			nil,        // enum
+			shift(212), // {
+			reduce(38), // }, reduce: AddtionOption
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			reduce(38), // call, reduce: AddtionOption
+			nil,        // :
+			reduce(38), // notify, reduce: AddtionOption
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S209
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
 			nil,        // tok_identifier
 			nil,        // ;
 			nil,        // ,
 			nil,        // import
-			shift(210), // tok_literal
+			nil,        // tok_literal
+			shift(215), // tok_option
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			shift(216), // tok_doc
+			nil,        // enum
+			nil,        // {
+			nil,        // }
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S210
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			reduce(39), // tok_identifier, reduce: AddtionOption
+			reduce(39), // ;, reduce: AddtionOption
+			reduce(39), // ,, reduce: AddtionOption
+			nil,        // import
+			nil,        // tok_literal
+			reduce(39), // tok_option, reduce: AddtionOption
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(39), // tok_doc, reduce: AddtionOption
+			nil,        // enum
+			nil,        // {
+			reduce(39), // }, reduce: AddtionOption
+			nil,        // message
+			reduce(39), // [, reduce: AddtionOption
+			nil,        // ]
+			reduce(39), // repeated, reduce: AddtionOption
+			reduce(39), // map, reduce: AddtionOption
+			nil,        // <
+			nil,        // >
+			reduce(39), // int8, reduce: AddtionOption
+			reduce(39), // uint8, reduce: AddtionOption
+			reduce(39), // int16, reduce: AddtionOption
+			reduce(39), // uint16, reduce: AddtionOption
+			reduce(39), // int32, reduce: AddtionOption
+			reduce(39), // uint32, reduce: AddtionOption
+			reduce(39), // int64, reduce: AddtionOption
+			reduce(39), // uint64, reduce: AddtionOption
+			reduce(39), // string, reduce: AddtionOption
+			reduce(39), // bytes, reduce: AddtionOption
+			reduce(39), // bool, reduce: AddtionOption
+			reduce(39), // float, reduce: AddtionOption
+			reduce(39), // double, reduce: AddtionOption
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S211
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			reduce(79), // tok_identifier, reduce: MethodNo
+			reduce(79), // ;, reduce: MethodNo
+			reduce(79), // ,, reduce: MethodNo
+			nil,        // import
+			nil,        // tok_literal
+			reduce(79), // tok_option, reduce: MethodNo
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(79), // tok_doc, reduce: MethodNo
+			nil,        // enum
+			reduce(79), // {, reduce: MethodNo
+			reduce(79), // }, reduce: MethodNo
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			reduce(79), // call, reduce: MethodNo
+			nil,        // :
+			reduce(79), // notify, reduce: MethodNo
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S212
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			nil,        // tok_identifier
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			reduce(40), // tok_option, reduce: FieldOption
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(40), // tok_doc, reduce: FieldOption
+			nil,        // enum
+			nil,        // {
+			reduce(40), // }, reduce: FieldOption
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S213
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			reduce(12), // tok_identifier, reduce: OptEnd
+			shift(170), // ;
+			shift(171), // ,
+			nil,        // import
+			nil,        // tok_literal
+			reduce(12), // tok_option, reduce: OptEnd
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(12), // tok_doc, reduce: OptEnd
+			nil,        // enum
+			nil,        // {
+			reduce(12), // }, reduce: OptEnd
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			reduce(12), // call, reduce: OptEnd
+			nil,        // :
+			reduce(12), // notify, reduce: OptEnd
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S214
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			nil,        // tok_identifier
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			reduce(41), // tok_option, reduce: FieldOption
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(41), // tok_doc, reduce: FieldOption
+			nil,        // enum
+			nil,        // {
+			reduce(41), // }, reduce: FieldOption
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S215
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			nil,        // tok_identifier
+			reduce(19), // ;, reduce: OptionValue
+			reduce(19), // ,, reduce: OptionValue
+			nil,        // import
+			nil,        // tok_literal
+			reduce(19), // tok_option, reduce: OptionValue
+			shift(220), // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(19), // tok_doc, reduce: OptionValue
+			nil,        // enum
+			nil,        // {
+			reduce(19), // }, reduce: OptionValue
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S216
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			nil,        // tok_identifier
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			reduce(25), // tok_option, reduce: Doc
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(25), // tok_doc, reduce: Doc
+			nil,        // enum
+			nil,        // {
+			nil,        // }
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S217
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			nil,        // tok_identifier
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			reduce(24), // tok_option, reduce: Doc
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(24), // tok_doc, reduce: Doc
+			nil,        // enum
+			nil,        // {
+			shift(221), // }
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S218
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			reduce(74), // tok_identifier, reduce: Method
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			reduce(74), // tok_option, reduce: Method
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(74), // tok_doc, reduce: Method
+			nil,        // enum
+			nil,        // {
+			reduce(74), // }, reduce: Method
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			reduce(74), // call, reduce: Method
+			nil,        // :
+			reduce(74), // notify, reduce: Method
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S219
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			nil,        // tok_identifier
+			shift(223), // ;
+			shift(224), // ,
+			nil,        // import
+			nil,        // tok_literal
+			reduce(12), // tok_option, reduce: OptEnd
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(12), // tok_doc, reduce: OptEnd
+			nil,        // enum
+			nil,        // {
+			reduce(12), // }, reduce: OptEnd
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S220
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			nil,        // tok_identifier
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			shift(225), // tok_literal
 			nil,        // tok_option
 			nil,        // =
-			shift(211), // tok_const_int
+			shift(226), // true
+			shift(227), // false
+			shift(228), // tok_const_int
 			nil,        // tok_doc
 			nil,        // enum
 			nil,        // {
@@ -10043,25 +11061,27 @@ var actionTab = actionTable{
 			nil,        // project
 		},
 	},
-	actionRow{ // S209
+	actionRow{ // S221
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
 			nil,        // $
 			nil,        // empty
 			nil,        // package
-			reduce(37), // tok_identifier, reduce: AddtionOption
-			reduce(37), // ;, reduce: AddtionOption
-			reduce(37), // ,, reduce: AddtionOption
+			reduce(39), // tok_identifier, reduce: AddtionOption
+			reduce(39), // ;, reduce: AddtionOption
+			reduce(39), // ,, reduce: AddtionOption
 			nil,        // import
 			nil,        // tok_literal
-			reduce(37), // tok_option, reduce: AddtionOption
+			reduce(39), // tok_option, reduce: AddtionOption
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
-			reduce(37), // tok_doc, reduce: AddtionOption
+			reduce(39), // tok_doc, reduce: AddtionOption
 			nil,        // enum
 			nil,        // {
-			reduce(37), // }, reduce: AddtionOption
+			reduce(39), // }, reduce: AddtionOption
 			nil,        // message
 			nil,        // [
 			nil,        // ]
@@ -10083,15 +11103,15 @@ var actionTab = actionTable{
 			nil,        // float
 			nil,        // double
 			nil,        // service
-			reduce(37), // call, reduce: AddtionOption
+			reduce(39), // call, reduce: AddtionOption
 			nil,        // :
-			reduce(37), // notify, reduce: AddtionOption
+			reduce(39), // notify, reduce: AddtionOption
 			nil,        // (
 			nil,        // )
 			nil,        // project
 		},
 	},
-	actionRow{ // S210
+	actionRow{ // S222
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -10103,8 +11123,210 @@ var actionTab = actionTable{
 			nil,        // ,
 			nil,        // import
 			nil,        // tok_literal
+			reduce(18), // tok_option, reduce: Option
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(18), // tok_doc, reduce: Option
+			nil,        // enum
+			nil,        // {
+			reduce(18), // }, reduce: Option
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S223
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			nil,        // tok_identifier
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			reduce(13), // tok_option, reduce: OptEnd
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(13), // tok_doc, reduce: OptEnd
+			nil,        // enum
+			nil,        // {
+			reduce(13), // }, reduce: OptEnd
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S224
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			nil,        // tok_identifier
+			nil,        // ;
+			nil,        // ,
+			nil,        // import
+			nil,        // tok_literal
+			reduce(14), // tok_option, reduce: OptEnd
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(14), // tok_doc, reduce: OptEnd
+			nil,        // enum
+			nil,        // {
+			reduce(14), // }, reduce: OptEnd
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S225
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			nil,        // tok_identifier
+			reduce(22), // ;, reduce: OptionValue
+			reduce(22), // ,, reduce: OptionValue
+			nil,        // import
+			nil,        // tok_literal
+			reduce(22), // tok_option, reduce: OptionValue
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(22), // tok_doc, reduce: OptionValue
+			nil,        // enum
+			nil,        // {
+			reduce(22), // }, reduce: OptionValue
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S226
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			nil,        // tok_identifier
+			reduce(20), // ;, reduce: OptionValue
+			reduce(20), // ,, reduce: OptionValue
+			nil,        // import
+			nil,        // tok_literal
 			reduce(20), // tok_option, reduce: OptionValue
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			reduce(20), // tok_doc, reduce: OptionValue
 			nil,        // enum
@@ -10139,7 +11361,7 @@ var actionTab = actionTable{
 			nil,        // project
 		},
 	},
-	actionRow{ // S211
+	actionRow{ // S227
 		canRecover: false,
 		actions: [numSymbols]action{
 			nil,        // INVALID
@@ -10147,17 +11369,69 @@ var actionTab = actionTable{
 			nil,        // empty
 			nil,        // package
 			nil,        // tok_identifier
-			nil,        // ;
-			nil,        // ,
+			reduce(21), // ;, reduce: OptionValue
+			reduce(21), // ,, reduce: OptionValue
 			nil,        // import
 			nil,        // tok_literal
 			reduce(21), // tok_option, reduce: OptionValue
 			nil,        // =
+			nil,        // true
+			nil,        // false
 			nil,        // tok_const_int
 			reduce(21), // tok_doc, reduce: OptionValue
 			nil,        // enum
 			nil,        // {
 			reduce(21), // }, reduce: OptionValue
+			nil,        // message
+			nil,        // [
+			nil,        // ]
+			nil,        // repeated
+			nil,        // map
+			nil,        // <
+			nil,        // >
+			nil,        // int8
+			nil,        // uint8
+			nil,        // int16
+			nil,        // uint16
+			nil,        // int32
+			nil,        // uint32
+			nil,        // int64
+			nil,        // uint64
+			nil,        // string
+			nil,        // bytes
+			nil,        // bool
+			nil,        // float
+			nil,        // double
+			nil,        // service
+			nil,        // call
+			nil,        // :
+			nil,        // notify
+			nil,        // (
+			nil,        // )
+			nil,        // project
+		},
+	},
+	actionRow{ // S228
+		canRecover: false,
+		actions: [numSymbols]action{
+			nil,        // INVALID
+			nil,        // $
+			nil,        // empty
+			nil,        // package
+			nil,        // tok_identifier
+			reduce(23), // ;, reduce: OptionValue
+			reduce(23), // ,, reduce: OptionValue
+			nil,        // import
+			nil,        // tok_literal
+			reduce(23), // tok_option, reduce: OptionValue
+			nil,        // =
+			nil,        // true
+			nil,        // false
+			nil,        // tok_const_int
+			reduce(23), // tok_doc, reduce: OptionValue
+			nil,        // enum
+			nil,        // {
+			reduce(23), // }, reduce: OptionValue
 			nil,        // message
 			nil,        // [
 			nil,        // ]

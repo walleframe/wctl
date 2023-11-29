@@ -89,11 +89,13 @@ AliasName:
 ////////////////////////////////////////////////////////////////////////////////
 // 选项配置定义
 Option:
-	tok_option OptionValue						<< ast.NewOption($0, $1) >>
+	tok_option OptionValue OptEnd				<< ast.NewOption($0, $1) >>
 ;
 
 OptionValue:
 	empty
+|   "=" "true"									<< ast.NewOptionVal(nil,1) >>
+|   "=" "false"									<< ast.NewOptionVal(nil,0) >>
 |	"=" tok_literal								<< ast.NewOptionVal($1,nil) >>
 |   "=" tok_const_int							<< ast.NewOptionVal(nil,$1) >>
 ;

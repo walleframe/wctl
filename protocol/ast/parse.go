@@ -685,6 +685,11 @@ func NewOptionVal(lit, num interface{}) (val *YTOptionValue, _ error) {
 	if lit != nil {
 		val.Value = strptr(lit.(*token.Token).StringValue())
 	} else if num != nil {
+		if n,ok := num.(int); ok {
+			v := int64(n)
+			val.IntVal = &v
+			return
+		}
 		v, err := num.(*token.Token).Int64Value()
 		if err != nil {
 			return nil, err

@@ -56,6 +56,9 @@ exmaple.opt2 = 2;
 // 字符串类型
 exmaple.opt3 = "string options value";
 example.opt4 = `string options value 2`;
+
+// 直接设置bool值
+example.bool = false;
 #+end_src
 
 ** enum 定义

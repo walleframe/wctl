@@ -210,13 +210,13 @@ var productionsTable = ProdTab{
 		},
 	},
 	ProdTabEntry{
-		String: `OptionValue : empty	<<  >>`,
+		String: `OptionValue : empty	<< ast.NewOptionVal(nil,1) >>`,
 		Id:         "OptionValue",
 		NTType:     9,
 		Index:      19,
 		NumSymbols: 0,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return nil, nil
+			return ast.NewOptionVal(nil,1)
 		},
 	},
 	ProdTabEntry{

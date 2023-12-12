@@ -152,6 +152,10 @@ func (msg *YTMessage) toDesc() (desc *buildpb.MsgDesc) {
 	for _, v := range msg.Fields {
 		desc.Fields = append(desc.Fields, v.toDesc())
 	}
+	// 子消息
+	for _, sub := range msg.SubMsgs {
+		desc.SubMsgs = append(desc.SubMsgs, sub.toDesc())
+	}
 	return
 }
 
@@ -182,7 +186,7 @@ func (doc *YTDoc) toDesc() (desc *buildpb.DocDesc) {
 	if doc == nil {
 		return
 	}
-	desc = &buildpb.DocDesc{Doc: doc.Doc}
+	desc = &buildpb.DocDesc{Doc: doc.Doc, TailDoc: doc.TailDoc}
 	return
 }
 

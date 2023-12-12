@@ -66,14 +66,14 @@ func TestWProtoParse(t *testing.T) {
 	if 1 == 0 {
 		utils.Flag.ShowDetail = true
 	}
-	ast.RegisterRecursionAnalyser(ast.RecursionAnalyseFunc(func(file string) (prog *ast.YTProgram, err error) {
+	ast.RegisterRecursionAnalyser = ast.RecursionAnalyseFunc(func(file string) (prog *ast.YTProgram, err error) {
 		prog = &ast.YTProgram{
 			Pkg: &ast.YTPackage{
 				Name: path.Base(file),
 			},
 		}
 		return
-	}))
+	})
 	testOnly := ""
 	data := []struct {
 		name string

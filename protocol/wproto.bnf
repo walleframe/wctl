@@ -1,4 +1,4 @@
-// Copyright © 2020 aggronmagi <czy463@163.com>
+// Copyright © 2023 aggronmagi <czy463@163.com>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15,248 +15,164 @@
 ////////////////////////////////////////////////////////////////////////////////
 // parser
 ////////////////////////////////////////////////////////////////////////////////
-_sign : ['+'|'-'];
 _integer : '0' - '9';
-// _hex : _integer | 'a'-'f' | 'A'-'F';
-_letter : 'a' - 'z' | '_';
-_identifier : _letter|_integer;
-tok_const_int: _sign _integer {_integer} | _integer {_integer};
-// tok_const_hex: '0' 'x' _hex {_hex};
-tok_option : _letter{_identifier} '.' _letter{_identifier};
+_letter : 'a' - 'z' | 'A' - 'Z' | '_' ;
+_identifier : _letter|_integer|'.'|'['|']'|'<'|'>';
 tok_identifier:  _letter{_identifier};
-!whitespace : ' ' | '\t' | '\n' | '\r' ;
-_multidoc : '/' '*' {.} '*' '/';
-_comment : '/' '/' {.} '\n';
-!unixcomment: '#' {.} '\n';
-tok_doc: _multidoc | _comment ;
+
 _leteral1:'`'{.}'`';
 _leteral12:'"'{.}'"';
 tok_literal:_leteral1|_leteral12;
 
+_sign : ['+'|'-'];
+_hex : '0' 'x' { _integer | 'a'-'f' | 'A'-'F'};
+tok_num: _sign _integer {_integer} | _integer {_integer} | _hex;
+
+_multidoc : '/' '*' {.} '*' '/';
+_comment : '/' '/' {.} '\n';
+tok_doc: _multidoc | _comment ;
+
+!whitespace : ' ' | '\t' | '\n' | '\r' ;
+!unixcomment: '#' {.} '\n';
 ////////////////////////////////////////////////////////////////////////////////
 <<
-import "github.com/aggronmagi/wctl/protocol/ast"
+import (
+	"github.com/aggronmagi/wctl/protocol/wproto/bridge"
+	"github.com/aggronmagi/wctl/protocol/ast"
+)
 >>
 ////////////////////////////////////////////////////////////////////////////////
 
-Start:
-	FileElements						<< ast.CheckProgram($0) >>
-;
-
-
-FileElements:
-	empty								<< ast.NewFileElements1() >>
-|	FileElements Doc Element			<< ast.AppendFileElements($0, $1, $2) >>
-;
-
-////////////////////////////////////////////////////////////////////////////////
-// 文件元素
-////////////////////////////////////////////////////////////////////////////////
-Element:
-	Package
-|	Import
-|	Option
-|	Enum
-|	Message
-|	Service
-|	Project
-;
-
-////////////////////////////////////////////////////////////////////////////////
-// package 定义 包定义
-Package:
-	"package" tok_identifier OptEnd 			<< ast.NewPackage($1) >>
+ProtocolDefine:
+    Package Imports Defines					<< bridge.NewProtocol($Context, $0, $1, $2) >>
 ;
 
 OptEnd:
-	empty
-|	";"
-|	","
+    empty
+|   ";"
 ;
 
+Package:
+    "package" tok_identifier OptEnd			<< bridge.NewPackage($Context, $1) >>
+;
 
-////////////////////////////////////////////////////////////////////////////////
-// import. 依赖文件
+Imports:
+    empty
+|   Imports Import
+;
+
 Import:
-	"import" AliasName tok_literal OptEnd		<< ast.NewImport($1,$2) >>
+    "import" tok_literal OptEnd					<< bridge.NewImport($Context, $1, "") >>
+|   "import" tok_identifier tok_literal OptEnd	<< bridge.NewImport($Context, $2, $1) >>
 ;
 
-AliasName:
-	empty
-|	tok_identifier
+Defines:
+    empty
+|   Defines Define
+;
+
+Define:
+    Enum
+|   Message
+|   OptionExpr                                  << bridge.FileOption($Context, $0) >>
+|   Service
+|   Project
+;
+
+Enum:
+    "enum" tok_identifier "{" Options "}" OptEnd	<< bridge.NewEnum($Context, $1, $3) >>
+;
+
+Message:
+    "message" tok_identifier "{" Fields "}" OptEnd  << bridge.NewMessage($Context, $1, $3) >>
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
-// 选项配置定义
-Option:
-	tok_option OptionValue OptEnd				<< ast.NewOption($0, $1) >>
+// Option定义
+Options:
+	empty
+|	Options OptionExpr						<< bridge.AppendOption($Context, $0, $1) >>	
+;
+
+
+OptionExpr:
+	tok_identifier OptionValue OptEnd		<< bridge.OptionExpr($Context, $0, $1) >>
 ;
 
 OptionValue:
-	empty										<< ast.NewOptionVal(nil,1) >>
-|   "=" "true"									<< ast.NewOptionVal(nil,1) >>
-|   "=" "false"									<< ast.NewOptionVal(nil,0) >>
-|	"=" tok_literal								<< ast.NewOptionVal($1,nil) >>
-|   "=" tok_const_int							<< ast.NewOptionVal(nil,$1) >>
+	"=" "true"								<< true, nil >>
+|	"=" "false"								<< false, nil >>
+|	"=" tok_num								<< $1, nil >>
+|	"=" tok_literal							<< $1, nil >>
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
-// 文档,注释
-Doc:
-	empty
-|	Doc tok_doc									<< ast.AppendDoc($0, $1) >> 
+// 字段定义
+Fields:
+	empty									<< &ast.YTMessage{},nil >>
+|	Fields FieldExpr						<< bridge.FieldField($Context, $0, $1) >>
+|   Fields OptionExpr						<< bridge.FieldOption($Context, $0, $1) >>
+|	Fields Message							<< bridge.FieldMessage($Context, $0, $1) >>
 ;
 
-////////////////////////////////////////////////////////////////////////////////
-// 枚举定义
-Enum:
-	"enum" tok_identifier "{" EnumItems "}" OptEnd		<< ast.NewEnum($1, $3) >> 
-;
-
-EnumItems:
-	empty
-|	EnumItems Doc EnumItem						<< ast.AppendEnumItem($0, $2, $1) >> 
-|	EnumItems Doc Option						<< ast.AppendEnumOption($0, $2, $1) >> 
-;
-
-EnumItem:
-	tok_identifier EnumItemValue OptEnd			<< ast.NewEnumValue($0, $1) >> 
-;
-
-EnumItemValue:
-	empty
-|	"=" tok_const_int							<< $1,nil >> 
-;
-
-////////////////////////////////////////////////////////////////////////////////
-// 消息定义
-Message:
-	"message" tok_identifier "{" MessageElements "}" OptEnd		<< ast.NewMessage($1, $3) >> 
-;
-
-// NOTE: 1 LR-1 conflicts here
-MessageElements:
-	empty
-|	MessageElements Doc Field					<< ast.AppendMessageField($0, $1, $2) >>
-|	MessageElements Doc Option					<< ast.AppendMessageOption($0, $1, $2) >>
-;
-
-// 字段 
-Field:
-	 FiledType tok_identifier "=" tok_const_int AddtionOption OptEnd		<< ast.NewField($3, $0, $1, $4) >> 
-;
-
-// 附加选项
-AddtionOption:
-	empty
-|	"{" FieldOption "}"							<< $1,nil >>
+FieldExpr: 
+    FieldType tok_identifier "=" tok_num FieldOption OptEnd << bridge.NewField($Context,$0, $1, $3, $4) >>
 ;
 
 FieldOption:
 	empty
-|	FieldOption Doc Option						<< ast.AppendFiledOptions($0, $1, $2) >> 
+|	"{" Options "}"							<< $1, nil >>
 ;
 
-// 字段类型
-FiledType:
-	ContainerElemType
-|	ContainerType
-;
-
-ContainerType:
-	ListType
-|	MapType
-;
-
-ContainerElemType:
-	BaseType									<< ast.NewFieldTypeBase($0) >>
-|	CustomType
-;
-
-
-CustomType:
-	tok_identifier								<< ast.NewFieldTypeCustom($0) >>
-|	tok_option									<< ast.NewFieldTypeCustom($0) >>
-;
-
-ListType:
-	"[" "]" ContainerElemType					<< ast.NewFieldTypeList($2) >>
-|	"repeated" ContainerElemType				<< ast.NewFieldTypeList($1) >> 
-;
-
-MapType:
-	"map" "[" BaseType "]" ContainerElemType		<< ast.NewFieldTypeMap($2,$4) >>
-|	"map" "<" BaseType "," ContainerElemType ">"	<< ast.NewFieldTypeMap($2,$4) >>
-;
-
-BaseType:
-	"int8"										<< ast.BaseTypeInt8, nil >>
-|	"uint8"										<< ast.BaseTypeUint8, nil >>
-|	"int16"										<< ast.BaseTypeInt16, nil >>
-|	"uint16"									<< ast.BaseTypeUint16, nil >>
-|	"int32"										<< ast.BaseTypeInt32, nil >>
-|	"uint32"									<< ast.BaseTypeUint32, nil >>
-|	"int64"										<< ast.BaseTypeInt64, nil >>
-|	"uint64"									<< ast.BaseTypeUint64, nil >>
-|	"string"									<< ast.BaseTypeString, nil >>
-|	"bytes"										<< ast.BaseTypeBinary, nil >>
-|	"bool"										<< ast.BaseTypeBool, nil >>
-|	"float"										<< ast.BaseTypeFloat32, nil >>
-|	"double"									<< ast.BaseTypeFloat64, nil >>
+FieldType:
+	"map" "<" tok_identifier "," tok_identifier ">"		<< bridge.MapType($Context, $2, $4) >>
+|	"map" "[" tok_identifier "]" tok_identifier 		<< bridge.MapType($Context, $2, $4) >>	
+|	"repeated" tok_identifier							<< bridge.ArrayType($Context, $1) >>
+|	tok_identifier										<< bridge.BasicOrCustomType($Context, $0) >>
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
 // 服务定义
-Service:
-	"service" tok_identifier "{" ServiceElements "}" OptEnd		<< ast.NewService($1, $3) >> 
-;
 
+Service:
+    "service" tok_identifier  "{" ServiceElements "}" OptEnd << bridge.NewService($Context, $1, $3) >>
+;
 
 ServiceElements:
-	empty
-|	ServiceElements Doc Option					<< ast.AppendServiceOption($0, $1, $2) >>
-|	ServiceElements Doc MethodFlag				<< ast.ChangeServiceMethodFlag($0, $1, $2) >>
-|	ServiceElements Doc Method					<< ast.AppendServiceMethod($0, $1, $2) >>
+    empty										<< &ast.YTService{}, nil >>
+|   ServiceElements ServiceMethod				<< bridge.ServiceMethod($Context, $0, $1) >>
+|   ServiceElements OptionExpr   				<< bridge.ServiceOption($Context, $0, $1) >>
+|   ServiceElements MethodFlag					<< bridge.ServiceFlag($Context, $0, $1) >>
 ;
+
 
 MethodFlag:
-	"call" ":"									<< ast.Call,nil >> 
-|	"notify" ":"								<< ast.Notify,nil >> 
+	"call" ":"								<< $0, nil >>
+|	"notify" ":"							<< $0, nil >>
 ;
 
-
-////////////////////////////////////////////////////////////////////////////////
-// 方法定义 NOTE: 1 LR-1 conflicts here
-Method:
-	tok_identifier "(" RqRs ")" RqRs MethodNo AddtionOption OptEnd	<< ast.NewMethod($0, $2, $4, $5, $6) >>
+ServiceMethod:
+	tok_identifier "(" tok_identifier ")" tok_identifier MethodNo FieldOption OptEnd << bridge.NewMethod($Context, $0, $2, $4, $5, $6) >>
 ;
 
-RqRs:
-	empty
-|	tok_identifier
-|	tok_option
-;
-
-// 请求序号
 MethodNo:
- 	empty										<< ast.NewMethodNo(nil,nil) >>
-|	"=" tok_const_int							<< ast.NewMethodNo($1,nil) >>
+    empty
+|   "=" tok_num								<< $1, nil >>
 ;
 
 
 ////////////////////////////////////////////////////////////////////////////////
 // 项目定义
 Project:
-	"project" tok_identifier "{" ProjElements "}"	<< ast.NewProject($1, $3) >> 
+	"project" tok_identifier "{" ProjElements "}" OptEnd	<< bridge.NewProject($Context, $1, $3) >>
 ;
 
 ProjElements:
-	empty										<< ast.NewProjectEmpty() >>
-|	ProjElements Doc ProjArea					<< ast.ChangeProjectArea($0, $1, $2) >>
-|	ProjElements Doc Option						<< ast.AppendProjectOption($0, $1, $2) >>
+	empty									<< &ast.YTProject{}, nil >>				
+|	ProjElements ProjArea					<< bridge.ProjectArea($Context, $0, $1) >>
+|	ProjElements OptionExpr				  	<< bridge.ProjectOption($Context, $0, $1) >>
 ;
 
 ProjArea:
-	tok_identifier ":"							<< $0,nil >>
+	tok_identifier ":"						<< $0, nil >>
 ;
-////////////////////////////////////////////////////////////////////////////////

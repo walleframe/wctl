@@ -2,7 +2,7 @@
 
 package parser
 
-const numNTSymbols = 26
+const numNTSymbols = 21
 
 type (
 	gotoTable [numStates]gotoRow
@@ -12,4144 +12,2093 @@ type (
 var gotoTab = gotoTable{
 	gotoRow{ // S0
 		-1, // S'
-		1,  // Start
-		2,  // FileElements
-		-1, // Element
-		-1, // Syntax
+		1,  // ProtocolDefine
+		-1, // OptEnd
+		2,  // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S1
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S2
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
-		-1, // Package
+		4,  // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		3,  // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S3
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		4,  // Element
-		5,  // Syntax
-		6,  // Package
-		7,  // Import
-		8,  // Option
-		-1, // Doc
-		9,  // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		10, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		11, // Service
+		-1, // ProtocolDefine
+		-1, // OptEnd
+		-1, // Syntax
+		-1, // Package
+		-1, // Imports
+		-1, // Import
+		-1, // Defines
+		-1, // Define
+		-1, // Enum
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
+		-1, // Message
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
+		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S4
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		7,  // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S5
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S6
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S7
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Imports
+		11, // Import
+		10, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S8
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		13, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S9
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S10
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
+		-1, // Defines
+		16, // Define
+		17, // Enum
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		19, // Option
+		18, // Message
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
+		20, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S11
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S12
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S13
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S14
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S15
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S16
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S17
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S18
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S19
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S20
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S21
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S22
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S23
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S24
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S25
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		31, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S26
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S27
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S28
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S29
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S30
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S31
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		36, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S32
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		37, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		37, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S33
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		38, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
-		38, // ServiceElements
+		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S34
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S35
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		40, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S36
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		40, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
-		-1, // ServiceElements
+		41, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S37
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		42, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S38
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		44, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		44, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S39
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S40
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		48, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
+		47, // Message
+		-1, // Fields
+		50, // FieldExpr
+		51, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S41
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
-		-1, // Method
+		55, // Method
 	},
 	gotoRow{ // S42
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		58, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		51, // Field
-		52, // FiledType
-		54, // ContainerType
-		53, // ContainerElemType
-		58, // CustomType
-		55, // ListType
-		56, // MapType
-		57, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S43
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		59, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S44
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
-		81, // Method
+		-1, // Method
 	},
 	gotoRow{ // S45
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S46
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		84, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S47
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S48
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		61, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S49
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S50
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S51
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S52
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S53
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S54
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S55
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S56
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S57
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S58
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		68, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S59
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		86, // ContainerElemType
-		58, // CustomType
-		-1, // ListType
-		-1, // MapType
-		57, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S60
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S61
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S62
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S63
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S64
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S65
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S66
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S67
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S68
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S69
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S70
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		74, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S71
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S72
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S73
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S74
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
+		47, // Message
+		-1, // Fields
+		50, // FieldExpr
+		51, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S75
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		79, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S76
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S77
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S78
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		83, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S79
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S80
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S81
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S82
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S83
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S84
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S85
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S86
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S87
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		92, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S88
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S89
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
+		-1, // Option
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method
 	},
 	gotoRow{ // S90
 		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
+		-1, // ProtocolDefine
+		-1, // OptEnd
 		-1, // Syntax
 		-1, // Package
+		-1, // Imports
 		-1, // Import
-		-1, // Option
-		-1, // Doc
+		-1, // Defines
+		-1, // Define
 		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S91
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
+		-1, // EnumValues
+		-1, // EnumValue
+		-1, // OptionValue
 		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
 		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S92
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S93
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S94
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S95
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S96
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S97
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S98
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S99
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S100
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S101
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S102
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S103
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S104
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S105
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S106
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S107
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S108
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S109
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S110
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S111
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S112
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S113
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S114
-		-1,  // S'
-		-1,  // Start
-		-1,  // FileElements
-		-1,  // Element
-		-1,  // Syntax
-		-1,  // Package
-		-1,  // Import
-		-1,  // Option
-		-1,  // Doc
-		-1,  // Enum
-		-1,  // EnumItems
-		-1,  // EnumItem
-		-1,  // EnumItemValue
-		-1,  // Message
-		-1,  // MessageElements
-		-1,  // Field
-		-1,  // FiledType
-		-1,  // ContainerType
-		118, // ContainerElemType
-		120, // CustomType
-		-1,  // ListType
-		-1,  // MapType
-		119, // BaseType
-		-1,  // Service
-		-1,  // ServiceElements
-		-1,  // Method
-	},
-	gotoRow{ // S115
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S116
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S117
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S118
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S119
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S120
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S121
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S122
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S123
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S124
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S125
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S126
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S127
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S128
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S129
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S130
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S131
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S132
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S133
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S134
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S135
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S136
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S137
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S138
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S139
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S140
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S141
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S142
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S143
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S144
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S145
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S146
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // Method
-	},
-	gotoRow{ // S147
-		-1, // S'
-		-1, // Start
-		-1, // FileElements
-		-1, // Element
-		-1, // Syntax
-		-1, // Package
-		-1, // Import
-		-1, // Option
-		-1, // Doc
-		-1, // Enum
-		-1, // EnumItems
-		-1, // EnumItem
-		-1, // EnumItemValue
-		-1, // Message
-		-1, // MessageElements
-		-1, // Field
-		-1, // FiledType
-		-1, // ContainerType
-		-1, // ContainerElemType
-		-1, // CustomType
-		-1, // ListType
-		-1, // MapType
-		-1, // BaseType
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // Method

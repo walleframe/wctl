@@ -5,7 +5,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -100,19 +100,23 @@ func (prog *YTProgram) ApplyCmdOptions(opts ...string) {
 
 // YTDoc 文档,注释
 type YTDoc struct {
-	Doc []string
+	DocPos token.Pos
+	Doc    []string
+	// 尾注释
+	TailDoc string
 }
 
 // YTPackage 文件包定义.
 type YTPackage struct {
 	*YTDoc // 文件注释
+	DefPos token.Pos
 	Name   string
 }
 
 // YTImport 导入依赖
 type YTImport struct {
 	*YTDoc
-	pos       token.Pos
+	DefPos    token.Pos
 	Prog      *YTProgram
 	File      string
 	AliasName string
@@ -121,9 +125,9 @@ type YTImport struct {
 // YTOption 定义选项节点
 type YTOption struct {
 	*YTDoc
-	pos   token.Pos
-	Key   string
-	Value *YTOptionValue
+	DefPos token.Pos
+	Key    string
+	Value  *YTOptionValue
 }
 
 // YTOptionValue 选项值
@@ -147,6 +151,7 @@ type YTEnumDef struct {
 	ytCheck
 	*YTDoc
 	YTOptions
+	DefPos token.Pos
 	Name   string
 	Values []*YTEnumValue
 }
@@ -154,29 +159,31 @@ type YTEnumDef struct {
 // YTEnumValue 枚举值
 type YTEnumValue struct {
 	*YTDoc
-	pos   token.Pos
-	Name  string
-	Value int64
+	DefPos token.Pos
+	Name   string
+	Value  int64
 }
 
 // YTMessage 消息定义
 type YTMessage struct {
 	ytCheck
 	*YTDoc
+	DefPos token.Pos
 	YTOptions
-	Name     string
-	Fields   []*YTField
-	protobuf bool
+	Name         string
+	Fields       []*YTField
+	ProtobufFlag bool
+	SubMsgs      []*YTMessage
 }
 
 // YTField 字段定义
 type YTField struct {
 	*YTDoc
 	YTOptions
-	pos  token.Pos
-	Type *YTFieldType
-	No   uint8
-	Name string
+	DefPos token.Pos
+	Type   *YTFieldType
+	No     uint8
+	Name   string
 }
 
 // YTFieldType 字段类型
@@ -294,8 +301,9 @@ func (typ *YTBaseType) String() string {
 type YTService struct {
 	ytCheck
 	*YTDoc
+	DefPos token.Pos
 	YTOptions
-	flag    MethodFlag
+	Flag    MethodFlag
 	Name    string
 	Methods []*YTMethod
 }
@@ -309,7 +317,7 @@ const (
 	Notify
 )
 
-//  String 文字描述
+// String 文字描述
 func (flag MethodFlag) String() string {
 	switch flag {
 	case Call:
@@ -325,7 +333,7 @@ func (flag MethodFlag) String() string {
 type YTMethod struct {
 	*YTDoc
 	YTOptions
-	pos     token.Pos
+	DefPos  token.Pos
 	Flag    MethodFlag
 	Name    string
 	Request *YTMessage
@@ -335,18 +343,18 @@ type YTMethod struct {
 
 // YTMethodNo 方法ID
 type YTMethodNo struct {
-	pos   token.Pos
-	Macro *YTCustomType
-	Value *int64
+	DefPos token.Pos
+	Macro  *YTCustomType
+	Value  *int64
 }
 
 // YTProject 项目定义
 type YTProject struct {
 	*YTDoc
-	area  string
-	Name  string
-	Conf  map[string]*YTOptions
-	check map[string]*ytCheck
+	DefPos token.Pos
+	Area   string
+	Name   string
+	Conf   map[string]*YTOptions
 }
 
 // YTOptions 选项

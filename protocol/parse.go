@@ -5,7 +5,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -17,18 +17,16 @@ package protocol
 
 import (
 	"fmt"
-	"io/ioutil"
+	"os"
 	"path/filepath"
-	"strings"
 
 	"github.com/aggronmagi/wctl/protocol/ast"
-	"github.com/aggronmagi/wctl/protocol/errors"
 	"github.com/aggronmagi/wctl/utils"
 )
 
 func init() {
 	// 注册递归解析函数.用于递归处理依赖
-	ast.RegisterRecursionAnalyser(ast.RecursionAnalyseFunc(analyseOneFile))
+	ast.RegisterRecursionAnalyser = ast.RecursionAnalyseFunc(analyseOneFile)
 }
 
 // analyseOneFile 解析文件
@@ -60,40 +58,24 @@ func analyseOneFile(file string) (prog *ast.YTProgram, err error) {
 		return item.Ast, nil
 	}
 	// 读取文件
-	data, err := ioutil.ReadFile(full)
+	data, err := os.ReadFile(full)
 	if err != nil {
 		return
 	}
 
 	// 进行解析
-	prog, err = parser.Parse(data)
+	prog, err = parser.Parse(full, data)
 	if err != nil {
-		if pe, ok := err.(*errors.Error); ok {
-			w := new(strings.Builder)
-			tip := ""
-			if pe.Err != nil {
-				tip = pe.Err.Error()
-				if strings.Contains(tip, "$FILE") {
-					tip = strings.Replace(tip, "$FILE", full, -1)
-				}
-			}
-			fmt.Fprintf(w, "Error in %s:%d \n\t[%+v]", full, pe.ErrorToken.Line, tip)
-			// if pe.Err != nil {
-			// 	fmt.Fprintf(w, ": %+v", pe.Err)
-			// }
-			if len(pe.ExpectedTokens) > 0 {
-				fmt.Fprintf(w, ", expected one of: ")
-				for _, expected := range pe.ExpectedTokens {
-					fmt.Fprintf(w, "%s ", expected)
-				}
-			}
-			fmt.Fprintf(w, "S%d Current Token: %s", pe.StackTop, parser.TokenMap.TokenString(pe.ErrorToken))
-
-			err = fmt.Errorf(w.String())
-		}
 		return
 	}
 	prog.File = file
+
+	// 分析合理性
+	err = prog.AnalyseProgram()
+	if err != nil {
+		return
+	}
+
 	// 保存
 	item := &astItem{
 		FullName: full,

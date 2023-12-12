@@ -11,9 +11,9 @@ import (
 )
 
 const (
-	numProductions = 85
-	numStates      = 229
-	numSymbols     = 81
+	numProductions = 51
+	numStates      = 136
+	numSymbols     = 56
 )
 
 // Stack
@@ -165,6 +165,11 @@ func (p *Parser) firstRecoveryState() (recoveryState int, canRecover bool) {
 }
 
 func (p *Parser) newError(err error) error {
+	if err != nil {
+		if pe, ok := err.(*parseError.Error); ok {
+			return pe
+		}
+	}
 	e := &parseError.Error{
 		Err:        err,
 		StackTop:   p.stack.top(),

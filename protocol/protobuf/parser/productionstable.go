@@ -2,7 +2,10 @@
 
 package parser
 
-import "github.com/aggronmagi/wctl/protocol/ast"
+import (
+	"github.com/aggronmagi/wctl/protocol/protobuf/bridge"
+	"github.com/aggronmagi/wctl/protocol/ast"
+)
 
 type (
 	ProdTab      [numProductions]ProdTabEntry
@@ -20,7 +23,7 @@ type (
 
 var productionsTable = ProdTab{
 	ProdTabEntry{
-		String: `S' : Start	<<  >>`,
+		String: `S' : ProtocolDefine	<<  >>`,
 		Id:         "S'",
 		NTType:     0,
 		Index:      0,
@@ -30,583 +33,343 @@ var productionsTable = ProdTab{
 		},
 	},
 	ProdTabEntry{
-		String: `Start : FileElements	<< ast.CheckProgram(X[0]) >>`,
-		Id:         "Start",
+		String: `ProtocolDefine : Syntax Package Imports Defines	<< bridge.NewProtocol(C, X[0], X[1], X[2]) >>`,
+		Id:         "ProtocolDefine",
 		NTType:     1,
 		Index:      1,
-		NumSymbols: 1,
+		NumSymbols: 4,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.CheckProgram(X[0])
+			return bridge.NewProtocol(C, X[0], X[1], X[2])
 		},
 	},
 	ProdTabEntry{
-		String: `FileElements : empty	<< ast.NewFileElements1() >>`,
-		Id:         "FileElements",
+		String: `OptEnd : empty	<<  >>`,
+		Id:         "OptEnd",
 		NTType:     2,
 		Index:      2,
 		NumSymbols: 0,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.NewFileElements1()
+			return nil, nil
 		},
 	},
 	ProdTabEntry{
-		String: `FileElements : FileElements Doc Element	<< ast.AppendFileElements(X[0], X[1], X[2]) >>`,
-		Id:         "FileElements",
+		String: `OptEnd : ";"	<<  >>`,
+		Id:         "OptEnd",
 		NTType:     2,
 		Index:      3,
-		NumSymbols: 3,
+		NumSymbols: 1,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.AppendFileElements(X[0], X[1], X[2])
+			return X[0], nil
 		},
 	},
 	ProdTabEntry{
-		String: `Element : Syntax	<<  >>`,
-		Id:         "Element",
+		String: `Syntax : "syntax" "=" tok_literal ";"	<< bridge.ProtoSyntax(C, X[2]) >>`,
+		Id:         "Syntax",
 		NTType:     3,
 		Index:      4,
-		NumSymbols: 1,
-		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return X[0], nil
-		},
-	},
-	ProdTabEntry{
-		String: `Element : Package	<<  >>`,
-		Id:         "Element",
-		NTType:     3,
-		Index:      5,
-		NumSymbols: 1,
-		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return X[0], nil
-		},
-	},
-	ProdTabEntry{
-		String: `Element : Import	<<  >>`,
-		Id:         "Element",
-		NTType:     3,
-		Index:      6,
-		NumSymbols: 1,
-		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return X[0], nil
-		},
-	},
-	ProdTabEntry{
-		String: `Element : Option	<<  >>`,
-		Id:         "Element",
-		NTType:     3,
-		Index:      7,
-		NumSymbols: 1,
-		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return X[0], nil
-		},
-	},
-	ProdTabEntry{
-		String: `Element : Enum	<<  >>`,
-		Id:         "Element",
-		NTType:     3,
-		Index:      8,
-		NumSymbols: 1,
-		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return X[0], nil
-		},
-	},
-	ProdTabEntry{
-		String: `Element : Message	<<  >>`,
-		Id:         "Element",
-		NTType:     3,
-		Index:      9,
-		NumSymbols: 1,
-		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return X[0], nil
-		},
-	},
-	ProdTabEntry{
-		String: `Element : Service	<<  >>`,
-		Id:         "Element",
-		NTType:     3,
-		Index:      10,
-		NumSymbols: 1,
-		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return X[0], nil
-		},
-	},
-	ProdTabEntry{
-		String: `Syntax : "syntax" "=" tok_literal ";"	<< ast.ProtoNewSyntax(X[2]) >>`,
-		Id:         "Syntax",
-		NTType:     4,
-		Index:      11,
 		NumSymbols: 4,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.ProtoNewSyntax(X[2])
+			return bridge.ProtoSyntax(C, X[2])
 		},
 	},
 	ProdTabEntry{
-		String: `Package : "package" tok_identifier ";"	<< ast.NewPackage(X[1]) >>`,
+		String: `Package : "package" tok_identifier OptEnd	<< bridge.NewPackage(C, X[1]) >>`,
 		Id:         "Package",
+		NTType:     4,
+		Index:      5,
+		NumSymbols: 3,
+		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
+			return bridge.NewPackage(C, X[1])
+		},
+	},
+	ProdTabEntry{
+		String: `Imports : empty	<<  >>`,
+		Id:         "Imports",
 		NTType:     5,
-		Index:      12,
-		NumSymbols: 3,
-		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.NewPackage(X[1])
-		},
-	},
-	ProdTabEntry{
-		String: `Import : "import" tok_literal ";"	<< ast.NewImport(nil, X[1]) >>`,
-		Id:         "Import",
-		NTType:     6,
-		Index:      13,
-		NumSymbols: 3,
-		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.NewImport(nil, X[1])
-		},
-	},
-	ProdTabEntry{
-		String: `Option : "option" tok_identifier "=" tok_literal ";"	<< ast.ProtoNewOption(X[1], X[3]) >>`,
-		Id:         "Option",
-		NTType:     7,
-		Index:      14,
-		NumSymbols: 5,
-		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.ProtoNewOption(X[1], X[3])
-		},
-	},
-	ProdTabEntry{
-		String: `Doc : empty	<<  >>`,
-		Id:         "Doc",
-		NTType:     8,
-		Index:      15,
+		Index:      6,
 		NumSymbols: 0,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return nil, nil
 		},
 	},
 	ProdTabEntry{
-		String: `Doc : Doc tok_doc	<< ast.AppendDoc(X[0], X[1]) >>`,
-		Id:         "Doc",
-		NTType:     8,
-		Index:      16,
+		String: `Imports : Imports Import	<<  >>`,
+		Id:         "Imports",
+		NTType:     5,
+		Index:      7,
 		NumSymbols: 2,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.AppendDoc(X[0], X[1])
+			return X[0], nil
 		},
 	},
 	ProdTabEntry{
-		String: `Enum : "enum" tok_identifier "{" EnumItems "}"	<< ast.NewEnum(X[1], X[3]) >>`,
-		Id:         "Enum",
-		NTType:     9,
-		Index:      17,
-		NumSymbols: 5,
+		String: `Import : "import" tok_literal OptEnd	<< bridge.NewImport(C, X[1], "") >>`,
+		Id:         "Import",
+		NTType:     6,
+		Index:      8,
+		NumSymbols: 3,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.NewEnum(X[1], X[3])
+			return bridge.NewImport(C, X[1], "")
 		},
 	},
 	ProdTabEntry{
-		String: `EnumItems : empty	<<  >>`,
-		Id:         "EnumItems",
-		NTType:     10,
-		Index:      18,
+		String: `Import : "import" tok_identifier tok_literal OptEnd	<< bridge.NewImport(C, X[2], X[1]) >>`,
+		Id:         "Import",
+		NTType:     6,
+		Index:      9,
+		NumSymbols: 4,
+		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
+			return bridge.NewImport(C, X[2], X[1])
+		},
+	},
+	ProdTabEntry{
+		String: `Defines : empty	<<  >>`,
+		Id:         "Defines",
+		NTType:     7,
+		Index:      10,
 		NumSymbols: 0,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return nil, nil
 		},
 	},
 	ProdTabEntry{
-		String: `EnumItems : EnumItems Doc EnumItem	<< ast.AppendEnumItem(X[0], X[2], X[1]) >>`,
-		Id:         "EnumItems",
+		String: `Defines : Defines Define	<<  >>`,
+		Id:         "Defines",
+		NTType:     7,
+		Index:      11,
+		NumSymbols: 2,
+		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
+			return X[0], nil
+		},
+	},
+	ProdTabEntry{
+		String: `Define : Enum	<<  >>`,
+		Id:         "Define",
+		NTType:     8,
+		Index:      12,
+		NumSymbols: 1,
+		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
+			return X[0], nil
+		},
+	},
+	ProdTabEntry{
+		String: `Define : Message	<<  >>`,
+		Id:         "Define",
+		NTType:     8,
+		Index:      13,
+		NumSymbols: 1,
+		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
+			return X[0], nil
+		},
+	},
+	ProdTabEntry{
+		String: `Define : Option	<<  >>`,
+		Id:         "Define",
+		NTType:     8,
+		Index:      14,
+		NumSymbols: 1,
+		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
+			return X[0], nil
+		},
+	},
+	ProdTabEntry{
+		String: `Define : Service	<<  >>`,
+		Id:         "Define",
+		NTType:     8,
+		Index:      15,
+		NumSymbols: 1,
+		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
+			return X[0], nil
+		},
+	},
+	ProdTabEntry{
+		String: `Enum : "enum" tok_identifier "{" EnumValues "}" OptEnd	<< bridge.NewEnum(C, X[1], X[3]) >>`,
+		Id:         "Enum",
+		NTType:     9,
+		Index:      16,
+		NumSymbols: 6,
+		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
+			return bridge.NewEnum(C, X[1], X[3])
+		},
+	},
+	ProdTabEntry{
+		String: `EnumValues : empty	<<  >>`,
+		Id:         "EnumValues",
 		NTType:     10,
+		Index:      17,
+		NumSymbols: 0,
+		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
+			return nil, nil
+		},
+	},
+	ProdTabEntry{
+		String: `EnumValues : EnumValues EnumValue	<< bridge.AppendOption(C, X[0], X[1]) >>`,
+		Id:         "EnumValues",
+		NTType:     10,
+		Index:      18,
+		NumSymbols: 2,
+		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
+			return bridge.AppendOption(C, X[0], X[1])
+		},
+	},
+	ProdTabEntry{
+		String: `EnumValue : tok_identifier OptionValue OptEnd	<< bridge.OptionExpr(C, X[0], X[1]) >>`,
+		Id:         "EnumValue",
+		NTType:     11,
 		Index:      19,
 		NumSymbols: 3,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.AppendEnumItem(X[0], X[2], X[1])
+			return bridge.OptionExpr(C, X[0], X[1])
 		},
 	},
 	ProdTabEntry{
-		String: `EnumItem : tok_identifier EnumItemValue ";"	<< ast.NewEnumValue(X[0], X[1]) >>`,
-		Id:         "EnumItem",
-		NTType:     11,
-		Index:      20,
-		NumSymbols: 3,
-		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.NewEnumValue(X[0], X[1])
-		},
-	},
-	ProdTabEntry{
-		String: `EnumItemValue : empty	<<  >>`,
-		Id:         "EnumItemValue",
+		String: `OptionValue : empty	<<  >>`,
+		Id:         "OptionValue",
 		NTType:     12,
-		Index:      21,
+		Index:      20,
 		NumSymbols: 0,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return nil, nil
 		},
 	},
 	ProdTabEntry{
-		String: `EnumItemValue : "=" tok_const_int	<< X[1],nil >>`,
-		Id:         "EnumItemValue",
+		String: `OptionValue : "=" tok_num	<< X[1], nil >>`,
+		Id:         "OptionValue",
 		NTType:     12,
-		Index:      22,
+		Index:      21,
 		NumSymbols: 2,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return X[1],nil
+			return X[1], nil
 		},
 	},
 	ProdTabEntry{
-		String: `Message : "message" tok_identifier "{" MessageElements "}"	<< ast.NewMessage(X[1], X[3]) >>`,
-		Id:         "Message",
+		String: `Option : "option" tok_identifier "=" tok_literal ";"	<< bridge.ProtoNewOption(C, X[1], X[3]) >>`,
+		Id:         "Option",
 		NTType:     13,
-		Index:      23,
+		Index:      22,
 		NumSymbols: 5,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.NewMessage(X[1], X[3])
+			return bridge.ProtoNewOption(C, X[1], X[3])
 		},
 	},
 	ProdTabEntry{
-		String: `MessageElements : empty	<<  >>`,
-		Id:         "MessageElements",
+		String: `Message : "message" tok_identifier "{" Fields "}" OptEnd	<< bridge.NewMessage(C, X[1], X[3]) >>`,
+		Id:         "Message",
 		NTType:     14,
+		Index:      23,
+		NumSymbols: 6,
+		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
+			return bridge.NewMessage(C, X[1], X[3])
+		},
+	},
+	ProdTabEntry{
+		String: `Fields : empty	<< &ast.YTMessage{},nil >>`,
+		Id:         "Fields",
+		NTType:     15,
 		Index:      24,
 		NumSymbols: 0,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return nil, nil
+			return &ast.YTMessage{},nil
 		},
 	},
 	ProdTabEntry{
-		String: `MessageElements : MessageElements Doc Field	<< ast.AppendMessageField(X[0], X[1], X[2]) >>`,
-		Id:         "MessageElements",
-		NTType:     14,
+		String: `Fields : Fields FieldExpr	<< bridge.FieldField(C, X[0], X[1]) >>`,
+		Id:         "Fields",
+		NTType:     15,
 		Index:      25,
-		NumSymbols: 3,
+		NumSymbols: 2,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.AppendMessageField(X[0], X[1], X[2])
+			return bridge.FieldField(C, X[0], X[1])
 		},
 	},
 	ProdTabEntry{
-		String: `Field : FiledType tok_identifier "=" tok_const_int ";"	<< ast.NewField(X[3], X[0], X[1], nil) >>`,
-		Id:         "Field",
+		String: `Fields : Fields Message	<< bridge.FieldMessage(C, X[0], X[1]) >>`,
+		Id:         "Fields",
 		NTType:     15,
 		Index:      26,
-		NumSymbols: 5,
+		NumSymbols: 2,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.NewField(X[3], X[0], X[1], nil)
+			return bridge.FieldMessage(C, X[0], X[1])
 		},
 	},
 	ProdTabEntry{
-		String: `FiledType : ContainerElemType	<<  >>`,
-		Id:         "FiledType",
+		String: `FieldExpr : FieldType tok_identifier "=" tok_num OptEnd	<< bridge.NewField(C,X[0], X[1], X[3], nil) >>`,
+		Id:         "FieldExpr",
 		NTType:     16,
 		Index:      27,
-		NumSymbols: 1,
+		NumSymbols: 5,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return X[0], nil
+			return bridge.NewField(C,X[0], X[1], X[3], nil)
 		},
 	},
 	ProdTabEntry{
-		String: `FiledType : ContainerType	<<  >>`,
-		Id:         "FiledType",
-		NTType:     16,
+		String: `FieldType : "map" "<" tok_identifier "," tok_identifier ">"	<< bridge.MapType(C, X[2], X[4]) >>`,
+		Id:         "FieldType",
+		NTType:     17,
 		Index:      28,
-		NumSymbols: 1,
+		NumSymbols: 6,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return X[0], nil
+			return bridge.MapType(C, X[2], X[4])
 		},
 	},
 	ProdTabEntry{
-		String: `ContainerType : ListType	<<  >>`,
-		Id:         "ContainerType",
+		String: `FieldType : "repeated" tok_identifier	<< bridge.ArrayType(C, X[1]) >>`,
+		Id:         "FieldType",
 		NTType:     17,
 		Index:      29,
-		NumSymbols: 1,
+		NumSymbols: 2,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return X[0], nil
+			return bridge.ArrayType(C, X[1])
 		},
 	},
 	ProdTabEntry{
-		String: `ContainerType : MapType	<<  >>`,
-		Id:         "ContainerType",
+		String: `FieldType : tok_identifier	<< bridge.BasicOrCustomType(C, X[0]) >>`,
+		Id:         "FieldType",
 		NTType:     17,
 		Index:      30,
 		NumSymbols: 1,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return X[0], nil
+			return bridge.BasicOrCustomType(C, X[0])
 		},
 	},
 	ProdTabEntry{
-		String: `ContainerElemType : BaseType	<< ast.NewFieldTypeBase(X[0]) >>`,
-		Id:         "ContainerElemType",
+		String: `Service : "service" tok_identifier "{" ServiceElements "}"	<< bridge.NewService(C, X[1], X[3]) >>`,
+		Id:         "Service",
 		NTType:     18,
 		Index:      31,
-		NumSymbols: 1,
-		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.NewFieldTypeBase(X[0])
-		},
-	},
-	ProdTabEntry{
-		String: `ContainerElemType : CustomType	<<  >>`,
-		Id:         "ContainerElemType",
-		NTType:     18,
-		Index:      32,
-		NumSymbols: 1,
-		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return X[0], nil
-		},
-	},
-	ProdTabEntry{
-		String: `CustomType : tok_identifier	<< ast.NewFieldTypeCustom(X[0]) >>`,
-		Id:         "CustomType",
-		NTType:     19,
-		Index:      33,
-		NumSymbols: 1,
-		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.NewFieldTypeCustom(X[0])
-		},
-	},
-	ProdTabEntry{
-		String: `ListType : "repeated" ContainerElemType	<< ast.NewFieldTypeList(X[1]) >>`,
-		Id:         "ListType",
-		NTType:     20,
-		Index:      34,
-		NumSymbols: 2,
-		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.NewFieldTypeList(X[1])
-		},
-	},
-	ProdTabEntry{
-		String: `MapType : "map" "<" BaseType "," ContainerElemType ">"	<< ast.NewFieldTypeMap(X[2],X[4]) >>`,
-		Id:         "MapType",
-		NTType:     21,
-		Index:      35,
-		NumSymbols: 6,
-		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.NewFieldTypeMap(X[2],X[4])
-		},
-	},
-	ProdTabEntry{
-		String: `BaseType : "int8"	<< ast.BaseTypeInt8, nil >>`,
-		Id:         "BaseType",
-		NTType:     22,
-		Index:      36,
-		NumSymbols: 1,
-		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.BaseTypeInt8, nil
-		},
-	},
-	ProdTabEntry{
-		String: `BaseType : "uint8"	<< ast.BaseTypeUint8, nil >>`,
-		Id:         "BaseType",
-		NTType:     22,
-		Index:      37,
-		NumSymbols: 1,
-		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.BaseTypeUint8, nil
-		},
-	},
-	ProdTabEntry{
-		String: `BaseType : "int16"	<< ast.BaseTypeInt16, nil >>`,
-		Id:         "BaseType",
-		NTType:     22,
-		Index:      38,
-		NumSymbols: 1,
-		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.BaseTypeInt16, nil
-		},
-	},
-	ProdTabEntry{
-		String: `BaseType : "uint16"	<< ast.BaseTypeUint16, nil >>`,
-		Id:         "BaseType",
-		NTType:     22,
-		Index:      39,
-		NumSymbols: 1,
-		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.BaseTypeUint16, nil
-		},
-	},
-	ProdTabEntry{
-		String: `BaseType : "int32"	<< ast.BaseTypeInt32, nil >>`,
-		Id:         "BaseType",
-		NTType:     22,
-		Index:      40,
-		NumSymbols: 1,
-		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.BaseTypeInt32, nil
-		},
-	},
-	ProdTabEntry{
-		String: `BaseType : "uint32"	<< ast.BaseTypeUint32, nil >>`,
-		Id:         "BaseType",
-		NTType:     22,
-		Index:      41,
-		NumSymbols: 1,
-		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.BaseTypeUint32, nil
-		},
-	},
-	ProdTabEntry{
-		String: `BaseType : "int64"	<< ast.BaseTypeInt64, nil >>`,
-		Id:         "BaseType",
-		NTType:     22,
-		Index:      42,
-		NumSymbols: 1,
-		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.BaseTypeInt64, nil
-		},
-	},
-	ProdTabEntry{
-		String: `BaseType : "uint64"	<< ast.BaseTypeUint64, nil >>`,
-		Id:         "BaseType",
-		NTType:     22,
-		Index:      43,
-		NumSymbols: 1,
-		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.BaseTypeUint64, nil
-		},
-	},
-	ProdTabEntry{
-		String: `BaseType : "string"	<< ast.BaseTypeString, nil >>`,
-		Id:         "BaseType",
-		NTType:     22,
-		Index:      44,
-		NumSymbols: 1,
-		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.BaseTypeString, nil
-		},
-	},
-	ProdTabEntry{
-		String: `BaseType : "bytes"	<< ast.BaseTypeBinary, nil >>`,
-		Id:         "BaseType",
-		NTType:     22,
-		Index:      45,
-		NumSymbols: 1,
-		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.BaseTypeBinary, nil
-		},
-	},
-	ProdTabEntry{
-		String: `BaseType : "bool"	<< ast.BaseTypeBool, nil >>`,
-		Id:         "BaseType",
-		NTType:     22,
-		Index:      46,
-		NumSymbols: 1,
-		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.BaseTypeBool, nil
-		},
-	},
-	ProdTabEntry{
-		String: `BaseType : "i8"	<< ast.BaseTypeInt8, nil >>`,
-		Id:         "BaseType",
-		NTType:     22,
-		Index:      47,
-		NumSymbols: 1,
-		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.BaseTypeInt8, nil
-		},
-	},
-	ProdTabEntry{
-		String: `BaseType : "u8"	<< ast.BaseTypeUint8, nil >>`,
-		Id:         "BaseType",
-		NTType:     22,
-		Index:      48,
-		NumSymbols: 1,
-		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.BaseTypeUint8, nil
-		},
-	},
-	ProdTabEntry{
-		String: `BaseType : "i16"	<< ast.BaseTypeInt16, nil >>`,
-		Id:         "BaseType",
-		NTType:     22,
-		Index:      49,
-		NumSymbols: 1,
-		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.BaseTypeInt16, nil
-		},
-	},
-	ProdTabEntry{
-		String: `BaseType : "u16"	<< ast.BaseTypeUint16, nil >>`,
-		Id:         "BaseType",
-		NTType:     22,
-		Index:      50,
-		NumSymbols: 1,
-		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.BaseTypeUint16, nil
-		},
-	},
-	ProdTabEntry{
-		String: `BaseType : "i32"	<< ast.BaseTypeInt32, nil >>`,
-		Id:         "BaseType",
-		NTType:     22,
-		Index:      51,
-		NumSymbols: 1,
-		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.BaseTypeInt32, nil
-		},
-	},
-	ProdTabEntry{
-		String: `BaseType : "u32"	<< ast.BaseTypeUint32, nil >>`,
-		Id:         "BaseType",
-		NTType:     22,
-		Index:      52,
-		NumSymbols: 1,
-		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.BaseTypeUint32, nil
-		},
-	},
-	ProdTabEntry{
-		String: `BaseType : "i64"	<< ast.BaseTypeInt64, nil >>`,
-		Id:         "BaseType",
-		NTType:     22,
-		Index:      53,
-		NumSymbols: 1,
-		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.BaseTypeInt64, nil
-		},
-	},
-	ProdTabEntry{
-		String: `BaseType : "u64"	<< ast.BaseTypeUint64, nil >>`,
-		Id:         "BaseType",
-		NTType:     22,
-		Index:      54,
-		NumSymbols: 1,
-		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.BaseTypeUint64, nil
-		},
-	},
-	ProdTabEntry{
-		String: `Service : "service" tok_identifier "{" ServiceElements "}"	<< ast.NewService(X[1], X[3]) >>`,
-		Id:         "Service",
-		NTType:     23,
-		Index:      55,
 		NumSymbols: 5,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.NewService(X[1], X[3])
+			return bridge.NewService(C, X[1], X[3])
 		},
 	},
 	ProdTabEntry{
 		String: `ServiceElements : empty	<<  >>`,
 		Id:         "ServiceElements",
-		NTType:     24,
-		Index:      56,
+		NTType:     19,
+		Index:      32,
 		NumSymbols: 0,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return nil, nil
 		},
 	},
 	ProdTabEntry{
-		String: `ServiceElements : ServiceElements Doc Method	<< ast.AppendServiceMethod(X[0], X[1], X[2]) >>`,
+		String: `ServiceElements : ServiceElements Method	<< bridge.ServiceMethod(C, X[0], X[1]) >>`,
 		Id:         "ServiceElements",
-		NTType:     24,
-		Index:      57,
-		NumSymbols: 3,
+		NTType:     19,
+		Index:      33,
+		NumSymbols: 2,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.AppendServiceMethod(X[0], X[1], X[2])
+			return bridge.ServiceMethod(C, X[0], X[1])
 		},
 	},
 	ProdTabEntry{
-		String: `Method : "rpc" tok_identifier "(" tok_identifier ")" "returns" "(" tok_identifier ")" "{" "}"	<< ast.ProtoNewMethod(X[1], X[3], X[7]) >>`,
+		String: `Method : "rpc" tok_identifier "(" tok_identifier ")" "returns" "(" tok_identifier ")" "{" "}"	<< bridge.NewMethod(C, X[1], X[3], X[7], nil, nil) >>`,
 		Id:         "Method",
-		NTType:     25,
-		Index:      58,
+		NTType:     20,
+		Index:      34,
 		NumSymbols: 11,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
-			return ast.ProtoNewMethod(X[1], X[3], X[7])
+			return bridge.NewMethod(C, X[1], X[3], X[7], nil, nil)
 		},
 	},
 }

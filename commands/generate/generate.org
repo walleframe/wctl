@@ -37,18 +37,18 @@ import alias "path/to/import_def.wproto"
 #+end_src
 
 ** option 定义
-~option~ （自定义选项）必须是 aaa.bbb 格式。一般应以 “插件.选项” 定义。
+~option~ （自定义选项）必须是 aaa.bbb 或者 aaa.bbb.ccc 格式。一般应以 “插件.选项” 定义。
 
-选项的值支持字符串和数字(int64)。选项也可以不设置值，在插件中一般以bool值方式使用（是否设置了选项）。
+选项的值支持字符串,数字(int64)和bool。每行结尾的 ';' 是可选的.
 
 ~option~ 支持 文件级定义，消息级定义，字段级定义。
 
 在文件内任何一行，
 
 #+begin_src protobuf
-// 无值的选项
-example.opt1;
-example.opt_switch
+// bool值
+example.opt1 = true;
+example.opt_switch = false
 
 // 数字类型
 exmaple.opt2 = 2;
@@ -56,9 +56,6 @@ exmaple.opt2 = 2;
 // 字符串类型
 exmaple.opt3 = "string options value";
 example.opt4 = `string options value 2`;
-
-// 直接设置bool值
-example.bool = false;
 #+end_src
 
 ** enum 定义
@@ -82,6 +79,7 @@ enum enum_example
   - int8,int16,int32,int64,uint8,uint16,uint32,uint64
   - string,bytes
   - bool
+
   - 数组： ~[]int32~ 等同于 ~repeated int32~
   - map: ~map[int32]int32~ 等同于 ~map<int32,int32>~
 #+begin_src protobuf
@@ -106,7 +104,7 @@ message msg_name
     // field with options
     string str_value = 10 {
         // 字段级选项
-        example.field_option
+        example.field_option = true;
         example.field_option_int = 10
         exmaple.field_option_str = "string option value"
     }
@@ -134,7 +132,7 @@ message rs {
 service svr_name
 {
     // 服务级选项配置
-    example.svr_opt;
+    example.svr_opt = true;
     example.svr_intopt = 1;
     example.svr_stropt = "string option value";
     // example 1: no args,no return value;
@@ -148,7 +146,7 @@ service svr_name
     // 包含方法级选项
     example_f5(rq) rs {
         // 方法级选项定义
-        example.opt;
+        example.opt = true;
         example.opt_int = 1;
         example.opt_str = "string value"
    }
@@ -168,7 +166,7 @@ area:
 
     // 可以有多个自定义区域 
 another:
-    example.v1;
+    example.v1 = true;
     example.v2 = 4;
 }
 #+end_src
@@ -185,9 +183,9 @@ import alias "path/to/import_def.wproto"
 // 包级option定义
 go.pkg = "xx/xxx/xx"
 
-// 无值的选项
-example.opt1;
-example.opt_switch
+// bool值的选项
+example.opt1 = true;
+example.opt_switch = false
 
 // 数字类型
 exmaple.opt2 = 2;
@@ -226,7 +224,7 @@ message msg_name
     // field with options
     string str_value = 10 {
         // 字段级选项
-        example.field_option
+        example.field_option = true
         example.field_option_int = 10
         exmaple.field_option_str = "string option value"
     }
@@ -242,7 +240,7 @@ message rs {
 service svr_name
 {
     // 服务级选项配置
-    example.svr_opt;
+    example.svr_opt = true;
     example.svr_intopt = 1;
     example.svr_stropt = "string option value";
     // example 1: no args,no return value;
@@ -256,7 +254,7 @@ service svr_name
     // 包含方法级选项
     example_f5(rq) rs {
         // 方法级选项定义
-        example.opt;
+        example.opt = true;
         example.opt_int = 1;
         example.opt_str = "string value"
    }
@@ -272,7 +270,7 @@ area:
 
     // 可以有多个自定义区域 
 another:
-    example.v1;
+    example.v1 = true;
     example.v2 = 4;
 }
 #+end_src

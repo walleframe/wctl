@@ -5,7 +5,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -36,11 +36,193 @@ func (f RecursionAnalyseFunc) Analyse(file string) (prog *YTProgram, err error) 
 var _ RecursionAnalyser = RecursionAnalyseFunc(nil)
 
 // 本地全局.递归解析函数
-var gRegisterRecursionAnalyser RecursionAnalyser
+var RegisterRecursionAnalyser RecursionAnalyser = nil
 
-// RegisterRecursionAnalyser 注册递归解析函数
-func RegisterRecursionAnalyser(act RecursionAnalyser) {
-	gRegisterRecursionAnalyser = act
+// AnalyseProgram 分析检测Program合理性
+func (prog *YTProgram) AnalyseProgram() (err error) {
+	// 检测import合理性
+	err = prog.checkImport()
+	if err != nil {
+		return
+	}
+
+	// 重复定义检测
+	err = prog.checkRepeatedDefine()
+	if err != nil {
+		return
+	}
+
+	// 检查并修复文件引用合理性
+	err = prog.checkFixFileRefrence()
+	if err != nil {
+		return
+	}
+
+	return
+}
+
+// 检测import合理性
+func (prog *YTProgram) checkImport() (err error) {
+	imp := make(map[string]*YTImport)
+	for _, v := range prog.Imports {
+		// 导入文件名重复检测
+		if last, ok := imp[v.File]; ok {
+			return NewErrorPos(v.DefPos, "import file [%s] repeated with %s", v.File, last.DefPos.String())
+		}
+		imp[v.File] = v
+		// 导入别名检测
+		if last, ok := imp[v.AliasName]; ok {
+			return NewErrorPos(v.DefPos, "import alias [%s] repeated with %s", v.AliasName, last.DefPos.String())
+		}
+		imp[v.AliasName] = v
+	}
+
+	prog.impMap = make(map[string][]*YTProgram) // 改为slice结构. 允许多个文件作为同一个包
+	for _, val := range prog.Imports {
+		refName := val.AliasName
+		if refName == "" {
+			refName = val.Prog.Pkg.Name
+		}
+		if last, ok := prog.impMap[refName]; ok {
+			for _, v := range last {
+				// 相同引用名,必须相同包名
+				if v.Pkg.Name != val.Prog.Pkg.Name {
+					return NewErrorPos(val.DefPos, "import invalid. import package name do not same. <import %s %s> pkg[%s] != pkg[%s] refName[%s]",
+						val.AliasName, val.File, val.Prog.Pkg.Name,
+						v.Pkg.Name, refName)
+				}
+			}
+		}
+
+		prog.impMap[refName] = append(prog.impMap[refName], val.Prog)
+		//prog.impMap[val.Prog.Pkg.Name] = append(prog.impMap[val.Prog.Pkg.Name], val.Prog)
+	}
+	return
+}
+
+// 重复定义检测
+func (prog *YTProgram) checkRepeatedDefine() (err error) {
+	for _, val := range prog.YTOptions.Opts {
+		if last, ok := prog.checkUnionOption(val.Key); ok {
+			return NewErrorPos(val.DefPos, "pakage level option define name repeated [%s] %s", val.Key, last.String())
+		}
+		prog.addUionOption(val.Key, val.DefPos)
+	}
+
+	for _, val := range prog.EnumDefs {
+		if last, ok := prog.checkUnionName(val.Name); ok {
+			return NewErrorPos(val.DefPos, "enum define name repeated [%s] %s", val.Name, last.String())
+		}
+		prog.addUnionName(val.Name, val.DefPos)
+
+		for _, ev := range val.Values {
+			if last, ok := val.checkUnionNo(ev.Value); ok {
+				return NewErrorPos(ev.DefPos, "enum value name repeated [%s.%s] %s", val.Name, ev.Name, last.String())
+			}
+			val.addUnionNo(ev.Value, ev.DefPos)
+		}
+
+		for _, opt := range val.YTOptions.Opts {
+			if last, ok := prog.checkUnionOption(opt.Key); ok {
+				return NewErrorPos(opt.DefPos, "enum option define name repeated [%s %s] %s", val.Name, opt.Key, last.String())
+			}
+			prog.addUionOption(opt.Key, opt.DefPos)
+		}
+	}
+
+	prog.msgMap = make(map[string]*YTMessage)
+	for _, val := range prog.Messages {
+		prog.msgMap[val.Name] = val
+		err = prog.checkMsgRepeatedDefine(val)
+		if err != nil {
+			return
+		}
+	}
+
+	for _, val := range prog.Services {
+		if last, ok := prog.checkUnionName(val.Name); ok {
+			return NewErrorPos(val.DefPos, "service define name repeated [%s] %s", val.Name, last.String())
+		}
+		prog.addUnionName(val.Name, val.DefPos)
+		// method
+		for _, method := range val.Methods {
+			if last, ok := val.checkUnionName(method.Name); ok {
+				return NewErrorPos(method.DefPos, "service method name repeated [%s] %s", val.Name, last.String())
+			}
+			val.addUnionName(method.Name, method.DefPos)
+		}
+		// option
+		for _, opt := range val.YTOptions.Opts {
+			if last, ok := val.checkUnionName(opt.Key); ok {
+				return NewErrorPos(opt.DefPos, "service option name repeated [%s] %s", val.Name, last.String())
+			}
+			val.addUionOption(opt.Key, opt.DefPos)
+		}
+		// method no
+		if Flag.ServiceUseMethodID {
+			for _, method := range val.Methods {
+				if last, ok := val.checkUnionNo(*method.No.Value); ok {
+					return NewErrorPos(method.DefPos, "service method id repeated [%s] %s", val.Name, last.String())
+				}
+				val.addUnionNo(*method.No.Value, method.DefPos)
+			}
+		}
+	}
+
+	for _, val := range prog.Projects {
+		// if last, ok := prog.checkUnionName(val.Name); ok {
+		// 	return NewErrorPos(val.DefPos, "enum define name repeated [%s] %s", val.Name, last.String())
+		// }
+		// prog.addUnionName(val.Name, val.DefPos)
+
+		for area, opts := range val.Conf {
+			check := ytCheck{}
+			for _, opt := range opts.Opts {
+				if last, ok := check.checkUnionOption(opt.Key); ok {
+					return NewErrorPos(opt.DefPos,
+						"project %s area %s option name repeated [%s] %s",
+						val.Name, area, opt.Key, last.String(),
+					)
+				}
+			}
+		}
+	}
+	return
+}
+
+func (prog *YTProgram) checkMsgRepeatedDefine(val *YTMessage) error {
+	if last, ok := prog.checkUnionName(val.Name); ok {
+		return NewErrorPos(val.DefPos, "message define name repeated [%s] %s", val.Name, last.String())
+	}
+	prog.addUnionName(val.Name, val.DefPos)
+	//
+	for _, field := range val.Fields {
+		if last, ok := val.checkUnionNo(int64(field.No)); ok {
+			return NewErrorPos(field.DefPos, "message field id repeated [%s.%s] %s", val.Name, field.Name, last.String())
+		}
+		val.addUnionNo(int64(field.No), field.DefPos)
+
+		if last, ok := val.checkUnionName(field.Name); ok {
+			return NewErrorPos(field.DefPos, "message field name repeated [%s.%s] %s", val.Name, field.Name, last.String())
+		}
+		val.addUnionName(field.Name, field.DefPos)
+	}
+
+	for _, opt := range val.YTOptions.Opts {
+		if last, ok := val.checkUnionOption(opt.Key); ok {
+			return NewErrorPos(opt.DefPos, "message option name repeated [%s %s] %s", val.Name, opt.Key, last.String())
+		}
+		val.addUionOption(opt.Key, opt.DefPos)
+	}
+	//
+	for _, sub := range val.SubMsgs {
+		if err := prog.checkMsgRepeatedDefine(sub); err != nil {
+			return err
+		}
+		prog.msgMap[sub.Name] = sub
+	}
+
+	return nil
 }
 
 // 检查并修复文件引用合理性
@@ -86,7 +268,7 @@ func (prog *YTProgram) checkFixFileRefrence() (err error) {
 // 检查消息内字段类型
 func (prog *YTProgram) checkMsg(msg *YTMessage, tip string) (err error) {
 	for _, field := range msg.Fields {
-		if err = field.Type.checkType(prog, fmt.Sprintf("%s< $FILE:%d >in %s", tip, field.pos.Line, msg.Name)); err != nil {
+		if err = field.Type.checkType(prog, fmt.Sprintf("%s< %s >in %s", tip, field.DefPos.String(), msg.Name)); err != nil {
 			return
 		}
 	}
@@ -159,14 +341,14 @@ func (cst *YTCustomType) checkCustom(prog *YTProgram, tip string) (err error) {
 
 // 检测修复pb类型
 func (method *YTMethod) checkMessageProtobuf(prog *YTProgram, tip string) (pb bool, err error) {
-	if method.Request != nil && method.Request.protobuf {
+	if method.Request != nil && method.Request.ProtobufFlag {
 		pb = true
 		method.Request, err = getProtoMsg(prog, method.Request.Name, tip)
 		if err != nil {
 			return
 		}
 	}
-	if method.Reply != nil && method.Reply.protobuf {
+	if method.Reply != nil && method.Reply.ProtobufFlag {
 		pb = true
 		method.Reply, err = getProtoMsg(prog, method.Reply.Name, tip)
 		if err != nil {

@@ -5,7 +5,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -16,26 +16,26 @@ limitations under the License.
 package protocol
 
 import (
-	"errors"
 	"fmt"
 	"os"
 
 	"github.com/aggronmagi/wctl/protocol/ast"
-	"github.com/aggronmagi/wctl/protocol/token"
+	"github.com/aggronmagi/wctl/protocol/protobuf"
+	"github.com/aggronmagi/wctl/protocol/wproto"
 	"github.com/aggronmagi/wctl/utils"
-
-	pblexer "github.com/aggronmagi/wctl/protocol/protobuf/lexer"
-	pbparser "github.com/aggronmagi/wctl/protocol/protobuf/parser"
-	wlexer "github.com/aggronmagi/wctl/protocol/wproto/lexer"
-	wparser "github.com/aggronmagi/wctl/protocol/wproto/parser"
-	ytlexer "github.com/aggronmagi/wctl/protocol/yt/lexer"
-	ytparser "github.com/aggronmagi/wctl/protocol/yt/parser"
 )
 
-type Parser struct {
-	Parse    func(input []byte) (prog *ast.YTProgram, err error)
-	TokenMap token.TokenMap
+type Parser interface {
+	Parse(file string, input []byte) (prog *ast.YTProgram, err error)
 }
+
+type ParseFunc func(file string, input []byte) (prog *ast.YTProgram, err error)
+
+func (f ParseFunc) Parse(file string, input []byte) (prog *ast.YTProgram, err error) {
+	return f(file, input)
+}
+
+var _ Parser = ParseFunc(nil)
 
 type astItem struct {
 	FullName string
@@ -78,58 +78,14 @@ func RegisterParser(suffix string, parser Parser) {
 	gWarehouse.parsers[suffix] = parser
 }
 
-func GetParser(suffix string) *Parser {
+func GetParser(suffix string) Parser {
 	if val, ok := gWarehouse.parsers[suffix]; ok {
-		return &val
+		return val
 	}
 	return nil
 }
 
 func init() {
-	RegisterParser(".wproto", Parser{
-		Parse: func(src []byte) (prog *ast.YTProgram, err error) {
-			s := wlexer.NewLexer(src)
-			p := wparser.NewParser()
-			a, err := p.Parse(s)
-			if err != nil {
-				return nil, err
-			}
-			if val, ok := a.(*ast.YTProgram); ok {
-				return val, nil
-			}
-			return nil, errors.New("invalid type")
-		},
-		TokenMap: wparser.TokMap,
-	})
-	RegisterParser(".proto", Parser{
-		Parse: func(src []byte) (prog *ast.YTProgram, err error) {
-			s := pblexer.NewLexer(src)
-			p := pbparser.NewParser()
-			a, err := p.Parse(s)
-			if err != nil {
-				return nil, err
-			}
-			if val, ok := a.(*ast.YTProgram); ok {
-				return val, nil
-			}
-			return nil, errors.New("invalid type")
-		},
-		TokenMap: pbparser.TokMap,
-	})
-
-	RegisterParser(".yt", Parser{
-		Parse: func(src []byte) (prog *ast.YTProgram, err error) {
-			s := ytlexer.NewLexer(src)
-			p := ytparser.NewParser()
-			a, err := p.Parse(s)
-			if err != nil {
-				return nil, err
-			}
-			if val, ok := a.(*ast.YTProgram); ok {
-				return val, nil
-			}
-			return nil, errors.New("invalid type")
-		},
-		TokenMap: ytparser.TokMap,
-	})
+	RegisterParser(".wproto", ParseFunc(wproto.Parse))
+	RegisterParser(".proto", ParseFunc(protobuf.Parse))
 }

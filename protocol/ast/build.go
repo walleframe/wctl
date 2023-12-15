@@ -1,6 +1,6 @@
 package ast
 
-import "github.com/aggronmagi/wctl/builder/buildpb"
+import "github.com/walleframe/wctl/builder/buildpb"
 
 // GetFileDesc 获取文件描述
 func (prog *YTProgram) GetFileDesc() *buildpb.FileDesc {

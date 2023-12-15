@@ -1,4 +1,4 @@
-module github.com/aggronmagi/wctl
+module github.com/walleframe/wctl
 
 go 1.17
 

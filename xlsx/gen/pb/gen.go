@@ -12,8 +12,8 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/aggronmagi/wctl/xlsx/gen"
-	"github.com/aggronmagi/wctl/xlsx/parser"
+	"github.com/walleframe/wctl/xlsx/gen"
+	"github.com/walleframe/wctl/xlsx/parser"
 )
 
 var (

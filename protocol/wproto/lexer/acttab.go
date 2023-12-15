@@ -5,7 +5,7 @@ package lexer
 import (
 	"fmt"
 
-	"github.com/aggronmagi/wctl/protocol/token"
+	"github.com/walleframe/wctl/protocol/token"
 )
 
 type ActionTable [NumStates]ActionRow

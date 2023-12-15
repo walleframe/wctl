@@ -5,13 +5,13 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/aggronmagi/wctl/builder"
-	"github.com/aggronmagi/wctl/builder/yttpl"
-	"github.com/aggronmagi/wctl/protocol"
-	"github.com/aggronmagi/wctl/protocol/ast"
-	"github.com/aggronmagi/wctl/utils"
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
+	"github.com/walleframe/wctl/builder"
+	"github.com/walleframe/wctl/builder/yttpl"
+	"github.com/walleframe/wctl/protocol"
+	"github.com/walleframe/wctl/protocol/ast"
+	"github.com/walleframe/wctl/utils"
 )
 
 var config = struct {

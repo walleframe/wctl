@@ -6,7 +6,7 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/aggronmagi/wctl/xlsx/parser"
+	"github.com/walleframe/wctl/xlsx/parser"
 )
 
 var UseFuncMap = template.FuncMap{}
@@ -23,7 +23,7 @@ func init() {
 		if err != nil {
 			log.Println("get pb type failed,", p)
 		}
-		
+
 		return name
 	}
 	UseFuncMap["Comment"] = func(filed *parser.ColumnType) string {

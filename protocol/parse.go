@@ -20,8 +20,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/aggronmagi/wctl/protocol/ast"
-	"github.com/aggronmagi/wctl/utils"
+	"github.com/walleframe/wctl/protocol/ast"
+	"github.com/walleframe/wctl/utils"
 )
 
 func init() {

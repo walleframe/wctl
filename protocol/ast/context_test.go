@@ -3,8 +3,8 @@ package ast
 import (
 	"testing"
 
-	"github.com/aggronmagi/wctl/protocol/token"
 	"github.com/stretchr/testify/assert"
+	"github.com/walleframe/wctl/protocol/token"
 )
 
 func TestPreDoc(t *testing.T) {

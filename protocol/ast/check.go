@@ -15,7 +15,7 @@ limitations under the License.
 */
 package ast
 
-import "github.com/aggronmagi/wctl/protocol/token"
+import "github.com/walleframe/wctl/protocol/token"
 
 // 检查命名是否重定义
 type ytCheck struct {

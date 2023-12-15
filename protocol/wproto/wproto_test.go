@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/aggronmagi/wctl/builder/buildpb"
-	"github.com/aggronmagi/wctl/protocol/ast"
 	"github.com/stretchr/testify/assert"
+	"github.com/walleframe/wctl/builder/buildpb"
+	"github.com/walleframe/wctl/protocol/ast"
 )
 
 func TestParse(t *testing.T) {

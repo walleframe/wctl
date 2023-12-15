@@ -11,11 +11,11 @@ import (
 	"github.com/spf13/pflag"
 	"go.uber.org/multierr"
 
-	"github.com/aggronmagi/wctl/xlsx/gen"
-	"github.com/aggronmagi/wctl/xlsx/parser"
+	"github.com/walleframe/wctl/xlsx/gen"
+	"github.com/walleframe/wctl/xlsx/parser"
 
-	"github.com/aggronmagi/wctl/xlsx/gen/jsondata"
-	"github.com/aggronmagi/wctl/xlsx/gen/pb"
+	"github.com/walleframe/wctl/xlsx/gen/jsondata"
+	"github.com/walleframe/wctl/xlsx/gen/pb"
 )
 
 var cfg = struct {

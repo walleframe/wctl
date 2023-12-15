@@ -3,8 +3,8 @@
 package parser
 
 import (
-	"github.com/aggronmagi/wctl/protocol/wproto/bridge"
-	"github.com/aggronmagi/wctl/protocol/ast"
+	"github.com/walleframe/wctl/protocol/wproto/bridge"
+	"github.com/walleframe/wctl/protocol/ast"
 )
 
 type (
@@ -373,10 +373,20 @@ var productionsTable = ProdTab{
 		},
 	},
 	ProdTabEntry{
-		String: `FieldType : tok_identifier	<< bridge.BasicOrCustomType(C, X[0]) >>`,
+		String: `FieldType : "[" "]" tok_identifier	<< bridge.ArrayType(C, X[2]) >>`,
 		Id:         "FieldType",
 		NTType:     16,
 		Index:      35,
+		NumSymbols: 3,
+		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
+			return bridge.ArrayType(C, X[2])
+		},
+	},
+	ProdTabEntry{
+		String: `FieldType : tok_identifier	<< bridge.BasicOrCustomType(C, X[0]) >>`,
+		Id:         "FieldType",
+		NTType:     16,
+		Index:      36,
 		NumSymbols: 1,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return bridge.BasicOrCustomType(C, X[0])
@@ -386,7 +396,7 @@ var productionsTable = ProdTab{
 		String: `Service : "service" tok_identifier "{" ServiceElements "}" OptEnd	<< bridge.NewService(C, X[1], X[3]) >>`,
 		Id:         "Service",
 		NTType:     17,
-		Index:      36,
+		Index:      37,
 		NumSymbols: 6,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return bridge.NewService(C, X[1], X[3])
@@ -396,7 +406,7 @@ var productionsTable = ProdTab{
 		String: `ServiceElements : empty	<< &ast.YTService{}, nil >>`,
 		Id:         "ServiceElements",
 		NTType:     18,
-		Index:      37,
+		Index:      38,
 		NumSymbols: 0,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return &ast.YTService{}, nil
@@ -406,7 +416,7 @@ var productionsTable = ProdTab{
 		String: `ServiceElements : ServiceElements ServiceMethod	<< bridge.ServiceMethod(C, X[0], X[1]) >>`,
 		Id:         "ServiceElements",
 		NTType:     18,
-		Index:      38,
+		Index:      39,
 		NumSymbols: 2,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return bridge.ServiceMethod(C, X[0], X[1])
@@ -416,7 +426,7 @@ var productionsTable = ProdTab{
 		String: `ServiceElements : ServiceElements OptionExpr	<< bridge.ServiceOption(C, X[0], X[1]) >>`,
 		Id:         "ServiceElements",
 		NTType:     18,
-		Index:      39,
+		Index:      40,
 		NumSymbols: 2,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return bridge.ServiceOption(C, X[0], X[1])
@@ -426,7 +436,7 @@ var productionsTable = ProdTab{
 		String: `ServiceElements : ServiceElements MethodFlag	<< bridge.ServiceFlag(C, X[0], X[1]) >>`,
 		Id:         "ServiceElements",
 		NTType:     18,
-		Index:      40,
+		Index:      41,
 		NumSymbols: 2,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return bridge.ServiceFlag(C, X[0], X[1])
@@ -436,7 +446,7 @@ var productionsTable = ProdTab{
 		String: `MethodFlag : "call" ":"	<< X[0], nil >>`,
 		Id:         "MethodFlag",
 		NTType:     19,
-		Index:      41,
+		Index:      42,
 		NumSymbols: 2,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return X[0], nil
@@ -446,7 +456,7 @@ var productionsTable = ProdTab{
 		String: `MethodFlag : "notify" ":"	<< X[0], nil >>`,
 		Id:         "MethodFlag",
 		NTType:     19,
-		Index:      42,
+		Index:      43,
 		NumSymbols: 2,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return X[0], nil
@@ -456,7 +466,7 @@ var productionsTable = ProdTab{
 		String: `ServiceMethod : tok_identifier "(" tok_identifier ")" tok_identifier MethodNo FieldOption OptEnd	<< bridge.NewMethod(C, X[0], X[2], X[4], X[5], X[6]) >>`,
 		Id:         "ServiceMethod",
 		NTType:     20,
-		Index:      43,
+		Index:      44,
 		NumSymbols: 8,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return bridge.NewMethod(C, X[0], X[2], X[4], X[5], X[6])
@@ -466,7 +476,7 @@ var productionsTable = ProdTab{
 		String: `MethodNo : empty	<<  >>`,
 		Id:         "MethodNo",
 		NTType:     21,
-		Index:      44,
+		Index:      45,
 		NumSymbols: 0,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return nil, nil
@@ -476,7 +486,7 @@ var productionsTable = ProdTab{
 		String: `MethodNo : "=" tok_num	<< X[1], nil >>`,
 		Id:         "MethodNo",
 		NTType:     21,
-		Index:      45,
+		Index:      46,
 		NumSymbols: 2,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return X[1], nil
@@ -486,7 +496,7 @@ var productionsTable = ProdTab{
 		String: `Project : "project" tok_identifier "{" ProjElements "}" OptEnd	<< bridge.NewProject(C, X[1], X[3]) >>`,
 		Id:         "Project",
 		NTType:     22,
-		Index:      46,
+		Index:      47,
 		NumSymbols: 6,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return bridge.NewProject(C, X[1], X[3])
@@ -496,7 +506,7 @@ var productionsTable = ProdTab{
 		String: `ProjElements : empty	<< &ast.YTProject{}, nil >>`,
 		Id:         "ProjElements",
 		NTType:     23,
-		Index:      47,
+		Index:      48,
 		NumSymbols: 0,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return &ast.YTProject{}, nil
@@ -506,7 +516,7 @@ var productionsTable = ProdTab{
 		String: `ProjElements : ProjElements ProjArea	<< bridge.ProjectArea(C, X[0], X[1]) >>`,
 		Id:         "ProjElements",
 		NTType:     23,
-		Index:      48,
+		Index:      49,
 		NumSymbols: 2,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return bridge.ProjectArea(C, X[0], X[1])
@@ -516,7 +526,7 @@ var productionsTable = ProdTab{
 		String: `ProjElements : ProjElements OptionExpr	<< bridge.ProjectOption(C, X[0], X[1]) >>`,
 		Id:         "ProjElements",
 		NTType:     23,
-		Index:      49,
+		Index:      50,
 		NumSymbols: 2,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return bridge.ProjectOption(C, X[0], X[1])
@@ -526,7 +536,7 @@ var productionsTable = ProdTab{
 		String: `ProjArea : tok_identifier ":"	<< X[0], nil >>`,
 		Id:         "ProjArea",
 		NTType:     24,
-		Index:      50,
+		Index:      51,
 		NumSymbols: 2,
 		ReduceFunc: func(X []Attrib, C interface{}) (Attrib, error) {
 			return X[0], nil

@@ -2,7 +2,7 @@
 
 package parser
 
-import "github.com/aggronmagi/wctl/protocol/token"
+import "github.com/walleframe/wctl/protocol/token"
 
 var TokMap = token.NewTokenMap(
 	[]string{

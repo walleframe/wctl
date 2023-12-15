@@ -17,7 +17,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 _integer : '0' - '9';
 _letter : 'a' - 'z' | 'A' - 'Z' | '_' ;
-_identifier : _letter|_integer|'.'|'['|']'|'<'|'>';
+_identifier : _letter|_integer|'.';
 tok_identifier:  _letter{_identifier};
 
 _leteral1:'`'{.}'`';
@@ -37,8 +37,8 @@ tok_doc: _multidoc | _comment ;
 ////////////////////////////////////////////////////////////////////////////////
 <<
 import (
-	"github.com/aggronmagi/wctl/protocol/wproto/bridge"
-	"github.com/aggronmagi/wctl/protocol/ast"
+	"github.com/walleframe/wctl/protocol/wproto/bridge"
+	"github.com/walleframe/wctl/protocol/ast"
 )
 >>
 ////////////////////////////////////////////////////////////////////////////////
@@ -128,6 +128,7 @@ FieldType:
 	"map" "<" tok_identifier "," tok_identifier ">"		<< bridge.MapType($Context, $2, $4) >>
 |	"map" "[" tok_identifier "]" tok_identifier 		<< bridge.MapType($Context, $2, $4) >>	
 |	"repeated" tok_identifier							<< bridge.ArrayType($Context, $1) >>
+|	"[" "]" tok_identifier								<< bridge.ArrayType($Context, $2) >>
 |	tok_identifier										<< bridge.BasicOrCustomType($Context, $0) >>
 ;
 

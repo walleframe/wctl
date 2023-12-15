@@ -6,13 +6,13 @@ import (
 	"fmt"
 	"strings"
 
-	parseError "github.com/aggronmagi/wctl/protocol/errors"
-	"github.com/aggronmagi/wctl/protocol/token"
+	parseError "github.com/walleframe/wctl/protocol/errors"
+	"github.com/walleframe/wctl/protocol/token"
 )
 
 const (
-	numProductions = 51
-	numStates      = 136
+	numProductions = 52
+	numStates      = 139
 	numSymbols     = 56
 )
 

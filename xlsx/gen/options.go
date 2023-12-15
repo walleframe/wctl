@@ -5,7 +5,7 @@
 package gen
 
 import (
-	parser "github.com/aggronmagi/wctl/xlsx/parser"
+	parser "github.com/walleframe/wctl/xlsx/parser"
 )
 
 var _ = xlsxSupportConfig()

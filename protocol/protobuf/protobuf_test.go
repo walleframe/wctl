@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/aggronmagi/wctl/builder/buildpb"
-	"github.com/aggronmagi/wctl/protocol/ast"
 	"github.com/stretchr/testify/assert"
+	"github.com/walleframe/wctl/builder/buildpb"
+	"github.com/walleframe/wctl/protocol/ast"
 )
 
 func TestParse(t *testing.T) {
@@ -158,7 +158,7 @@ message m2 {
 									Doc: []string{"// field 2 doc \n"},
 								},
 								Options: &buildpb.OptionDesc{},
-								No: 2,
+								No:      2,
 								Type: &buildpb.TypeDesc{
 									Type:    buildpb.FieldType_BaseType,
 									Key:     "int64",

@@ -17,7 +17,7 @@
 package cmd
 
 import (
-	"github.com/aggronmagi/wctl/commands/xlsxgen"
+	"github.com/walleframe/wctl/commands/xlsxgen"
 
 	"github.com/spf13/cobra"
 )

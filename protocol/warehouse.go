@@ -19,10 +19,10 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/aggronmagi/wctl/protocol/ast"
-	"github.com/aggronmagi/wctl/protocol/protobuf"
-	"github.com/aggronmagi/wctl/protocol/wproto"
-	"github.com/aggronmagi/wctl/utils"
+	"github.com/walleframe/wctl/protocol/ast"
+	"github.com/walleframe/wctl/protocol/protobuf"
+	"github.com/walleframe/wctl/protocol/wproto"
+	"github.com/walleframe/wctl/utils"
 )
 
 type Parser interface {

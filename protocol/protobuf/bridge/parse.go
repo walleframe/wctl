@@ -6,9 +6,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/aggronmagi/wctl/protocol/ast"
-	"github.com/aggronmagi/wctl/protocol/token"
-	"github.com/aggronmagi/wctl/utils"
+	"github.com/walleframe/wctl/protocol/ast"
+	"github.com/walleframe/wctl/protocol/token"
+	"github.com/walleframe/wctl/utils"
 	"go.uber.org/multierr"
 )
 
@@ -404,7 +404,7 @@ func MapType(c, a2, a4 interface{}) (_ *ast.YTField, err error) {
 		return nil, err
 	}
 
-	if key.Type.YTBaseType != nil {
+	if key.Type.YTBaseType == nil {
 		err = ast.NewError(tokKey, "field map key type must basic type")
 		return
 	}

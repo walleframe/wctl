@@ -6,7 +6,7 @@ import (
 	"os"
 	"unicode/utf8"
 
-	"github.com/aggronmagi/wctl/protocol/token"
+	"github.com/walleframe/wctl/protocol/token"
 )
 
 const (

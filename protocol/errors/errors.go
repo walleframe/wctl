@@ -8,7 +8,7 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/aggronmagi/wctl/protocol/token"
+	"github.com/walleframe/wctl/protocol/token"
 )
 
 type ErrorSymbol interface {

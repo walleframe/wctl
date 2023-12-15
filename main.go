@@ -16,7 +16,7 @@ limitations under the License.
 package main
 
 import (
-	"github.com/aggronmagi/wctl/cmd"
+	"github.com/walleframe/wctl/cmd"
 )
 
 func main() {

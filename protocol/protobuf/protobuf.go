@@ -1,11 +1,11 @@
 package protobuf
 
 import (
-	"github.com/aggronmagi/wctl/protocol/ast"
-	"github.com/aggronmagi/wctl/protocol/protobuf/lexer"
-	"github.com/aggronmagi/wctl/protocol/protobuf/parser"
-	"github.com/aggronmagi/wctl/protocol/token"
-	"github.com/aggronmagi/wctl/utils"
+	"github.com/walleframe/wctl/protocol/ast"
+	"github.com/walleframe/wctl/protocol/protobuf/lexer"
+	"github.com/walleframe/wctl/protocol/protobuf/parser"
+	"github.com/walleframe/wctl/protocol/token"
+	"github.com/walleframe/wctl/utils"
 )
 
 func Parse(file string, src []byte) (_ *ast.YTProgram, err error) {

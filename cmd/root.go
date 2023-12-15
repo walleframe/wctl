@@ -20,8 +20,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/aggronmagi/wctl/utils"
 	"github.com/spf13/cobra"
+	"github.com/walleframe/wctl/utils"
 )
 
 // rootCmd represents the base command when called without any subcommands

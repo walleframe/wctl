@@ -1237,7 +1237,7 @@ var gotoTab = gotoTable{
 		-1, // Enum
 		-1, // Message
 		-1, // Options
-		60, // OptionExpr
+		61, // OptionExpr
 		-1, // OptionValue
 		-1, // Fields
 		-1, // FieldExpr
@@ -1245,8 +1245,8 @@ var gotoTab = gotoTable{
 		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
-		63, // MethodFlag
-		62, // ServiceMethod
+		64, // MethodFlag
+		63, // ServiceMethod
 		-1, // MethodNo
 		-1, // Project
 		-1, // ProjElements
@@ -1264,7 +1264,7 @@ var gotoTab = gotoTable{
 		-1, // Enum
 		-1, // Message
 		-1, // Options
-		67, // OptionExpr
+		68, // OptionExpr
 		-1, // OptionValue
 		-1, // Fields
 		-1, // FieldExpr
@@ -1277,7 +1277,7 @@ var gotoTab = gotoTable{
 		-1, // MethodNo
 		-1, // Project
 		-1, // ProjElements
-		69, // ProjArea
+		70, // ProjArea
 	},
 	gotoRow{ // S47
 		-1, // S'
@@ -1292,7 +1292,7 @@ var gotoTab = gotoTable{
 		-1, // Message
 		-1, // Options
 		-1, // OptionExpr
-		70, // OptionValue
+		71, // OptionValue
 		-1, // Fields
 		-1, // FieldExpr
 		-1, // FieldOption
@@ -1336,7 +1336,7 @@ var gotoTab = gotoTable{
 	gotoRow{ // S49
 		-1, // S'
 		-1, // ProtocolDefine
-		72, // OptEnd
+		73, // OptEnd
 		-1, // Package
 		-1, // Imports
 		-1, // Import
@@ -1373,7 +1373,7 @@ var gotoTab = gotoTable{
 		-1, // Message
 		-1, // Options
 		-1, // OptionExpr
-		73, // OptionValue
+		74, // OptionValue
 		-1, // Fields
 		-1, // FieldExpr
 		-1, // FieldOption
@@ -1444,7 +1444,7 @@ var gotoTab = gotoTable{
 	gotoRow{ // S53
 		-1, // S'
 		-1, // ProtocolDefine
-		75, // OptEnd
+		76, // OptEnd
 		-1, // Package
 		-1, // Imports
 		-1, // Import
@@ -1616,7 +1616,7 @@ var gotoTab = gotoTable{
 		-1, // Message
 		-1, // Options
 		-1, // OptionExpr
-		81, // OptionValue
+		-1, // OptionValue
 		-1, // Fields
 		-1, // FieldExpr
 		-1, // FieldOption
@@ -1643,7 +1643,7 @@ var gotoTab = gotoTable{
 		-1, // Message
 		-1, // Options
 		-1, // OptionExpr
-		-1, // OptionValue
+		83, // OptionValue
 		-1, // Fields
 		-1, // FieldExpr
 		-1, // FieldOption
@@ -1660,7 +1660,7 @@ var gotoTab = gotoTable{
 	gotoRow{ // S61
 		-1, // S'
 		-1, // ProtocolDefine
-		84, // OptEnd
+		-1, // OptEnd
 		-1, // Package
 		-1, // Imports
 		-1, // Import
@@ -1687,7 +1687,7 @@ var gotoTab = gotoTable{
 	gotoRow{ // S62
 		-1, // S'
 		-1, // ProtocolDefine
-		-1, // OptEnd
+		86, // OptEnd
 		-1, // Package
 		-1, // Imports
 		-1, // Import
@@ -1805,7 +1805,7 @@ var gotoTab = gotoTable{
 		-1, // Message
 		-1, // Options
 		-1, // OptionExpr
-		70, // OptionValue
+		-1, // OptionValue
 		-1, // Fields
 		-1, // FieldExpr
 		-1, // FieldOption
@@ -1832,7 +1832,7 @@ var gotoTab = gotoTable{
 		-1, // Message
 		-1, // Options
 		-1, // OptionExpr
-		-1, // OptionValue
+		71, // OptionValue
 		-1, // Fields
 		-1, // FieldExpr
 		-1, // FieldOption
@@ -1849,7 +1849,7 @@ var gotoTab = gotoTable{
 	gotoRow{ // S68
 		-1, // S'
 		-1, // ProtocolDefine
-		88, // OptEnd
+		-1, // OptEnd
 		-1, // Package
 		-1, // Imports
 		-1, // Import
@@ -1876,7 +1876,7 @@ var gotoTab = gotoTable{
 	gotoRow{ // S69
 		-1, // S'
 		-1, // ProtocolDefine
-		-1, // OptEnd
+		90, // OptEnd
 		-1, // Package
 		-1, // Imports
 		-1, // Import
@@ -1903,7 +1903,7 @@ var gotoTab = gotoTable{
 	gotoRow{ // S70
 		-1, // S'
 		-1, // ProtocolDefine
-		89, // OptEnd
+		-1, // OptEnd
 		-1, // Package
 		-1, // Imports
 		-1, // Import
@@ -1930,7 +1930,7 @@ var gotoTab = gotoTable{
 	gotoRow{ // S71
 		-1, // S'
 		-1, // ProtocolDefine
-		-1, // OptEnd
+		91, // OptEnd
 		-1, // Package
 		-1, // Imports
 		-1, // Import
@@ -1984,7 +1984,7 @@ var gotoTab = gotoTable{
 	gotoRow{ // S73
 		-1, // S'
 		-1, // ProtocolDefine
-		95, // OptEnd
+		-1, // OptEnd
 		-1, // Package
 		-1, // Imports
 		-1, // Import
@@ -2011,7 +2011,7 @@ var gotoTab = gotoTable{
 	gotoRow{ // S74
 		-1, // S'
 		-1, // ProtocolDefine
-		-1, // OptEnd
+		97, // OptEnd
 		-1, // Package
 		-1, // Imports
 		-1, // Import
@@ -2198,31 +2198,31 @@ var gotoTab = gotoTable{
 		-1, // ProjArea
 	},
 	gotoRow{ // S81
-		-1,  // S'
-		-1,  // ProtocolDefine
-		105, // OptEnd
-		-1,  // Package
-		-1,  // Imports
-		-1,  // Import
-		-1,  // Defines
-		-1,  // Define
-		-1,  // Enum
-		-1,  // Message
-		-1,  // Options
-		-1,  // OptionExpr
-		-1,  // OptionValue
-		-1,  // Fields
-		-1,  // FieldExpr
-		-1,  // FieldOption
-		-1,  // FieldType
-		-1,  // Service
-		-1,  // ServiceElements
-		-1,  // MethodFlag
-		-1,  // ServiceMethod
-		-1,  // MethodNo
-		-1,  // Project
-		-1,  // ProjElements
-		-1,  // ProjArea
+		-1, // S'
+		-1, // ProtocolDefine
+		-1, // OptEnd
+		-1, // Package
+		-1, // Imports
+		-1, // Import
+		-1, // Defines
+		-1, // Define
+		-1, // Enum
+		-1, // Message
+		-1, // Options
+		-1, // OptionExpr
+		-1, // OptionValue
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldOption
+		-1, // FieldType
+		-1, // Service
+		-1, // ServiceElements
+		-1, // MethodFlag
+		-1, // ServiceMethod
+		-1, // MethodNo
+		-1, // Project
+		-1, // ProjElements
+		-1, // ProjArea
 	},
 	gotoRow{ // S82
 		-1, // S'
@@ -2252,31 +2252,31 @@ var gotoTab = gotoTable{
 		-1, // ProjArea
 	},
 	gotoRow{ // S83
-		-1, // S'
-		-1, // ProtocolDefine
-		-1, // OptEnd
-		-1, // Package
-		-1, // Imports
-		-1, // Import
-		-1, // Defines
-		-1, // Define
-		-1, // Enum
-		-1, // Message
-		-1, // Options
-		-1, // OptionExpr
-		-1, // OptionValue
-		-1, // Fields
-		-1, // FieldExpr
-		-1, // FieldOption
-		-1, // FieldType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // MethodFlag
-		-1, // ServiceMethod
-		-1, // MethodNo
-		-1, // Project
-		-1, // ProjElements
-		-1, // ProjArea
+		-1,  // S'
+		-1,  // ProtocolDefine
+		108, // OptEnd
+		-1,  // Package
+		-1,  // Imports
+		-1,  // Import
+		-1,  // Defines
+		-1,  // Define
+		-1,  // Enum
+		-1,  // Message
+		-1,  // Options
+		-1,  // OptionExpr
+		-1,  // OptionValue
+		-1,  // Fields
+		-1,  // FieldExpr
+		-1,  // FieldOption
+		-1,  // FieldType
+		-1,  // Service
+		-1,  // ServiceElements
+		-1,  // MethodFlag
+		-1,  // ServiceMethod
+		-1,  // MethodNo
+		-1,  // Project
+		-1,  // ProjElements
+		-1,  // ProjArea
 	},
 	gotoRow{ // S84
 		-1, // S'
@@ -2738,31 +2738,31 @@ var gotoTab = gotoTable{
 		-1, // ProjArea
 	},
 	gotoRow{ // S101
-		-1,  // S'
-		-1,  // ProtocolDefine
-		-1,  // OptEnd
-		-1,  // Package
-		-1,  // Imports
-		-1,  // Import
-		-1,  // Defines
-		-1,  // Define
-		-1,  // Enum
-		-1,  // Message
-		-1,  // Options
-		-1,  // OptionExpr
-		-1,  // OptionValue
-		112, // Fields
-		-1,  // FieldExpr
-		-1,  // FieldOption
-		-1,  // FieldType
-		-1,  // Service
-		-1,  // ServiceElements
-		-1,  // MethodFlag
-		-1,  // ServiceMethod
-		-1,  // MethodNo
-		-1,  // Project
-		-1,  // ProjElements
-		-1,  // ProjArea
+		-1, // S'
+		-1, // ProtocolDefine
+		-1, // OptEnd
+		-1, // Package
+		-1, // Imports
+		-1, // Import
+		-1, // Defines
+		-1, // Define
+		-1, // Enum
+		-1, // Message
+		-1, // Options
+		-1, // OptionExpr
+		-1, // OptionValue
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldOption
+		-1, // FieldType
+		-1, // Service
+		-1, // ServiceElements
+		-1, // MethodFlag
+		-1, // ServiceMethod
+		-1, // MethodNo
+		-1, // Project
+		-1, // ProjElements
+		-1, // ProjArea
 	},
 	gotoRow{ // S102
 		-1, // S'
@@ -2792,31 +2792,31 @@ var gotoTab = gotoTable{
 		-1, // ProjArea
 	},
 	gotoRow{ // S103
-		-1, // S'
-		-1, // ProtocolDefine
-		-1, // OptEnd
-		-1, // Package
-		-1, // Imports
-		-1, // Import
-		-1, // Defines
-		-1, // Define
-		-1, // Enum
-		-1, // Message
-		-1, // Options
-		-1, // OptionExpr
-		-1, // OptionValue
-		-1, // Fields
-		-1, // FieldExpr
-		-1, // FieldOption
-		-1, // FieldType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // MethodFlag
-		-1, // ServiceMethod
-		-1, // MethodNo
-		-1, // Project
-		-1, // ProjElements
-		-1, // ProjArea
+		-1,  // S'
+		-1,  // ProtocolDefine
+		-1,  // OptEnd
+		-1,  // Package
+		-1,  // Imports
+		-1,  // Import
+		-1,  // Defines
+		-1,  // Define
+		-1,  // Enum
+		-1,  // Message
+		-1,  // Options
+		-1,  // OptionExpr
+		-1,  // OptionValue
+		115, // Fields
+		-1,  // FieldExpr
+		-1,  // FieldOption
+		-1,  // FieldType
+		-1,  // Service
+		-1,  // ServiceElements
+		-1,  // MethodFlag
+		-1,  // ServiceMethod
+		-1,  // MethodNo
+		-1,  // Project
+		-1,  // ProjElements
+		-1,  // ProjArea
 	},
 	gotoRow{ // S104
 		-1, // S'
@@ -3044,14 +3044,14 @@ var gotoTab = gotoTable{
 		-1, // Defines
 		-1, // Define
 		-1, // Enum
-		51, // Message
+		-1, // Message
 		-1, // Options
-		52, // OptionExpr
+		-1, // OptionExpr
 		-1, // OptionValue
 		-1, // Fields
-		55, // FieldExpr
+		-1, // FieldExpr
 		-1, // FieldOption
-		56, // FieldType
+		-1, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // MethodFlag
@@ -3062,31 +3062,31 @@ var gotoTab = gotoTable{
 		-1, // ProjArea
 	},
 	gotoRow{ // S113
-		-1,  // S'
-		-1,  // ProtocolDefine
-		-1,  // OptEnd
-		-1,  // Package
-		-1,  // Imports
-		-1,  // Import
-		-1,  // Defines
-		-1,  // Define
-		-1,  // Enum
-		-1,  // Message
-		-1,  // Options
-		-1,  // OptionExpr
-		-1,  // OptionValue
-		-1,  // Fields
-		-1,  // FieldExpr
-		119, // FieldOption
-		-1,  // FieldType
-		-1,  // Service
-		-1,  // ServiceElements
-		-1,  // MethodFlag
-		-1,  // ServiceMethod
-		-1,  // MethodNo
-		-1,  // Project
-		-1,  // ProjElements
-		-1,  // ProjArea
+		-1, // S'
+		-1, // ProtocolDefine
+		-1, // OptEnd
+		-1, // Package
+		-1, // Imports
+		-1, // Import
+		-1, // Defines
+		-1, // Define
+		-1, // Enum
+		-1, // Message
+		-1, // Options
+		-1, // OptionExpr
+		-1, // OptionValue
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldOption
+		-1, // FieldType
+		-1, // Service
+		-1, // ServiceElements
+		-1, // MethodFlag
+		-1, // ServiceMethod
+		-1, // MethodNo
+		-1, // Project
+		-1, // ProjElements
+		-1, // ProjArea
 	},
 	gotoRow{ // S114
 		-1, // S'
@@ -3125,14 +3125,14 @@ var gotoTab = gotoTable{
 		-1, // Defines
 		-1, // Define
 		-1, // Enum
-		-1, // Message
+		51, // Message
 		-1, // Options
-		-1, // OptionExpr
+		52, // OptionExpr
 		-1, // OptionValue
 		-1, // Fields
-		-1, // FieldExpr
+		55, // FieldExpr
 		-1, // FieldOption
-		-1, // FieldType
+		56, // FieldType
 		-1, // Service
 		-1, // ServiceElements
 		-1, // MethodFlag
@@ -3143,60 +3143,6 @@ var gotoTab = gotoTable{
 		-1, // ProjArea
 	},
 	gotoRow{ // S116
-		-1, // S'
-		-1, // ProtocolDefine
-		-1, // OptEnd
-		-1, // Package
-		-1, // Imports
-		-1, // Import
-		-1, // Defines
-		-1, // Define
-		-1, // Enum
-		-1, // Message
-		-1, // Options
-		-1, // OptionExpr
-		-1, // OptionValue
-		-1, // Fields
-		-1, // FieldExpr
-		-1, // FieldOption
-		-1, // FieldType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // MethodFlag
-		-1, // ServiceMethod
-		-1, // MethodNo
-		-1, // Project
-		-1, // ProjElements
-		-1, // ProjArea
-	},
-	gotoRow{ // S117
-		-1,  // S'
-		-1,  // ProtocolDefine
-		123, // OptEnd
-		-1,  // Package
-		-1,  // Imports
-		-1,  // Import
-		-1,  // Defines
-		-1,  // Define
-		-1,  // Enum
-		-1,  // Message
-		-1,  // Options
-		-1,  // OptionExpr
-		-1,  // OptionValue
-		-1,  // Fields
-		-1,  // FieldExpr
-		-1,  // FieldOption
-		-1,  // FieldType
-		-1,  // Service
-		-1,  // ServiceElements
-		-1,  // MethodFlag
-		-1,  // ServiceMethod
-		-1,  // MethodNo
-		-1,  // Project
-		-1,  // ProjElements
-		-1,  // ProjArea
-	},
-	gotoRow{ // S118
 		-1,  // S'
 		-1,  // ProtocolDefine
 		-1,  // OptEnd
@@ -3207,12 +3153,12 @@ var gotoTab = gotoTable{
 		-1,  // Define
 		-1,  // Enum
 		-1,  // Message
-		124, // Options
+		-1,  // Options
 		-1,  // OptionExpr
 		-1,  // OptionValue
 		-1,  // Fields
 		-1,  // FieldExpr
-		-1,  // FieldOption
+		122, // FieldOption
 		-1,  // FieldType
 		-1,  // Service
 		-1,  // ServiceElements
@@ -3223,10 +3169,91 @@ var gotoTab = gotoTable{
 		-1,  // ProjElements
 		-1,  // ProjArea
 	},
+	gotoRow{ // S117
+		-1, // S'
+		-1, // ProtocolDefine
+		-1, // OptEnd
+		-1, // Package
+		-1, // Imports
+		-1, // Import
+		-1, // Defines
+		-1, // Define
+		-1, // Enum
+		-1, // Message
+		-1, // Options
+		-1, // OptionExpr
+		-1, // OptionValue
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldOption
+		-1, // FieldType
+		-1, // Service
+		-1, // ServiceElements
+		-1, // MethodFlag
+		-1, // ServiceMethod
+		-1, // MethodNo
+		-1, // Project
+		-1, // ProjElements
+		-1, // ProjArea
+	},
+	gotoRow{ // S118
+		-1, // S'
+		-1, // ProtocolDefine
+		-1, // OptEnd
+		-1, // Package
+		-1, // Imports
+		-1, // Import
+		-1, // Defines
+		-1, // Define
+		-1, // Enum
+		-1, // Message
+		-1, // Options
+		-1, // OptionExpr
+		-1, // OptionValue
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldOption
+		-1, // FieldType
+		-1, // Service
+		-1, // ServiceElements
+		-1, // MethodFlag
+		-1, // ServiceMethod
+		-1, // MethodNo
+		-1, // Project
+		-1, // ProjElements
+		-1, // ProjArea
+	},
 	gotoRow{ // S119
+		-1, // S'
+		-1, // ProtocolDefine
+		-1, // OptEnd
+		-1, // Package
+		-1, // Imports
+		-1, // Import
+		-1, // Defines
+		-1, // Define
+		-1, // Enum
+		-1, // Message
+		-1, // Options
+		-1, // OptionExpr
+		-1, // OptionValue
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldOption
+		-1, // FieldType
+		-1, // Service
+		-1, // ServiceElements
+		-1, // MethodFlag
+		-1, // ServiceMethod
+		-1, // MethodNo
+		-1, // Project
+		-1, // ProjElements
+		-1, // ProjArea
+	},
+	gotoRow{ // S120
 		-1,  // S'
 		-1,  // ProtocolDefine
-		125, // OptEnd
+		126, // OptEnd
 		-1,  // Package
 		-1,  // Imports
 		-1,  // Import
@@ -3250,64 +3277,37 @@ var gotoTab = gotoTable{
 		-1,  // ProjElements
 		-1,  // ProjArea
 	},
-	gotoRow{ // S120
-		-1, // S'
-		-1, // ProtocolDefine
-		-1, // OptEnd
-		-1, // Package
-		-1, // Imports
-		-1, // Import
-		-1, // Defines
-		-1, // Define
-		-1, // Enum
-		-1, // Message
-		-1, // Options
-		-1, // OptionExpr
-		-1, // OptionValue
-		-1, // Fields
-		-1, // FieldExpr
-		-1, // FieldOption
-		-1, // FieldType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // MethodFlag
-		-1, // ServiceMethod
-		-1, // MethodNo
-		-1, // Project
-		-1, // ProjElements
-		-1, // ProjArea
-	},
 	gotoRow{ // S121
-		-1, // S'
-		-1, // ProtocolDefine
-		-1, // OptEnd
-		-1, // Package
-		-1, // Imports
-		-1, // Import
-		-1, // Defines
-		-1, // Define
-		-1, // Enum
-		-1, // Message
-		-1, // Options
-		-1, // OptionExpr
-		-1, // OptionValue
-		-1, // Fields
-		-1, // FieldExpr
-		-1, // FieldOption
-		-1, // FieldType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // MethodFlag
-		-1, // ServiceMethod
-		-1, // MethodNo
-		-1, // Project
-		-1, // ProjElements
-		-1, // ProjArea
+		-1,  // S'
+		-1,  // ProtocolDefine
+		-1,  // OptEnd
+		-1,  // Package
+		-1,  // Imports
+		-1,  // Import
+		-1,  // Defines
+		-1,  // Define
+		-1,  // Enum
+		-1,  // Message
+		127, // Options
+		-1,  // OptionExpr
+		-1,  // OptionValue
+		-1,  // Fields
+		-1,  // FieldExpr
+		-1,  // FieldOption
+		-1,  // FieldType
+		-1,  // Service
+		-1,  // ServiceElements
+		-1,  // MethodFlag
+		-1,  // ServiceMethod
+		-1,  // MethodNo
+		-1,  // Project
+		-1,  // ProjElements
+		-1,  // ProjArea
 	},
 	gotoRow{ // S122
 		-1,  // S'
 		-1,  // ProtocolDefine
-		-1,  // OptEnd
+		128, // OptEnd
 		-1,  // Package
 		-1,  // Imports
 		-1,  // Import
@@ -3326,7 +3326,7 @@ var gotoTab = gotoTable{
 		-1,  // ServiceElements
 		-1,  // MethodFlag
 		-1,  // ServiceMethod
-		128, // MethodNo
+		-1,  // MethodNo
 		-1,  // Project
 		-1,  // ProjElements
 		-1,  // ProjArea
@@ -3370,7 +3370,7 @@ var gotoTab = gotoTable{
 		-1, // Enum
 		-1, // Message
 		-1, // Options
-		48, // OptionExpr
+		-1, // OptionExpr
 		-1, // OptionValue
 		-1, // Fields
 		-1, // FieldExpr
@@ -3386,31 +3386,31 @@ var gotoTab = gotoTable{
 		-1, // ProjArea
 	},
 	gotoRow{ // S125
-		-1, // S'
-		-1, // ProtocolDefine
-		-1, // OptEnd
-		-1, // Package
-		-1, // Imports
-		-1, // Import
-		-1, // Defines
-		-1, // Define
-		-1, // Enum
-		-1, // Message
-		-1, // Options
-		-1, // OptionExpr
-		-1, // OptionValue
-		-1, // Fields
-		-1, // FieldExpr
-		-1, // FieldOption
-		-1, // FieldType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // MethodFlag
-		-1, // ServiceMethod
-		-1, // MethodNo
-		-1, // Project
-		-1, // ProjElements
-		-1, // ProjArea
+		-1,  // S'
+		-1,  // ProtocolDefine
+		-1,  // OptEnd
+		-1,  // Package
+		-1,  // Imports
+		-1,  // Import
+		-1,  // Defines
+		-1,  // Define
+		-1,  // Enum
+		-1,  // Message
+		-1,  // Options
+		-1,  // OptionExpr
+		-1,  // OptionValue
+		-1,  // Fields
+		-1,  // FieldExpr
+		-1,  // FieldOption
+		-1,  // FieldType
+		-1,  // Service
+		-1,  // ServiceElements
+		-1,  // MethodFlag
+		-1,  // ServiceMethod
+		131, // MethodNo
+		-1,  // Project
+		-1,  // ProjElements
+		-1,  // ProjArea
 	},
 	gotoRow{ // S126
 		-1, // S'
@@ -3451,7 +3451,7 @@ var gotoTab = gotoTable{
 		-1, // Enum
 		-1, // Message
 		-1, // Options
-		-1, // OptionExpr
+		48, // OptionExpr
 		-1, // OptionValue
 		-1, // Fields
 		-1, // FieldExpr
@@ -3467,31 +3467,31 @@ var gotoTab = gotoTable{
 		-1, // ProjArea
 	},
 	gotoRow{ // S128
-		-1,  // S'
-		-1,  // ProtocolDefine
-		-1,  // OptEnd
-		-1,  // Package
-		-1,  // Imports
-		-1,  // Import
-		-1,  // Defines
-		-1,  // Define
-		-1,  // Enum
-		-1,  // Message
-		-1,  // Options
-		-1,  // OptionExpr
-		-1,  // OptionValue
-		-1,  // Fields
-		-1,  // FieldExpr
-		132, // FieldOption
-		-1,  // FieldType
-		-1,  // Service
-		-1,  // ServiceElements
-		-1,  // MethodFlag
-		-1,  // ServiceMethod
-		-1,  // MethodNo
-		-1,  // Project
-		-1,  // ProjElements
-		-1,  // ProjArea
+		-1, // S'
+		-1, // ProtocolDefine
+		-1, // OptEnd
+		-1, // Package
+		-1, // Imports
+		-1, // Import
+		-1, // Defines
+		-1, // Define
+		-1, // Enum
+		-1, // Message
+		-1, // Options
+		-1, // OptionExpr
+		-1, // OptionValue
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldOption
+		-1, // FieldType
+		-1, // Service
+		-1, // ServiceElements
+		-1, // MethodFlag
+		-1, // ServiceMethod
+		-1, // MethodNo
+		-1, // Project
+		-1, // ProjElements
+		-1, // ProjArea
 	},
 	gotoRow{ // S129
 		-1, // S'
@@ -3558,12 +3558,12 @@ var gotoTab = gotoTable{
 		-1,  // Define
 		-1,  // Enum
 		-1,  // Message
-		133, // Options
+		-1,  // Options
 		-1,  // OptionExpr
 		-1,  // OptionValue
 		-1,  // Fields
 		-1,  // FieldExpr
-		-1,  // FieldOption
+		135, // FieldOption
 		-1,  // FieldType
 		-1,  // Service
 		-1,  // ServiceElements
@@ -3575,60 +3575,6 @@ var gotoTab = gotoTable{
 		-1,  // ProjArea
 	},
 	gotoRow{ // S132
-		-1,  // S'
-		-1,  // ProtocolDefine
-		134, // OptEnd
-		-1,  // Package
-		-1,  // Imports
-		-1,  // Import
-		-1,  // Defines
-		-1,  // Define
-		-1,  // Enum
-		-1,  // Message
-		-1,  // Options
-		-1,  // OptionExpr
-		-1,  // OptionValue
-		-1,  // Fields
-		-1,  // FieldExpr
-		-1,  // FieldOption
-		-1,  // FieldType
-		-1,  // Service
-		-1,  // ServiceElements
-		-1,  // MethodFlag
-		-1,  // ServiceMethod
-		-1,  // MethodNo
-		-1,  // Project
-		-1,  // ProjElements
-		-1,  // ProjArea
-	},
-	gotoRow{ // S133
-		-1, // S'
-		-1, // ProtocolDefine
-		-1, // OptEnd
-		-1, // Package
-		-1, // Imports
-		-1, // Import
-		-1, // Defines
-		-1, // Define
-		-1, // Enum
-		-1, // Message
-		-1, // Options
-		48, // OptionExpr
-		-1, // OptionValue
-		-1, // Fields
-		-1, // FieldExpr
-		-1, // FieldOption
-		-1, // FieldType
-		-1, // Service
-		-1, // ServiceElements
-		-1, // MethodFlag
-		-1, // ServiceMethod
-		-1, // MethodNo
-		-1, // Project
-		-1, // ProjElements
-		-1, // ProjArea
-	},
-	gotoRow{ // S134
 		-1, // S'
 		-1, // ProtocolDefine
 		-1, // OptEnd
@@ -3655,7 +3601,142 @@ var gotoTab = gotoTable{
 		-1, // ProjElements
 		-1, // ProjArea
 	},
+	gotoRow{ // S133
+		-1, // S'
+		-1, // ProtocolDefine
+		-1, // OptEnd
+		-1, // Package
+		-1, // Imports
+		-1, // Import
+		-1, // Defines
+		-1, // Define
+		-1, // Enum
+		-1, // Message
+		-1, // Options
+		-1, // OptionExpr
+		-1, // OptionValue
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldOption
+		-1, // FieldType
+		-1, // Service
+		-1, // ServiceElements
+		-1, // MethodFlag
+		-1, // ServiceMethod
+		-1, // MethodNo
+		-1, // Project
+		-1, // ProjElements
+		-1, // ProjArea
+	},
+	gotoRow{ // S134
+		-1,  // S'
+		-1,  // ProtocolDefine
+		-1,  // OptEnd
+		-1,  // Package
+		-1,  // Imports
+		-1,  // Import
+		-1,  // Defines
+		-1,  // Define
+		-1,  // Enum
+		-1,  // Message
+		136, // Options
+		-1,  // OptionExpr
+		-1,  // OptionValue
+		-1,  // Fields
+		-1,  // FieldExpr
+		-1,  // FieldOption
+		-1,  // FieldType
+		-1,  // Service
+		-1,  // ServiceElements
+		-1,  // MethodFlag
+		-1,  // ServiceMethod
+		-1,  // MethodNo
+		-1,  // Project
+		-1,  // ProjElements
+		-1,  // ProjArea
+	},
 	gotoRow{ // S135
+		-1,  // S'
+		-1,  // ProtocolDefine
+		137, // OptEnd
+		-1,  // Package
+		-1,  // Imports
+		-1,  // Import
+		-1,  // Defines
+		-1,  // Define
+		-1,  // Enum
+		-1,  // Message
+		-1,  // Options
+		-1,  // OptionExpr
+		-1,  // OptionValue
+		-1,  // Fields
+		-1,  // FieldExpr
+		-1,  // FieldOption
+		-1,  // FieldType
+		-1,  // Service
+		-1,  // ServiceElements
+		-1,  // MethodFlag
+		-1,  // ServiceMethod
+		-1,  // MethodNo
+		-1,  // Project
+		-1,  // ProjElements
+		-1,  // ProjArea
+	},
+	gotoRow{ // S136
+		-1, // S'
+		-1, // ProtocolDefine
+		-1, // OptEnd
+		-1, // Package
+		-1, // Imports
+		-1, // Import
+		-1, // Defines
+		-1, // Define
+		-1, // Enum
+		-1, // Message
+		-1, // Options
+		48, // OptionExpr
+		-1, // OptionValue
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldOption
+		-1, // FieldType
+		-1, // Service
+		-1, // ServiceElements
+		-1, // MethodFlag
+		-1, // ServiceMethod
+		-1, // MethodNo
+		-1, // Project
+		-1, // ProjElements
+		-1, // ProjArea
+	},
+	gotoRow{ // S137
+		-1, // S'
+		-1, // ProtocolDefine
+		-1, // OptEnd
+		-1, // Package
+		-1, // Imports
+		-1, // Import
+		-1, // Defines
+		-1, // Define
+		-1, // Enum
+		-1, // Message
+		-1, // Options
+		-1, // OptionExpr
+		-1, // OptionValue
+		-1, // Fields
+		-1, // FieldExpr
+		-1, // FieldOption
+		-1, // FieldType
+		-1, // Service
+		-1, // ServiceElements
+		-1, // MethodFlag
+		-1, // ServiceMethod
+		-1, // MethodNo
+		-1, // Project
+		-1, // ProjElements
+		-1, // ProjArea
+	},
+	gotoRow{ // S138
 		-1, // S'
 		-1, // ProtocolDefine
 		-1, // OptEnd

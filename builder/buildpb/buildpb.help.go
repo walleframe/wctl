@@ -4,7 +4,7 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/aggronmagi/wctl/utils"
+	"github.com/walleframe/wctl/utils"
 )
 
 func (x *OptionDesc) getOpt(opt string) (val *OptionValue) {

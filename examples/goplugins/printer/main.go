@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 
-	"github.com/aggronmagi/wctl/builder"
-	"github.com/aggronmagi/wctl/protocol/ast"
-	"github.com/aggronmagi/wctl/utils"
+	"github.com/walleframe/wctl/builder"
+	"github.com/walleframe/wctl/protocol/ast"
+	"github.com/walleframe/wctl/utils"
 )
 
 // go plugin

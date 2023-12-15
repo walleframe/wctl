@@ -6,9 +6,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/aggronmagi/wctl/protocol/ast"
-	"github.com/aggronmagi/wctl/protocol/token"
-	"github.com/aggronmagi/wctl/utils"
+	"github.com/walleframe/wctl/protocol/ast"
+	"github.com/walleframe/wctl/protocol/token"
+	"github.com/walleframe/wctl/utils"
 	"go.uber.org/multierr"
 )
 
@@ -375,7 +375,7 @@ func MapType(c, a2, a4 interface{}) (_ *ast.YTFieldType, err error) {
 		return nil, err
 	}
 
-	if key.YTBaseType != nil {
+	if key.YTBaseType == nil {
 		err = ast.NewError(tokKey, "field map key type must basic type")
 		return
 	}
@@ -415,6 +415,8 @@ func NewService(c, a1, a3 interface{}) (_ *ast.YTService, err error) {
 
 	svc.DefPos = tokName.Pos
 	svc.Name = tokName.IDValue()
+
+	ctx.Prog.Services = append(ctx.Prog.Services, svc)
 
 	ctx.LastElement = svc
 	return
@@ -465,53 +467,58 @@ func ServiceFlag(c, a0, a1 interface{}) (_ *ast.YTService, err error) {
 func NewMethod(c, a0, a2, a4, a5, a6 interface{}) (m *ast.YTMethod, err error) {
 	ctx := c.(*ast.Context)
 	tokFunc := a0.(*token.Token)
-	tokRQ := a2.(*token.Token)
-	tokRS := a4.(*token.Token)
 
 	err = checkNormalIdentifier(tokFunc.IDValue(), "method name")
 	if err != nil {
 		err = ast.NewError2(tokFunc, err)
 		return
 	}
-
-	rqField, err := analyseType(tokRQ.IDValue(), "method request body")
-	if err != nil {
-		err = ast.NewError2(tokRQ, err)
-		return
-	}
-	if rqField.YTCustomType == nil {
-		err = ast.NewError(tokRQ, "method request body must be custom message type [%s]", tokRQ.IDValue())
-		return
-	}
-
-	rsField, err := analyseType(tokRS.IDValue(), "method reply body")
-	if err != nil {
-		err = ast.NewError2(tokRS, err)
-		return
-	}
-	if rsField.YTCustomType == nil {
-		err = ast.NewError(tokRS, "method reply body must be custom message type [%s]", tokRS.IDValue())
-		return
-	}
-
 	m = &ast.YTMethod{
 		DefPos: tokFunc.Pos,
 		YTDoc:  ctx.PreDoc(tokFunc.Line),
 		Name:   tokFunc.IDValue(),
-		Request: &ast.YTMessage{
+	}
+
+	tokRQ := a2.(*token.Token)
+
+	if tokRQ.IDValue() != "void" {
+		rqField, err := analyseType(tokRQ.IDValue(), "method request body")
+		if err != nil {
+			err = ast.NewError2(tokRQ, err)
+			return nil, err
+		}
+		if rqField.YTCustomType == nil {
+			err = ast.NewError(tokRQ, "method request body must be custom message type [%s]", tokRQ.IDValue())
+			return nil, err
+		}
+		m.Request = &ast.YTMessage{
 			Name:   tokRQ.IDValue(),
 			DefPos: tokRQ.Pos,
 			Fields: []*ast.YTField{
 				{Name: "rq", Type: rqField, No: 1},
 			},
-		},
-		Reply: &ast.YTMessage{
+		}
+	}
+
+	tokRS := a4.(*token.Token)
+	if tokRS.IDValue() != "void" {
+		rsField, err := analyseType(tokRS.IDValue(), "method reply body")
+		if err != nil {
+			err = ast.NewError2(tokRS, err)
+			return nil, err
+		}
+		if rsField.YTCustomType == nil {
+			err = ast.NewError(tokRS, "method reply body must be custom message type [%s]", tokRS.IDValue())
+			return nil, err
+		}
+
+		m.Reply = &ast.YTMessage{
 			DefPos: tokRS.Pos,
 			Name:   tokRS.IDValue(),
 			Fields: []*ast.YTField{
 				{Name: "rs", Type: rsField, No: 1},
 			},
-		},
+		}
 	}
 	// method no.
 	if a5 != nil {
@@ -721,20 +728,6 @@ func analyseType(def, tip string) (typ *ast.YTFieldType, err error) {
 		return
 	}
 
-	// go形式数组兼容 - protobuf形式定义的数组通过 FieldArray 来进行调整
-	if strings.HasPrefix(def, "[]") {
-		nt, err := analyseType(strings.TrimPrefix(def, "[]"), tip)
-		if err != nil {
-			return nil, err
-		}
-		typ = &ast.YTFieldType{
-			YTListType: &ast.YTListType{
-				YTBaseType:   nt.YTBaseType,
-				YTCustomType: nt.YTCustomType,
-			},
-		}
-		return typ, nil
-	}
 	// 无效的类型
 	return nil, fmt.Errorf("%s invalid field type [%s]", tip, def)
 }

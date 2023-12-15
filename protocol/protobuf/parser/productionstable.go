@@ -3,8 +3,8 @@
 package parser
 
 import (
-	"github.com/aggronmagi/wctl/protocol/protobuf/bridge"
-	"github.com/aggronmagi/wctl/protocol/ast"
+	"github.com/walleframe/wctl/protocol/protobuf/bridge"
+	"github.com/walleframe/wctl/protocol/ast"
 )
 
 type (

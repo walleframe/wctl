@@ -17,7 +17,7 @@
 package cmd
 
 import (
-	"github.com/aggronmagi/wctl/commands/generate"
+	"github.com/walleframe/wctl/commands/generate"
 
 	"github.com/spf13/cobra"
 )

@@ -1,6 +1,8 @@
 package ast
 
 import (
+	"strings"
+
 	"github.com/walleframe/wctl/protocol/token"
 	"github.com/walleframe/wctl/utils"
 )
@@ -36,7 +38,7 @@ func (ctx *Context) PreDoc(tokLine int) *YTDoc {
 		}
 		// 尾注释
 		if d.Line == tokLine {
-			doc.TailDoc = d.IDValue()
+			doc.TailDoc = strings.TrimSpace(d.IDValue())
 			ctx.Docs = append(ctx.Docs[:k], ctx.Docs[k+1:]...)
 			tail = true
 			break
@@ -57,7 +59,7 @@ func (ctx *Context) PreDoc(tokLine int) *YTDoc {
 		}
 		// 连续的前置注释
 		for i := preIdx; i <= trimIdx; i++ {
-			doc.Doc = append(doc.Doc, preDocs[i].IDValue())
+			doc.Doc = append(doc.Doc, strings.TrimSpace(preDocs[i].IDValue()))
 			pre = true
 		}
 

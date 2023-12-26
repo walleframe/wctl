@@ -36,6 +36,10 @@ func checkLanguageConfig() error {
 
 // 导出数据
 func exportLanguageData(sheet *parser.XlsxSheet, opts *gen.ExportOption) (err error) {
+	// 表级过滤检测
+	if !sheet.EnableExport(opts.ExportFlag) {
+		return
+	}
 	// log.Println("sheet cache export", sheet.SheetName, sheet.FromFile)
 	var sheetData = sheet.AllData
 	var sheetType = sheet.AllType
@@ -43,7 +47,7 @@ func exportLanguageData(sheet *parser.XlsxSheet, opts *gen.ExportOption) (err er
 	if sheet.KVFlag {
 		row := make(map[string]interface{})
 		for col, field := range sheetType {
-			if !field.EnableExport(opts.ExportFlag) {
+			if field.EnableExport(opts.ExportFlag) {
 				continue
 			}
 			row[field.Name] = sheetData[0][col].Value

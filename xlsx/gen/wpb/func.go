@@ -1,4 +1,4 @@
-package pb
+package wpb
 
 import (
 	"fmt"
@@ -6,6 +6,7 @@ import (
 	"strings"
 	"text/template"
 
+	"github.com/iancoleman/strcase"
 	"github.com/walleframe/wctl/xlsx/parser"
 )
 
@@ -29,4 +30,5 @@ func init() {
 		comment = strings.Replace(comment, "\n", " ", -1)
 		return fmt.Sprintf("// %s %s", filed.Name, comment)
 	}
+	UseFuncMap["ToSnake"] = strcase.ToSnake
 }

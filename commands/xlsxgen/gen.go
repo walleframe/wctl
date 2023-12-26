@@ -14,13 +14,17 @@ import (
 	"github.com/walleframe/wctl/xlsx/gen"
 	"github.com/walleframe/wctl/xlsx/parser"
 
+	"github.com/walleframe/wctl/xlsx/gen/golang"
 	"github.com/walleframe/wctl/xlsx/gen/jsondata"
 	"github.com/walleframe/wctl/xlsx/gen/pb"
+	"github.com/walleframe/wctl/xlsx/gen/wpb"
 )
 
 var cfg = struct {
 	Recursion  bool
 	FileExtern string
+	// 检测数据合理性脚本的lua目录
+	VerifyScriptPath string
 }{
 	FileExtern: ".xlsx",
 	Recursion:  true,
@@ -33,7 +37,7 @@ const (
 	Help = `excel 配置导出工具 
 `
 	Example = `
-retool xlsx x1.xlsx x2.xlsx ./xxx/ --json-data=./json-data ...
+wctl xlsx x1.xlsx x2.xlsx ./xxx/ --json-data=./json-data ...
 `
 )
 
@@ -43,6 +47,7 @@ func Flags(genCmd *pflag.FlagSet) {
 
 	genCmd.BoolVarP(&cfg.Recursion, "recursion", "r", cfg.Recursion, "递归深层目录,用于扫描xlsx文件")
 	genCmd.StringVar(&cfg.FileExtern, "ext", cfg.FileExtern, "xlsx文件后缀")
+	genCmd.StringVar(&cfg.VerifyScriptPath, "verify-script-path", cfg.VerifyScriptPath, "检测数据合理性脚本的lua目录")
 
 	// 注册语言
 	langCaches = append(langCaches,
@@ -50,6 +55,12 @@ func Flags(genCmd *pflag.FlagSet) {
 		jsondata.Language(),
 		// golang pb
 		pb.Language(),
+		// wpb
+		wpb.Language(),
+		// golang code
+		golang.Language(),
+		// //
+		// luatpl.Language(),
 	)
 	// 注册标记
 	for _, cfg := range langCaches {
@@ -127,6 +138,37 @@ func RunCommand(cmd *cobra.Command, args []string) {
 		log.Println("prepare data for check failed")
 		return
 	}
+	// 检测数据合理性脚本的lua目录
+	if cfg.VerifyScriptPath != "" {
+		filepath.Walk(cfg.VerifyScriptPath, func(path string, info fs.FileInfo, err error) error {
+			if err != nil {
+				return nil
+			}
+			// 不递归目录
+			if info.IsDir() {
+				return nil
+			}
+			// 过滤隐藏文件及非lua文件
+			if strings.HasPrefix(info.Name(), ".") || filepath.Ext(info.Name()) != ".lua" {
+				return nil
+			}
+			// 加载文件
+			fname := filepath.Join(filepath.Clean(cfg.VerifyScriptPath), info.Name())
+			data, err := os.ReadFile(fname)
+			if err != nil {
+				log.Println("load lua check file ", fname, err)
+				return nil
+			}
+			// 保存
+			GlobalCache.AllChecks = append(GlobalCache.AllChecks, &parser.XlsxCheckSheet{
+				FromFile:   fname,
+				Sheet:      fname,
+				LuaScripts: map[string]string{fname: string(data)},
+			})
+
+			return nil
+		})
+	}
 	// 检测sheet数据
 	for _, check := range GlobalCache.AllChecks {
 		err := parser.LuaCheckTable(L, check, &luaErrors)
@@ -134,6 +176,7 @@ func RunCommand(cmd *cobra.Command, args []string) {
 			errs = multierr.Append(errs, err)
 		}
 	}
+
 	// 是否出错
 	if errs != nil {
 		log.Println("data not valid,check please!")

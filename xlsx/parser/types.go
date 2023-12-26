@@ -50,9 +50,9 @@ func (*String) Name() string {
 
 func ParseBool(str string) (bool, error) {
 	switch str {
-	case "1", "t", "T", "true", "TRUE", "True":
+	case "1", "t", "T", "true", "TRUE", "True", "是", "ok", "yes", "Yes", "YES":
 		return true, nil
-	case "0", "f", "F", "false", "FALSE", "False", "": // 空字符串,默认false
+	case "0", "f", "F", "false", "FALSE", "False", "否", "no", "No", "NO", "": // 空字符串,默认false
 		return false, nil
 	}
 	return false, &strconv.NumError{Func: "ParseBool", Num: str, Err: strconv.ErrSyntax}
@@ -196,6 +196,7 @@ type Array struct {
 var _ Type = (*Array)(nil)
 
 func NewArray(def string) Type {
+	def = strings.TrimSpace(def)
 	// 类型匹配
 	if !strings.HasPrefix(def, "array") || !strings.HasSuffix(def, ">") {
 		return nil
@@ -247,12 +248,13 @@ type Map struct {
 }
 
 func NewMap(def string) Type {
+	def = strings.TrimSpace(def)
 	// 类型匹配
 	if !strings.HasPrefix(def, "map<") || !strings.HasSuffix(def, ">") {
 		return nil
 	}
 	// 拆分类型
-	elt := strings.TrimSuffix(strings.TrimPrefix("map<", def), ">")
+	elt := strings.TrimSuffix(strings.TrimPrefix(def, "map<"), ">")
 	list := strings.Split(elt, ",")
 	if len(list) != 2 {
 		return nil

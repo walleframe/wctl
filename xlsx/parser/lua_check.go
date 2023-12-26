@@ -14,7 +14,7 @@ import (
 func PrepareCheckTable(errs *[]error) *lua.LState {
 	l := lua.NewState()
 	var lock sync.Mutex
-	l.SetGlobal("error", l.NewFunction(func(l *lua.LState) int {
+	l.SetGlobal("failed", l.NewFunction(func(l *lua.LState) int {
 		buf := strings.Builder{}
 		for i := 1; i <= l.GetTop(); i++ {
 			if i > 1 {

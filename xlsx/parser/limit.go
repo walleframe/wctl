@@ -32,7 +32,7 @@ func LimitCheck(sheets []*XlsxSheet) (errs error) {
 		for rowID, rowData := range sheet.AllData {
 			idKey := ""
 			for colID, colType := range sheet.AllType {
-				if colType.Flags.ID {
+				if colType.Flags.ID() {
 					idKey += "_" + rowData[colID].Raw
 				}
 			}

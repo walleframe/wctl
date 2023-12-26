@@ -71,8 +71,8 @@ func checkNumber(in interface{}, f func(val float64) error) (err error) {
 	return nil
 }
 
-// LuaCheckFuncOption 有指定数据的检测
-func LuaCheckFuncOption(L *lua.LState) int {
+// LuaCheckFuncValues 有指定数据的检测
+func LuaCheckFuncValues(L *lua.LState) int {
 	if L.GetTop() < 1 {
 		return 0
 	}
@@ -211,7 +211,7 @@ func RegisterCheck(name string, f lua.LGFunction) {
 
 func RegisterDefaultChecker() {
 	RegisterCheck("range", LuaCheckFuncRange)
-	RegisterCheck("values", LuaCheckFuncOption)
+	RegisterCheck("values", LuaCheckFuncValues)
 	RegisterCheck("max", LuaCheckFuncMax)
 	RegisterCheck("min", LuaCheckFuncMin)
 	//min

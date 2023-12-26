@@ -27,7 +27,7 @@ func LoadXlsx(fname string) (datas []*XlsxSheet, check []*XlsxCheckSheet, errs e
 			log.Println("\t", err)
 			continue
 		}
-		if flags.ID {
+		if flags.ID() {
 			log.Println("parse ", fname, "sheet", sheet.Name, " flag failed")
 			log.Println("\tSheet Name Flag Not Support @id")
 		}
@@ -119,10 +119,10 @@ func emptyRow(row *xlsx.Row) bool {
 }
 
 // ParseDataXlsx 解析数据表格 数组或者map
-func ParseDataXlsx(fromFile string, sheet *xlsx.Sheet, sheetName string, flags Flag) (data *XlsxSheet, errs error) {
+func ParseDataXlsx(fromFile string, sheet *xlsx.Sheet, sheetName string, flags ExportTags) (data *XlsxSheet, errs error) {
 	data = &XlsxSheet{
 		SheetName:  sheetName,
-		StructName: strings.TrimSuffix(sheetName, "_config"),
+		StructName: strings.TrimSuffix(sheetName, "_cfgs"),
 		FromFile:   fromFile,
 		AllType:    []*ColumnType{},
 		AllData:    [][]*XlsxCell{},
@@ -183,10 +183,10 @@ func ParseDataXlsx(fromFile string, sheet *xlsx.Sheet, sheetName string, flags F
 }
 
 // ParseKVXlsx 解析结构体表格
-func ParseKVXlsx(fromFile string, sheet *xlsx.Sheet, sheetName string, flags Flag) (data *XlsxSheet, errs error) {
+func ParseKVXlsx(fromFile string, sheet *xlsx.Sheet, sheetName string, flags ExportTags) (data *XlsxSheet, errs error) {
 	data = &XlsxSheet{
 		SheetName:  sheetName,
-		StructName: strings.TrimSuffix(sheetName, "_vert"),
+		StructName: strings.TrimSuffix(sheetName, "_st"),
 		FromFile:   fromFile,
 		AllType:    []*ColumnType{},
 		AllData:    [][]*XlsxCell{},
@@ -199,10 +199,10 @@ func ParseKVXlsx(fromFile string, sheet *xlsx.Sheet, sheetName string, flags Fla
 	// 解析文件头,分析类型
 	rows := make([]int, 0, sheet.MaxRow)
 	for row := 0; row < sheet.MaxRow; row++ {
-		fieldName := getCellValue(sheet, row, 0, nil)
-		fieldType := getCellValue(sheet, row, 1, nil)
-		filedOptions := getCellValue(sheet, row, 2, nil)
-		fieldComment := getCellValue(sheet, row, 2, nil)
+		fieldComment := getCellValue(sheet, row, 0, nil)
+		fieldName := getCellValue(sheet, row, 1, nil)
+		fieldType := getCellValue(sheet, row, 2, nil)
+		filedOptions := getCellValue(sheet, row, 3, nil)
 		typ, err := NewField(fieldType, fieldName, fieldComment, filedOptions)
 		if err != nil {
 			// 合并错误,一次性检测

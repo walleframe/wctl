@@ -71,6 +71,9 @@ func (prog *YTProgram) checkImport() (err error) {
 		}
 		imp[v.File] = v
 		// 导入别名检测
+		if v.AliasName == "" {
+			continue
+		}
 		if last, ok := imp[v.AliasName]; ok {
 			return NewErrorPos(v.DefPos, "import alias [%s] repeated with %s", v.AliasName, last.DefPos.String())
 		}
@@ -197,6 +200,7 @@ func (prog *YTProgram) checkMsgRepeatedDefine(val *YTMessage) error {
 	prog.addUnionName(val.Name, val.DefPos)
 	//
 	for _, field := range val.Fields {
+		//fmt.Println("val:%t field:%t", val != nil, field != nil)
 		if last, ok := val.checkUnionNo(int64(field.No)); ok {
 			return NewErrorPos(field.DefPos, "message field id repeated [%s.%s] %s", val.Name, field.Name, last.String())
 		}
@@ -268,6 +272,27 @@ func (prog *YTProgram) checkFixFileRefrence() (err error) {
 // 检查消息内字段类型
 func (prog *YTProgram) checkMsg(msg *YTMessage, tip string) (err error) {
 	for _, field := range msg.Fields {
+		if field.Type.YTCustomType != nil {
+			find := false
+			for _, v := range msg.SubEnums {
+				if v.Name == field.Type.Name {
+					find = true
+					break
+				}
+			}
+			if find {
+				continue
+			}
+			for _, v := range msg.SubMsgs {
+				if v.Name == field.Type.Name {
+					find = true
+					break
+				}
+			}
+			if find {
+				continue
+			}
+		}
 		if err = field.Type.checkType(prog, fmt.Sprintf("%s< %s >in %s", tip, field.DefPos.String(), msg.Name)); err != nil {
 			return
 		}
@@ -308,9 +333,15 @@ func (cst *YTCustomType) checkCustom(prog *YTProgram, tip string) (err error) {
 		// 当前文件. 直接查找
 		if msg, ok := prog.msgMap[cst.Name]; ok {
 			cst.Msg = msg
-		} else {
-			err = fmt.Errorf("custom type [%s] %s", cst.Name, tip)
+			return
 		}
+		// 查找enum
+		for _, def := range prog.EnumDefs {
+			if def.Name == cst.Name {
+				return
+			}
+		}
+		err = fmt.Errorf("custom type [%s] %s", cst.Name, tip)
 		return
 	}
 	// 切分
@@ -320,6 +351,14 @@ func (cst *YTCustomType) checkCustom(prog *YTProgram, tip string) (err error) {
 	refName := list[0]
 	iprogs, ok := prog.impMap[refName]
 	if !ok {
+		// 兼容protobuf. 包名是当前的包名.
+		if refName == prog.Pkg.Name {
+			cst.Name = list[1]
+			if err = cst.checkCustom(prog, tip); err == nil {
+				return
+			}
+			cst.Name = strings.Join(list, ".")
+		}
 		err = fmt.Errorf("import cutsom type [%s] %s", cst.Name, tip)
 		return
 	}
